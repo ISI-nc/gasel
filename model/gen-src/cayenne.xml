@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domains project-version="2.0">
+<domain name="GeneratedDomain">
+	<map name="_budget" location="_budget.map.xml"/>
+	<map name="_import_v1" location="_import_v1.map.xml"/>
+	<map name="_mairie" location="_mairie.map.xml"/>
+	<map name="implicit_links" location="implicit_links.map.xml"/>
+	<map name="nc.ccas.gasel.model.aides" location="nc.ccas.gasel.model.aides.map.xml"/>
+	<map name="nc.ccas.gasel.model.budget" location="nc.ccas.gasel.model.budget.map.xml"/>
+	<map name="nc.ccas.gasel.model.core" location="nc.ccas.gasel.model.core.map.xml"/>
+	<map name="nc.ccas.gasel.model.core.docs" location="nc.ccas.gasel.model.core.docs.map.xml"/>
+	<map name="nc.ccas.gasel.model.core.enums" location="nc.ccas.gasel.model.core.enums.map.xml"/>
+	<map name="nc.ccas.gasel.model.habitat" location="nc.ccas.gasel.model.habitat.map.xml"/>
+	<map name="nc.ccas.gasel.model.habitat.enums" location="nc.ccas.gasel.model.habitat.enums.map.xml"/>
+	<map name="nc.ccas.gasel.model.paph" location="nc.ccas.gasel.model.paph.map.xml"/>
+	<map name="nc.ccas.gasel.model.paph.enums" location="nc.ccas.gasel.model.paph.enums.map.xml"/>
+	<map name="nc.ccas.gasel.model.pe" location="nc.ccas.gasel.model.pe.map.xml"/>
+	<map name="nc.ccas.gasel.model.pe.enums" location="nc.ccas.gasel.model.pe.enums.map.xml"/>
+	<map name="nc.ccas.gasel.model.pi" location="nc.ccas.gasel.model.pi.map.xml"/>
+	<map name="nc.ccas.gasel.model.pi.enums" location="nc.ccas.gasel.model.pi.enums.map.xml"/>
+
+	<node name="db"
+		 datasource="jdbc/gasel"
+		 factory="org.apache.cayenne.conf.GaselDataSourceFactory">
+			<map-ref name="_import_v1"/>
+			<map-ref name="_budget"/>
+			<map-ref name="nc.ccas.gasel.model.core.enums"/>
+			<map-ref name="nc.ccas.gasel.model.budget"/>
+			<map-ref name="nc.ccas.gasel.model.habitat"/>
+			<map-ref name="nc.ccas.gasel.model.aides"/>
+			<map-ref name="nc.ccas.gasel.model.paph.enums"/>
+			<map-ref name="nc.ccas.gasel.model.core"/>
+			<map-ref name="nc.ccas.gasel.model.pi.enums"/>
+			<map-ref name="nc.ccas.gasel.model.paph"/>
+			<map-ref name="_mairie"/>
+			<map-ref name="nc.ccas.gasel.model.pi"/>
+			<map-ref name="nc.ccas.gasel.model.pe.enums"/>
+			<map-ref name="implicit_links"/>
+			<map-ref name="nc.ccas.gasel.model.pe"/>
+			<map-ref name="nc.ccas.gasel.model.habitat.enums"/>
+			<map-ref name="nc.ccas.gasel.model.core.docs"/>
+	 </node>
+</domain>
+</domains>

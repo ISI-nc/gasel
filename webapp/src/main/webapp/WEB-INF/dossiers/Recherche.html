@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="Dossier" results="ognl:results" colspan="4"
+	prefetch="ognl:{'chefFamille','adresseHabitation.rue','adresseHabitation.ville'}">
+	<tr><td colspan="2"><table><tr>
+		<td class="label">N° :</td>
+		<td><input jwcid="@core/search/critere/Egal" path="db:id" translator="translator:number,omitZero"/></td>
+		<td class="label" style="padding-left:12px;">Référent CCAS :</td>
+		<td><input jwcid="@core/search/critere/EgalObjet" path="referent" values="cay-all:Utilisateur"/></td>
+		<td style="padding-left:12px;" jwcid="@If" condition="ognl:aspect">
+			<input jwcid="filtreAspect@Checkbox" value="ognl:filtreAspect"/>
+			<label for="filtreAspect">Aspect «<span jwcid="@Insert" value="ognl:nomAspect">Aspect</span>» actif</label>
+		</td>
+		<!-- input type="hidden" jwcid="@core/search/critere/Brut" path="id" sql="ognl:aspectSql" disabled="ognl:!aspect"/-->
+	</tr></table></td></tr>
+	<tr class="pad"><td style="padding-right:6px;">
+		<div class="section">Personnes</div>
+		
+		<input jwcid="searchCF@Checkbox" value="ognl:searchChefFamille"/>
+			<label for="searchCF" style="margin-right:6px;">Chef famille</label>
+		<input jwcid="searchConjoint@Checkbox" value="ognl:searchConjoint"/>
+			<label for="searchConjoint" style="margin-right:6px;">Conjoint</label>
+		<input jwcid="searchACharge@Checkbox" value="ognl:searchACharge"/>
+			<label for="searchACharge" style="margin-right:6px;">À charge</label>
+		<input jwcid="searchNonACharge@Checkbox" value="ognl:searchNonACharge"/>
+			<label for="searchNonACharge" style="margin-right:6px;">Non à charge</label>
+		
+		<table class="invis">
+			<tr><td class="label">Nom :</td>
+				<td><input jwcid="nomCF@core/search/critere/Contient" path="ognl:pathsPersonne({'nom','nomUsage','nomJeuneFille'})"/></td></tr>
+			<tr><td class="label">Prénom :</td>
+				<td><input jwcid="@core/search/critere/Contient" path="ognl:pathsPersonne('prenom')"/></td></tr>
+			<tr><td class="label">Nom d'usage :</td>
+				<td><input jwcid="@core/search/critere/Contient" path="ognl:pathsPersonne('nomUsage')"/></td></tr>
+			<tr><td class="label">Date de naiss. :</td>
+				<td><input jwcid="@core/search/critere/Date" path="ognl:pathsPersonne('dateNaissance')"/></td></tr>
+		</table>
+		
+	</td><td style="padding-left:6px;">
+		<div class="section">Adresse d'habitation</div>
+		<table class="invis">
+			<tr><td class="label">Rue :</td><td><input jwcid="@core/search/critere/Contient" path="adresseHabitation.rue.libelle"/></td></tr>
+			<tr><td class="label">Ville :</td><td><input jwcid="@core/search/critere/Contient" path="adresseHabitation.ville.libelle"/></td></tr>
+			<tr><td class="label">Autres :</td><td><input jwcid="@core/search/critere/Contient" path="adresseHabitation.autres"/></td></tr>
+		</table>
+	</td></tr>
+</table>
+
+<p jwcid="@If" condition="ognl:results != null">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results ? filtrer(results) : {}" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="N°" value="ognl:sql.idOf(value.dossier)" format="ognl:formatNumero"/>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Personne">
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:value.personne.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:value.personne.prenom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Naiss." value="ognl:value.personne.dateNaissance"/>
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Adresse d'habitation">
+			<div jwcid="@core/tableau/Colonne" titre="Rue" value="ognl:value.dossier.adresseHabitation.rue"/>
+			<div jwcid="@core/tableau/Colonne" titre="Autres" value="ognl:value.dossier.adresseHabitation.autres"/>
+		</div>
+		<div jwcid="@core/tableau/ActionChoisir" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="dossiers/Edition" value="ognl:value.dossier" />
+	</div>
+</p>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="dossiers/Edition"/>
+	<input jwcid="@core/BoutonRetour" />
+</p>
+
+</div>
+</body>
+</html>

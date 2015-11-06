@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.valid" version="1.0.0" package="nc.ccas.gasel.input">
+
+	<contribution configuration-id="tapestry.form.translator.Translators">
+		<bean class="GaselDateTranslator" name="gasel-date" />
+	</contribution>
+
+</module>

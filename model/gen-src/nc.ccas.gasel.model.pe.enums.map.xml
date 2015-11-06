@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.pe.enums"/>
+	<db-entity name="autorisation_parentale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="alerte" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="formation">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="attestation" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="mode_garde">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="dimanche_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="dimanche_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="dimanche_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="dimanche_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="jeudi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="jeudi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="jeudi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="jeudi_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="lundi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="lundi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="lundi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="lundi_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="mardi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="mardi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="mardi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="mardi_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="mercredi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="mercredi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="mercredi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="mercredi_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="samedi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="samedi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="samedi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="samedi_soir" type="BIT" isMandatory="true"/>
+		<db-attribute name="vendredi_am" type="BIT" isMandatory="true"/>
+		<db-attribute name="vendredi_matin" type="BIT" isMandatory="true"/>
+		<db-attribute name="vendredi_midi" type="BIT" isMandatory="true"/>
+		<db-attribute name="vendredi_soir" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="organisme_social">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="secteur_formation">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="AutorisationParentale" className="nc.ccas.gasel.model.pe.enums.AutorisationParentale" dbEntityName="autorisation_parentale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="alerte" type="java.lang.Boolean" db-attribute-path="alerte"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Formation" className="nc.ccas.gasel.model.pe.enums.Formation" dbEntityName="formation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="attestation" type="java.lang.String" db-attribute-path="attestation"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ModeGarde" className="nc.ccas.gasel.model.pe.enums.ModeGarde" dbEntityName="mode_garde">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="dimancheAM" type="java.lang.Boolean" db-attribute-path="dimanche_am"/>
+		<obj-attribute name="dimancheMatin" type="java.lang.Boolean" db-attribute-path="dimanche_matin"/>
+		<obj-attribute name="dimancheMidi" type="java.lang.Boolean" db-attribute-path="dimanche_midi"/>
+		<obj-attribute name="dimancheSoir" type="java.lang.Boolean" db-attribute-path="dimanche_soir"/>
+		<obj-attribute name="jeudiAM" type="java.lang.Boolean" db-attribute-path="jeudi_am"/>
+		<obj-attribute name="jeudiMatin" type="java.lang.Boolean" db-attribute-path="jeudi_matin"/>
+		<obj-attribute name="jeudiMidi" type="java.lang.Boolean" db-attribute-path="jeudi_midi"/>
+		<obj-attribute name="jeudiSoir" type="java.lang.Boolean" db-attribute-path="jeudi_soir"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+		<obj-attribute name="lundiAM" type="java.lang.Boolean" db-attribute-path="lundi_am"/>
+		<obj-attribute name="lundiMatin" type="java.lang.Boolean" db-attribute-path="lundi_matin"/>
+		<obj-attribute name="lundiMidi" type="java.lang.Boolean" db-attribute-path="lundi_midi"/>
+		<obj-attribute name="lundiSoir" type="java.lang.Boolean" db-attribute-path="lundi_soir"/>
+		<obj-attribute name="mardiAM" type="java.lang.Boolean" db-attribute-path="mardi_am"/>
+		<obj-attribute name="mardiMatin" type="java.lang.Boolean" db-attribute-path="mardi_matin"/>
+		<obj-attribute name="mardiMidi" type="java.lang.Boolean" db-attribute-path="mardi_midi"/>
+		<obj-attribute name="mardiSoir" type="java.lang.Boolean" db-attribute-path="mardi_soir"/>
+		<obj-attribute name="mercrediAM" type="java.lang.Boolean" db-attribute-path="mercredi_am"/>
+		<obj-attribute name="mercrediMatin" type="java.lang.Boolean" db-attribute-path="mercredi_matin"/>
+		<obj-attribute name="mercrediMidi" type="java.lang.Boolean" db-attribute-path="mercredi_midi"/>
+		<obj-attribute name="mercrediSoir" type="java.lang.Boolean" db-attribute-path="mercredi_soir"/>
+		<obj-attribute name="samediAM" type="java.lang.Boolean" db-attribute-path="samedi_am"/>
+		<obj-attribute name="samediMatin" type="java.lang.Boolean" db-attribute-path="samedi_matin"/>
+		<obj-attribute name="samediMidi" type="java.lang.Boolean" db-attribute-path="samedi_midi"/>
+		<obj-attribute name="samediSoir" type="java.lang.Boolean" db-attribute-path="samedi_soir"/>
+		<obj-attribute name="vendrediAM" type="java.lang.Boolean" db-attribute-path="vendredi_am"/>
+		<obj-attribute name="vendrediMatin" type="java.lang.Boolean" db-attribute-path="vendredi_matin"/>
+		<obj-attribute name="vendrediMidi" type="java.lang.Boolean" db-attribute-path="vendredi_midi"/>
+		<obj-attribute name="vendrediSoir" type="java.lang.Boolean" db-attribute-path="vendredi_soir"/>
+	</obj-entity>
+	<obj-entity name="OrganismeSocial" className="nc.ccas.gasel.model.pe.enums.OrganismeSocial" dbEntityName="organisme_social">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="SecteurFormation" className="nc.ccas.gasel.model.pe.enums.SecteurFormation" dbEntityName="secteur_formation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="REV_autorisation_enfant_autorisation_parentale" source="autorisation_parentale" target="autorisation_enfant" toMany="true">
+		<db-attribute-pair source="id" target="autorisation_parentale_id"/>
+	</db-relationship>
+	<db-relationship name="REV_formation_am_formation" source="formation" target="formation_am" toMany="true">
+		<db-attribute-pair source="id" target="formation_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="formation" target="secteur_formation" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_garde_mode" source="mode_garde" target="garde" toMany="true">
+		<db-attribute-pair source="id" target="mode_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_paiement_organisme" source="organisme_social" target="aide_paiement" toMany="true">
+		<db-attribute-pair source="id" target="organisme_id"/>
+	</db-relationship>
+	<db-relationship name="REV_formation_parent" source="secteur_formation" target="formation" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<obj-relationship name="parent" source="Formation" target="SecteurFormation" db-relationship-path="parent"/>
+</data-map>

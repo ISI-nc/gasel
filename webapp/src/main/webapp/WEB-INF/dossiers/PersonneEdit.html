@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form">
+
+<table>
+	<tbody>
+		<tr>
+			<td>
+			<table>
+				<tbody>
+					<tr>
+						<td>Désignation&nbsp;:</td>
+						<td colspan="3"><span jwcid="@RadioGroup" selected="ognl:personne.designation">
+							<input jwcid="@Radio" value="M" type="radio" /> M
+							<input jwcid="@Radio" value="Mme" type="radio" /> Mme
+							<input jwcid="@Radio" value="Mlle" type="radio" /> Mlle
+						</span></td>
+					</tr>
+					<tr>
+						<td width="17%">Nom&nbsp;:</td>
+						<td width="28%"><input jwcid="@TextField" value="ognl:personne.nom" size="24" type="text"/></td>
+						<td width="20%">Prénom&nbsp;:</td>
+						<td width="35%"><input jwcid="@TextField" value="ognl:personne.prenom" size="24" type="text"/></td>
+					</tr>
+					<tr>
+						<td>Nom jeune fille&nbsp;:</td>
+						<td><input jwcid="@TextField" value="ognl:personne.nomJeuneFille" size="24" type="text"/></td>
+						<td>Sexe&nbsp;:</td>
+						<td><span jwcid="@RadioGroup" selected="ognl:personne.sexe">
+							<input jwcid="@Radio" value="ognl:true" type="radio"/> M
+							<input jwcid="@Radio" value="ognl:false" type="radio"/> F
+						</span></td>
+					</tr>
+					<tr>
+						<td>Nom d'usage&nbsp;:</td>
+						<td><input jwcid="@TextField" size="24" type="text"
+							value="ognl:personne.nomUsage"/></td>
+						<td>Prénom d'usage&nbsp;:</td>
+						<td><input jwcid="@TextField" size="24" 
+							type="text" value="ognl:personne.prenomUsage"/></td>
+					</tr>
+					<tr>
+						<td>Date de naissance&nbsp;:</td>
+						<td><input jwcid="@core/edit/Date" size="9"
+							 type="text" value="ognl:personne.dateNaissance"/></td>
+						<td>Ville de naissance&nbsp;:</td>
+						<td><span jwcid="@core/edit/ToOne" searchPage="voirie/VilleSearch"
+								value="ognl:personne.villeNaissance">
+								<span jwcid="@Insert" value="ognl:personne.villeNaissance.libelle"/>
+							</span></td>
+					</tr>
+					<tr>
+						<td>Date de décès&nbsp;:</td>
+						<td><input name="dateDeces" size="9" jwcid="@core/edit/Date"
+							 type="text" value="ognl:personne.dateDeces"/></td>
+						<td>Code dept. naissance&nbsp;:</td>
+						<td><input jwcid="@Insert" value="ognl:personne.neVille?personne.neVille.departement.code:'--'"/></td>
+					</tr>
+					<tr>
+						<td colspan="4">
+<div jwcid="@core/Onglets">
+	<div jwcid="@core/Onglet" titre="Détail">
+	
+		<table>
+			<tbody>
+				<tr>
+					<td>Situation familiale&nbsp;:</td>
+					<td><select jwcid="@core/edit/Enum" value="ognl:personne.situationFamiliale" enum="SituationFamiliale"/></td>
+					<td colspan="2" style="white-space: nowrap">Lien de parenté avec le chef de famille&nbsp;:</td>
+				</tr>
+				<tr>
+					<td>Handicap&nbsp;:</td>
+					<td><span jwcid="@RadioGroup" selected="ognl:personne.handicap">
+						<input jwcid="@Radio" value="ognl:true" type="radio"/>&nbsp;Oui
+						<input jwcid="@Radio" value="ognl:false" type="radio"/>&nbsp;Non
+					</span></td>
+					<td></td>
+					<td><select jwcid="@core/edit/Enum" value="ognl:personne.lienChefFamille" enum="LienParente"/></td>
+				</tr>
+				<tr>
+					<td>Nationalité&nbsp;:</td>
+					<td style="white-space: nowrap"><span jwcid="@RadioGroup" selected="ognl:personne.nationaliteFrancaise">
+						<input jwcid="@Radio" value="ognl:true" type="radio"/>&nbsp;Française
+						<input jwcid="@Radio" value="ognl:false" type="radio"/>&nbsp;Autre
+					</span></td>
+					<td colspan="2">Date d'arrivée sur le territoire&nbsp;:</td>
+				</tr>
+				<tr>
+					<td>Statut&nbsp;:</td>
+					<td><select jwcid="@core/edit/Enum" value="ognl:personne.statut" enum="StatutPersonne"/></td>
+					<td></td>
+					<td><input jwcid="@core/edit/Date" type="text" size="10"
+						value="ognl:personne.dateArriveeSurTerritoire"/></td>
+				</tr>
+				<tr><td colspan="4" class="section">Foyer</td></tr>
+				<tr>
+					<td>Date d'entrée&nbsp;:</td>
+					<td><input jwcid="@core/edit/Date" size="10" type="text"
+						value="ognl:personne.dateEntreeFoyer"/></td>
+					<td>Date de sortie&nbsp;:</td>
+					<td><input jwcid="@core/edit/Date" size="10" type="text"
+						value="ognl:personne.dateSortieFoyer"/></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Fin Détail Administre -->
+	
+	</div>
+	<div jwcid="@core/Onglet" titre="Contacts">
+	
+	<!-- Contacts -->
+		<table>
+			<tbody>
+				<tr>
+					<td>Téléphone fixe&nbsp;:</td>
+					<td><input size="12" type="text" jwcid="@TextField"
+						value="ognl:personne.telephoneFixe"/></td>
+					<td>Téléphone portable:</td>
+					<td><input size="12" type="text" jwcid="@TextField"
+						value="ognl:personne.telephonePortable"/></td>
+				</tr>
+				<tr>
+					<td>Adresse mail&nbsp;:</td>
+					<td colspan="3"><input size="40" type="text" jwcid="@TextField"
+						 value="ognl:personne.email"/></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Fin contacts -->
+	
+	</div>
+	<div jwcid="@core/Onglet" titre="Couv. sociale">
+	
+		<table>
+			<tbody>
+				<tr>
+					<td>Couverture sociale&nbsp;:</td>
+					<td><select jwcid="@core/edit/Enum" value="ognl:personne.couvertureSociale" enum="CouvertureSociale"/></td>
+					<td>Date de fin de validité&nbsp;:</td>
+					<td><input jwcid="@core/edit/Date" size="10" type="text"
+						value="ognl:personne.finCouvSoc"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>Numéro&nbsp;:</td>
+					<td><input size="20" type="text" jwcid="@TextField"
+						value="ognl:personne.numeroCouvSoc"/></td>
+				</tr>
+				<tr><td colspan="4"><hr/></td></tr>
+				<tr>
+					<td>Autre&nbsp;:</td>
+					<td><select jwcid="@core/edit/Enum" value="ognl:personne.mutuelle" enum="Mutuelle"/></td>
+					<td>Date de fin de validité&nbsp;:</td>
+					<td><input size="10" type="text" jwcid="@core/edit/Date"
+						value="ognl:personne.finMutuelle"/></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td>Numéro&nbsp;:</td>
+					<td><input size="20" type="text" jwcid="@TextField"
+						value="ognl:personne.numeroMutuelle"/></td>
+				</tr>
+			</tbody>
+		</table>
+		<!-- Fin Couverture Sociale et Mutuelle-->
+	
+	</div>
+	<div jwcid="@core/Onglet" titre="Activité">
+	
+		<p>Situation professionelle&nbsp;: <select jwcid="@core/edit/Enum"
+						value="ognl:personne.situationProfessionelle" enum="SituationProfessionelle"/>
+
+		<div jwcid="@core/Tableau" source="ognl:activites" value="ognl:iter">
+			<div jwcid="@core/tableau/Colonne" titre="Libelle" value="ognl:iter.libelle"/>
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl-protect:iter.debut" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:iter.fin" />
+
+			<div jwcid="@core/tableau/ObjectPageAction" page="dossiers/ActivitePersonneEdit" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:personne" liste="activites" />
+			
+			<input jwcid="ajouter@Submit" value="Ajouter" action="listener:ajouterActivite" class="button"/>
+
+		</div>
+		<!-- Fin profession -->
+	
+	</div>
+	<div jwcid="@core/Onglet" titre="Ressources/charges">
+	
+		<p><strong>Période&nbsp;:</strong>
+			<input jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" size="4" onchange="refreshPage()" />
+			<input jwcid="ok@Submit" class="button" value="Ok" action="listener:redirect"/></p>
+		
+		<div jwcid="@core/Tableau" titre="Ressources" source="ognl:filtrerRessCharge(personne.ressources)" value="ognl:montant">
+			<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:montant.personne.repr"/>
+			<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:montant.libelle"/>
+			<div jwcid="@core/tableau/Colonne" titre="Du" value="ognl:montant.debut" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Au" value="ognl:montant.fin" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:montant.montant" sort="desc"/>
+			
+			Total&nbsp;: <span jwcid="@Insert" value="ognl:totalRessCharge(personne.ressources)">1234</span>
+		</div>
+		
+		<div jwcid="@core/Tableau" titre="Charges" source="ognl:filtrerRessCharge(personne.charges)" value="ognl:montant">
+			<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:montant.personne.repr"/>
+			<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:montant.libelle"/>
+			<div jwcid="@core/tableau/Colonne" titre="Du" value="ognl:montant.debut" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Au" value="ognl:montant.fin" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:montant.montant" sort="desc"/>
+			
+			Total&nbsp;: <span jwcid="@Insert" value="ognl:totalRessCharge(personne.charges)">1234</span>
+		</div>
+		
+		<!-- Fin Ressources -->
+	</div>
+</div>
+				</td></tr>
+				</tbody>
+			</table>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+	<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier.dossier" />
+	
+	<table class="invis" style="margin-top:1ex;margin-right:6px;width:100%;"><tbody>
+	<tr><td class="label">Projet :</td>
+		<td style="width:100%;"><input jwcid="@TextArea" value="ognl:object.projet" style="width:100%;" /></td>
+	</tr>
+	<tr class="pad">
+		<td class="label">Commentaires :</td>
+		<td><input jwcid="@TextArea" value="ognl:object.commentaire" style="width:100%;" rows="5" /></td>
+	</tr>
+	</tbody></table>
+	
+	<table jwcid="@core/Tableau" source="ognl:object.objectifs" value="ognl:row" style="margin-top:1ex;">
+		<div jwcid="@core/tableau/Colonne" titre="Libelle" value="ognl:row" />
+		<div jwcid="@core/tableau/Colonne" titre="Echéance" value="ognl:row.echeance" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="paph/EditerObjectif" parentProperty="accompagnement"/>
+		<div jwcid="@core/tableau/ActionSupprimer" titre="Actions" parent="ognl:object" liste="objectifs"/>
+		<input jwcid="ajouterObjectif@Submit" value="Ajouter" action="listener:ajouterObjectif" class="button"/>
+	</table>
+
+</div>
+</div>
+</body>
+</html>

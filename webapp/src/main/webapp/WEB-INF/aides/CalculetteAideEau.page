@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<meta key="security" value="skip"/>
+	<property name="titre">literal:Calculette Aide Eau</property>	
+	
+	<property name="prixUnitaireM3" initial-value="getDouble('aides/eau/prix_m3')" persist="workflow"/>
+	<property name="prixAbonnement" initial-value="getDouble('aides/eau/prix_abo')" persist="workflow"/>
+	<property name="prixEauxUsees" initial-value="getDouble('aides/eau/prix_eaux_usees')" persist="workflow"/>
+	<property name="prixServiceEau" initial-value="getDouble('aides/eau/prix_service_eau')" persist="workflow"/>
+	<property name="prixAssainissement" initial-value="getDouble('aides/eau/prix_assainissement')" persist="workflow"/>
+	<property name="prixGdTuyau" initial-value="getDouble('aides/eau/prix_grand_tuyau')" persist="workflow"/>
+	
+	<property name="nbPersonnes" persist="workflow"/>
+	<property name="nbHandicapes" persist="workflow"/>
+	<property name="typeAide" persist="workflow"/>
+	<property name="periodePrestation" persist="workflow"/>
+	<property name="anneePrestation" persist="workflow" initial-value="currentYear"/>
+	<property name="montantFacture" persist="workflow"/>
+	<property name="consoEffective" persist="workflow"/>
+	<property name="pecRemise" persist="workflow"/>
+	<property name="dejaPaye" persist="workflow"/>
+	
+</page-specification>

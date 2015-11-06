@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<db-entity name="action_collective_dossiers">
+		<db-attribute name="action_collective_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="aspect_dossier_habitat_dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="action_collective_problematiques">
+		<db-attribute name="action_collective_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="problematique_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="affectation_locatif_problemes">
+		<db-attribute name="affectation_locatif_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="probleme_logement_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_habitat_aides">
+		<db-attribute name="aide_logement_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="aspect_dossier_habitat_dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_habitat_aides_complementaires">
+		<db-attribute name="aide_sociale_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="aspect_dossier_habitat_dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_habitat_planning">
+		<db-attribute name="aspect_dossier_habitat_dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="previsionnel_habitat_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="avis_commission_jf_demandes">
+		<db-attribute name="avis_commission_jf_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="demande_jf_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_personnes_acharge_personne_dossiers_acharge">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_personnes_non_acharge_personne_dossiers_non_acharge">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_problematiques">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="problematique_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_types_public">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="type_public_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="groupe_utilisateurs_utilisateur_groupes">
+		<db-attribute name="groupe_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="utilisateur_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_prob_habitat_reponses">
+		<db-attribute name="objectif_prob_habitat_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="reponse_problematique_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_prob_paph_reponses">
+		<db-attribute name="objectif_prob_paph_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="reponse_problematique_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-relationship name="action_collective" source="action_collective_dossiers" target="action_collective" toMany="false">
+		<db-attribute-pair source="action_collective_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aspect_dossier_habitat" source="action_collective_dossiers" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="aspect_dossier_habitat_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="action_collective" source="action_collective_problematiques" target="action_collective" toMany="false">
+		<db-attribute-pair source="action_collective_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="action_collective_problematiques" target="problematique" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="affectation_locatif" source="affectation_locatif_problemes" target="affectation_locatif" toMany="false">
+		<db-attribute-pair source="affectation_locatif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="probleme_logement" source="affectation_locatif_problemes" target="probleme_logement" toMany="false">
+		<db-attribute-pair source="probleme_logement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aide_logement" source="aspect_dossier_habitat_aides" target="aide_logement" toMany="false">
+		<db-attribute-pair source="aide_logement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aspect_dossier_habitat" source="aspect_dossier_habitat_aides" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="aspect_dossier_habitat_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="aide_sociale" source="aspect_dossier_habitat_aides_complementaires" target="aide_sociale" toMany="false">
+		<db-attribute-pair source="aide_sociale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aspect_dossier_habitat" source="aspect_dossier_habitat_aides_complementaires" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="aspect_dossier_habitat_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="aspect_dossier_habitat" source="aspect_dossier_habitat_planning" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="aspect_dossier_habitat_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="previsionnel_habitat" source="aspect_dossier_habitat_planning" target="previsionnel_habitat" toMany="false">
+		<db-attribute-pair source="previsionnel_habitat_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="avis_commission_jf" source="avis_commission_jf_demandes" target="avis_commission_jf" toMany="false">
+		<db-attribute-pair source="avis_commission_jf_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="demande_jf" source="avis_commission_jf_demandes" target="demande_jf" toMany="false">
+		<db-attribute-pair source="demande_jf_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_personnes_acharge_personne_dossiers_acharge" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="dossier_personnes_acharge_personne_dossiers_acharge" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_personnes_non_acharge_personne_dossiers_non_acharge" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="dossier_personnes_non_acharge_personne_dossiers_non_acharge" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_problematiques" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="dossier_problematiques" target="problematique" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_types_public" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_public" source="dossier_types_public" target="type_public" toMany="false">
+		<db-attribute-pair source="type_public_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="groupe" source="groupe_utilisateurs_utilisateur_groupes" target="groupe" toMany="false">
+		<db-attribute-pair source="groupe_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="utilisateur" source="groupe_utilisateurs_utilisateur_groupes" target="utilisateur" toMany="false">
+		<db-attribute-pair source="utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectif_prob_habitat" source="objectif_prob_habitat_reponses" target="objectif_prob_habitat" toMany="false">
+		<db-attribute-pair source="objectif_prob_habitat_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="reponse_problematique" source="objectif_prob_habitat_reponses" target="reponse_problematique" toMany="false">
+		<db-attribute-pair source="reponse_problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectif_prob_paph" source="objectif_prob_paph_reponses" target="objectif_prob_paph" toMany="false">
+		<db-attribute-pair source="objectif_prob_paph_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="reponse_problematique" source="objectif_prob_paph_reponses" target="reponse_problematique" toMany="false">
+		<db-attribute-pair source="reponse_problematique_id" target="id"/>
+	</db-relationship>
+</data-map>

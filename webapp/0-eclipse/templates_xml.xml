@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="xml_new" deleted="false" description="Nouvelle spécification de composant Tapestry" enabled="true" name="tap-comp-spec">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd"&gt;
+
+&lt;component-specification&gt;
+	${cursor}
+&lt;/component-specification&gt;</template><template autoinsert="true" context="xml_new" deleted="false" description="Nouvelle spécification de page Tapestry" enabled="true" name="tap-page-spec">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd"&gt;
+
+&lt;page-specification&gt;
+	${cursor}
+&lt;/page-specification&gt;</template><template autoinsert="true" context="xml_new" deleted="false" description="Nouvelle page Tapestry" enabled="true" name="tap-page-template">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;body jwcid="$$content$$"&gt;
+&lt;div jwcid="@Border"&gt;
+
+${cursor}
+
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</template></templates>

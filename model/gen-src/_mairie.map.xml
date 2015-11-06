@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.mairie"/>
+	<db-entity name="mairccas__gftiers">
+		<db-attribute name="cdetac" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="enscom" type="VARCHAR" isMandatory="true" length="55"/>
+		<db-attribute name="idetbs" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="mairie__ecprof">
+		<db-attribute name="codpro" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="libpro" type="VARCHAR" isMandatory="true" length="60"/>
+	</db-entity>
+	<db-entity name="mairie__sicdpo">
+		<db-attribute name="cdcpos" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="codcom" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="lipost" type="CHAR" isMandatory="true" length="60"/>
+	</db-entity>
+	<db-entity name="mairie__sicomm">
+		<db-attribute name="artcom" type="CHAR" isMandatory="true" length="5"/>
+		<db-attribute name="codcom" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="coddep" type="NUMERIC" isMandatory="true" length="3"/>
+		<db-attribute name="libvil" type="CHAR" isMandatory="true" length="60"/>
+	</db-entity>
+	<db-entity name="mairie__sicpet">
+		<db-attribute name="cdpose" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="codpay" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="lipose" type="CHAR" isMandatory="true" length="60"/>
+		<db-attribute name="scodpa" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="mairie__sidept">
+		<db-attribute name="coddep" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="3"/>
+		<db-attribute name="libdep" type="CHAR" isMandatory="true" length="35"/>
+	</db-entity>
+	<db-entity name="mairie__sipays">
+		<db-attribute name="codpay" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="libnat" type="CHAR" isMandatory="true" length="60"/>
+		<db-attribute name="libpay" type="CHAR" isMandatory="true" length="60"/>
+	</db-entity>
+	<db-entity name="mairie__siqurt">
+		<db-attribute name="liquar" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="quarti" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="2"/>
+	</db-entity>
+	<db-entity name="mairie__siviet">
+		<db-attribute name="codpay" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="5"/>
+		<db-attribute name="libcop" type="CHAR" isMandatory="true" length="60"/>
+		<db-attribute name="scodpa" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="3"/>
+	</db-entity>
+	<db-entity name="mairie__sivoie">
+		<db-attribute name="cddebv" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="cdfinv" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="cdvart" type="NUMERIC" isMandatory="true" length="2"/>
+		<db-attribute name="cdvcar" type="NUMERIC" isMandatory="true" length="2"/>
+		<db-attribute name="cdvoie" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="4"/>
+		<db-attribute name="cdvtit" type="NUMERIC" isMandatory="true" length="2"/>
+		<db-attribute name="clavoi" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="codcom" type="NUMERIC" isMandatory="true" length="5"/>
+		<db-attribute name="competen" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="comvoi" type="CHAR" isMandatory="true" length="50"/>
+		<db-attribute name="dbupropr" type="NUMERIC" isMandatory="true" length="8"/>
+		<db-attribute name="dcession" type="CHAR" isMandatory="true" length="30"/>
+		<db-attribute name="debvoi" type="NUMERIC" isMandatory="true" length="8"/>
+		<db-attribute name="delibfin" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="dimpoo" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="dimpor" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="dliclass" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="dlidclas" type="CHAR" isMandatory="true" length="30"/>
+		<db-attribute name="dlidenom" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="dpapoo" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="dpapor" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="dteclass" type="NUMERIC" isMandatory="true" length="8"/>
+		<db-attribute name="fimpoo" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="fimpor" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="finpropr" type="NUMERIC" isMandatory="true" length="8"/>
+		<db-attribute name="finvoi" type="NUMERIC" isMandatory="true" length="8"/>
+		<db-attribute name="fpapoo" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="fpapor" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="letalpha" type="CHAR" isMandatory="true" length="1"/>
+		<db-attribute name="livart" type="CHAR" isMandatory="true" length="10"/>
+		<db-attribute name="livcar" type="CHAR" isMandatory="true" length="30"/>
+		<db-attribute name="livoie" type="CHAR" isMandatory="true" length="120"/>
+		<db-attribute name="livtit" type="CHAR" isMandatory="true" length="30"/>
+		<db-attribute name="nomvoi" type="CHAR" isMandatory="true" length="70"/>
+		<db-attribute name="noplan" type="NUMERIC" isMandatory="true" length="6"/>
+		<db-attribute name="orivoi" type="NUMERIC" isMandatory="true" length="4"/>
+		<db-attribute name="prevoi" type="CHAR" isMandatory="true" length="30"/>
+		<db-attribute name="provoi" type="CHAR" isMandatory="true" length="20"/>
+		<db-attribute name="replan" type="CHAR" isMandatory="true" length="3"/>
+		<db-attribute name="rivoli" type="NUMERIC" isMandatory="true" length="5"/>
+	</db-entity>
+	<db-entity name="mairie__sivoqt">
+		<db-attribute name="cdvoie" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="4"/>
+		<db-attribute name="codcom" type="NUMERIC" isMandatory="true" length="5"/>
+		<db-attribute name="quarti" type="NUMERIC" isPrimaryKey="true" isMandatory="true" length="2"/>
+	</db-entity>
+	<obj-entity name="CodePostal" className="nc.ccas.gasel.model.mairie.CodePostal" dbEntityName="mairie__sicdpo">
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="cdcpos"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="lipost"/>
+	</obj-entity>
+	<obj-entity name="CodePostalEtranger" className="nc.ccas.gasel.model.mairie.CodePostalEtranger" dbEntityName="mairie__sicpet">
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="lipose"/>
+	</obj-entity>
+	<obj-entity name="Commune" className="nc.ccas.gasel.model.mairie.Commune" dbEntityName="mairie__sicomm">
+		<obj-attribute name="article" type="java.lang.String" db-attribute-path="artcom"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libvil"/>
+	</obj-entity>
+	<obj-entity name="Departement" className="nc.ccas.gasel.model.mairie.Departement" dbEntityName="mairie__sidept">
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="coddep"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libdep"/>
+	</obj-entity>
+	<obj-entity name="FournisseurMairie" className="nc.ccas.gasel.model.mairie.FournisseurMairie" dbEntityName="mairccas__gftiers">
+		<obj-attribute name="estActif" type="java.lang.String" db-attribute-path="cdetac"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="enscom"/>
+	</obj-entity>
+	<obj-entity name="Pays" className="nc.ccas.gasel.model.mairie.Pays" dbEntityName="mairie__sipays">
+		<obj-attribute name="libnat" type="java.lang.String" db-attribute-path="libnat"/>
+		<obj-attribute name="libpay" type="java.lang.String" db-attribute-path="libpay"/>
+	</obj-entity>
+	<obj-entity name="Quartier" className="nc.ccas.gasel.model.mairie.Quartier" dbEntityName="mairie__siqurt">
+		<obj-attribute name="liquar" type="java.lang.String" db-attribute-path="liquar"/>
+	</obj-entity>
+	<obj-entity name="TypeActiviteV1" className="nc.ccas.gasel.model.mairie.TypeActiviteV1" dbEntityName="mairie__ecprof">
+		<obj-attribute name="libpro" type="java.lang.String" db-attribute-path="libpro"/>
+	</obj-entity>
+	<obj-entity name="VilleEtrangere" className="nc.ccas.gasel.model.mairie.VilleEtrangere" dbEntityName="mairie__siviet">
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libcop"/>
+	</obj-entity>
+	<obj-entity name="Voie" className="nc.ccas.gasel.model.mairie.Voie" dbEntityName="mairie__sivoie">
+		<obj-attribute name="acteClassement" type="java.lang.String" db-attribute-path="clavoi"/>
+		<obj-attribute name="actePropriete" type="java.lang.String" db-attribute-path="provoi"/>
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="cdvoie"/>
+		<obj-attribute name="codeArticle" type="java.lang.Integer" db-attribute-path="cdvart"/>
+		<obj-attribute name="codeDomainePublic" type="java.lang.Integer" db-attribute-path="cdvcar"/>
+		<obj-attribute name="codeRivoli" type="java.lang.Integer" db-attribute-path="rivoli"/>
+		<obj-attribute name="codeTitre" type="java.lang.Integer" db-attribute-path="cdvtit"/>
+		<obj-attribute name="codeVoieDebut" type="java.lang.Integer" db-attribute-path="cddebv"/>
+		<obj-attribute name="codeVoieFin" type="java.lang.Integer" db-attribute-path="cdfinv"/>
+		<obj-attribute name="codeVoieOrig" type="java.lang.Integer" db-attribute-path="orivoi"/>
+		<obj-attribute name="complement" type="java.lang.String" db-attribute-path="comvoi"/>
+		<obj-attribute name="dateDebut" type="java.lang.Integer" db-attribute-path="debvoi"/>
+		<obj-attribute name="dateDeliberationClassement" type="java.lang.Integer" db-attribute-path="dteclass"/>
+		<obj-attribute name="dateFin" type="java.lang.Integer" db-attribute-path="finvoi"/>
+		<obj-attribute name="debutImpair" type="java.lang.Integer" db-attribute-path="dimpor"/>
+		<obj-attribute name="debutImpairOrig" type="java.lang.Integer" db-attribute-path="dimpoo"/>
+		<obj-attribute name="debutPair" type="java.lang.Integer" db-attribute-path="dpapor"/>
+		<obj-attribute name="debutPairOrig" type="java.lang.Integer" db-attribute-path="dpapoo"/>
+		<obj-attribute name="debutPropriete" type="java.lang.Integer" db-attribute-path="dbupropr"/>
+		<obj-attribute name="deliberationClassement" type="java.lang.String" db-attribute-path="dliclass"/>
+		<obj-attribute name="deliberationDeclassement" type="java.lang.String" db-attribute-path="dlidclas"/>
+		<obj-attribute name="deliberationDenomination" type="java.lang.String" db-attribute-path="dlidenom"/>
+		<obj-attribute name="deliberationFin" type="java.lang.String" db-attribute-path="delibfin"/>
+		<obj-attribute name="deliberationSession" type="java.lang.String" db-attribute-path="dcession"/>
+		<obj-attribute name="finImpaire" type="java.lang.Integer" db-attribute-path="fimpor"/>
+		<obj-attribute name="finImpaireOrig" type="java.lang.Integer" db-attribute-path="fimpoo"/>
+		<obj-attribute name="finPaire" type="java.lang.Integer" db-attribute-path="fpapor"/>
+		<obj-attribute name="finPaireOrig" type="java.lang.Integer" db-attribute-path="fpapoo"/>
+		<obj-attribute name="finPropriete" type="java.lang.Integer" db-attribute-path="finpropr"/>
+		<obj-attribute name="gestionnaireCompetence" type="java.lang.String" db-attribute-path="competen"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="livoie"/>
+		<obj-attribute name="libelleArticle" type="java.lang.String" db-attribute-path="livart"/>
+		<obj-attribute name="libelleDomaine" type="java.lang.String" db-attribute-path="livcar"/>
+		<obj-attribute name="libelleTitre" type="java.lang.String" db-attribute-path="livtit"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nomvoi"/>
+		<obj-attribute name="numeroPlan" type="java.lang.Integer" db-attribute-path="noplan"/>
+		<obj-attribute name="premiereLettre" type="java.lang.String" db-attribute-path="letalpha"/>
+		<obj-attribute name="prenom" type="java.lang.String" db-attribute-path="prevoi"/>
+		<obj-attribute name="reperePlan" type="java.lang.String" db-attribute-path="replan"/>
+	</obj-entity>
+	<obj-entity name="VoieQuartier" className="nc.ccas.gasel.model.mairie.VoieQuartier" dbEntityName="mairie__sivoqt">
+		<obj-attribute name="codeCommune" type="java.math.BigDecimal" db-attribute-path="codcom"/>
+	</obj-entity>
+	<db-relationship name="REV_facture_fournisseur" source="mairccas__gftiers" target="facture" toMany="true">
+		<db-attribute-pair source="idetbs" target="code_fournisseur"/>
+	</db-relationship>
+	<db-relationship name="REV_nature_aide_fournisseur_fournisseur" source="mairccas__gftiers" target="nature_aide_fournisseur" toMany="true">
+		<db-attribute-pair source="idetbs" target="code_fournisseur"/>
+	</db-relationship>
+	<db-relationship name="commune" source="mairie__sicdpo" target="mairie__sicomm" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="REV_adresse_ville" source="mairie__sicomm" target="adresse" toMany="true">
+		<db-attribute-pair source="codcom" target="code_ville"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_ne_ville" source="mairie__sicomm" target="personne" toMany="true">
+		<db-attribute-pair source="codcom" target="ne_code_ville"/>
+	</db-relationship>
+	<db-relationship name="codes_postaux" source="mairie__sicomm" target="mairie__sicdpo" toMany="true">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="departement" source="mairie__sicomm" target="mairie__sidept" toMany="false">
+		<db-attribute-pair source="coddep" target="coddep"/>
+	</db-relationship>
+	<db-relationship name="sivoqt_array" source="mairie__sicomm" target="mairie__sivoqt" toMany="true">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="voies" source="mairie__sicomm" target="mairie__sivoie" toMany="true">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="pays" source="mairie__sicpet" target="mairie__sipays" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="codpay" target="codpay"/>
+	</db-relationship>
+	<db-relationship name="communes" source="mairie__sidept" target="mairie__sicomm" toMany="true">
+		<db-attribute-pair source="coddep" target="coddep"/>
+	</db-relationship>
+	<db-relationship name="codes_postaux" source="mairie__sipays" target="mairie__sicpet" toMany="true">
+		<db-attribute-pair source="codpay" target="codpay"/>
+	</db-relationship>
+	<db-relationship name="villes" source="mairie__sipays" target="mairie__siviet" toMany="true">
+		<db-attribute-pair source="codpay" target="codpay"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_accession_quartier" source="mairie__siqurt" target="affectation_accession" toMany="true">
+		<db-attribute-pair source="quarti" target="code_quartier"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_locatif_quartier" source="mairie__siqurt" target="affectation_locatif" toMany="true">
+		<db-attribute-pair source="quarti" target="code_quartier"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_rehabilitation_quartier" source="mairie__siqurt" target="affectation_rehabilitation" toMany="true">
+		<db-attribute-pair source="quarti" target="code_quartier"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat__quartier_relogement" source="mairie__siqurt" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="quarti" target="quartier_relogement"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_quartier" source="mairie__siqurt" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="quarti" target="code_quartier"/>
+	</db-relationship>
+	<db-relationship name="REV_enfant_ram_quartier_travail_parent" source="mairie__siqurt" target="enfant_ram" toMany="true">
+		<db-attribute-pair source="quarti" target="code_quartier_travail_parent"/>
+	</db-relationship>
+	<db-relationship name="sivoqt_array" source="mairie__siqurt" target="mairie__sivoqt" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="quarti" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_ne_ville_etrangere" source="mairie__siviet" target="personne" toMany="true">
+		<db-attribute-pair source="codpay" target="ne_ville_etrangere_codpay"/>
+		<db-attribute-pair source="scodpa" target="ne_ville_etrangere_scodpa"/>
+	</db-relationship>
+	<db-relationship name="pays" source="mairie__siviet" target="mairie__sipays" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="codpay" target="codpay"/>
+	</db-relationship>
+	<db-relationship name="REV_adresse_rue" source="mairie__sivoie" target="adresse" toMany="true">
+		<db-attribute-pair source="cdvoie" target="code_voie"/>
+	</db-relationship>
+	<db-relationship name="commune" source="mairie__sivoie" target="mairie__sicomm" toMany="false">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="sivoqt_array" source="mairie__sivoie" target="mairie__sivoqt" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="cdvoie" target="cdvoie"/>
+	</db-relationship>
+	<db-relationship name="to_commune" source="mairie__sivoqt" target="mairie__sicomm" toMany="false">
+		<db-attribute-pair source="codcom" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="to_quartier" source="mairie__sivoqt" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="quarti" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="to_voie" source="mairie__sivoqt" target="mairie__sivoie" toMany="false">
+		<db-attribute-pair source="cdvoie" target="cdvoie"/>
+	</db-relationship>
+	<obj-relationship name="commune" source="CodePostal" target="Commune" db-relationship-path="commune"/>
+	<obj-relationship name="pays" source="CodePostalEtranger" target="Pays" db-relationship-path="pays"/>
+	<obj-relationship name="codesPostaux" source="Commune" target="CodePostal" db-relationship-path="codes_postaux"/>
+	<obj-relationship name="departement" source="Commune" target="Departement" db-relationship-path="departement"/>
+	<obj-relationship name="voies" source="Commune" target="Voie" db-relationship-path="voies"/>
+	<obj-relationship name="communes" source="Departement" target="Commune" db-relationship-path="communes"/>
+	<obj-relationship name="codesPostaux" source="Pays" target="CodePostalEtranger" db-relationship-path="codes_postaux"/>
+	<obj-relationship name="villes" source="Pays" target="VilleEtrangere" db-relationship-path="villes"/>
+	<obj-relationship name="voies" source="Quartier" target="Voie" db-relationship-path="sivoqt_array.to_voie"/>
+	<obj-relationship name="pays" source="VilleEtrangere" target="Pays" db-relationship-path="pays"/>
+	<obj-relationship name="commune" source="Voie" target="Commune" db-relationship-path="commune"/>
+	<obj-relationship name="quartiers" source="Voie" target="Quartier" db-relationship-path="sivoqt_array.to_quartier"/>
+	<obj-relationship name="commune" source="VoieQuartier" target="Commune" db-relationship-path="to_commune"/>
+	<obj-relationship name="quartier" source="VoieQuartier" target="Quartier" db-relationship-path="to_quartier"/>
+	<obj-relationship name="voie" source="VoieQuartier" target="Voie" db-relationship-path="to_voie"/>
+</data-map>

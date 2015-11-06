@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/TitrePage"/>
+
+<p><strong>Période :</strong>
+	<span jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" />
+	<input jwcid="ok@Submit" action="listener:redirect" value="Ok" class="button"/>
+</p>
+
+<div jwcid="@core/Tableau" titre="Parcelles" source="ognl:jardins" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.nom" highlight="true"/>
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Privatives">
+		<span jwcid="@core/tableau/Colonne" titre="Foyers" value="ognl:nbFoyers"/>
+		<span jwcid="@core/tableau/Colonne" titre="Bénéficiaires" value="ognl:nbBeneficiaires"/>
+	</span>
+	<span jwcid="@core/tableau/Colonne" titre="Collectives" value="ognl:nbCollectivites"/>
+	<span jwcid="@core/tableau/Colonne" titre="Non affectées" value="ognl:nbNonAffectees"/>
+</div>
+
+<div jwcid="@core/Tableau" titre="Arretés" source="ognl:jardins" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.nom" highlight="true"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nombre de nouveaux" value="ognl:nbNouveaux"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nombre de renouvellements" value="ognl:nbRenouvellement"/>
+	<span jwcid="@core/tableau/Colonne" titre="Total" value="ognl:nbArretes" highlight="true"/>
+</div>
+
+<div jwcid="@core/Tableau" titre="Origines des demandes attribuées" source="ognl:jardins" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.nom" highlight="true"/>
+	<span jwcid="@core/tableau/ColonnesDynamiques" source="ognl:originesDemande" value="ognl:origineDemande">
+		<span jwcid="@core/tableau/Colonne" titre="ognl:origineDemande" value="ognl:nbDemande"/>
+	</span>
+	<span jwcid="@core/tableau/Colonne" titre="Total" value="ognl:nbArretes" highlight="true"/>
+</div>
+
+<div jwcid="@core/Tableau" titre="Taux de recouvrement des loyers" source="ognl:jardins" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.nom" highlight="true"/>
+	<span jwcid="@core/tableau/ColonnesDynamiques" source="ognl:moisPeriode" value="ognl:mois">
+		<span jwcid="@core/tableau/Colonne" titre="ognl:formatMois.format(mois)"
+			value="ognl:tauxRecouvrement" format="ognl:format.pourcent"/>
+	</span>
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<table jwcid="table">
+<tr jwcid="@If" condition="ognl:errors"><td jwcid="@Any" colspan="ognl:colspan" class="errors">
+	<ul>
+		<li jwcid="@For" volatile="true" source="ognl:errors"
+			value="ognl:error"><span jwcid="@Insert" value="ognl:error">[error]</span>
+		</li>
+	</ul>
+</td></tr>
+
+<span jwcid="@RenderBody" />
+
+<tr><td jwcid="@Any" colspan="ognl:colspan" style="text-align: right;">
+	<input jwcid="ajouter@Submit" class="button" action="listener:ajouter" value="ognl:buttonLabel"
+			onclick="this.style.display = 'none';"/>
+</td></tr>
+</table>

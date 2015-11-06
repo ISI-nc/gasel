@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@budget/EntetePeriode"/>
+
+<div jwcid="@core/Tableau" source="ognl:tableau" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Inscriptions" value="ognl:row.inscriptions"/>
+	<span jwcid="@core/tableau/Colonne" titre="Enfants accueillis" value="ognl:row.accueil"/>
+	<span jwcid="@core/tableau/Colonne" titre="Insuffisance de places" value="ognl:row.inscriptions-row.accueil"/>
+	<span jwcid="@core/tableau/Colonne" titre="Entrées" value="ognl:row.entrees"/>
+	<span jwcid="@core/tableau/Colonne" titre="Sorties" value="ognl:row.sorties"/>
+</div>
+
+<p><strong>Répartition par quartier</strong></p>
+
+<div class="small-data-table"
+	jwcid="@core/stats/Tableau" tableau="ognl:repartitionParQuartier"/>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* input[type=submit] */
+button, button a, .button {
+	font-size: 8pt;
+	background-color: #bbd7fe;
+	color: #191970;
+	text-align: center;
+	border: solid #000080 1px;
+	cursor: pointer;
+}
+
+/* input[type=submit] */
+button.disabled, button.disabled a,
+button[disabled], .button[disabled] {
+	background-color: lightgray;
+}
+
+.invis-button {
+	border: none; margin: 0;
+	background: inherit;
+	cursor: pointer;
+	text-align: left;
+}
+
+input.invis-button { padding: 0; }
+a.invis-button { padding: 0 3px; color: #000; }

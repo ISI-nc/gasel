@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<h1>Synchroniser les énumerations</h1>
+
+<table class="data-table">
+	<tr>
+		<th>Classe</th>
+		<th>Sync?</th>
+		<th></th>
+	</tr>
+
+	<tr jwcid="@For" source="ognl:syncableClasses" value="ognl:clazz">
+		<td><span jwcid="@Insert" value="ognl:clazz.name"></span></td>
+		<td><span jwcid="@Insert" value="ognl:synced?'Oui':'Non'"></span></td>
+		<td><a href="#" jwcid="@DirectLink" listener="listener:enumSync"
+				parameters="ognl:clazz.name" disabled="ognl:synced">Synchroniser</a></td>
+	</tr>
+</table>
+
+</div>
+</body>
+</html>

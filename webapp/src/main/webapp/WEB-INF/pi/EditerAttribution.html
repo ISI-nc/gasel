@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border"><div jwcid="@core/Form">
+
+<span jwcid="@If" condition="ognl:object.demande.dossier" renderTag="false">
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:object.demande.dossier.dossier" />
+</span><span jwcid="@Else" renderTag="false">
+	<p>Collectivité : <span jwcid="@Insert" value="ognl:object.demande.collectivite"/>.</p>
+</span>
+<p><strong>jardin <span jwcid="@Insert" value="ognl:object.demande.jardin.nom"/>
+</strong></p>
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+<table class="invis">
+	<tr><td>Date :</td><td><div jwcid="@core/edit/Date" value="ognl:object.date"/></td></tr>
+	<tr><td>Jardin :</td><td><div jwcid="@Insert" value="ognl:object.demande.jardin"/></td></tr>
+	<tr><td>Parcelle :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.parcelle"
+				model="ognl:psm.dataObject(sort(object.demande.jardin.parcelles).by('numero').results)">
+				<option>parcelle</option>
+			</select></td>
+	</tr>
+	<tr><td>Type prévu :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.typePrevu"
+				model="ognl:psm.all('TypeParcelle')">
+				<option>parcelle</option>
+			</select></td>
+	</tr>
+</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Arrêtés">
+
+<table>
+	<tr><td colspan="2">
+		<div><strong>Arrêtés :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:sort(object.arretes).by('debut').results" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:row.debut" />
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:row.fin" />
+			<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:row.type" />
+			<div jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:row.numero" />
+			
+			<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerArreteJF"
+				disabled="ognl:isNew(row)" parentProperty="attribution"/>
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="arretes"/>
+		</table>
+
+		<div><strong>Ajouter un arrêté :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="arretes" value="ognl:arrete">
+			<tr><td class="label">Date début :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:arrete.debut"/></td></tr>
+			<tr><td class="label">Date de fin :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:arrete.fin"/></td></tr>
+			<tr><td class="label">Numéro :</td>
+				<td><input jwcid="@TextField" value="ognl:arrete.numero"/></td></tr>
+			<tr><td class="label">Type :</td>
+				<td><select jwcid="@core/edit/Enum" value="ognl:arrete.type" enum="TypeArreteJF">
+				<options>--</options>
+				</select></td></tr>
+		</table>
+	</td></tr>
+</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Paiement">
+
+<table>
+	<tr><td colspan="2">
+		<div>Paiement jusqu'au&nbsp;:
+			<input jwcid="@Insert" value="ognl:object.payeJusquA" format="ognl:dateFormat" /></div>
+		<div><strong>Paiements :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:sort(object.paiements).by('debut').results" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Date début" value="ognl:row.debut" />
+			<div jwcid="@core/tableau/Colonne" titre="Date fin" value="ognl:row.fin" />
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant" />
+			<div jwcid="@core/tableau/Colonne" titre="Numéro reçu" value="ognl:row.numRecu" />
+			<div jwcid="@core/tableau/Colonne" titre="Numéro titre recette" value="ognl:row.numTitreRecette" />
+
+			<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerPaiement" disabled="ognl:isNew(row)"/>
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="paiements"/>
+		</table>
+					
+		<div><strong>Ajouter un paiement :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="paiements" value="ognl:paiement">
+			<tr><td class="label">Date début de recouvrement :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:paiement.debut"/></td></tr>
+			<tr><td class="label">Date fin de recouvrement :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:paiement.fin"/></td></tr>
+			<tr><td class="label">Montant :</td>
+				<td><input jwcid="@TextField" value="ognl:paiement.montant" format="translator:entier"/></td></tr>
+			<tr><td class="label">Numéro de reçu :</td>
+				<td><input jwcid="@TextField" value="ognl:paiement.numRecu"/></td></tr>
+			<tr><td class="label">Numéro de titre recette :</td>
+				<td><input jwcid="@TextField" value="ognl:paiement.numTitreRecette"/></td></tr>
+		</table>
+	</td></tr>
+</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Contrôle entretien">
+
+<table>
+	<tr><td colspan="2">
+		<div><strong>Contrôle entretien :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:sort(object.controles).by('date').results" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Etat parcelle" value="ognl:row.etatParcelle" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="controles"/>
+		</table>
+					
+		<div><strong>Ajouter un contrôle :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="controles" value="ognl:controle">
+			<tr><td class="label">Date :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:controle.date"/></td></tr>
+			<tr><td class="label">Etat parcelle :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:controle.etatParcelle"
+				model="ognl:psm.all('EtatParcelle')">
+				<option>parcelle</option>
+			</select></td></tr>
+		</table>
+	</td></tr>
+</table>
+
+</div>
+
+</div></div></div>
+</body>
+</html>

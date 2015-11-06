@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<form jwcid="@core/Form">
+
+<div>Gestion des articles</div>
+  
+Article prestation:
+
+<table class="sousSection" width="100%">
+<tbody>
+	<tr>
+		<td>Secteur d'aide:</td>
+		<td>
+			<select jwcid="@core/edit/Enum" value="ognl:object.parent" enum="SecteurAide">
+				SecteurAideList
+			</select>
+		</td>
+		<td>Code :</td>
+		<td>
+			<input jwcid="@TextField" value="ognl:object.code" translator="translator:entier"
+				size="3" />
+		</td>
+	</tr>
+	<tr>
+		<td>Libellé de l'article:</td>
+		<td><input jwcid="@TextField" value="ognl:object.libelle" size="30"/></td>
+	</tr>
+	<tr>
+		<td>Imputation :</td>
+		<td colspan="3">
+			<select jwcid="@core/edit/Enum" value="ognl:object.imputation" enum="Imputation">
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Type d'arrêté :</td>
+		<td colspan="3">
+			<select jwcid="@core/edit/Enum" value="ognl:object.typeArrete" enum="TypeArrete">
+			</select>
+		</td>
+	</tr>
+	<tr><td colspan="2">Types de public concernés :</td></tr>
+	<tr><td colspan="2" style="padding-left: 2ex">
+		<span jwcid="@core/edit/SubSet"
+			elements="ognl:sql.query.enumeration('TypePublic')" from="ognl:object" path="publicsConcernes.typePublic">[Types de public en cases à cocher]</span>
+	</td></tr>
+</tbody>
+</table>
+
+<div id="t_fournisseurs" style="overflow:auto;height:325px;width:100%">
+<table jwcid="@core/Tableau" titre="Fournisseurs" source="ognl:object.fournisseurs"
+	value="ognl:value">
+	<div jwcid="@core/tableau/Colonne" titre="Libellé" value="ognl:value"/>
+	<span jwcid="@core/tableau/ActionEnleverDeLaListe" parent="ognl:object" liste="fournisseurs"/>
+	
+	<input jwcid="ajouterFournisseur@Submit" class="button" value="Ajouter"
+		action="listener:ajouterFournisseur" />
+</table>
+</div>
+
+</form>
+
+</div></body>
+</html>

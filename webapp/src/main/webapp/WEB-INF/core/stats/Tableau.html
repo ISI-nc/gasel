@@ -1,0 +1,12 @@
+<div jwcid="@core/Tableau" source="ognl:tableauRempli.expand()"
+	value="ognl:row" class="ognl:cssClass">
+	<span jwcid="@core/tableau/ColonnesDynamiques" source="ognl:tableau.colonnes"
+			value="ognl:col" index="ognl:idx">
+		<span jwcid="@core/tableau/Colonne" titre="ognl:col.titre"
+				value="ognl:row[idx]?row[idx].value:null"
+				dottedTop="ognl:!row[idx] or row[idx].dottedBorder"/>
+		<span jwcid="@core/tableau/Colonne" titre=""
+				value="ognl:row[idx]?row[idx].count:null"
+				dottedTop="ognl:!row[idx] or row[idx].dottedBorder"/>
+	</span>
+</div>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Résumé protocole">
+	<table>
+			<tr>
+				<td class="label">Date Commission Technique :</td>
+				<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.dateCT"/></td>
+			</tr>
+			<tr>
+				<td class="label">Date Comité de Coordination :</td>
+				<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.dateCC"/></td>
+			</tr>
+			<tr>
+				<td class="label">Motif CT :</td>
+				<td class="label">
+					<select jwcid="@PropertySelection" value="ognl:object.motifCT"
+						model="ognl:psm.all('MotifCT')">
+						<option>Motif CT</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td class="label">Résumé Comité de Coordination :</td>
+				<td class="label"><input jwcid="@TextArea"  rows="15" cols="45" value="ognl:object.resumeCC"/></td>
+			</tr>
+			<tr>
+				<td class="label">Evaluation sociale :</td>
+				<td class="label"><input jwcid="@TextArea" value="ognl:object.evaluationSociale"/></td>
+			</tr>
+		</table>
+</div>
+<div jwcid="@core/Onglet" titre="Aide au logement">
+
+	<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />	
+	
+	<!-- <div style="float:right;border: 1px dotted;padding: 1ex; width: 400px;" > -->
+	<div><strong>Aide au logement :</strong></div>
+				<table jwcid="@core/Tableau" source="ognl:object.aides" value="ognl:row">
+					<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:row.debut" />
+					<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:row.fin" />
+					<div jwcid="@core/tableau/Colonne" titre="Nature" value="ognl:row.nature" />
+					<div jwcid="@core/tableau/Colonne" titre="Montant dérogation" value="ognl-protect:row.derogation.montant" />
+					<div jwcid="@core/tableau/Colonne" titre="Montant AL Total" value="ognl:row.montantALTotal" />
+					<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="aides"/>
+				</table>
+				<table jwcid="@core/edit/SubForm" source="ognl:object" liste="aides" value="ognl:aide" oninit="listener:initAide">
+					<tr>
+						<td>Début :</td>
+						<td><input jwcid="@core/edit/Date" value="ognl:aide.debut" /></td>
+					</tr>
+					<tr>
+						<td>Fin :</td>
+						<td><input jwcid="@core/edit/Date" value="ognl:aide.fin" /></td>
+					</tr>
+					<tr>
+						<td class="label">Date de commission AL :</td>
+						<td><input jwcid="@core/edit/Date" value="ognl:aide.dateCommission" /></td>
+					</tr>
+					<tr>
+						<td class="label">Accord commission :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:aide.accordCommission" model="ognl:psm.ouiNon" onchange="refreshPage()"/></td>
+					</tr>
+					<div jwcid="@If" condition="ognl:aide.accordCommission">
+					<tr>
+						<td class="label">Nature :</td>
+						<td>
+							<select jwcid="@PropertySelection" value="ognl:aide.nature"
+								model="ognl:psm.all('NatureAideLogement')">
+								<option>Nature</option>
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="label">Date d'effet :</td>
+						<td><input jwcid="@core/edit/Date" value="ognl:aide.dateEffet" /></td>
+					</tr>
+					<tr>
+						<td class="label">Montant AL:</td>
+						<td><input jwcid="@TextField"
+							value="ognl:aide.montantAL" translator="translator:number"/></td>
+					</tr>
+					<tr>
+						<td class="label">Montant DG:</td>
+						<td><input jwcid="@TextField"
+							value="ognl:aide.montantDG" translator="translator:number"/></td>
+					</tr>
+					<tr>
+						<td class="label">Montant AL Total:</td>
+						<td><input jwcid="@TextField"
+							value="ognl:aide.montantALTotal" translator="translator:number"/></td>
+					</tr>
+					<tr>
+						<td class="label">Dérogation :</td>
+						<td><input jwcid="@habitat/Derogation" aide="ognl:aide" /></td>
+					</tr>
+					</div>
+					<div jwcid="@Else">
+					<tr>
+						<td class="label">Motif refus :</td>
+						<td><input jwcid="@TextArea" value="ognl:aide.motifRefus"/></td>
+					</tr>
+					</div>
+				</table>
+</div>
+
+</div>
+</div>
+
+</div>

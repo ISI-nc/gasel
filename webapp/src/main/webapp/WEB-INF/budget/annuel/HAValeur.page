@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Rapport Hors alimentaire en valeur</description>
+	
+	<property name="titre">literal:Hors alimentaire en valeur - Suivi de budget annuel</property>
+	
+	<property name="usage"></property>
+	
+</page-specification>

@@ -1,0 +1,20 @@
+
+<p>Période : <input jwcid="@TextField" size="4" value="ognl:annee"/></p>
+
+<div jwcid="@core/Tableau" source="ognl:tableau" value="ognl:row"
+	lignesParPage="500">
+	<div jwcid="@core/tableau/Colonne" titre="Libellé" value="ognl:row.libelle"
+		highlight="ognl:row.highlight" />
+	
+	<div jwcid="@core/tableau/ColonnesDynamiques" source="ognl:{0,1,2,3,4,5,6,7,8,9,10,11}"
+		value="ognl:col">
+		<div jwcid="@core/tableau/Colonne" titre="ognl:titres[col]" value="ognl:row.valeur(col)"
+			highlight="ognl:row.highlight" />
+	</div>
+	
+	<div jwcid="@core/tableau/Colonne" titre="Total" value="ognl:row.total"
+		highlight="ognl:row.highlight" />
+	
+	<div jwcid="@core/tableau/Colonne" titre="%" value="ognl:row.proportion"
+		highlight="ognl:row.highlight" />
+</div>

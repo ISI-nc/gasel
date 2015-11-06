@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="border@Border">
+
+<table class="invis"><tr><td style="padding: 6px;">
+
+<table class="data-table">
+	<tr>
+		<th>Nom</th>
+		<th>Type</th>
+		<th>Valeur</th>
+	</tr>
+	<tr jwcid="@For" source="ognl:constantes" value="ognl:constante">
+		<td class="label"><span jwcid="@Insert"
+			value="ognl:constante.libelle"></span></td>
+		<td><span jwcid="@Insert" value="ognl:constType"></span></td>
+		<td style="padding:0;">
+			<span jwcid="@If" condition="ognl:constType == 'Entier'">
+				<input jwcid="@TextField" value="ognl:constante.valeur"
+					translator="translator:entier"
+					validators="validators:required"/>
+			</span>
+			<span jwcid="@If" condition="ognl:constType == 'Réel'">
+				<input jwcid="@TextField" value="ognl:constante.valeur"
+					translator="translator:reel"
+					validators="validators:required"/>
+			</span>
+			<span jwcid="@If" condition="ognl:constType == 'Texte'">
+				<input jwcid="@TextField" value="ognl:constante.valeur"
+					validators="validators:required"/>
+			</span>
+		</td>
+	</tr>
+</table>
+
+</td><td style="padding: 6px;">
+
+	<p><input jwcid="@core/BoutonRetour" value="Annuler" /></p>
+	<p><input jwcid="enregistrer@Submit" class="button" value="Enregistrer"
+		action="listener:enregistrer" /></p>
+
+</td></tr></table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<div jwcid="@If" condition="ognl:derogation">
+	<div style="float:right;">
+		<input jwcid="supprimer@Submit" value="Supprimer" action="listener:supprimer"
+			class="button"/>
+	</div>
+
+	<table style="clear:both;">
+		<tr><td>Début :</td>
+			<td><input jwcid="@core/edit/Date" value="ognl:derogation.debut" /></td>
+		</tr><tr>
+			<td>Fin :</td>
+			<td><input jwcid="@core/edit/Date" value="ognl:derogation.fin" /></td>
+		</tr><tr>
+			<td>Motif :</td>
+			<td><input jwcid="@core/edit/Enum" value="ognl:derogation.motif" enum="MotifDerogationHabitat" /></td>
+		</tr><tr>
+			<td>Montant :</td>
+			<td><input jwcid="@TextField" value="ognl:derogation.montant" translator="translator:number"/></td>
+		</tr>
+	</table>
+
+</div><div jwcid="@Else">
+	<div style="float:right;">
+		<input jwcid="creer@Submit" value="Créer" action="listener:creer"
+			class="button"/>
+	</div>
+	<div style="clear:both;"></div>
+</div>

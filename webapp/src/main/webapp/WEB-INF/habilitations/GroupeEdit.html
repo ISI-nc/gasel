@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<p>
+	Libellé&nbsp;: <input jwcid="@TextField" value="ognl:object.libelle"/>
+</p>
+
+<p><strong>Accès</strong></p>
+
+<p>
+	Catégorie&nbsp;:
+	<input jwcid="@PropertySelection" value="ognl:category"
+			model="ognl:psm.string(categories)" onchange="refreshPage()"/>
+	
+</p>
+
+<table class="data-table">
+<thead>
+	<tr><th>Page</th>
+		<th>Accès</th>
+		<th>Modif.</th>
+	</tr>
+</thead>
+<tbody>
+	<tr jwcid="@For" source="ognl:pages" value="ognl:idPage" element="tr">
+		<td><span jwcid="@Insert" value="ognl:descriptionPage"/></td>
+		<td><input jwcid="@Checkbox" value="ognl:acces.read"/></td>
+		<td><span jwcid="@If" condition="ognl:editPage"><input jwcid="@Checkbox" value="ognl:acces.write"/></span><span jwcid="@Else">N/A</span></td>
+	</tr>
+</tbody>
+</table>
+
+<p><strong>Membres</strong></p>
+
+<div jwcid="@core/Tableau" source="ognl:sort(object.utilisateurs).by('nom').by('prenom').results"
+	value="ognl:user">
+	<div jwcid="@core/tableau/Colonne" titre="Initiales" value="ognl:user.initiales"/>
+	<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:user.nom"/>
+	<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:user.prenom"/>
+	<div jwcid="@core/tableau/ObjectPageAction" page="habilitations/EditerCompte" />
+</div>
+
+</div>
+</div>
+</body>
+</html>

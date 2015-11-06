@@ -1,0 +1,26 @@
+<table class="invis" jwcid="table">
+<tr><td class="side-bar-left" jwcid="@Any" style="ognl:sideStyle">
+    <div jwcid="@For" volatile="true" source="ognl:source" value="ognl:barCat" index="ognl:idxCat">
+        <div jwcid="@Any" class="ognl:idxCat == currentCatIdx ? 'side-bar-cat-hl' : 'side-bar-cat'">
+        	<a href="#" style="color: #000;" jwcid="openCat@LinkSubmit" listener="listener:openCat" parameters="ognl:idxCat">
+        		<span jwcid="@Insert" value="ognl:barCat.title">Titre catégorie</span>
+        	</a>
+        </div>
+        <div jwcid="@If" condition="ognl:idxCat == currentCatIdx">
+        <div jwcid="@For" volatile="true" source="ognl:barCat.values" value="ognl:barValue" index="ognl:idxValue"
+        	class="ognl:idxValue == currentValueIdx ? 'side-bar-val-hl' : 'side-bar-val'">
+        	<a href="#" jwcid="openValue@LinkSubmit" listener="listener:openValue" parameters="ognl:idxValue">
+        		<span jwcid="@Insert" value="ognl:barValue.title">Nom de la valeur</span>
+        	</a>
+        </div>
+        </div>
+    </div>
+</td>
+<td class="side-bar-contents">
+	<div jwcid="@If" condition="ognl:value">
+		<span jwcid="@RenderBody"/>
+	</div><div jwcid="@Else">
+		Sélectionnez un élément à gauche.
+	</div>
+</td></tr>
+</table>

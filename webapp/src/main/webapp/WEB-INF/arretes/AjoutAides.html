@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="Bon" results="ognl:results"
+	expr="ognl:filterExpression"
+	prefetch="ognl:{'aide.dossier.dossier.chefFamille','aide.nature'}">
+
+	<tr><td class="label">Période :</td>
+		<td><input jwcid="@core/search/critere/PeriodeMois" path="debut" toujoursActif="true"/></td>
+	</tr>
+
+</table>
+
+<p jwcid="@If" condition="ognl:results!=null">
+	<div jwcid="@core/Tableau" titre="Aides à ajouter" source="ognl:traite(results)" value="ognl:row"
+			selection="ognl:selection">
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Dossier">
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:row.aide.dossier.dossier.chefFamille"/>
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Aide">
+			<div jwcid="@core/tableau/Colonne" titre="Type d'aide" value="ognl:row.aide.nature"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.aide.montant"/>
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Bons">
+			<div jwcid="@core/tableau/Colonne" titre="Période" value="ognl:row.periode"/>
+			<div jwcid="@core/tableau/Colonne" titre="Nb" value="ognl:row.nombre"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant"/>
+		</div>
+		
+		<input jwcid="toutAjouter@Submit" class="button" action="listener:toutAjouter" value="Tout ajouter"/>
+		<input jwcid="ajouter@Submit" class="button" action="listener:ajout" value="Ajouter la sélection"/>
+	</div>
+</p>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.ph"/>
+	<property name="defaultSchema" value="gasel_v2"/>
+	<db-entity name="accompagnement_ph" schema="gasel_v2">
+		<db-attribute name="dossier_ph_accompagnements_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="projet" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_ph" schema="gasel_v2">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_ph" schema="gasel_v2">
+		<db-attribute name="aidesprovisoires" type="BIT" isMandatory="true"/>
+		<db-attribute name="besoin_logement" type="BIT" isMandatory="true"/>
+		<db-attribute name="besoin_mobilier" type="BIT" isMandatory="true"/>
+		<db-attribute name="nombre_enfant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="nouveaux_permanents" type="DATE" isMandatory="true"/>
+		<db-attribute name="passage_personne_handicape" type="DATE" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="revenu_net_mensuel" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="taux_handicap_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="tranche_age_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="avis_commission" schema="gasel_v2">
+		<db-attribute name="date" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nom" type="CLOB" isMandatory="true"/>
+		<db-attribute name="validant" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="demande_taxi" schema="gasel_v2">
+		<db-attribute name="commission_id" type="INTEGER"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="demandeur_personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="necessite_accompagnateur" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="deplacement_taxi" schema="gasel_v2">
+		<db-attribute name="aspect_ph_deplacements_personne_id" type="INTEGER"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nature_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_ph" schema="gasel_v2">
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="passage_permanent" type="TIMESTAMP"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="sous_curatelle" type="BIT" isMandatory="true"/>
+		<db-attribute name="sous_tutelle" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="handicap" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_deplacement_taxi" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_ph" schema="gasel_v2">
+		<db-attribute name="accompagnement_ph_objectifs_id" type="INTEGER"/>
+		<db-attribute name="echeance" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_prob_ph" schema="gasel_v2">
+		<db-attribute name="objectif_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="objectif_ph_problematiques_id" type="INTEGER"/>
+		<db-attribute name="problematique_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="prob_dossier_ph" schema="gasel_v2">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="problematique_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="procuration_ph" schema="gasel_v2">
+		<db-attribute name="dossier_ph_procurations_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nom" type="CLOB" isMandatory="true"/>
+		<db-attribute name="prenom" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="specificite" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="aspect_ph_specificite_carte_personne_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="AccompagnementPH" className="nc.ccas.gasel.model.ph.AccompagnementPH" dbEntityName="accompagnement_ph">
+		<obj-attribute name="projet" type="java.lang.String" db-attribute-path="projet"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierPH" className="nc.ccas.gasel.model.ph.AspectDossierPH" dbEntityName="aspect_dossier_ph">
+	</obj-entity>
+	<obj-entity name="AspectPH" className="nc.ccas.gasel.model.ph.AspectPH" dbEntityName="aspect_ph">
+		<obj-attribute name="aidesprovisoires" type="java.lang.Boolean" db-attribute-path="aidesprovisoires"/>
+		<obj-attribute name="besoinLogement" type="java.lang.Boolean" db-attribute-path="besoin_logement"/>
+		<obj-attribute name="besoinMobilier" type="java.lang.Boolean" db-attribute-path="besoin_mobilier"/>
+		<obj-attribute name="nombreEnfant" type="java.lang.Integer" db-attribute-path="nombre_enfant"/>
+		<obj-attribute name="nouveauxPermanents" type="java.util.Date" db-attribute-path="nouveaux_permanents"/>
+		<obj-attribute name="passagePersonneHandicape" type="java.util.Date" db-attribute-path="passage_personne_handicape"/>
+		<obj-attribute name="revenuNetMensuel" type="java.lang.Integer" db-attribute-path="revenu_net_mensuel"/>
+	</obj-entity>
+	<obj-entity name="AvisCommission" className="nc.ccas.gasel.model.ph.AvisCommission" dbEntityName="avis_commission">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="validant" type="java.lang.Boolean" db-attribute-path="validant"/>
+	</obj-entity>
+	<obj-entity name="DemandeTaxi" className="nc.ccas.gasel.model.ph.DemandeTaxi" dbEntityName="demande_taxi">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="necessiteAccompagnateur" type="java.lang.Boolean" db-attribute-path="necessite_accompagnateur"/>
+	</obj-entity>
+	<obj-entity name="DeplacementTaxi" className="nc.ccas.gasel.model.ph.DeplacementTaxi" dbEntityName="deplacement_taxi">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+	</obj-entity>
+	<obj-entity name="DossierPH" className="nc.ccas.gasel.model.ph.DossierPH" dbEntityName="dossier_ph">
+		<obj-attribute name="passagePermanent" type="java.util.Date" db-attribute-path="passage_permanent"/>
+		<obj-attribute name="sousCuratelle" type="java.lang.Boolean" db-attribute-path="sous_curatelle"/>
+		<obj-attribute name="sousTutelle" type="java.lang.Boolean" db-attribute-path="sous_tutelle"/>
+	</obj-entity>
+	<obj-entity name="Handicap" className="nc.ccas.gasel.model.ph.Handicap" dbEntityName="handicap">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="NatureDeplacementTaxi" className="nc.ccas.gasel.model.ph.NatureDeplacementTaxi" dbEntityName="nature_deplacement_taxi">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ObjectifPH" className="nc.ccas.gasel.model.ph.ObjectifPH" dbEntityName="objectif_ph">
+		<obj-attribute name="echeance" type="java.util.Date" db-attribute-path="echeance"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="ObjectifProbPH" className="nc.ccas.gasel.model.ph.ObjectifProbPH" dbEntityName="objectif_prob_ph">
+	</obj-entity>
+	<obj-entity name="ProbDossierPH" className="nc.ccas.gasel.model.ph.ProbDossierPH" dbEntityName="prob_dossier_ph">
+	</obj-entity>
+	<obj-entity name="ProcurationPH" className="nc.ccas.gasel.model.ph.ProcurationPH" dbEntityName="procuration_ph">
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="prenom" type="java.lang.String" db-attribute-path="prenom"/>
+	</obj-entity>
+	<obj-entity name="Specificite" className="nc.ccas.gasel.model.ph.Specificite" dbEntityName="specificite">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="dossier_ph_accompagnements" source="accompagnement_ph" target="dossier_ph" toMany="false">
+		<db-attribute-pair source="dossier_ph_accompagnements_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectifs" source="accompagnement_ph" target="objectif_ph" toMany="true">
+		<db-attribute-pair source="id" target="accompagnement_ph_objectifs_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_ph_dossier" source="aspect_dossier_ph" target="dossier_ph" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_ph" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_taxi_demandeur" source="aspect_ph" target="demande_taxi" toMany="true">
+		<db-attribute-pair source="personne_id" target="demandeur_personne_id"/>
+	</db-relationship>
+	<db-relationship name="deplacements" source="aspect_ph" target="deplacement_taxi" toMany="true">
+		<db-attribute-pair source="personne_id" target="aspect_ph_deplacements_personne_id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="aspect_ph" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="specificite_carte" source="aspect_ph" target="specificite" toMany="true">
+		<db-attribute-pair source="personne_id" target="aspect_ph_specificite_carte_personne_id"/>
+	</db-relationship>
+	<db-relationship name="taux_handicap" source="aspect_ph" target="handicap" toMany="false">
+		<db-attribute-pair source="taux_handicap_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="tranche_age" source="aspect_ph" target="tranche_age" toMany="false">
+		<db-attribute-pair source="tranche_age_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_taxi_commission" source="avis_commission" target="demande_taxi" toMany="true">
+		<db-attribute-pair source="id" target="commission_id"/>
+	</db-relationship>
+	<db-relationship name="commission" source="demande_taxi" target="avis_commission" toMany="false">
+		<db-attribute-pair source="commission_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="demandeur" source="demande_taxi" target="aspect_ph" toMany="false">
+		<db-attribute-pair source="demandeur_personne_id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="aspect_ph_deplacements" source="deplacement_taxi" target="aspect_ph" toMany="false">
+		<db-attribute-pair source="aspect_ph_deplacements_personne_id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="nature" source="deplacement_taxi" target="nature_deplacement_taxi" toMany="false">
+		<db-attribute-pair source="nature_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_prob_dossier_ph_dossier" source="dossier_ph" target="prob_dossier_ph" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="accompagnements" source="dossier_ph" target="accompagnement_ph" toMany="true">
+		<db-attribute-pair source="id" target="dossier_ph_accompagnements_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_ph" target="aspect_dossier_ph" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="dossier_ph" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="procurations" source="dossier_ph" target="procuration_ph" toMany="true">
+		<db-attribute-pair source="id" target="dossier_ph_procurations_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_ph_taux_handicap" source="handicap" target="aspect_ph" toMany="true">
+		<db-attribute-pair source="id" target="taux_handicap_id"/>
+	</db-relationship>
+	<db-relationship name="REV_deplacement_taxi_nature" source="nature_deplacement_taxi" target="deplacement_taxi" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_ph_objectif" source="objectif_ph" target="objectif_prob_ph" toMany="true">
+		<db-attribute-pair source="id" target="objectif_id"/>
+	</db-relationship>
+	<db-relationship name="accompagnement_ph_objectifs" source="objectif_ph" target="accompagnement_ph" toMany="false">
+		<db-attribute-pair source="accompagnement_ph_objectifs_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematiques" source="objectif_ph" target="objectif_prob_ph" toMany="true">
+		<db-attribute-pair source="id" target="objectif_ph_problematiques_id"/>
+	</db-relationship>
+	<db-relationship name="objectif" source="objectif_prob_ph" target="objectif_ph" toMany="false">
+		<db-attribute-pair source="objectif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectif_ph_problematiques" source="objectif_prob_ph" target="objectif_ph" toMany="false">
+		<db-attribute-pair source="objectif_ph_problematiques_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="objectif_prob_ph" target="problematique_paph" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="prob_dossier_ph" target="dossier_ph" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="prob_dossier_ph" target="problematique_paph" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier_ph_procurations" source="procuration_ph" target="dossier_ph" toMany="false">
+		<db-attribute-pair source="dossier_ph_procurations_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aspect_ph_specificite_carte" source="specificite" target="aspect_ph" toMany="false">
+		<db-attribute-pair source="aspect_ph_specificite_carte_personne_id" target="personne_id"/>
+	</db-relationship>
+	<obj-relationship name="objectifs" source="AccompagnementPH" target="ObjectifPH" db-relationship-path="objectifs"/>
+	<obj-relationship name="dossier" source="AspectDossierPH" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="dossiers" source="AspectDossierPH" target="DossierPH" db-relationship-path="REV_dossier_ph_dossier"/>
+	<obj-relationship name="demandesTaxi" source="AspectPH" target="DemandeTaxi" db-relationship-path="REV_demande_taxi_demandeur"/>
+	<obj-relationship name="deplacements" source="AspectPH" target="DeplacementTaxi" db-relationship-path="deplacements"/>
+	<obj-relationship name="personne" source="AspectPH" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="specificiteCarte" source="AspectPH" target="Specificite" db-relationship-path="specificite_carte"/>
+	<obj-relationship name="tauxHandicap" source="AspectPH" target="Handicap" db-relationship-path="taux_handicap"/>
+	<obj-relationship name="trancheAge" source="AspectPH" target="TrancheAge" db-relationship-path="tranche_age"/>
+	<obj-relationship name="commission" source="DemandeTaxi" target="AvisCommission" db-relationship-path="commission"/>
+	<obj-relationship name="demandeur" source="DemandeTaxi" target="AspectPH" db-relationship-path="demandeur"/>
+	<obj-relationship name="nature" source="DeplacementTaxi" target="NatureDeplacementTaxi" db-relationship-path="nature"/>
+	<obj-relationship name="accompagnements" source="DossierPH" target="AccompagnementPH" db-relationship-path="accompagnements"/>
+	<obj-relationship name="dossier" source="DossierPH" target="AspectDossierPH" db-relationship-path="dossier"/>
+	<obj-relationship name="personne" source="DossierPH" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="problematiques" source="DossierPH" target="ProbDossierPH" db-relationship-path="REV_prob_dossier_ph_dossier"/>
+	<obj-relationship name="procurations" source="DossierPH" target="ProcurationPH" db-relationship-path="procurations"/>
+	<obj-relationship name="problematiques" source="ObjectifPH" target="ObjectifProbPH" db-relationship-path="problematiques"/>
+	<obj-relationship name="objectif" source="ObjectifProbPH" target="ObjectifPH" db-relationship-path="objectif"/>
+	<obj-relationship name="problematique" source="ObjectifProbPH" target="ProblematiquePAPH" db-relationship-path="problematique"/>
+	<obj-relationship name="dossier" source="ProbDossierPH" target="DossierPH" db-relationship-path="dossier"/>
+	<obj-relationship name="problematique" source="ProbDossierPH" target="ProblematiquePAPH" db-relationship-path="problematique"/>
+</data-map>

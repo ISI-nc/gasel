@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<div jwcid="@core/SideBar" source="ognl:sideBar" value="ognl:sel" autoSelectFirst="true"
+	style="width:100%;" sideStyle="width:20ex;">
+
+	<table class="invis">
+	<tr jwcid="@For" volatile="true" source="ognl:part.entryPoints"
+			value="ognl:pointEntree" class="pad">
+		<span jwcid="@If" renderTag="false" volatile="true" condition="ognl:hasAccess(pointEntree)">
+			<td class="label"><a href="#" jwcid="open@LinkSubmit" listener="listener:workflowOpen"
+				parameters="ognl:pointEntree.pageName"><span
+				jwcid="@Insert" value="ognl:pointEntree.titre">Lien</span></a></td>
+			<td><span jwcid="@Insert" value="ognl:pointEntree.description">Description</span></td>
+		</span>
+	</tr></table>
+	
+</div>
+
+</div></body>
+</html>

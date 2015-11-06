@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<table class="invis">
+	<tr><td class="label">Login&nbsp;:</td>
+		<td><input jwcid="@TextField" value="ognl:compte.login" disabled="ognl:!isNew(compte)"/></td></tr>
+	<tr><td class="label">Initiales&nbsp;:</td>
+		<td><input jwcid="@TextField" value="ognl:compte.initiales"/></td></tr>
+	<tr><td class="label">Nom&nbsp;:</td>
+		<td><input jwcid="@TextField" value="ognl:compte.nom"/></td></tr>
+	<tr><td class="label">Prénom&nbsp;:</td>
+		<td><input jwcid="@TextField" value="ognl:compte.prenom"/></td></tr>
+	<tr><td class="label">Actif&nbsp;:</td>
+		<td><select jwcid="@PropertySelection" value="ognl:compte.actif" model="ognl:psm.ouiNon" /></td></tr>
+	<tr><td class="label">Groupes&nbsp;:</td>
+		<td><input jwcid="@core/edit/PackedSubSet" from="ognl:compte" list="groupes"
+				elements="ognl:sql.query.all('Groupe')"/></td></tr>
+</table>
+
+</div>
+</div>
+</body>
+</html>

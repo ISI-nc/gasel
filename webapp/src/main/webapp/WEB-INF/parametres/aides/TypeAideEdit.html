@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<form jwcid="@core/Form">
+
+  <table class="section">
+    <tbody>
+      <tr>
+        <td colspan="2" rowspan="1">Gestion des types d'aides</td>
+      </tr>
+		<tr>
+			<td>Imputation:</td>
+			<td>
+				<select tabindex="1" name="imputation" jwcid="@core/edit/EnumV1" value="ognl:object.imputation" enum="Imputation">
+				</select>
+			</td>
+		<tr>
+		<tr>
+			<td>Type public:&nbsp;</td>
+			<td>Secteur aide:&nbsp;</td>
+			<td>Article prestation:&nbsp;</td>
+			<td></td>
+		<tr>
+			<td>
+				<select tabindex="1" name="typePublic" jwcid="@core/edit/Enum" value="ognl:object.typePublic" enum="TypePublic" null="Tous">
+				</select>
+			</td>
+			<td>
+				<select tabindex="1" name="secteurAide" jwcid="@core/edit/Enum" value="ognl:secteur" enum="SecteurAide"
+					onchange="form.submit()">
+				</select>
+			</td>
+			<td>
+				<span jwcid="@If" condition="ognl:secteur"><select tabindex="1" name="articlePrestation" jwcid="@core/edit/Enum" value="ognl:object.nature" values="ognl:secteur.natures">
+				</select></span>
+			</td>
+		</tr>
+    </tbody>
+  </table>
+
+</form>
+
+</div></body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form" extraActions="component:actions">
+
+<p><strong>Arrêté:</strong></p>
+
+    <table style="width: 100%;">
+      <tbody>
+        <tr>
+          <td colspan="2">
+          <table class="sousSection" width="100%">
+            <tbody>
+              <tr>
+                <td width="25%">N° arrêté:</td>
+                <td width="15%"><input jwcid="@TextField" disabled="ognl:arrete.edite" size="20" type="text" value="ognl:arrete.numero"/></td>
+                <td width="20%">Type d'arrêté:</td>
+                <td width="50%">
+            <select jwcid="@core/edit/Enum" value="ognl:arrete.type" enum="TypeArrete"
+            		disabled="ognl:(not isNew(arrete)) or arrete.edite or arrete.bonsValides">
+			<option>typeArreteList</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Champ de saisie:</td>
+          <td colspan="3">
+          	<textarea jwcid="@TextArea" cols="74" rows="3" value="ognl:arrete.champ" disabled="ognl:arrete.edite"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>Montant total:</td>
+          <td><input jwcid="@Insert" value="ognl:montantTotal" format="ognl:format.montant"/>
+          </td>
+          <td>Date de modification:</td>
+          <td><input jwcid="@Insert" value="ognl:arrete.modifDate" format="ognl:format.date"/>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+     
+    <div jwcid="@If" condition="ognl:isNew(arrete)">
+    	<p><strong>Aides concernées</strong><br/>Enregistrez pour ajouter des aides</p>
+    </div>
+    <div jwcid="@Else">
+		<div jwcid="@core/Tableau" titre="Aides concernées" source="ognl:syntheseBons" value="ognl:row">
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Dossier">
+				<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:row.aide.dossier.dossier.chefFamille"/>
+			</div>
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Aide">
+				<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:row.aide.public" />
+				<div jwcid="@core/tableau/Colonne" titre="Période" value="ognl:row.periode"
+						visible="ognl:!aideEau and !aideOM" />
+				<div jwcid="@core/tableau/Colonne" titre="Période" value="ognl:periode"
+						visible="ognl:aideEau or aideOM"/>
+				<div jwcid="@core/tableau/Colonne" titre="Police" value="ognl-protect:row.aide.eau.police"
+						visible="ognl:aideEau"/>
+				<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.aide.montant"/>
+			</div>
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Bons">
+				<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant"/>
+			</div>
+			
+			<span jwcid="@arretes/ActionSupprimerAAL" arrete="ognl:arrete" disabled="ognl:enregistrementDesactive"/>
+			
+			<input value="Ajouter des aides" jwcid="ajouter@Submit" class="button"
+				action="listener:goAjoutAides" disabled="ognl:enregistrementDesactive" />
+		</div>
+	</div>
+
+	<div jwcid="actions@Block">
+		<!-- --------------------------------------------------------------------------------------- -->
+		<div style="display:none;">
+			<a href="#" id="lienEditerPdf" jwcid="@DirectLink" target="_window"
+					listener="listener:invokeEditer" parameters="pdf">x</a>
+		</div>
+		<p><input value="Editer (PDF)" jwcid="editerPdf@Submit" action="listener:editer"
+			class="button" style="width: 150px;"
+			onclick="if (!confirm('Éditer l\'arrêté ?')) return false; openLink('lienEditerPdf')" /></p>
+		
+		<!-- --------------------------------------------------------------------------------------- -->
+		<div style="display:none;">
+			<a href="#" id="lienEditerOdt" jwcid="@DirectLink" target="_window"
+					listener="listener:invokeEditer" parameters="odt">x</a>
+		</div>
+		<p><input value="Editer (ODT)" jwcid="editerOdt@Submit" action="listener:editer"
+			class="button" style="width: 150px;"
+			onclick="if (!confirm('Éditer l\'arrêté ?')) return false; openLink('lienEditerOdt')" /></p>
+		
+		<!-- --------------------------------------------------------------------------------------- -->
+		<div style="display:none;">
+			<a href="#" id="lienEditerDocx" jwcid="@DirectLink" target="_window"
+					listener="listener:invokeEditer" parameters="docx">x</a>
+		</div>
+		<p><input value="Editer (docx)" jwcid="editerDocx@Submit" action="listener:editer"
+			class="button" style="width: 150px;"
+			onclick="if (!confirm('Éditer l\'arrêté ?')) return false; openLink('lienEditerDocx')" /></p>
+	</div>
+
+</form>
+
+</div>
+</body>
+</html>

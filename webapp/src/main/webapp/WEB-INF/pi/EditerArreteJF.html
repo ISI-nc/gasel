@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border"><div jwcid="@core/Form" extraActions="component:extraActions">
+
+<table class="invis">
+<tr><td class="label">Date début :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:object.debut"/></td></tr>
+			<tr><td class="label">Date de fin :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:object.fin"/></td></tr>
+			<tr><td class="label">Numéro :</td>
+				<td><input jwcid="@TextField" value="ognl:object.numero"/></td></tr>
+			<tr><td class="label">Type :</td>
+				<td><select jwcid="@core/edit/Enum" value="ognl:object.type" enum="TypeArreteJF">
+				<options>--</options>
+				</select></td></tr>
+</table>
+
+<div jwcid="extraActions@Block">
+
+	<p><button jwcid="@core/DocButton" source="ognl:object" modele="ognl:jardin.arreteAttributionToUse"
+		label="Arrêté d'attribution" disabled="ognl:object.type == null or object.type.renouvellement"/></p>
+
+	<p><button jwcid="@core/DocButton" source="ognl:object" modele="ognl:jardin.arreteRenouvellementToUse"
+		label="Arrêté de renouvellement" disabled="ognl:object.type == null or !object.type.renouvellement"/></p>
+
+	<p><button jwcid="@core/DocButton" source="ognl:object" modele="ognl:jardin.courierEntretienToUse"
+		label="Courrier entretien" disabled="ognl:!object.attribution.dernierControle"/></p>
+
+	<p><button jwcid="@core/DocButton" source="ognl:object" modele="ognl:jardin.courierPaiementToUse"
+		label="Courrier paiement" disabled="ognl:!object.attribution.retardPaiement" /></p>
+
+	<p><button jwcid="@core/DocButton" source="ognl:object" modele="ognl:jardin.courierPaiementEntretienToUse"
+		label="Courrier pai. et ent." 
+		disabled="ognl:!object.attribution.dernierControle or !object.attribution.retardPaiement"/></p>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

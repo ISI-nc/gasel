@@ -1,0 +1,41 @@
+
+/* ----------------------------------------------------------------------------
+** Onglets
+*/
+
+table.onglets { border-collapse: collapse; }
+
+td.centerOngletActif, td.centerOngletInactif { background-repeat: repeat-x; }
+td.centerOngletActif { background-image: url(../../images/onglets/actif_center.gif); }
+td.centerOngletInactif { background-image: url(../../images/onglets/inactif_center.gif); }
+
+td.centerOngletActif input { color: #191970; }
+td.centerOngletInactif input { color: #B7B7B7; }
+td.centerOngletActif input,
+td.centerOngletInactif input {
+	font-style: italic;
+	cursor: pointer;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	width: 100%;
+	background-color: transparent;
+}
+
+td.leftOngletActif, td.leftOngletInactif,
+td.rightOngletActif, td.rightOngletInactif {
+	width: 8px;
+	background-repeat: no-repeat;
+}
+
+td.leftOngletActif,td.leftOngletInactif { background-position: right; }
+td.leftOngletActif { background-image: url(../../images/onglets/actif_left.gif); }
+td.leftOngletInactif { background-image: url(../../images/onglets/inactif_left.gif); }
+
+td.rightOngletActif,td.rightOngletInactif { background-position: left; }
+td.rightOngletActif { background-image: url(../../images/onglets/actif_right.gif); }
+td.rightOngletInactif { background-image: url(../../images/onglets/inactif_right.gif); }
+
+td.leftOngletActif, td.centerOngletActif, td.rightOngletAction { background-color: #f8f8f7; }
+
+td.corpsOnglet { border: #ddd 2px solid; padding: 6px; }

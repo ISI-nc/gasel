@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Onglets">
+	<div jwcid="@core/Onglet" titre="Utilisateurs actifs">
+		<div jwcid="@core/Tableau" titre="Utilisateurs actifs de GASEL"
+			source="ognl:utilisateursActifs" value="ognl:user">
+			<div jwcid="@core/tableau/Colonne" titre="Initiales" value="ognl:user.initiales"/>
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:user.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:user.prenom"/>
+			<div jwcid="@core/tableau/ObjectPageAction" page="habilitations/EditerCompte" />
+			
+			<input class="button" jwcid="creer@Submit" action="listener:creer" value="Créer manuellement"/>
+		</div>
+	</div>
+	
+	<div jwcid="@core/Onglet" titre="Utilisateurs inactifs">
+		<div jwcid="@core/Tableau" titre="Utilisateurs actifs de GASEL"
+			source="ognl:utilisateursInactifs" value="ognl:user">
+			<div jwcid="@core/tableau/Colonne" titre="Initiales" value="ognl:user.initiales"/>
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:user.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:user.prenom"/>
+			<div jwcid="@core/tableau/ObjectPageAction" page="habilitations/EditerCompte" />
+		</div>
+	</div>
+</div>
+
+<p>
+	<input jwcid="@core/BoutonRetour" />
+</p>
+
+</div>
+</body>
+</html>

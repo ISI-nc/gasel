@@ -1,0 +1,17 @@
+<table class="invis">
+<tr jwcid="@For" source="ognl:rows" value="ognl:row" index="ognl:y" volatile="true">
+<td jwcid="@For" source="ognl:row" value="ognl:col" index="ognl:x" renderTag="false" volatile="true">
+	<span jwcid="@Any" element="td">
+		<span jwcid="@If" condition="ognl:x and fleche" renderTag="false">
+			<img jwcid="@Image" src="/images/fleches/o_e.gif" alt="=&gt;"
+				image="ognl:fleche"/>
+		</span>
+	</span>
+	<span jwcid="@Any" element="td">
+		<span jwcid="@If" condition="ognl:col" class="ognl:(col==workflow.currentEntry)?'wf-current':((col.contains(workflow.currentEntry))?'wf-path':null)">
+			<a jwcid="wfLink@LinkSubmit" class="invis-button" action="listener:open" parameters="ognl:col.id"
+				><san jwcid="@Insert" value="ognl:col.title"/></a>
+		</span>
+	</span>
+</td></tr>
+</table>

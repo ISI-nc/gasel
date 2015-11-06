@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.dossiers" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module position="0" dossier="dossiers" titre="Dossiers">
+			<partie-module titre="Dossiers">
+				<point-entree titre="Rechercher" page="Recherche">
+					Permet de rechercher un dossier et d'en consulter le
+					contenu : administrés, ressources, charges, aides du
+					dossier, etc.
+				</point-entree>
+				<point-entree titre="Créer" page="Edition">
+					Permet la création d'un dossier, d'y attacher des
+					administrés, leurs ressources, charges, etc.
+				</point-entree>
+				<point-entree titre="À supprimer" page="Suppression">
+					Affiche la liste des dossiers susceptibles d'être
+					supprimés et donne la possibilité de les supprimer.
+				</point-entree>
+			</partie-module>
+			<!-- 
+			<partie-module dossier="stats" titre="Statistiques">
+				<point-entree titre="Personnes suivies" page="PersonnesSuivies">
+					Dossiers suivis.
+				</point-entree>
+				<point-entree titre="PAIO" page="PersonnesPaio">
+					Statistiques sur les personnes reçues en PAIO.
+				</point-entree>
+			</partie-module>
+			 -->
+		</module>
+	</contribution>
+
+</module>

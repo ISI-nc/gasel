@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.budget"/>
+	<db-entity name="budget_annuel">
+		<db-attribute name="annee" type="SMALLINT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="restant" type="DOUBLE"/>
+		<db-attribute name="validation" type="TIMESTAMP"/>
+	</db-entity>
+	<db-entity name="budget_imp_annuel">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="imputation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="repartition_par_secteur" type="BIT" isMandatory="true"/>
+		<db-attribute name="restant" type="DOUBLE"/>
+	</db-entity>
+	<db-entity name="budget_imp_mensuel">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="mois" type="SMALLINT" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="restant" type="DOUBLE"/>
+	</db-entity>
+	<db-entity name="budget_secteur_aide">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="restant" type="DOUBLE"/>
+		<db-attribute name="secteur_aide_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="budget_type_public">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="restant" type="DOUBLE"/>
+		<db-attribute name="type_public_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="imputation">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="ligne_virement">
+		<db-attribute name="destination_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="destination_type" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="source_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="source_type" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_aide">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="code" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="imputation_id" type="INTEGER"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_arrete_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_aide_fournisseur">
+		<db-attribute name="code_fournisseur" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nature_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="secteur_aide">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="code" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_public_nature">
+		<db-attribute name="nature_aide_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="type_public_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="BudgetAnnuel" className="nc.ccas.gasel.model.budget.BudgetAnnuel" dbEntityName="budget_annuel">
+		<obj-attribute name="annee" type="java.lang.Short" db-attribute-path="annee"/>
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="restant" type="java.lang.Double" db-attribute-path="restant"/>
+		<obj-attribute name="validation" type="java.util.Date" db-attribute-path="validation"/>
+	</obj-entity>
+	<obj-entity name="BudgetImpAnnuel" className="nc.ccas.gasel.model.budget.BudgetImpAnnuel" dbEntityName="budget_imp_annuel">
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="repartitionParSecteur" type="java.lang.Boolean" db-attribute-path="repartition_par_secteur"/>
+		<obj-attribute name="restant" type="java.lang.Double" db-attribute-path="restant"/>
+	</obj-entity>
+	<obj-entity name="BudgetImpMensuel" className="nc.ccas.gasel.model.budget.BudgetImpMensuel" dbEntityName="budget_imp_mensuel">
+		<obj-attribute name="mois" type="java.lang.Short" db-attribute-path="mois"/>
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="restant" type="java.lang.Double" db-attribute-path="restant"/>
+	</obj-entity>
+	<obj-entity name="BudgetSecteurAide" className="nc.ccas.gasel.model.budget.BudgetSecteurAide" dbEntityName="budget_secteur_aide">
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="restant" type="java.lang.Double" db-attribute-path="restant"/>
+	</obj-entity>
+	<obj-entity name="BudgetTypePublic" className="nc.ccas.gasel.model.budget.BudgetTypePublic" dbEntityName="budget_type_public">
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="restant" type="java.lang.Double" db-attribute-path="restant"/>
+	</obj-entity>
+	<obj-entity name="Imputation" className="nc.ccas.gasel.model.budget.Imputation" dbEntityName="imputation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="LigneVirement" className="nc.ccas.gasel.model.budget.LigneVirement" dbEntityName="ligne_virement">
+		<obj-attribute name="destinationId" type="java.lang.Integer" db-attribute-path="destination_id"/>
+		<obj-attribute name="destinationType" type="java.lang.Integer" db-attribute-path="destination_type"/>
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="sourceId" type="java.lang.Integer" db-attribute-path="source_id"/>
+		<obj-attribute name="sourceType" type="java.lang.Integer" db-attribute-path="source_type"/>
+	</obj-entity>
+	<obj-entity name="NatureAide" className="nc.ccas.gasel.model.budget.NatureAide" dbEntityName="nature_aide">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="code"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="NatureAideFournisseur" className="nc.ccas.gasel.model.budget.NatureAideFournisseur" dbEntityName="nature_aide_fournisseur">
+	</obj-entity>
+	<obj-entity name="SecteurAide" className="nc.ccas.gasel.model.budget.SecteurAide" dbEntityName="secteur_aide">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="code"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypePublicNature" className="nc.ccas.gasel.model.budget.TypePublicNature" dbEntityName="type_public_nature">
+	</obj-entity>
+	<db-relationship name="REV_budget_imp_annuel_parent" source="budget_annuel" target="budget_imp_annuel" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_imp_mensuel_parent" source="budget_imp_annuel" target="budget_imp_mensuel" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="imputation" source="budget_imp_annuel" target="imputation" toMany="false">
+		<db-attribute-pair source="imputation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="budget_imp_annuel" target="budget_annuel" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_secteur_aide_parent" source="budget_imp_mensuel" target="budget_secteur_aide" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="aideMontants" source="budget_imp_mensuel" target="aide_resume_montants" toMany="true">
+		<db-attribute-pair source="id" target="bim_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="budget_imp_mensuel" target="budget_imp_annuel" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_type_public_parent" source="budget_secteur_aide" target="budget_type_public" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="budget_secteur_aide" target="budget_imp_mensuel" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="secteur_aide" source="budget_secteur_aide" target="secteur_aide" toMany="false">
+		<db-attribute-pair source="secteur_aide_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="budget_type_public" target="budget_secteur_aide" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_public" source="budget_type_public" target="type_public" toMany="false">
+		<db-attribute-pair source="type_public_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_imp_annuel_imputation" source="imputation" target="budget_imp_annuel" toMany="true">
+		<db-attribute-pair source="id" target="imputation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_nature_aide_imputation" source="imputation" target="nature_aide" toMany="true">
+		<db-attribute-pair source="id" target="imputation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_nature" source="nature_aide" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_refusee_nature_demande" source="nature_aide" target="aide_refusee" toMany="true">
+		<db-attribute-pair source="id" target="nature_demande_id"/>
+	</db-relationship>
+	<db-relationship name="REV_nature_aide_fournisseur_nature" source="nature_aide" target="nature_aide_fournisseur" toDependentPK="true" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_type_public_nature_nature_aide" source="nature_aide" target="type_public_nature" toMany="true">
+		<db-attribute-pair source="id" target="nature_aide_id"/>
+	</db-relationship>
+	<db-relationship name="imputation" source="nature_aide" target="imputation" toMany="false">
+		<db-attribute-pair source="imputation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="nature_aide" target="secteur_aide" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_arrete" source="nature_aide" target="type_arrete" toMany="false">
+		<db-attribute-pair source="type_arrete_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="fournisseur" source="nature_aide_fournisseur" target="mairccas__gftiers" toDependentPK="true" toMany="false">
+		<db-attribute-pair source="code_fournisseur" target="idetbs"/>
+	</db-relationship>
+	<db-relationship name="nature" source="nature_aide_fournisseur" target="nature_aide" toMany="false">
+		<db-attribute-pair source="nature_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_secteur_aide_secteur_aide" source="secteur_aide" target="budget_secteur_aide" toMany="true">
+		<db-attribute-pair source="id" target="secteur_aide_id"/>
+	</db-relationship>
+	<db-relationship name="REV_nature_aide_parent" source="secteur_aide" target="nature_aide" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="aideMontants" source="secteur_aide" target="aide_resume_montants" toMany="true">
+		<db-attribute-pair source="id" target="secteur_id"/>
+	</db-relationship>
+	<db-relationship name="nature_aide" source="type_public_nature" target="nature_aide" toMany="false">
+		<db-attribute-pair source="nature_aide_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_public" source="type_public_nature" target="type_public" toMany="false">
+		<db-attribute-pair source="type_public_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="budgetsImputation" source="BudgetAnnuel" target="BudgetImpAnnuel" db-relationship-path="REV_budget_imp_annuel_parent"/>
+	<obj-relationship name="imputation" source="BudgetImpAnnuel" target="Imputation" db-relationship-path="imputation"/>
+	<obj-relationship name="mensuels" source="BudgetImpAnnuel" target="BudgetImpMensuel" db-relationship-path="REV_budget_imp_mensuel_parent"/>
+	<obj-relationship name="parent" source="BudgetImpAnnuel" target="BudgetAnnuel" db-relationship-path="parent"/>
+	<obj-relationship name="parSecteur" source="BudgetImpMensuel" target="BudgetSecteurAide" db-relationship-path="REV_budget_secteur_aide_parent"/>
+	<obj-relationship name="parent" source="BudgetImpMensuel" target="BudgetImpAnnuel" db-relationship-path="parent"/>
+	<obj-relationship name="parPublic" source="BudgetSecteurAide" target="BudgetTypePublic" db-relationship-path="REV_budget_type_public_parent"/>
+	<obj-relationship name="parent" source="BudgetSecteurAide" target="BudgetImpMensuel" db-relationship-path="parent"/>
+	<obj-relationship name="secteurAide" source="BudgetSecteurAide" target="SecteurAide" db-relationship-path="secteur_aide"/>
+	<obj-relationship name="parent" source="BudgetTypePublic" target="BudgetSecteurAide" db-relationship-path="parent"/>
+	<obj-relationship name="typePublic" source="BudgetTypePublic" target="TypePublic" db-relationship-path="type_public"/>
+	<obj-relationship name="fournisseurs" source="NatureAide" target="FournisseurMairie" db-relationship-path="REV_nature_aide_fournisseur_nature.fournisseur"/>
+	<obj-relationship name="imputation" source="NatureAide" target="Imputation" db-relationship-path="imputation"/>
+	<obj-relationship name="parent" source="NatureAide" target="SecteurAide" db-relationship-path="parent"/>
+	<obj-relationship name="publicsConcernes" source="NatureAide" target="TypePublicNature" db-relationship-path="REV_type_public_nature_nature_aide"/>
+	<obj-relationship name="typeArrete" source="NatureAide" target="TypeArrete" db-relationship-path="type_arrete"/>
+	<obj-relationship name="fournisseur" source="NatureAideFournisseur" target="FournisseurMairie" db-relationship-path="fournisseur"/>
+	<obj-relationship name="nature" source="NatureAideFournisseur" target="NatureAide" db-relationship-path="nature"/>
+	<obj-relationship name="natures" source="SecteurAide" target="NatureAide" db-relationship-path="REV_nature_aide_parent"/>
+	<obj-relationship name="natureAide" source="TypePublicNature" target="NatureAide" db-relationship-path="nature_aide"/>
+	<obj-relationship name="typePublic" source="TypePublicNature" target="TypePublic" db-relationship-path="type_public"/>
+</data-map>

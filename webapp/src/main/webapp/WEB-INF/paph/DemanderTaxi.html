@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+	<table class="invis"><tbody>
+	<tr>
+		<td colspan="2"><strong>Demande de taxi :</strong></td>
+	</tr>
+	<tr>
+	<td>
+	</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+	<td>Demandeur :</td>
+	<td>
+		<input jwcid="@Insert" value="ognl:parent.personne.prenom"/>&nbsp;
+		<input jwcid="@Insert" value="ognl:parent.personne.nom"/></td>
+	</tr>
+	<tr>
+	<td>Type handicap :</td>
+	<td>
+		<input jwcid="@core/edit/Enum" value="ognl:object.typeHandicap" enum="Handicap" /></td>
+	</tr>
+	<tr>
+	<td>Adresse :</td>
+	<td>
+		<input jwcid="@voirie/edit/Adresse" value="ognl:object.adresse" /></td>
+	</tr>
+	<tr>
+	<td>Téléphone :</td>
+	<td>
+		<input jwcid="@TextField" value="ognl:object.telephone" /></td>
+	</tr>
+	<tr>
+	<td>Date de la demande :</td><td><input jwcid="@core/edit/Date" value="ognl:object.dateDemande"/></td>
+	</tr>
+	<tr>
+	<td>Nécessite un accompagnateur :</td>
+	<td>
+		<select jwcid="@PropertySelection" value="ognl:object.necessiteAccompagnateur" model="ognl:psm.ouiNon" />
+	</td>
+	</tr>
+	<tr>
+	<td>Date d'entrée :</td><td><input jwcid="@core/edit/Date" value="ognl:object.dateEntree"/></td>
+	</tr>
+	<tr>
+	<td>Date de fin de validité :</td><td><input jwcid="@core/edit/Date" value="ognl:object.dateFinValidite"/></td>
+	</tr>
+	<tr>
+	<td>Dérogation :</td>
+	<td><select jwcid="@PropertySelection" value="ognl:object.derogation" model="ognl:psm.ouiNon"  onchange="refreshPage()" /></td>
+	</tr>
+	<span jwcid="@If" condition="ognl:object.derogation">
+	<tr>
+	<td>Motif dérogation :</td>
+	<td><input jwcid="@core/edit/Enum" value="ognl:object.motifDerogation" enum="MotifDerogationPAPH" /></td>
+	</tr>
+	</span>
+	</tbody></table>
+
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+	
+</div>
+</body>
+</html>

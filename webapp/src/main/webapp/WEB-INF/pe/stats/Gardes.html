@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@budget/EntetePeriode"/>
+
+<div jwcid="@core/Tableau" source="ognl:tableau" value="ognl:row">
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Assitantes maternelles">
+		<span jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:assMat.personne.nom"/>
+		<span jwcid="@core/tableau/Colonne" titre="Prenom" value="ognl:assMat.personne.prenom"/>
+		<span jwcid="@core/tableau/Colonne" titre="Téléphone" value="ognl:assMat.personne.telephoneFixe"/>
+		<span jwcid="@core/tableau/Colonne" titre="Date VAD" value="ognl:assMat.agrement"/>
+		<span jwcid="@core/tableau/Colonne" titre="Référent" value="ognl:assMat.referent"/>
+	</span>
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Enfants accueillis">
+		<span jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:enfant.personne.nom"/>
+		<span jwcid="@core/tableau/Colonne" titre="Prenom" value="ognl:enfant.personne.prenom"/>
+		<span jwcid="@core/tableau/Colonne" titre="Né le" value="ognl:enfant.personne.dateNaissance"/>
+		<span jwcid="@core/tableau/Colonne" titre="Type d'accueil"
+				value="ognl:lists.join(', ', modesGarde, 'libelle')"/>
+	</span>
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

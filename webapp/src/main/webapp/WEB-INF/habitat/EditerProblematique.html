@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.actionSociale.dossier.dossier" />
+
+<table><tbody>
+	<tr>
+		<td>Type de problématique :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:type" enum="TypeProblematique"
+			onchange="refreshPage()" /></td>
+	</tr>
+	<span jwcid="@If" condition="ognl:type">
+	<tr>
+		<td>Problématique :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:object.problematique"
+			values="ognl:type?type.problematiques:{}" null="ognl:null"/></td>
+	</tr>
+	<tr>
+		<td>Réponses problématiques :</td>
+		<td><span jwcid="@core/edit/SubSet" from="ognl:object" list="reponses" elements="ognl:type.reponses" /></td>
+	</tr>
+	</span>
+</tbody></table>
+
+</div>
+</div>
+</body>
+</html>

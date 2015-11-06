@@ -1,0 +1,17 @@
+<table class="data-table">
+<x jwcid="@For" source="ognl:rows" index="ognl:index" value="ognl:row"
+	volatile="true" renderTag="false">
+	<thead jwcid="@If" volatile="true" condition="ognl:index == 0">
+		<tr>
+			<th jwcid="@For" volatile="true" source="ognl:row.keySet()"
+				value="ognl:colName"><span jwcid="@Insert" value="ognl:colName">Titre
+			colonne</span></th>
+		</tr>
+	</thead>
+	<tr>
+		<td jwcid="@For" volatile="true" source="ognl:row.keySet()"
+			value="ognl:colName"><span jwcid="@Insert"
+			value="ognl:row.get(colName)">Valeur</span></td>
+	</tr>
+</x>
+</table>

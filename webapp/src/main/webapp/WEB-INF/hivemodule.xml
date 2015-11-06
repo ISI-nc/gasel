@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="web" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="tapestry.url.ServiceEncoders">
+		<page-service-encoder id="page" extension="html" service="page" />
+		<page-service-encoder id="external" extension="external"
+			service="external" />
+		<direct-service-encoder id="direct" stateless-extension="direct"
+			stateful-extension="sdirect" />
+		<asset-encoder id="asset" path="/assets" />
+		<extension-encoder id="extension" extension="svc" after="*" />
+	</contribution>
+
+</module>

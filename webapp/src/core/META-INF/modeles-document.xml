@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.docs" version="1.0.0" package="nc.ccas.gasel.services.core.docs">
+	
+	<service-point id="ModeleDocumentService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="ModeleDocumentService">
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+				<set-service property="squeezer" service-id="tapestry.data.DataSqueezer" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<service-point id="DocumentService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="DocumentService">
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+				<set-service property="squeezer" service-id="tapestry.data.DataSqueezer" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="modele_document" object="service:ModeleDocumentService" />
+		<service name="document" object="service:DocumentService" />
+	</contribution>
+
+</module>

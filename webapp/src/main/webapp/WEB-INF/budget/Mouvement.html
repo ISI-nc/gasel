@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+<p class="titre-page"><span jwcid="@Insert" value="ognl:titre">Titre</span></p>
+<p><table>
+	<tbody>
+		<tr>
+			<td>Budget origine</td>
+			<td>&nbsp;</td>
+			<td>Budget destination</td>
+		</tr>
+		<tr>
+			<td><div jwcid="@budget/ChoixBudget" bean="ognl:object.helperSource">[choix budget]</div></td>
+			<td>&nbsp;</td>
+			<td><div jwcid="@budget/ChoixBudget" bean="ognl:object.helperDestination">[choix budget]</div></td>
+		</tr>
+	</tbody>
+</table></p>
+<p>Montant : <div jwcid="@TextField" value="ognl:object.montant"></div></p>
+<p><input jwcid="@core/BoutonRetour" /></p>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Tableau" source="ognl:dossiersASupprimer" value="ognl:row"
+	selection="ognl:selection">
+
+	<div jwcid="@core/tableau/Colonne" titre="N°" value="ognl:sql.idOf(row)" format="ognl:formatNumero"/>
+	<div jwcid="@core/tableau/GroupeColonnes" titre="Chef de famille">
+		<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:row.chefFamille.nom"/>
+		<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:row.chefFamille.prenom"/>
+		<div jwcid="@core/tableau/Colonne" titre="Naiss." value="ognl:row.chefFamille.dateNaissance"/>
+	</div>
+	<div jwcid="@core/tableau/GroupeColonnes" titre="Adresse d'habitation">
+		<div jwcid="@core/tableau/Colonne" titre="Rue" value="ognl:row.adresseHabitation.rue"/>
+		<div jwcid="@core/tableau/Colonne" titre="Autres" value="ognl:row.adresseHabitation.autres"/>
+	</div>
+
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Dernière modif.">
+		<span jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.modifDate"/>
+		<span jwcid="@core/tableau/Colonne" titre="Par" value="ognl:row.modifUtilisateur"/>
+	</span>
+
+	<span jwcid="@core/tableau/ObjectPageAction" page="dossiers/Edition" value="ognl:row" />
+	<span jwcid="@core/tableau/ActionSupprimer"/>
+
+	<input jwcid="supprimer@Submit" class="button" action="listener:supprimer" value="Supprimer"
+			onclick="return confirm('Supprimer les dossiers séléctionnés ?')"/>
+</div>
+
+<p><input jwcid="@core/BoutonRetour" /></p>
+
+</div>
+</body>
+</html>

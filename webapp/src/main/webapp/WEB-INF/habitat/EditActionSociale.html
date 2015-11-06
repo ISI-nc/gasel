@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />
+
+	<table><tbody>
+	<tr>
+	<td>Date :</td>
+	<td colspan="3"><input jwcid="@core/edit/Date" value="ognl:object.date" /><br/></td>
+	</tr>
+	<tr>
+	<td>Projet :</td>
+	<td colspan="3"><input jwcid="@TextArea" value="ognl:object.projet" /><br/></td>
+	</tr>
+	<tr>
+	<td>Description :</td>
+	<td colspan="3"><input jwcid="@TextArea" value="ognl:object.description" /><br/></td>
+	</tr>
+	<tr>
+		<td class="label">En cours ?</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.enCours" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr>
+		<td class="label">Par famille :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.parFamille" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr>
+		<td class="label">Par référent social :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.parReferentSocial" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr>
+		<td class="label">Projet insertion :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.projetInsertion" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr>
+		<td class="label">Contrats objectif :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.contratObjectifs" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr><td colspan="2">
+	<table jwcid="@core/Tableau" source="ognl:object.detailsPrives" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Libelle" value="ognl:row.libelle" />
+			<div jwcid="@core/tableau/Colonne" titre="Echéance" value="ognl:row.echeance" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditerObjectif" parentProperty="actionSociale"/>
+			<div jwcid="@core/tableau/ActionSupprimer" titre="Actions" parent="ognl:object" liste="detailsPrives"/>
+			<input jwcid="ajouterObjectif@Submit" value="Ajouter" action="listener:ajouterObjectif" class="button"/>
+	</table>
+	</td></tr>
+	</tbody></table>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Page d'édition des bons</description>
+
+	<property name="titre" initial-value="literal:Édition de bons"/>
+	
+	<property name="mois" persist="workflow"
+		initial-value="ognl:dates.debutMois"/>
+	
+	<property name="bon"/>
+	<property name="results"/>
+	
+</page-specification>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="Arrete" results="ognl:results" prefetch="type,bonsValides">
+	<tr><td class="label">Année :</td>
+		<td><input jwcid="@core/search/critere/PeriodeMois" path="creation" size="4"
+			toujoursActif="true"/></td>
+	</tr>
+</table>
+
+<p jwcid="@If" condition="ognl:results">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:sort(results).by('numero').results" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:value.numero"/>
+		<div jwcid="@core/tableau/Colonne" titre="Créé le" value="ognl:value.creation" format="ognl:dateFormat"/>
+		<div jwcid="@core/tableau/Colonne" titre="Type arrêté" value="ognl:value.type.libelle"/>
+		<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:value.montant"/>
+		
+		<div jwcid="@core/tableau/ObjectPageAction" page="arretes/Creation" />
+		<div jwcid="@core/tableau/ActionSupprimer" disabled="ognl:value.edite" />
+	</div>
+</p>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="arretes/Creation" />
+	<input jwcid="@core/BoutonRetour" />
+</p>
+</div>
+</body>
+</html>

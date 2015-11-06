@@ -1,0 +1,16 @@
+digraph "Cycle de vie d'un bon" {
+	node [shape=record];
+	
+	new [label="", shape=circle];
+	cree [label="5|Créé"];
+	edite [label="4|Édité"];
+	annule [label="3|Annulé"];
+	part_utilise [label="2|Partiellement utilisé"];
+	utilise [label="1|Utilisé"];
+	
+	// ------
+
+	new -> cree -> {edite; annule};
+	edite -> {annule; utilise; part_utilise};
+
+}

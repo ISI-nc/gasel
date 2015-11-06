@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.pe" version="1.0.0" package="nc.ccas.gasel">
+
+<!--
+	<contribution configuration-id="gasel.Modules">
+		<module dossier="pe" titre="Petite Enfance">
+			<partie-module titre="Enfants">
+				<point-entree titre="Recherche / Création de dossier" page="RecherchePE">
+					Permet de créer ou de rechercher un dossier Petite Enfance.
+				</point-entree>
+			</partie-module>
+			<partie-module titre="Assitantes maternelles">
+				<point-entree titre="Recherche Assistante Maternelle" page="RechercheAM">
+					Permet de créer ou de rechercher un dossier Assistante Maternelle.
+				</point-entree>
+				<point-entree titre="Création AM" page="CreationAM">
+					Permet de créer un dossier Assistante Maternelle.
+				</point-entree>
+			</partie-module>
+			<partie-module titre="Statistiques" dossier="stats">
+				<point-entree titre="Suivi des parents" page="SuiviParents">
+					Contacts sur une période donnée.
+				</point-entree>
+				<point-entree titre="Fréquentation" page="Frequentation">
+					Suvi de la fréquentation du R.A.M. sur une période donnée.
+				</point-entree>
+				<point-entree titre="Gardes" page="Gardes">
+					Statistiques sur les assistances maternelles.
+				</point-entree>
+			</partie-module>
+		</module>
+	</contribution>
+-->
+
+</module>

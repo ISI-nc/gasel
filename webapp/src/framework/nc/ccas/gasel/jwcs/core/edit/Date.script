@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE script PUBLIC
+	"-//Apache Software Foundation//Tapestry Script Specification 3.0//EN"
+	"http://tapestry.apache.org/dtd/Script_3_0.dtd">
+  
+<script>
+
+<include-script resource-path="Date.js"/>
+
+<input-symbol key="clientId" class="java.lang.String" required="yes"/>
+
+<let key="comp" unique="yes">
+	date_${clientId}	
+</let>
+
+<let key="fieldChangeHandler">
+  ${comp}.updateDate();	
+</let>
+<let key="iconClickHandler">
+  ${comp}.toggleCalendar();	
+</let>
+<let key="tdClickHandler">
+  ${comp}.setDate(this.embeddedDate);${comp}.hideCalendar();
+</let>
+
+<body>
+var ${comp};
+</body>
+
+<initialization>
+${comp} = new DateComponent("${clientId}");
+</initialization>
+</script>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@budget/EntetePeriode" debut="ognl:periodeDebut" fin="ognl:periodeFin"/>
+
+<div jwcid="@If" condition="ognl:periodeDebut and periodeFin">
+    <div jwcid="@core/Tableau" titre="ognl:titre" source="ognl:tableau" value="ognl:row">
+   		<span jwcid="@core/tableau/Colonne" value="ognl:row.titre" titre="Public" highlight="true"/>
+   		<span jwcid="@core/tableau/GroupeColonnes" titre="Occasionnel">
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.occasionnel.nbDossiers" titre="Nb dossiers"/>
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.occasionnel.nbPersonnes" titre="Nb admin."/>
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.occasionnel.montant" titre="Montant global"/>
+   		</span>
+   		<span jwcid="@core/tableau/GroupeColonnes" titre="Urgent">
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.immediat.nbDossiers" titre="Nb dossiers"/>
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.immediat.nbPersonnes" titre="Nb admin."/>
+     		<span jwcid="@core/tableau/Colonne" value="ognl:row.immediat.montant" titre="Montant global"/>
+   		</span>
+    	<span jwcid="@core/tableau/Colonne" value="ognl:row.total" titre="Total utilisé"/>
+   	</div>
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

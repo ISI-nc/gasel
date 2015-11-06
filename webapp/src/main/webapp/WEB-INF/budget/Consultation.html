@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<p class="titre-page"><span jwcid="@Insert" value="ognl:titre">Titre</span></p>
+
+<div jwcid="@core/ParamArea" action="listener:updateBudget">
+
+<p><strong>Budget :</strong></p>
+
+	Année :      <select jwcid="@PropertySelection" value="ognl:bean.annee"
+						 model="ognl:anneeModel"/>
+
+	Imputation : <select jwcid="@core/edit/Enum" value="ognl:bean.imputation" 
+            			 values="enum:Imputation" onchange="refreshPage()"/>
+
+	Mois :       <select jwcid="@PropertySelection" value="ognl:bean.mois" model="ognl:psm.withNull(psm.mois)"
+	            		 onchange="refreshPage()" />
+
+	Secteur :    <span jwcid="@If" condition="ognl:bean.imputation and bean.mois">
+           			<select jwcid="@core/edit/Enum"
+						value="ognl:bean.secteur" values="ognl:bean.imputation.secteursAide"
+            			onchange="refreshPage()" />
+					</span>
+				 <span jwcid="@Else"><small>Pas de secteur d'aide</small></span>
+
+	Public :     <span jwcid="@If" condition="ognl:bean.secteur and budgetImp and !budgetImp.repartitionParSecteur">
+           			<select jwcid="@core/edit/Enum"
+						value="ognl:bean.public" values="ognl:bean.imputation ? bean.imputation.typesPublic : {}"
+            			onchange="refreshPage()" />
+				 </span>
+				 <span jwcid="@Else"><small>Pas de type de public</small></span>
+				 
+<p><strong>Options</strong></p>
+
+	<input jwcid="showChildren@Checkbox" value="ognl:showChildrenValue"/><label for="showChildren">&nbsp;Afficher
+		le résumé des sous-budgets.</label>
+
+</div>
+
+<div jwcid="@If" condition="ognl:budget">
+
+	<a name="resume"/>
+	<div style="float:right;">
+		<a href="#details">Détails</a> |
+		<a href="#bons">Bons</a>
+	</div>
+	<p>Résumé budgétaire</p>
+
+	<div jwcid="@budget/ResumeBudgetaire" rows="ognl:resume" titre="Résumé budgétaire">
+		<input jwcid="@Submit" action="listener:showDetails" value="Voir les détails"/>
+	</div>
+
+	<a name="details"/>
+	<div style="float:right;">
+		<a href="#resume">Résumé</a> |
+		<a href="#bons">Bons</a>
+	</div>
+	<p>Détail des montants</p>
+	
+	<div jwcid="@core/Tableau" source="ognl:budget.aideMontants" value="ognl:am"
+		titre="Détail des montants" lignesParPage="20">
+		<span jwcid="@core/tableau/GroupeColonnes" titre="Période">
+			<span jwcid="@core/tableau/Colonne" titre="Année" value="ognl:am.annee"/>
+			<span jwcid="@core/tableau/Colonne" titre="Mois" value="ognl:am.mois+1"/>
+		</span>
+		<span jwcid="@core/tableau/GroupeColonnes" titre="Dossier">
+			<span jwcid="@core/tableau/Colonne" titre="Numéro"
+				  value="ognl:sql.idOf(am.aide.dossier)" format="ognl:@nc.ccas.gasel.Formats@NUMERO_DOSSIER"/>
+			<span jwcid="@core/tableau/Colonne" titre="Chef de famille"
+				  value="ognl:am.aide.dossier.dossier.chefFamille.repr"/>
+		</span>
+		<span jwcid="@core/tableau/GroupeColonnes" titre="Aide">
+			<span jwcid="@core/tableau/Colonne" titre="Secteur" value="ognl:am.aide.nature.parent"/>
+			<span jwcid="@core/tableau/Colonne" titre="Nature" value="ognl:am.aide.nature"/>
+			<span jwcid="@core/tableau/Colonne" titre="Public" value="ognl:am.aide.public"/>
+			<span jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:am.aide.statut"/>
+		</span>
+		<span jwcid="@core/tableau/GroupeColonnes" titre="Montants">
+			<span jwcid="@core/tableau/Colonne" titre="Engagé" value="ognl:am.montantEngage"/>
+			<span jwcid="@core/tableau/Colonne" titre="Edité" value="ognl:am.montantBonsEdite"/>
+			<span jwcid="@core/tableau/Colonne" titre="Inutilisé" value="ognl:am.montantInutilise"/>
+		</span>
+		
+		<span jwcid="@core/tableau/ActionDetails" title="Voir les bons" action="listener:showBons"/>
+	</div>
+
+	<a name="bons"/>
+	<div style="float:right;">
+		<a href="#resume">Résumé</a> |
+		<a href="#details">Détails</a>
+	</div>
+	<p>Détail des bons</p>
+	
+	<div jwcid="@If" condition="ognl:refBons">
+		<div jwcid="@core/Tableau" source="ognl:refBons.bons" value="ognl:bon" titre="Détail des bons">
+			<span jwcid="@core/tableau/Colonne" titre="Bénéficiaire" value="ognl:bon.personne.repr"/>
+			<span jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:bon.numero"/>
+			<span jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:bon.montant"/>
+			<span jwcid="@core/tableau/Colonne" titre="Montant utilisé" value="ognl-protect:bon.usage.montantUtilise"/>
+			<span jwcid="@core/tableau/Colonne" titre="Facture" value="ognl-protect:bon.usage.facture.facture.numero"/>
+			<span jwcid="@core/tableau/Colonne" titre="Arrêté" value="ognl-protect:bon.usage.arrete.numero"/>
+			<span jwcid="@core/tableau/Colonne" titre="Etat" value="ognl:bon.etat"/>
+		</div>
+	</div>
+	
+</div>
+			
+    <p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</body>
+</html>

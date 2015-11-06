@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<project name="gasel-db-v2" default="jar">
+
+	<property name="web-inf" value="../GASEL/context/WEB-INF/lib" />
+
+	<target name="all" depends="gen-sync, jar" />
+
+	<path id="classpath">
+		<pathelement path="${web-inf}/cayenne.jar" />
+		<pathelement path="${web-inf}/asystan-common.jar" />
+		<pathelement path="${web-inf}/hivemind-1.1.1.jar" />
+		<pathelement path="${web-inf}/tapestry-annotations-4.1.6.jar" />
+		<pathelement path="lib/com.ibm.ws.runtime_6.1.0.jar" />
+	</path>
+
+	<target name="jar">
+		<mkdir dir="build" />
+		<javac srcdir="gen-src:src" classpathref="classpath" destdir="build" debug="yes" source="1.5" target="1.5" encoding="UTF-8" />
+		<copy todir="build">
+			<fileset dir="gen-src">
+				<include name="**/*.xml" />
+			</fileset>
+		</copy>
+		<java classname="BuildCayenneXmlMairie" fork="true" classpath="bin:lib/xom-1.0.jar" />
+		<delete file="build/cayenne.xml" />
+		<copy todir="build" file="mairie/cayenne.xml" />
+		<jar destfile="${web-inf}/gasel-db.jar" basedir="build" />
+	</target>
+
+	<target name="gen-sync">
+		<java classname="MyGen" fork="true">
+			<sysproperty key="log4j.configuration" value="file:log4j.properties" />
+			<sysproperty key="subclass-template" value="schemas/subclass.vm" />
+			<sysproperty key="superclass-template" value="schemas/superclass.vm" />
+
+			<sysproperty key="mairie.dev-mode" value="true" />
+			<sysproperty key="mairie.jdbc.driver" value="org.postgresql.Driver" />
+			<sysproperty key="mairie.jdbc.url" value="jdbc:postgresql://localhost:5432/gasel_v2" />
+			<sysproperty key="mairie.jdbc.user" value="postgres" />
+			<sysproperty key="mairie.jdbc.pass" value="" />
+
+			<classpath path="schemas" />
+
+			<classpath path="bin" />
+			<classpath path="lib/xom-1.0.jar" />
+			<classpath path="${web-inf}/hivemind-1.1.1.jar" />
+			<classpath path="${web-inf}/commons-lang-2.4.jar" />
+			<classpath path="lib/commons-logging-1.0.4.jar" />
+			<classpath path="${web-inf}/javassist-3.7.ga.jar" />
+			<classpath path="${web-inf}/cayenne.jar" />
+			<classpath path="${web-inf}/asystan-common.jar" />
+			<classpath path="lib/cayenne-tools.jar" />
+			<classpath path="lib/dia-to-cayenne.jar" />
+			<classpath path="${web-inf}/jdbc3-postgresql.jar" />
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="build" />
+		<delete file="${web-inf}/gasel-db.jar" />
+	</target>
+
+	<target name="tests-sur-jar">
+		<java classname="TestSurJar" fork="true">
+			<sysproperty key="mairie.dev-mode" value="true" />
+			<sysproperty key="mairie.jdbc.driver" value="org.postgresql.Driver" />
+			<sysproperty key="mairie.jdbc.url" value="jdbc:postgresql://localhost:5432/gasel_v2" />
+			<sysproperty key="mairie.jdbc.user" value="postgres" />
+			<sysproperty key="mairie.jdbc.pass" value="postgres" />
+
+			<classpath path="tests-bin" />
+			<classpath path="lib/junit-4.1.jar" />
+			<classpath path="${web-inf}/gasel-db.jar" />
+			<classpath path="${web-inf}/cayenne.jar" />
+			<classpath path="${web-inf}/asystan-common.jar" />
+			<classpath path="${web-inf}/jdbc3-postgresql.jar" />
+		</java>
+	</target>
+	
+</project>

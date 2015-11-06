@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<project name="gasel" default="war">
+	<property file="build.properties" />
+
+	<target name="war" depends="war-dev,war-prod">
+	</target>
+
+	<target name="war-dev">
+		<build-war mode="dev" />
+	</target>
+
+	<target name="war-prod">
+		<build-war mode="prod" />
+	</target>
+
+	<target name="ear" depends="ear-dev,ear-prod">
+	</target>
+
+	<target name="ear-dev" depends="war-dev">
+		<build-ear mode="dev" />
+	</target>
+
+	<target name="ear-prod" depends="war-prod">
+		<build-ear mode="prod" />
+	</target>
+
+	<target name="run:jetty">
+		<java jar="${jetty.home}/start.jar" fork="true">
+			<jvmarg value="-Djetty.home=${jetty.home}" />
+			<jvmarg value="-Dorg.apache.tapestry.disable-caching=true" />
+			<arg value="jetty.xml" />
+		</java>
+	</target>
+
+	<target name="javadoc">
+		<javadoc destdir="doc/javadoc" sourcepath="src" />
+	</target>
+
+	<target name="tapdoc">
+		<!-- FIXME Marche pas... -->
+		<path id="classpath.full">
+			<fileset dir="context/WEB-INF/lib" />
+			<fileset dir="lib" />
+			<pathelement path="context/WEB-INF/classes" />
+		</path>
+
+		<property name="javadocLinks" value="-link http://java.sun.com/j2se/1.5.0/docs/api/" />
+
+		<property name="output" value="doc/tapdocs" />
+		<mkdir dir="${output}" />
+
+		<javadoc source="1.5" classpathref="classpath.full" doclet="com.erinors.tapestry.tapdoc.doclet.TapdocDoclet" docletpathref="classpath.full" destdir="${output}">
+			<packageset dir="src" />
+		</javadoc>
+
+		<taskdef name="tapdoc" classname="com.erinors.tapestry.tapdoc.TapDocTask" classpathref="classpath.full" />
+
+		<tapdoc libraries="/nc/ccas/gasel/Gasel.library" outputDirectory="${output}" />
+
+	</target>
+
+	<target name="docs">
+		<antcall target="javadoc" />
+		<antcall target="tapdoc" />
+	</target>
+	
+	<target name="clean">
+		<delete dir="build"/>
+		<delete dir="dist"/>
+	</target>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: build-war          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="build-war">
+		<attribute name="mode" default="dev" />
+		<sequential>
+			<mkdir dir="build/war-@{mode}" />
+			<copy todir="build/war-@{mode}">
+				<fileset dir="context" />
+				<!-- <fileset dir="context" excludes="WEB-INF/classes/**" /> -->
+			</copy>
+			<copy file="context-override/web.application" todir="build/war-dev/WEB-INF" />
+			<mkdir dir="build/war-@{mode}/WEB-INF/classes" />
+			<!-- <javac destdir="build/war-@{mode}/WEB-INF/classes" srcdir="src" target="1.5" encoding="UTF-8">
+				<classpath>
+					<fileset dir="context/WEB-INF/lib" />
+					<fileset dir="lib" />
+				</classpath>
+			</javac> -->
+
+			<copy todir="build/war-@{mode}" overwrite="yes">
+				<fileset dir="deploy/war-@{mode}" />
+			</copy>
+
+			<mkdir dir="dist" />
+			<war destfile="dist/gasel_v2_@{mode}.war"
+				basedir="build/war-@{mode}" webxml="build/war-@{mode}/WEB-INF/web.xml" />
+			
+		</sequential>
+	</macrodef>
+
+	<!-- = = = = = = = = = = = = = = = = =
+          macrodef: build-ear          
+         = = = = = = = = = = = = = = = = = -->
+	<macrodef name="build-ear">
+		<attribute name="mode" default="dev" />
+		<sequential>
+			<mkdir dir="build/ear-@{mode}" />
+			<copy todir="build/ear-@{mode}" overwrite="yes">
+				<fileset dir="deploy/ear-@{mode}"/>
+			</copy>
+			<copy file="dist/gasel_v2_@{mode}.war" todir="build/ear-@{mode}" />
+			
+			<ear destfile="dist/gasel_v2_@{mode}.ear" basedir="build/ear-@{mode}"
+				appxml="build/ear-@{mode}/META-INF/application.xml" />
+		</sequential>
+	</macrodef>
+
+</project>

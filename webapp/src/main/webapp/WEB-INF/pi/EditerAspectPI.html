@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:object.dossier" />
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<table><tbody>
+	<tr>
+		<td colspan="2"><strong>Dossier jardin familial :</strong></td>
+	</tr>
+	<tr><td>Référent familial :</td>
+	<td><select jwcid="@PropertySelection" value="ognl:object.referentFamilial" model="ognl:psm.all('Utilisateur')">
+					<option>referent</option>
+	</select></td>
+	</tr>
+	<tr>
+	<td colspan="2">
+		<div><strong>Demandes :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.demandes" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Actif" value="ognl:row.active?'oui':'non'"" />
+			<div jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.jardin" />
+			<div jwcid="@core/tableau/Colonne" titre="Origine" value="ognl:row.origine" />
+			<div jwcid="@core/tableau/Colonne" titre="Num Enregistrement" value="ognl:row.numEnregistrement" />
+			<div jwcid="@core/tableau/Colonne" titre="Commission" value="ognl:row.commission" />
+			<div jwcid="@core/tableau/Colonne" titre="Avis" value="ognl:row.avisCommission" />
+
+			<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerDemandeJF" parentProperty="dossier"/>
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="demandes"
+					disabled="ognl:row.attribution"/>
+			<div jwcid="@core/tableau/Action" title="Attribuer" action="listener:ajouterAttribution"
+					disabled="ognl:isNew(row) or row.attribution"/>
+		</table>
+
+		<div><strong>Ajouter une demande :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="demandes" value="ognl:demande"
+				onadd="listener:reaffecterReferent">
+		<tr>
+			<td>Demandeur :</td>
+			<td>
+				<input jwcid="@Insert" value="ognl:parent.chefFamille.prenom"/>&nbsp;
+				<input jwcid="@Insert" value="ognl:parent.chefFamille.nom"/></td>
+			</tr>
+			<tr>
+			<td>Jardin :</td><td><input jwcid="@PropertySelection" value="ognl:demande.jardin"
+					model="ognl:psm.all('JardinFamilial')" /></td>
+			</tr>
+			<tr>
+			<td>Date de la demande :</td><td><input jwcid="@core/edit/Date" value="ognl:demande.date" /></td>
+			</tr>
+			<tr>
+			<td>Origine :</td><td><input jwcid="@core/edit/Enum" value="ognl:demande.origine" enum="OrigineDemandeJF" /></td>
+			</tr>
+			<tr><td>Num. enregistrement :</td>
+				<td><input jwcid="@TextField" value="ognl:demande.numEnregistrement" /></td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+	</tbody></table>
+</div>
+
+<div jwcid="@core/Onglet" titre="Attributions">
+	<div><strong>Attributions :</strong></div>
+	<table jwcid="@core/Tableau" source="ognl:object.attributions" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Date attr." value="ognl:row.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Date dem." value="ognl:row.demande.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.demande.jardin.nom" />
+		<div jwcid="@core/tableau/Colonne" titre="Parcelle" value="ognl:row.parcelle.numero" />
+		<div jwcid="@core/tableau/Colonne" titre="Type prévu" value="ognl:row.typePrevu" />
+		<div jwcid="@core/tableau/Colonne" titre="Dossier" value="ognl:object.dossier.chefFamille.repr"/>
+		<div jwcid="@core/tableau/Colonne" titre="Collectivité" value="ognl:row.demande.collectivite" />		
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerAttribution"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:row.demande" liste="attributions" />
+	</table>
+</div>
+
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/LayoutActions" actions="component:actions">
+
+<table class="invis">
+	<tbody>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_eau')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_eau').modele" variables="ognl:variables('aides.courrier_eau')" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_eau_partiel')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_eau_partiel').modele" variables="ognl:variables('aides.courrier_eau_partiel')" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_frn_eau')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_frn_eau').modele" variables="ognl:variables('aides.courrier_frn_eau')" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_om')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_om').modele" variables="ognl:variables('aides.courrier_om')" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_frn_om')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_frn_om').modele" variables="ognl:variables('aides.courrier_frn_om')" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('aides.courrier_frn_gaz')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('aides.courrier_frn_gaz').modele" variables="ognl:variables('aides.courrier_frn_gaz')" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div jwcid="actions@Block">
+
+	<div jwcid="@core/show/Validator" validator="ognl:checkResult"/>
+
+	<p><input jwcid="@core/BoutonRetour" value="Annuler" /></p>
+
+	<p><input jwcid="enregistrerEtFermer@Submit" class="button" value="Enregistrer et fermer"
+		action="listener:enregistrerEtFermer" /></p>
+		
+	<p><input jwcid="enregistrerSansFermer@Submit" class="button" value="Enregistrer sans fermer"
+		action="listener:enregistrer" /></p>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

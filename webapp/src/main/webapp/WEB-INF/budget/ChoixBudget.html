@@ -1,0 +1,38 @@
+<table><tbody>
+            	<tr>
+            		<td>Année : </td>
+            		<td><div jwcid="@TextField" value="ognl:bean.annee" /></td>
+            	</tr>
+            	<tr>
+            		<td>Imputation ou caisse : </td>
+            		<td><select jwcid="@core/edit/Enum" value="ognl:bean.imputation" 
+            			values="enum:Imputation" onchange="refreshPage()"/></td>
+            	</tr>
+            	<tr>
+            		<td>Mois : </td>
+            		<td><span jwcid="@If" condition="ognl:bean.imputation">
+            			<select jwcid="@PropertySelection" value="ognl:bean.mois" model="ognl:psm.withNull(psm.mois)"
+	            			onchange="refreshPage()" />
+						</span>
+						<span jwcid="@Else"><small>--</small></span></td>
+            	</tr>
+            	<tr>
+            		<td>Secteur d'aide : </td>
+            		<td><span jwcid="@If" condition="ognl:bean.imputation and bean.mois">
+            			<select jwcid="@core/edit/Enum"
+							value="ognl:bean.secteur" values="ognl:bean.imputation.secteursAide"
+	            			onchange="refreshPage()" />
+						</span>
+						<span jwcid="@Else"><small>Pas de secteur d'aide</small></span></td>
+            	</tr>
+            	<tr>
+            		<td>Type de public : </td>
+            		<td><span jwcid="@If" condition="ognl:budgetImp and !budgetImp.repartitionParSecteur">
+            			<select jwcid="@core/edit/Enum"
+							value="ognl:bean.public" values="ognl:bean.imputation ? bean.imputation.typesPublic : {}"
+	            			onchange="refreshPage()" />
+						</span>
+						<span jwcid="@Else"><small>Pas de type de public</small></span>
+					</td>
+            	</tr>
+</tbody></table>

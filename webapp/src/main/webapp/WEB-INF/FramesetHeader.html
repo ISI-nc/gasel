@@ -1,0 +1,28 @@
+<html jwcid="@Shell" title="" stylesheet="asset:stylesheet">
+<body jwcid="@Body">
+<div id="header">
+
+	<div style="position:absolute; left: 6px;">
+		<img id="loading" jwcid="@Image" image="asset:loading"
+			title="Traitement en cours" alt="" style="display:none;" />
+		<span id="chrono"></span>
+	</div>
+
+	<div style="position:absolute; right:6px; text-align:right;">
+
+		<button id="session-timeout" class="button" onclick="window.parent.main.refreshPage()"
+			title="Temps avant expiration de la session">--</button>
+
+		<img id="print" jwcid="@Image" image="asset:print" title="Cliquer pour imprimer ;-)" alt=""
+				onclick="parent.main.focus();window.print()"/>
+
+	</div>
+
+	<div id="titre">CCAS</div>
+
+</div>
+
+<script type="text/javascript" src="js/header.js"></script>
+
+</body>
+</html>

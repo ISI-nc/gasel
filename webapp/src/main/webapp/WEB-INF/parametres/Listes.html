@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<div jwcid="side@core/SideBar" source="ognl:enums" value="ognl:liste" autoSelectFirst="true"
+	style="width:100%;" sideStyle="width:20ex;">
+   	<div style="font-weight:bold; margin-bottom: 6px;"><span jwcid="@Insert" value="ognl:liste.title"></span></div>
+   	
+	<p jwcid="@If" condition="ognl:hasParent">
+		Filtre&nbsp;:
+		<select jwcid="@core/edit/Enum" value="ognl:filter" enum="ognl:parentEnum" null="(tous)"
+			onchange="refreshPage()">
+		</select>
+	</p>
+	
+	<div jwcid="liste@core/Tableau" source="ognl:values" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="Parent" value="ognl:value.parent" visible="ognl:hasParent" />
+		<div jwcid="@core/tableau/Colonne" titre="Libellé" value="ognl:value.libelle"/>
+		<div jwcid="@core/tableau/ObjectPageAction" page="ognl:liste.customEditPage"/>
+		<div jwcid="@parametres/ActionSupprimer" disabled="ognl:value.locked" />
+		
+		<div jwcid="@If" condition="ognl:liste.customEditPage != defaultEditPage">
+			<input jwcid="@core/BoutonCreer" value="Ajouter"
+					pageCreation="ognl:liste.customEditPage" />
+		</div>
+	</div>
+	
+	<div jwcid="@If" condition="ognl:liste.customEditPage == defaultEditPage">
+		<div style="margin: 6px 0; font-weight: bold;">Ajouter une valeur</div>
+		
+		<div jwcid="@If" condition="ognl:hasParent">
+			Parent : <select jwcid="@core/edit/Enum" value="ognl:newValueParent" enum="ognl:parentEnum" null="ognl:null"></select>
+		</div>
+		Libellé : <input jwcid="@TextField" value="ognl:newValue"/>
+		<input jwcid="ajouterValeur@Submit" value="Ajouter" action="listener:ajouterValeur" class="button"/>
+	</div>
+</div>
+
+<p><input jwcid="@core/BoutonRetour" /></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="FournisseurMairie"
+	results="ognl:results">
+	<tbody>
+		<tr>
+			<td class="label">Nom du fournisseur&nbsp;:</td>
+			<td><span jwcid="@core/search/critere/Contient" path="libelle" />
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p jwcid="@If" condition="ognl:results">
+<div jwcid="@core/Tableau" titre="Résultats" source="ognl:sort(results).by('libelle').results"
+	value="ognl:value">
+<div jwcid="@core/tableau/Colonne" titre="Nom"
+	value="ognl:value.libelle" />
+<div jwcid="@core/tableau/ActionChoisir" />
+</div>
+</p>
+<p><input jwcid="@core/BoutonRetour" /></p>
+
+</div>
+</body>
+</html>

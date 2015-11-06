@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+	
+	<table>
+	<tr>
+		<td class="label">Libelle :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.libelle"/></td>
+	</tr>
+	<tr>
+		<td class="label">Description :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.description"/></td>
+	</tr>
+	<tr>
+		<td class="label">Référent social :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.referentSocial"
+				model="ognl:psm.all('Utilisateur')">
+				<option>referent</option>
+			</select></td>
+	</tr>
+	<tr>
+		<td class="label">T.I.S.F. :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.referentFamilial"
+				model="ognl:psm.all('Utilisateur')">
+				<option>referent</option>
+			</select></td>
+	</tr>
+	<tr>
+		<td>Problématiques :</td>
+		<td><span jwcid="@core/edit/SubSet" values="ognl:object.problematiques" elements="enum:Problematique"/></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+		<div jwcid="@core/Tableau" titre="Dossiers habitat attachés"
+			source="ognl:object.dossiers" value="ognl:dossierHabitat">
+			<div jwcid="@core/tableau/Colonne" titre="Chef de famille" value="ognl:dossierHabitat.dossier.chefFamille"/>
+			<div jwcid="@core/tableau/Colonne" titre="Numéro dossier" value="ognl:sql.idOf(dossierHabitat.dossier)"/>
+			
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="dossiers"/>
+			<input jwcid="ajouterDossier@Submit" value="Ajouter" class="button" action="listener:ajouterDossierAttache"/>
+		</div></td>
+	<tr>
+	</table>
+
+</div>
+
+</div>
+</body>
+</html>

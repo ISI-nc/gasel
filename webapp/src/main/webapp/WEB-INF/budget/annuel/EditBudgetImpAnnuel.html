@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="border@Border">
+
+<div jwcid="page@Any">
+
+<div jwcid="@core/Form">
+
+<table class="section">
+    <tbody>
+      <tr>
+        <td class="section">
+        <table style="width: 100%;">
+          <tbody>
+            <tr>
+              <td colspan="2"><p>Budget</p>
+              <table width="100%">
+                  <tr>
+                    <td class="label">Année :</td>
+					<td class="label"><input name="annee" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:parent.annee"></input></td>
+                    <td class="label">Montant :</td>
+					<td class="label"><input name="imputation" size="8" jwcid="@Insert"
+						tabindex="1"  format="ognl:format.montant" value="ognl:parent.montant"></input></td>
+                  </tr>
+              </table>
+              </td>
+            </tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+              <td>
+              <table width="100%">
+              <tbody>
+                  <tr>
+                    <td class="label">Imputation :</td>
+					<td><input jwcid="imputationSelect@core/edit/Enum" value="ognl:imputation" enum="Imputation" 
+					null="ognl:null" onchange="document.getElementById('changerBudgetEncoursEdition').click()"/>
+					<input style="display:none;" jwcid="changerBudgetEncoursEdition@Submit" action="listener:changerBudgetEncoursEdition"/>
+					</td>
+					<td class="label">Total</td>
+					<td><div jwcid="@core/edit/Montant" value="ognl:object.montant"></div></td>
+					<td><input jwcid="repartir@Submit" action="listener:repartirBudgetImpMensuel" 
+					value="Répartir sur 12 mois" class="button"/></td> 
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Reste à répartir :</td>
+                    <td><input size="8" jwcid="@core/edit/Montant" value="ognl:object.restant"/></td>
+					<td align="right"></td>
+                  </tr>
+              </tbody>
+              </table>
+			  </td>
+			</tr>
+			<tr>
+				<td><p>&nbsp;</p><p>
+				<table  class="data-table">
+				<tbody>
+					<tr>
+						<th colspan="3">Répartition du budget d'imputation sur l'année</th>
+					</tr>
+					<tr>
+						<th>Mois</th>
+						<th>Montant</th>
+						<!-- <th>Reste à répartir</th> -->
+					</tr>
+					<tr jwcid="@For" source="ognl:sort(object.mensuels).by('mois').results" value="ognl:budImpMensuel" element="tr">
+						<td><div jwcid="@core/show/Mois" value="ognl:budImpMensuel.mois"></div></td>
+						<td><input jwcid="@core/edit/Montant" value="ognl:budImpMensuel.montant"/></td>
+						<!-- <td><div jwcid="@Insert" value="ognl:budImpMensuel.restant"></div></td> -->
+					</tr>
+				</tbody>
+				</table>
+			
+       		 <input jwcid="gerer@Submit" action="listener:editerBudgetImpMensuel" 
+					value="ognl:'Gérer les budgets par ' + (object.repartitionParSecteur ? 'secteur' : 'public')"
+					class="button" disabled="ognl:objectContext.newObjects()"/> 
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</div>
+</div>
+</body>
+</html>

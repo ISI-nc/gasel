@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+	<div jwcid="@core/Tableau" source="ognl:aides" value="ognl:aide">
+	
+		<div jwcid="@core/tableau/Colonne" titre="Dossier" value="ognl:sql.idOf(aide.dossier)"
+			format="ognl:format.numeroDossier"/>
+		
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Nature">
+			<div jwcid="@core/tableau/Colonne" titre="Secteur" value="ognl:aide.nature.parent"/>
+			<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:aide.nature"/>
+			<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:aide.statut"/>
+			<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:aide.public"/>
+		</div>
+		
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Période">
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:aide.debut" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:aide.fin" format="ognl:dateFormat"/>
+		</div>
+		
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Montant mensuel">
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:aide.montant"/>
+			<div jwcid="@core/tableau/Colonne" titre="Qté" value="ognl:aide.quantiteMensuelle"/>
+		</div>
+		
+	    <input class="button" jwcid="preparer@Submit" value="Préparer" action="listener:preparerAides"
+	    		onclick="return confirm('Préparer les aides ?');" disabled="ognl:aides"/>
+		
+	    <input class="button" jwcid="valider@Submit" value="Valider" action="listener:validerAides"
+	    		onclick="return confirm('Valider ces aides ?');" disabled="ognl:!aides"/>
+	</div>
+	
+	<input class="button" jwcid="@core/BoutonRetour"/>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Budget par type de public</description>
+	
+	<property name="titre">literal:Création - Budget par type de public</property>
+	<property name="budget"/>
+	<property name="annee" />
+	<property name="mois" />
+	<property name="imputation"/>
+	<property name="budgetImpMensuel" />
+	<property name="parSecteur" />
+	<property name="secteurAide" />
+	<property name="budgetSecteurAide" />
+	<property name="budgetTypePublic" />
+	<property name="typePublic" />
+
+	
+</page-specification>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+
+<table class="section">
+    <tbody>
+      <tr>
+        <td colspan="2" rowspan="1">Budget par secteur d'aide :</td>
+      </tr>
+      <tr>
+        <td class="section">
+        <table style="width: 100%;">
+          <tbody>
+            <tr>
+              <td colspan="2">
+              <table width="100%" jwcid="@budget/EditBudget" budget="ognl:object">
+                  <tr>
+                    <td class="label">Année :</td>
+					<td class="label"><input name="annee" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:annee"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="label">Imputation :</td>
+					<td class="label"><input name="imputation" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:imputation"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="label">Mois :</td>
+					<td class="label"><input name="mois" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:mois"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="label">Secteur d'aide :</td>
+					<td class="label"><input name="secteurAide" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:secteurAide"></input></td>
+                  </tr>
+                  <tr>
+                    <td class="label">Type de public :</td>
+					<td class="label"><input name="secteurAide" size="8" jwcid="@Insert"
+						tabindex="1" value="ognl:secteurAide"></input></td>
+                  </tr>
+              </table>
+              </td>
+            </tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+<p><input jwcid="@core/BoutonRetour"/></p>
+</body>
+</html>

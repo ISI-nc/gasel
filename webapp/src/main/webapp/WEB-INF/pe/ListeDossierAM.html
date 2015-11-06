@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<form jwcid="@core/Form">
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:dossier" />
+
+<p>&nbsp;</p>
+
+	<div jwcid="@core/Tableau" title="Liste des Assistante Maternelle" source="ognl:assistantes" value="ognl:personne">
+		<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:personne.nom" />
+		<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:personne.prenom" />
+		<div jwcid="@core/tableau/ActionDetails" action="listener:editerDossierAM"
+			title="ognl:findPersonne(personne)?'Voir le dossier Assistante Maternelle':'Créer le dossier Assistante Maternelle'"/>
+	</div>
+
+</form>
+<p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</body>
+</html>

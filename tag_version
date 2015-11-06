@@ -1,0 +1,55 @@
+#! /usr/bin/ruby
+
+require 'xml'
+
+$pom_files = %w<pom.xml model/pom.xml webapp/pom.xml>
+
+def find_version_tag(doc)
+    tag = doc.find_first('/m:project/m:version', "m:#{doc.root.namespaces.default.href}")
+    tag = doc.find_first('/m:project/m:parent/m:version', "m:#{doc.root.namespaces.default.href}") \
+        unless tag
+    tag
+end
+
+def set_version(file, version)
+    doc = XML::Parser.file(file).parse
+    find_version_tag(doc).content = version
+    doc.save(file)
+end
+
+def set_version_all(version)
+    $pom_files.each do |file|
+        set_version file, version
+    end
+end
+
+def git(*args)
+    system "git",*args or exit $?.exitstatus
+end
+
+doc = XML::Parser.file('pom.xml').parse
+
+p doc.root.namespaces.default.prefix
+version_tag = find_version_tag(doc)
+
+version = version_tag.content
+release_version = version.sub(/-SNAPSHOT$/, '')
+next_version = release_version.split(".").map{|v|v.to_i}
+next_version[-1] += 1
+next_version = next_version.join(".")+"-SNAPSHOT"
+
+puts "Current: #{version}"
+puts "Release: #{release_version}"
+puts "Next:    #{next_version}"
+
+set_version_all release_version
+
+tag = "v#{release_version}"
+git "add",*$pom_files
+git "commit","-m",tag
+git "tag",tag
+
+set_version_all next_version
+git "add",*$pom_files
+git "commit","-m","Move to v#{next_version}"
+git "push"

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Dossier AM</description>
+		<property name="dossier"/>
+		
+		<property name="row"/>
+		
+		<property name="x"/>
+		
+		<property name="integration"/>
+		
+		<property name="absence"/>
+		<property name="formation"/>
+		
+		<property name="joursSemaine">{
+			{'Lun.', 'lundi'},
+			{'Mar.', 'mardi'},
+			{'Mer.', 'mercredi'},
+			{'Jeu.', 'jeudi'},
+			{'Ven.', 'vendredi'},
+			{'Sam.', 'samedi'},
+			{'Dim.', 'dimanche'}
+		}</property>
+		
+		<property name="jourSemaine"/>
+		
+</page-specification>

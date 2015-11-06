@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<form jwcid="@core/Form">
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:dossier" />
+
+<p>&nbsp;</p>
+
+	<div jwcid="@core/Tableau" title="Liste des enfants du dossier" source="ognl:enfants" value="ognl:enfant">
+		<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:enfant.nom" />
+		<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:enfant.prenom" />
+		<div jwcid="@core/tableau/ActionDetails" action="listener:editerDossierPE"
+			title="ognl:object.findEnfantRAM(enfant)?'Voir le dossier Petite Enfance':'Créer le dossier Petite Enfance'"/>
+	</div>
+</form>
+</div>
+</body>
+</html>

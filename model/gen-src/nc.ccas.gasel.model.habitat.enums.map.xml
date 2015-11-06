@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.habitat.enums"/>
+	<db-entity name="assurance_habitation">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="assurance_locative">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="bailleur">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="categorie_sociale_logement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="categorie_sortie_protocole">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="etat_demande_aide_logement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="institution">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_ct">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_derogation_habitat">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_intervention">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_sie">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_aide_logement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_aide_sociale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="organisme_aide_sociale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="origine_signalement_hb">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="phase_relogement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="probleme_logement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_aff_demande_habitat">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_emprunt">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_logement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="AssuranceHabitation" className="nc.ccas.gasel.model.habitat.enums.AssuranceHabitation" dbEntityName="assurance_habitation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="AssuranceLocative" className="nc.ccas.gasel.model.habitat.enums.AssuranceLocative" dbEntityName="assurance_locative">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Bailleur" className="nc.ccas.gasel.model.habitat.enums.Bailleur" dbEntityName="bailleur">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="CategorieSocialeLogement" className="nc.ccas.gasel.model.habitat.enums.CategorieSocialeLogement" dbEntityName="categorie_sociale_logement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="CategorieSortieProtocole" className="nc.ccas.gasel.model.habitat.enums.CategorieSortieProtocole" dbEntityName="categorie_sortie_protocole">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="EtatDemandeAideLogement" className="nc.ccas.gasel.model.habitat.enums.EtatDemandeAideLogement" dbEntityName="etat_demande_aide_logement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Institution" className="nc.ccas.gasel.model.habitat.enums.Institution" dbEntityName="institution">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="MotifCT" className="nc.ccas.gasel.model.habitat.enums.MotifCT" dbEntityName="motif_ct">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="MotifDerogationHabitat" className="nc.ccas.gasel.model.habitat.enums.MotifDerogationHabitat" dbEntityName="motif_derogation_habitat">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="MotifIntervention" className="nc.ccas.gasel.model.habitat.enums.MotifIntervention" dbEntityName="motif_intervention">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="MotifSIE" className="nc.ccas.gasel.model.habitat.enums.MotifSIE" dbEntityName="motif_sie">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="NatureAideLogement" className="nc.ccas.gasel.model.habitat.enums.NatureAideLogement" dbEntityName="nature_aide_logement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="NatureAideSociale" className="nc.ccas.gasel.model.habitat.enums.NatureAideSociale" dbEntityName="nature_aide_sociale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="OrganismeAideSociale" className="nc.ccas.gasel.model.habitat.enums.OrganismeAideSociale" dbEntityName="organisme_aide_sociale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="OrigineSignalementHb" className="nc.ccas.gasel.model.habitat.enums.OrigineSignalementHb" dbEntityName="origine_signalement_hb">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="PhaseRelogement" className="nc.ccas.gasel.model.habitat.enums.PhaseRelogement" dbEntityName="phase_relogement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ProblemeLogement" className="nc.ccas.gasel.model.habitat.enums.ProblemeLogement" dbEntityName="probleme_logement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeAffDemandeHabitat" className="nc.ccas.gasel.model.habitat.enums.TypeAffDemandeHabitat" dbEntityName="type_aff_demande_habitat">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeEmprunt" className="nc.ccas.gasel.model.habitat.enums.TypeEmprunt" dbEntityName="type_emprunt">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeLogement" className="nc.ccas.gasel.model.habitat.enums.TypeLogement" dbEntityName="type_logement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="REV_affectation_accession_assurance_habitation" source="assurance_habitation" target="affectation_accession" toMany="true">
+		<db-attribute-pair source="id" target="assurance_habitation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_locatif_assurance_habitation" source="assurance_habitation" target="affectation_locatif" toMany="true">
+		<db-attribute-pair source="id" target="assurance_habitation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_rehabilitation_assurance_habitation" source="assurance_habitation" target="affectation_rehabilitation" toMany="true">
+		<db-attribute-pair source="id" target="assurance_habitation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_locatif_bailleur" source="bailleur" target="affectation_locatif" toMany="true">
+		<db-attribute-pair source="id" target="bailleur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_locatif_categorie" source="categorie_sociale_logement" target="affectation_locatif" toMany="true">
+		<db-attribute-pair source="id" target="categorie_id"/>
+	</db-relationship>
+	<db-relationship name="REV_previsionnel_habitat_categorie_sortie" source="categorie_sortie_protocole" target="previsionnel_habitat" toMany="true">
+		<db-attribute-pair source="id" target="categorie_sortie_id"/>
+	</db-relationship>
+	<db-relationship name="REV_secours_immediat_exceptionnel_institution" source="institution" target="secours_immediat_exceptionnel" toMany="true">
+		<db-attribute-pair source="id" target="institution_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_aide_logement_motif_ct" source="motif_ct" target="demande_aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="motif_ct_id"/>
+	</db-relationship>
+	<db-relationship name="REV_derogation_aide_logement_motif" source="motif_derogation_habitat" target="derogation_aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="motif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_intervention_motif" source="motif_intervention" target="intervention" toMany="true">
+		<db-attribute-pair source="id" target="motif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_secours_immediat_exceptionnel_motif" source="motif_sie" target="secours_immediat_exceptionnel" toMany="true">
+		<db-attribute-pair source="id" target="motif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_logement_nature" source="nature_aide_logement" target="aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_sociale_nature" source="nature_aide_sociale" target="aide_sociale" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_sociale_organisme" source="organisme_aide_sociale" target="aide_sociale" toMany="true">
+		<db-attribute-pair source="id" target="organisme_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_origine_signalement" source="origine_signalement_hb" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="origine_signalement_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_phase" source="phase_relogement" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="phase_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_affectation_locatif_ARRAY_problemes" source="probleme_logement" target="affectation_locatif_problemes" toMany="true">
+		<db-attribute-pair source="id" target="probleme_logement_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_type_demande" source="type_aff_demande_habitat" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="id" target="type_demande_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_accession_type_emprunt" source="type_emprunt" target="affectation_accession" toMany="true">
+		<db-attribute-pair source="id" target="type_emprunt_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_rehabilitation_type_emprunt" source="type_emprunt" target="affectation_rehabilitation" toMany="true">
+		<db-attribute-pair source="id" target="type_emprunt_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_accession_type" source="type_logement" target="affectation_accession" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_locatif_type" source="type_logement" target="affectation_locatif" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_affectation_rehabilitation_type" source="type_logement" target="affectation_rehabilitation" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_type_logement_origine" source="type_logement" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="type_logement_origine_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_type" source="type_logement" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+</data-map>

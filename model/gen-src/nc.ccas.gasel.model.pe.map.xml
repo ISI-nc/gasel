@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.pe"/>
+	<db-entity name="absence_am">
+		<db-attribute name="assistante_maternelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="absence_enfant">
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="enfant_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aide_paiement">
+		<db-attribute name="enfant_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant_aide" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant_pris_en_charge" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="organisme_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_am">
+		<db-attribute name="alerte_assurance" type="BIT"/>
+		<db-attribute name="assurance" type="TIMESTAMP"/>
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_enfant">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="assistante_maternelle">
+		<db-attribute name="agrement" type="TIMESTAMP"/>
+		<db-attribute name="assurance_logement" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="assurance_vehicule" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="casier_judiciaire" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="certificat_medical" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="derniere_visite" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="heure_debut_travail" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="heure_fin_travail" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="motif_nb_enfants_souhaites" type="VARCHAR" isMandatory="true" length="4096"/>
+		<db-attribute name="nb_enfants_souhaites" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="permis_conduire" type="BIT" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="referent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="responsabilite_civile" type="TIMESTAMP" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="autorisation_enfant">
+		<db-attribute name="accepte" type="BIT" isMandatory="true"/>
+		<db-attribute name="autorisation_parentale_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="enfant_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="enfant_ram">
+		<db-attribute name="certificat_medical" type="BIT" isMandatory="true"/>
+		<db-attribute name="code_quartier_travail_parent" type="SMALLINT"/>
+		<db-attribute name="dernier_contact" type="TIMESTAMP"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="entree" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="handicap_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="sortie" type="TIMESTAMP"/>
+	</db-entity>
+	<db-entity name="formation_am">
+		<db-attribute name="assistante_maternelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="attestation_emise" type="BIT" isMandatory="true"/>
+		<db-attribute name="formation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="obtention" type="TIMESTAMP" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="garde">
+		<db-attribute name="assistante_maternelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="enfant_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="mode_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="ordre" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="handicap_pe">
+		<db-attribute name="enfant_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="ponderation" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="integration_ram">
+		<db-attribute name="assistante_maternelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="entree" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="expiration_patente" type="TIMESTAMP"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="motif_sortie" type="VARCHAR" length="255"/>
+		<db-attribute name="numero_patente" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="numero_ruam" type="VARCHAR" length="255"/>
+		<db-attribute name="sortie" type="TIMESTAMP"/>
+	</db-entity>
+	<obj-entity name="AbsenceAM" className="nc.ccas.gasel.model.pe.AbsenceAM" dbEntityName="absence_am">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+	</obj-entity>
+	<obj-entity name="AbsenceEnfant" className="nc.ccas.gasel.model.pe.AbsenceEnfant" dbEntityName="absence_enfant">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+	</obj-entity>
+	<obj-entity name="AidePaiement" className="nc.ccas.gasel.model.pe.AidePaiement" dbEntityName="aide_paiement">
+		<obj-attribute name="montantAide" type="java.lang.Integer" db-attribute-path="montant_aide"/>
+		<obj-attribute name="montantPrisEnCharge" type="java.lang.Integer" db-attribute-path="montant_pris_en_charge"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierAM" className="nc.ccas.gasel.model.pe.AspectDossierAM" dbEntityName="aspect_dossier_am">
+		<obj-attribute name="alerteAssurance" type="java.lang.Boolean" db-attribute-path="alerte_assurance"/>
+		<obj-attribute name="assurance" type="java.util.Date" db-attribute-path="assurance"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierEnfant" className="nc.ccas.gasel.model.pe.AspectDossierEnfant" dbEntityName="aspect_dossier_enfant">
+	</obj-entity>
+	<obj-entity name="AssistanteMaternelle" className="nc.ccas.gasel.model.pe.AssistanteMaternelle" dbEntityName="assistante_maternelle">
+		<obj-attribute name="agrement" type="java.util.Date" db-attribute-path="agrement"/>
+		<obj-attribute name="assuranceLogement" type="java.util.Date" db-attribute-path="assurance_logement"/>
+		<obj-attribute name="assuranceVehicule" type="java.util.Date" db-attribute-path="assurance_vehicule"/>
+		<obj-attribute name="casierJudiciaire" type="java.util.Date" db-attribute-path="casier_judiciaire"/>
+		<obj-attribute name="certificatMedical" type="java.util.Date" db-attribute-path="certificat_medical"/>
+		<obj-attribute name="derniereVisite" type="java.util.Date" db-attribute-path="derniere_visite"/>
+		<obj-attribute name="heureDebutTravail" type="java.lang.String" db-attribute-path="heure_debut_travail"/>
+		<obj-attribute name="heureFinTravail" type="java.lang.String" db-attribute-path="heure_fin_travail"/>
+		<obj-attribute name="motifNbEnfantsSouhaites" type="java.lang.String" db-attribute-path="motif_nb_enfants_souhaites"/>
+		<obj-attribute name="nbEnfantsSouhaites" type="java.lang.Integer" db-attribute-path="nb_enfants_souhaites"/>
+		<obj-attribute name="permisConduire" type="java.lang.Boolean" db-attribute-path="permis_conduire"/>
+		<obj-attribute name="responsabiliteCivile" type="java.util.Date" db-attribute-path="responsabilite_civile"/>
+	</obj-entity>
+	<obj-entity name="AutorisationEnfant" className="nc.ccas.gasel.model.pe.AutorisationEnfant" dbEntityName="autorisation_enfant">
+		<obj-attribute name="accepte" type="java.lang.Boolean" db-attribute-path="accepte"/>
+	</obj-entity>
+	<obj-entity name="EnfantRAM" className="nc.ccas.gasel.model.pe.EnfantRAM" dbEntityName="enfant_ram">
+		<obj-attribute name="certificatMedical" type="java.lang.Boolean" db-attribute-path="certificat_medical"/>
+		<obj-attribute name="dernierContact" type="java.util.Date" db-attribute-path="dernier_contact"/>
+		<obj-attribute name="entree" type="java.util.Date" db-attribute-path="entree"/>
+		<obj-attribute name="sortie" type="java.util.Date" db-attribute-path="sortie"/>
+	</obj-entity>
+	<obj-entity name="FormationAM" className="nc.ccas.gasel.model.pe.FormationAM" dbEntityName="formation_am">
+		<obj-attribute name="attestationEmise" type="java.lang.Boolean" db-attribute-path="attestation_emise"/>
+		<obj-attribute name="obtention" type="java.util.Date" db-attribute-path="obtention"/>
+	</obj-entity>
+	<obj-entity name="Garde" className="nc.ccas.gasel.model.pe.Garde" dbEntityName="garde">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="ordre" type="java.lang.Integer" db-attribute-path="ordre"/>
+	</obj-entity>
+	<obj-entity name="HandicapPE" className="nc.ccas.gasel.model.pe.HandicapPE" dbEntityName="handicap_pe">
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="ponderation" type="java.lang.Integer" db-attribute-path="ponderation"/>
+	</obj-entity>
+	<obj-entity name="IntegrationRAM" className="nc.ccas.gasel.model.pe.IntegrationRAM" dbEntityName="integration_ram">
+		<obj-attribute name="entree" type="java.util.Date" db-attribute-path="entree"/>
+		<obj-attribute name="expirationPatente" type="java.util.Date" db-attribute-path="expiration_patente"/>
+		<obj-attribute name="motifSortie" type="java.lang.String" db-attribute-path="motif_sortie"/>
+		<obj-attribute name="numeroPatente" type="java.lang.String" db-attribute-path="numero_patente"/>
+		<obj-attribute name="numeroRUAM" type="java.lang.String" db-attribute-path="numero_ruam"/>
+		<obj-attribute name="sortie" type="java.util.Date" db-attribute-path="sortie"/>
+	</obj-entity>
+	<db-relationship name="assistante_maternelle" source="absence_am" target="assistante_maternelle" toMany="false">
+		<db-attribute-pair source="assistante_maternelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="enfant" source="absence_enfant" target="enfant_ram" toMany="false">
+		<db-attribute-pair source="enfant_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="enfant" source="aide_paiement" target="enfant_ram" toMany="false">
+		<db-attribute-pair source="enfant_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="organisme" source="aide_paiement" target="organisme_social" toMany="false">
+		<db-attribute-pair source="organisme_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_assistante_maternelle_dossier" source="aspect_dossier_am" target="assistante_maternelle" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_am" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_enfant_ram_dossier" source="aspect_dossier_enfant" target="enfant_ram" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_enfant" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_absence_am_assistante_maternelle" source="assistante_maternelle" target="absence_am" toMany="true">
+		<db-attribute-pair source="id" target="assistante_maternelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_formation_am_assistante_maternelle" source="assistante_maternelle" target="formation_am" toMany="true">
+		<db-attribute-pair source="id" target="assistante_maternelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_garde_assistante_maternelle" source="assistante_maternelle" target="garde" toMany="true">
+		<db-attribute-pair source="id" target="assistante_maternelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_integration_ram_assistante_maternelle" source="assistante_maternelle" target="integration_ram" toMany="true">
+		<db-attribute-pair source="id" target="assistante_maternelle_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="assistante_maternelle" target="aspect_dossier_am" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="assistante_maternelle" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent" source="assistante_maternelle" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="autorisation_parentale" source="autorisation_enfant" target="autorisation_parentale" toMany="false">
+		<db-attribute-pair source="autorisation_parentale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="enfant" source="autorisation_enfant" target="enfant_ram" toMany="false">
+		<db-attribute-pair source="enfant_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_absence_enfant_enfant" source="enfant_ram" target="absence_enfant" toMany="true">
+		<db-attribute-pair source="id" target="enfant_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_paiement_enfant" source="enfant_ram" target="aide_paiement" toMany="true">
+		<db-attribute-pair source="id" target="enfant_id"/>
+	</db-relationship>
+	<db-relationship name="REV_autorisation_enfant_enfant" source="enfant_ram" target="autorisation_enfant" toMany="true">
+		<db-attribute-pair source="id" target="enfant_id"/>
+	</db-relationship>
+	<db-relationship name="REV_garde_enfant" source="enfant_ram" target="garde" toMany="true">
+		<db-attribute-pair source="id" target="enfant_id"/>
+	</db-relationship>
+	<db-relationship name="REV_handicap_pe_enfant" source="enfant_ram" target="handicap_pe" toMany="true">
+		<db-attribute-pair source="id" target="enfant_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="enfant_ram" target="aspect_dossier_enfant" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="handicap" source="enfant_ram" target="handicap_pe" toMany="false">
+		<db-attribute-pair source="handicap_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="enfant_ram" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="quartier_travail_parent" source="enfant_ram" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="code_quartier_travail_parent" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="assistante_maternelle" source="formation_am" target="assistante_maternelle" toMany="false">
+		<db-attribute-pair source="assistante_maternelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="formation" source="formation_am" target="formation" toMany="false">
+		<db-attribute-pair source="formation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="assistante_maternelle" source="garde" target="assistante_maternelle" toMany="false">
+		<db-attribute-pair source="assistante_maternelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="enfant" source="garde" target="enfant_ram" toMany="false">
+		<db-attribute-pair source="enfant_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="mode" source="garde" target="mode_garde" toMany="false">
+		<db-attribute-pair source="mode_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_enfant_ram_handicap" source="handicap_pe" target="enfant_ram" toMany="true">
+		<db-attribute-pair source="id" target="handicap_id"/>
+	</db-relationship>
+	<db-relationship name="enfant" source="handicap_pe" target="enfant_ram" toMany="false">
+		<db-attribute-pair source="enfant_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="assistante_maternelle" source="integration_ram" target="assistante_maternelle" toMany="false">
+		<db-attribute-pair source="assistante_maternelle_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="assistanteMaternelle" source="AbsenceAM" target="AssistanteMaternelle" db-relationship-path="assistante_maternelle"/>
+	<obj-relationship name="enfant" source="AbsenceEnfant" target="EnfantRAM" db-relationship-path="enfant"/>
+	<obj-relationship name="enfant" source="AidePaiement" target="EnfantRAM" db-relationship-path="enfant"/>
+	<obj-relationship name="organisme" source="AidePaiement" target="OrganismeSocial" db-relationship-path="organisme"/>
+	<obj-relationship name="assistantesMaternelle" source="AspectDossierAM" target="AssistanteMaternelle" db-relationship-path="REV_assistante_maternelle_dossier"/>
+	<obj-relationship name="dossier" source="AspectDossierAM" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="dossier" source="AspectDossierEnfant" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="enfantsRAM" source="AspectDossierEnfant" target="EnfantRAM" db-relationship-path="REV_enfant_ram_dossier"/>
+	<obj-relationship name="absencesAM" source="AssistanteMaternelle" target="AbsenceAM" db-relationship-path="REV_absence_am_assistante_maternelle"/>
+	<obj-relationship name="dossier" source="AssistanteMaternelle" target="AspectDossierAM" db-relationship-path="dossier"/>
+	<obj-relationship name="formationsAM" source="AssistanteMaternelle" target="FormationAM" db-relationship-path="REV_formation_am_assistante_maternelle"/>
+	<obj-relationship name="gardes" source="AssistanteMaternelle" target="Garde" db-relationship-path="REV_garde_assistante_maternelle"/>
+	<obj-relationship name="integrations" source="AssistanteMaternelle" target="IntegrationRAM" db-relationship-path="REV_integration_ram_assistante_maternelle"/>
+	<obj-relationship name="personne" source="AssistanteMaternelle" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="referent" source="AssistanteMaternelle" target="Utilisateur" db-relationship-path="referent"/>
+	<obj-relationship name="autorisationParentale" source="AutorisationEnfant" target="AutorisationParentale" db-relationship-path="autorisation_parentale"/>
+	<obj-relationship name="enfant" source="AutorisationEnfant" target="EnfantRAM" db-relationship-path="enfant"/>
+	<obj-relationship name="absences" source="EnfantRAM" target="AbsenceEnfant" db-relationship-path="REV_absence_enfant_enfant"/>
+	<obj-relationship name="aidesPaiement" source="EnfantRAM" target="AidePaiement" db-relationship-path="REV_aide_paiement_enfant"/>
+	<obj-relationship name="autorisations" source="EnfantRAM" target="AutorisationEnfant" db-relationship-path="REV_autorisation_enfant_enfant"/>
+	<obj-relationship name="dossier" source="EnfantRAM" target="AspectDossierEnfant" db-relationship-path="dossier"/>
+	<obj-relationship name="gardes" source="EnfantRAM" target="Garde" db-relationship-path="REV_garde_enfant"/>
+	<obj-relationship name="handicap" source="EnfantRAM" target="HandicapPE" db-relationship-path="handicap"/>
+	<obj-relationship name="personne" source="EnfantRAM" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="quartierTravailParent" source="EnfantRAM" target="Quartier" db-relationship-path="quartier_travail_parent"/>
+	<obj-relationship name="assistanteMaternelle" source="FormationAM" target="AssistanteMaternelle" db-relationship-path="assistante_maternelle"/>
+	<obj-relationship name="formation" source="FormationAM" target="Formation" db-relationship-path="formation"/>
+	<obj-relationship name="assistanteMaternelle" source="Garde" target="AssistanteMaternelle" db-relationship-path="assistante_maternelle"/>
+	<obj-relationship name="enfant" source="Garde" target="EnfantRAM" db-relationship-path="enfant"/>
+	<obj-relationship name="mode" source="Garde" target="ModeGarde" db-relationship-path="mode"/>
+	<obj-relationship name="enfant" source="HandicapPE" target="EnfantRAM" db-relationship-path="enfant"/>
+	<obj-relationship name="assistanteMaternelle" source="IntegrationRAM" target="AssistanteMaternelle" db-relationship-path="assistante_maternelle"/>
+</data-map>

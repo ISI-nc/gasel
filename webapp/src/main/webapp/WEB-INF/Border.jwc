@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+
+	<parameter name="titre" default-value="ognl:page.titre"/>
+	
+	<parameter name="afficherTitre" default-value="true"/>
+	
+	<property name="idx"/>
+	<property name="pageName"/>
+	
+	<inject property="flowSync" type="state" object="flowSynchroniser"/>
+
+	<asset name="stylesheet" path="context:/css/main.css"/>
+	
+	<asset name="commonJs" path="context:/js/common.js"/>
+	<asset name="prototypeJs" path="context:/js/prototype.js"/>
+	<asset name="effectsJs" path="context:/js/effects.js"/>
+	
+	<component id="shell" type="Shell">
+		<binding name="title" value="ognl:(titre?titre + ' - ':'') + 'GASEL'"/>
+		<binding name="stylesheet" value="asset:stylesheet"/>
+		<binding name="disableCaching" value="true"/>
+		<binding name="doctype">literal:html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"</binding>
+		<binding name="consoleEnabled" value="ognl:true"/>
+		<binding name="debugEnabled" value="ognl:true"/>
+	</component>
+	
+	<component id="form" type="Form" inherit-informal-parameters="yes">
+		<binding name="delegate" value="bean:delegate"/>
+		<binding name="clientValidationEnabled" value="true"/>
+		<binding name="listener" value="listener:onSubmit"/>
+		<binding name="focus" value="false"/>
+		<binding name="updateComponents" value="literal:flowSync"/>
+	</component>
+	
+	<bean name="delegate" class="org.apache.tapestry.valid.ValidationDelegate"/>
+
+</component-specification>

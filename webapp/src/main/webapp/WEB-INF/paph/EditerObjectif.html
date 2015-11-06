@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier.dossier.dossier" />
+
+<table><tbody>
+	<tr><td>Projet :</td>
+		<td><input jwcid="@Insert" value="ognl:object.accompagnement.projet"/></td>
+	</tr>
+	<tr><td>Objectif :</td>
+		<td><input jwcid="@TextField" value="ognl:object.libelle"/></td>
+	</tr>
+	<tr><td>Echéance :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.echeance"/></td>
+	</tr>
+</tbody></table>
+
+<p>
+<div jwcid="@core/Tableau" titre="Problématiques" source="ognl:object.problematiques" value="ognl:row"
+	class="small-data-table">
+	<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:row.problematique.parent"/>
+	<div jwcid="@core/tableau/Colonne" titre="Problématique" value="ognl:row.problematique"/>
+	<div jwcid="@core/tableau/Colonne" titre="Réponses" value="ognl:lists.join(', ', row.reponses)"/>
+	<div jwcid="@core/tableau/ObjectPageAction" page="paph/EditerReponse" parentProperty="reponse"
+			disabled="ognl:isNew(row)"/>
+	<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="problematiques"/>
+
+	<nobr>
+	<input jwcid="@core/edit/Enum" value="ognl:type" enum="TypeProblematique" onchange="refreshPage()" />
+	<span jwcid="@If" condition="ognl:type">
+		-&gt;
+		<input jwcid="@core/edit/Enum" value="ognl:problematique" values="ognl:problematiquesDispo"
+				onchange="refreshPage()" null="ognl:null"/>
+		<input jwcid="ajouterProblematique@Submit" action="listener:ajouterProblematique" class="button" value="Ajouter"/>
+	</span>
+	</nobr>
+</div>
+</p>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.core"/>
+	<db-entity name="acces_page">
+		<db-attribute name="groupe_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="page_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="read" type="BIT" isMandatory="true"/>
+		<db-attribute name="write" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="activite_personne">
+		<db-attribute name="contrat_id" type="INTEGER"/>
+		<db-attribute name="debut" type="DATE"/>
+		<db-attribute name="description" type="CLOB"/>
+		<db-attribute name="fin" type="DATE"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="adresse">
+		<db-attribute name="autres" type="VARCHAR" length="255"/>
+		<db-attribute name="boite_postale" type="VARCHAR" length="255"/>
+		<db-attribute name="code_postal" type="INTEGER"/>
+		<db-attribute name="code_ville" type="INTEGER"/>
+		<db-attribute name="code_voie" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="numero" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="app_page">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="page" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="charge">
+		<db-attribute name="debut" type="DATE" isMandatory="true"/>
+		<db-attribute name="fin" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="const_double">
+		<db-attribute name="description" type="CLOB"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="valeur" type="DOUBLE" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="const_integer">
+		<db-attribute name="description" type="CLOB"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="valeur" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="const_string">
+		<db-attribute name="description" type="CLOB"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="valeur" type="VARCHAR" isMandatory="true" length="4096"/>
+	</db-entity>
+	<db-entity name="dossier">
+		<db-attribute name="adresse_habitation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="adresse_postale_id" type="INTEGER"/>
+		<db-attribute name="chef_famille_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="conjoint_id" type="INTEGER"/>
+		<db-attribute name="date_arrivee_commune" type="DATE"/>
+		<db-attribute name="date_ouverture" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+		<db-attribute name="referent_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="signalement_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_habitat_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="groupe">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="personne">
+		<db-attribute name="couverture_sociale_id" type="INTEGER"/>
+		<db-attribute name="date_arrivee_sur_territoire" type="DATE"/>
+		<db-attribute name="date_deces" type="DATE"/>
+		<db-attribute name="date_entree_foyer" type="DATE"/>
+		<db-attribute name="date_naissance" type="DATE" isMandatory="true"/>
+		<db-attribute name="date_sortie_foyer" type="DATE"/>
+		<db-attribute name="designation" type="VARCHAR" length="15"/>
+		<db-attribute name="email" type="VARCHAR" length="255"/>
+		<db-attribute name="fin_couv_soc" type="DATE"/>
+		<db-attribute name="fin_mutuelle" type="DATE"/>
+		<db-attribute name="handicap" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="lien_chef_famille_id" type="INTEGER"/>
+		<db-attribute name="mutuelle_id" type="INTEGER"/>
+		<db-attribute name="nationalite_francaise" type="BIT" isMandatory="true"/>
+		<db-attribute name="ne_code_ville" type="INTEGER"/>
+		<db-attribute name="ne_etranger" type="BIT" isMandatory="true"/>
+		<db-attribute name="ne_ville_etrangere_codpay" type="INTEGER"/>
+		<db-attribute name="ne_ville_etrangere_scodpa" type="INTEGER"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="200"/>
+		<db-attribute name="nom_jeune_fille" type="VARCHAR" length="200"/>
+		<db-attribute name="nom_usage" type="VARCHAR" length="200"/>
+		<db-attribute name="numero_couv_soc" type="VARCHAR" length="255"/>
+		<db-attribute name="numero_mutuelle" type="VARCHAR" length="255"/>
+		<db-attribute name="prenom" type="VARCHAR" isMandatory="true" length="200"/>
+		<db-attribute name="prenom_usage" type="VARCHAR" length="200"/>
+		<db-attribute name="sexe" type="BIT" isMandatory="true"/>
+		<db-attribute name="situation_familiale_id" type="INTEGER"/>
+		<db-attribute name="situation_professionelle_id" type="INTEGER"/>
+		<db-attribute name="statut_id" type="INTEGER"/>
+		<db-attribute name="telephone_fixe" type="VARCHAR" length="255"/>
+		<db-attribute name="telephone_portable" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="ressource">
+		<db-attribute name="debut" type="DATE" isMandatory="true"/>
+		<db-attribute name="fin" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="utilisateur">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="initiales" type="VARCHAR" length="255"/>
+		<db-attribute name="login" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="nom" type="VARCHAR" length="255"/>
+		<db-attribute name="password" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="prenom" type="VARCHAR" length="255"/>
+	</db-entity>
+	<obj-entity name="AccesPage" className="nc.ccas.gasel.model.core.AccesPage" dbEntityName="acces_page">
+		<obj-attribute name="read" type="java.lang.Boolean" db-attribute-path="read"/>
+		<obj-attribute name="write" type="java.lang.Boolean" db-attribute-path="write"/>
+	</obj-entity>
+	<obj-entity name="ActivitePersonne" className="nc.ccas.gasel.model.core.ActivitePersonne" dbEntityName="activite_personne">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="Adresse" className="nc.ccas.gasel.model.core.Adresse" dbEntityName="adresse">
+		<obj-attribute name="autres" type="java.lang.String" db-attribute-path="autres"/>
+		<obj-attribute name="boitePostale" type="java.lang.String" db-attribute-path="boite_postale"/>
+		<obj-attribute name="codePostal" type="java.lang.Integer" db-attribute-path="code_postal"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+	</obj-entity>
+	<obj-entity name="AppPage" className="nc.ccas.gasel.model.core.AppPage" dbEntityName="app_page">
+		<obj-attribute name="page" type="java.lang.String" db-attribute-path="page"/>
+	</obj-entity>
+	<obj-entity name="Charge" className="nc.ccas.gasel.model.core.Charge" dbEntityName="charge">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+	</obj-entity>
+	<obj-entity name="ConstDouble" className="nc.ccas.gasel.model.core.ConstDouble" dbEntityName="const_double">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="valeur" type="java.lang.Double" db-attribute-path="valeur"/>
+	</obj-entity>
+	<obj-entity name="ConstInteger" className="nc.ccas.gasel.model.core.ConstInteger" dbEntityName="const_integer">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="valeur" type="java.lang.Integer" db-attribute-path="valeur"/>
+	</obj-entity>
+	<obj-entity name="ConstString" className="nc.ccas.gasel.model.core.ConstString" dbEntityName="const_string">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="valeur" type="java.lang.String" db-attribute-path="valeur"/>
+	</obj-entity>
+	<obj-entity name="Dossier" className="nc.ccas.gasel.model.core.Dossier" dbEntityName="dossier">
+		<obj-attribute name="dateArriveeCommune" type="java.util.Date" db-attribute-path="date_arrivee_commune"/>
+		<obj-attribute name="dateOuverture" type="java.util.Date" db-attribute-path="date_ouverture"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+	</obj-entity>
+	<obj-entity name="Groupe" className="nc.ccas.gasel.model.core.Groupe" dbEntityName="groupe">
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="Personne" className="nc.ccas.gasel.model.core.Personne" dbEntityName="personne">
+		<obj-attribute name="dateArriveeSurTerritoire" type="java.util.Date" db-attribute-path="date_arrivee_sur_territoire"/>
+		<obj-attribute name="dateDeces" type="java.util.Date" db-attribute-path="date_deces"/>
+		<obj-attribute name="dateEntreeFoyer" type="java.util.Date" db-attribute-path="date_entree_foyer"/>
+		<obj-attribute name="dateNaissance" type="java.util.Date" db-attribute-path="date_naissance"/>
+		<obj-attribute name="dateSortieFoyer" type="java.util.Date" db-attribute-path="date_sortie_foyer"/>
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="finCouvSoc" type="java.util.Date" db-attribute-path="fin_couv_soc"/>
+		<obj-attribute name="finMutuelle" type="java.util.Date" db-attribute-path="fin_mutuelle"/>
+		<obj-attribute name="handicap" type="java.lang.Boolean" db-attribute-path="handicap"/>
+		<obj-attribute name="nationaliteFrancaise" type="java.lang.Boolean" db-attribute-path="nationalite_francaise"/>
+		<obj-attribute name="neEtranger" type="java.lang.Boolean" db-attribute-path="ne_etranger"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="nomJeuneFille" type="java.lang.String" db-attribute-path="nom_jeune_fille"/>
+		<obj-attribute name="nomUsage" type="java.lang.String" db-attribute-path="nom_usage"/>
+		<obj-attribute name="numeroCouvSoc" type="java.lang.String" db-attribute-path="numero_couv_soc"/>
+		<obj-attribute name="numeroMutuelle" type="java.lang.String" db-attribute-path="numero_mutuelle"/>
+		<obj-attribute name="prenom" type="java.lang.String" db-attribute-path="prenom"/>
+		<obj-attribute name="prenomUsage" type="java.lang.String" db-attribute-path="prenom_usage"/>
+		<obj-attribute name="sexe" type="java.lang.Boolean" db-attribute-path="sexe"/>
+		<obj-attribute name="telephoneFixe" type="java.lang.String" db-attribute-path="telephone_fixe"/>
+		<obj-attribute name="telephonePortable" type="java.lang.String" db-attribute-path="telephone_portable"/>
+	</obj-entity>
+	<obj-entity name="Ressource" className="nc.ccas.gasel.model.core.Ressource" dbEntityName="ressource">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+	</obj-entity>
+	<obj-entity name="Utilisateur" className="nc.ccas.gasel.model.core.Utilisateur" dbEntityName="utilisateur">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="initiales" type="java.lang.String" db-attribute-path="initiales"/>
+		<obj-attribute name="login" type="java.lang.String" db-attribute-path="login"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="password"/>
+		<obj-attribute name="prenom" type="java.lang.String" db-attribute-path="prenom"/>
+	</obj-entity>
+	<db-relationship name="groupe" source="acces_page" target="groupe" toMany="false">
+		<db-attribute-pair source="groupe_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="page" source="acces_page" target="app_page" toMany="false">
+		<db-attribute-pair source="page_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="contrat" source="activite_personne" target="type_contrat" toMany="false">
+		<db-attribute-pair source="contrat_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="activite_personne" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="activite_personne" target="type_activite" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_collectivite_adresse" source="adresse" target="collectivite" toMany="true">
+		<db-attribute-pair source="id" target="adresse_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_taxi_adresse" source="adresse" target="demande_taxi" toMany="true">
+		<db-attribute-pair source="id" target="adresse_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_adresse_habitation" source="adresse" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="adresse_habitation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_adresse_postale" source="adresse" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="adresse_postale_id"/>
+	</db-relationship>
+	<db-relationship name="rue" source="adresse" target="mairie__sivoie" toMany="false">
+		<db-attribute-pair source="code_voie" target="cdvoie"/>
+	</db-relationship>
+	<db-relationship name="ville" source="adresse" target="mairie__sicomm" toMany="false">
+		<db-attribute-pair source="code_ville" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="REV_acces_page_page" source="app_page" target="acces_page" toMany="true">
+		<db-attribute-pair source="id" target="page_id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="charge" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="charge" target="type_charge" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_personnes_acharge" source="dossier" target="dossier_personnes_acharge_personne_dossiers_acharge" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_personnes_non_acharge" source="dossier" target="dossier_personnes_non_acharge_personne_dossiers_non_acharge" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_problematiques" source="dossier" target="dossier_problematiques" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_types_public" source="dossier" target="dossier_types_public" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_aides_dossier" source="dossier" target="aspect_aides" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_am_dossier" source="dossier" target="aspect_dossier_am" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_enfant_dossier" source="dossier" target="aspect_dossier_enfant" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_dossier" source="dossier" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_paph_dossier" source="dossier" target="aspect_dossier_paph" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_pi_dossier" source="dossier" target="aspect_dossier_pi" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_sie_dossier" source="dossier" target="aspect_sie" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="adresse_habitation" source="dossier" target="adresse" toMany="false">
+		<db-attribute-pair source="adresse_habitation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="adresse_postale" source="dossier" target="adresse" toMany="false">
+		<db-attribute-pair source="adresse_postale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="chef_famille" source="dossier" target="personne" toMany="false">
+		<db-attribute-pair source="chef_famille_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="conjoint" source="dossier" target="personne" toMany="false">
+		<db-attribute-pair source="conjoint_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="dossier" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent" source="dossier" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="signalement" source="dossier" target="origine_signalement" toMany="false">
+		<db-attribute-pair source="signalement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_habitat" source="dossier" target="type_habitat" toMany="false">
+		<db-attribute-pair source="type_habitat_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_utilisateurs" source="groupe" target="groupe_utilisateurs_utilisateur_groupes" toMany="true">
+		<db-attribute-pair source="id" target="groupe_id"/>
+	</db-relationship>
+	<db-relationship name="REV_acces_page_groupe" source="groupe" target="acces_page" toMany="true">
+		<db-attribute-pair source="id" target="groupe_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_dossiers_acharge" source="personne" target="dossier_personnes_acharge_personne_dossiers_acharge" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_dossiers_non_acharge" source="personne" target="dossier_personnes_non_acharge_personne_dossiers_non_acharge" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_activite_personne_personne" source="personne" target="activite_personne" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_assistante_maternelle_personne" source="personne" target="assistante_maternelle" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_bon_personne" source="personne" target="bon" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_charge_personne" source="personne" target="charge" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_chef_famille" source="personne" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="chef_famille_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_conjoint" source="personne" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="conjoint_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_paph_personne" source="personne" target="dossier_paph" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_enfant_ram_personne" source="personne" target="enfant_ram" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="REV_ressource_personne" source="personne" target="ressource" toMany="true">
+		<db-attribute-pair source="id" target="personne_id"/>
+	</db-relationship>
+	<db-relationship name="couverture_sociale" source="personne" target="couverture_sociale" toMany="false">
+		<db-attribute-pair source="couverture_sociale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="lien_chef_famille" source="personne" target="lien_parente" toMany="false">
+		<db-attribute-pair source="lien_chef_famille_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="mutuelle" source="personne" target="mutuelle" toMany="false">
+		<db-attribute-pair source="mutuelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ne_ville" source="personne" target="mairie__sicomm" toMany="false">
+		<db-attribute-pair source="ne_code_ville" target="codcom"/>
+	</db-relationship>
+	<db-relationship name="ne_ville_etrangere" source="personne" target="mairie__siviet" toMany="false">
+		<db-attribute-pair source="ne_ville_etrangere_codpay" target="codpay"/>
+		<db-attribute-pair source="ne_ville_etrangere_scodpa" target="scodpa"/>
+	</db-relationship>
+	<db-relationship name="situation_familiale" source="personne" target="situation_familiale" toMany="false">
+		<db-attribute-pair source="situation_familiale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="situation_professionelle" source="personne" target="situation_professionelle" toMany="false">
+		<db-attribute-pair source="situation_professionelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="statut" source="personne" target="statut_personne" toMany="false">
+		<db-attribute-pair source="statut_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="ressource" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="ressource" target="type_ressource" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_groupes" source="utilisateur" target="groupe_utilisateurs_utilisateur_groupes" toMany="true">
+		<db-attribute-pair source="id" target="utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_action_collective_referent_familial" source="utilisateur" target="action_collective" toMany="true">
+		<db-attribute-pair source="id" target="referent_familial_id"/>
+	</db-relationship>
+	<db-relationship name="REV_action_collective_referent_social" source="utilisateur" target="action_collective" toMany="true">
+		<db-attribute-pair source="id" target="referent_social_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_modif_utilisateur" source="utilisateur" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_arrete_modif_utilisateur" source="utilisateur" target="arrete" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_referent_familial" source="utilisateur" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="referent_familial_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_referent_social" source="utilisateur" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="referent_social_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_pi_referent_familial" source="utilisateur" target="aspect_dossier_pi" toMany="true">
+		<db-attribute-pair source="id" target="referent_familial_id"/>
+	</db-relationship>
+	<db-relationship name="REV_assistante_maternelle_referent" source="utilisateur" target="assistante_maternelle" toMany="true">
+		<db-attribute-pair source="id" target="referent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_bon_modif_utilisateur" source="utilisateur" target="bon" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_modif_utilisateur" source="utilisateur" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_paph_modif_utilisateur" source="utilisateur" target="dossier_paph" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_referent" source="utilisateur" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="referent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_facture_modif_utilisateur" source="utilisateur" target="facture" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<db-relationship name="REV_modele_document_modif_utilisateur" source="utilisateur" target="modele_document" toMany="true">
+		<db-attribute-pair source="id" target="modif_utilisateur_id"/>
+	</db-relationship>
+	<obj-relationship name="groupe" source="AccesPage" target="Groupe" db-relationship-path="groupe"/>
+	<obj-relationship name="page" source="AccesPage" target="AppPage" db-relationship-path="page"/>
+	<obj-relationship name="contrat" source="ActivitePersonne" target="TypeContrat" db-relationship-path="contrat"/>
+	<obj-relationship name="personne" source="ActivitePersonne" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="type" source="ActivitePersonne" target="TypeActivite" db-relationship-path="type"/>
+	<obj-relationship name="rue" source="Adresse" target="Voie" db-relationship-path="rue"/>
+	<obj-relationship name="ville" source="Adresse" target="Commune" db-relationship-path="ville"/>
+	<obj-relationship name="personne" source="Charge" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="type" source="Charge" target="TypeCharge" db-relationship-path="type"/>
+	<obj-relationship name="adresseHabitation" source="Dossier" target="Adresse" db-relationship-path="adresse_habitation"/>
+	<obj-relationship name="adressePostale" source="Dossier" target="Adresse" db-relationship-path="adresse_postale"/>
+	<obj-relationship name="chefFamille" source="Dossier" target="Personne" db-relationship-path="chef_famille"/>
+	<obj-relationship name="conjoint" source="Dossier" target="Personne" db-relationship-path="conjoint"/>
+	<obj-relationship name="modifUtilisateur" source="Dossier" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="personnesACharge" source="Dossier" target="Personne" db-relationship-path="ARRAY_personnes_acharge.personne"/>
+	<obj-relationship name="personnesNonACharge" source="Dossier" target="Personne" db-relationship-path="ARRAY_personnes_non_acharge.personne"/>
+	<obj-relationship name="problematiques" source="Dossier" target="Problematique" db-relationship-path="ARRAY_problematiques.problematique"/>
+	<obj-relationship name="referent" source="Dossier" target="Utilisateur" db-relationship-path="referent"/>
+	<obj-relationship name="signalement" source="Dossier" target="OrigineSignalement" db-relationship-path="signalement"/>
+	<obj-relationship name="typeHabitat" source="Dossier" target="TypeHabitat" db-relationship-path="type_habitat"/>
+	<obj-relationship name="typesPublic" source="Dossier" target="TypePublic" db-relationship-path="ARRAY_types_public.type_public"/>
+	<obj-relationship name="accesPage" source="Groupe" target="AccesPage" db-relationship-path="REV_acces_page_groupe"/>
+	<obj-relationship name="utilisateurs" source="Groupe" target="Utilisateur" db-relationship-path="ARRAY_utilisateurs.utilisateur"/>
+	<obj-relationship name="activites" source="Personne" target="ActivitePersonne" db-relationship-path="REV_activite_personne_personne"/>
+	<obj-relationship name="charges" source="Personne" target="Charge" db-relationship-path="REV_charge_personne"/>
+	<obj-relationship name="couvertureSociale" source="Personne" target="CouvertureSociale" db-relationship-path="couverture_sociale"/>
+	<obj-relationship name="dossiersACharge" source="Personne" target="Dossier" db-relationship-path="ARRAY_dossiers_acharge.dossier"/>
+	<obj-relationship name="dossiersChefFamille" source="Personne" target="Dossier" db-relationship-path="REV_dossier_chef_famille"/>
+	<obj-relationship name="dossiersConjoint" source="Personne" target="Dossier" db-relationship-path="REV_dossier_conjoint"/>
+	<obj-relationship name="dossiersNonACharge" source="Personne" target="Dossier" db-relationship-path="ARRAY_dossiers_non_acharge.dossier"/>
+	<obj-relationship name="lienChefFamille" source="Personne" target="LienParente" db-relationship-path="lien_chef_famille"/>
+	<obj-relationship name="mutuelle" source="Personne" target="Mutuelle" db-relationship-path="mutuelle"/>
+	<obj-relationship name="neVille" source="Personne" target="Commune" db-relationship-path="ne_ville"/>
+	<obj-relationship name="neVilleEtrangere" source="Personne" target="VilleEtrangere" db-relationship-path="ne_ville_etrangere"/>
+	<obj-relationship name="ressources" source="Personne" target="Ressource" db-relationship-path="REV_ressource_personne"/>
+	<obj-relationship name="situationFamiliale" source="Personne" target="SituationFamiliale" db-relationship-path="situation_familiale"/>
+	<obj-relationship name="situationProfessionelle" source="Personne" target="SituationProfessionelle" db-relationship-path="situation_professionelle"/>
+	<obj-relationship name="statut" source="Personne" target="StatutPersonne" db-relationship-path="statut"/>
+	<obj-relationship name="personne" source="Ressource" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="type" source="Ressource" target="TypeRessource" db-relationship-path="type"/>
+	<obj-relationship name="groupes" source="Utilisateur" target="Groupe" db-relationship-path="ARRAY_groupes.groupe"/>
+</data-map>

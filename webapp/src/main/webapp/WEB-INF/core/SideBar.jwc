@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+
+	<parameter name="source" required="yes" />
+	<parameter name="value" required="yes" />
+	<parameter name="sideStyle" />
+
+	<property name="idxCat" />
+	<property name="idxValue" />
+
+	<property name="barCat" />
+	<property name="barValue" />
+
+	<component id="table" type="If" inherit-informal-parameters="yes">
+		<binding name="condition" value="source" />
+	</component>
+
+</component-specification>

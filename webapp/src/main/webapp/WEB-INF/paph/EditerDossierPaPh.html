@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />
+
+<div jwcid="@core/Onglets" style="width:100%;margin-top:6px;">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<div style="float:right;border: 1px dotted;padding: 1ex; width: 300px;">
+		<p>
+			<strong>Tutelle :</strong>
+			<select jwcid="@PropertySelection" value="ognl:paph.sousTutelle" model="ognl:psm.ouiNon"
+				onchange="refreshPage()"/>
+		</p>
+		
+		<div jwcid="@If" condition="ognl:paph.sousTutelle">
+		<div></div>
+			<table jwcid="@core/Tableau" source="ognl:paph.procurations" value="ognl:row"
+				titre="Personnes ayant procuration">
+				<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:row.nom" />
+				<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:row.prenom" />
+				<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:paph" liste="procurations"/>
+			</table>
+			
+			<table jwcid="@core/edit/SubForm" source="ognl:paph" liste="procurations" value="ognl:procuration">
+				<tr><td colspan="2"><strong>Ajouter une procuration :</strong></td></tr>
+				<tr><td class="label">Nom :</td><td><input jwcid="@TextField" value="ognl:procuration.nom"/></td></tr>
+				<tr><td class="label">Prénom :</td><td><input jwcid="@TextField" value="ognl:procuration.prenom"/></td></tr>
+			</table>
+		</div>
+	</div>
+
+<table><tbody>
+	<tr>
+	<td>Nom :</td>
+	<td><input jwcid="@Insert" value="ognl:paph.personne.nom" /></td>
+	</tr>
+	<tr>
+	<td>Prénom :</td>
+	<td><input jwcid="@Insert" value="ognl:paph.personne.prenom" /></td>
+	</tr>
+	<tr>
+	<td>N° Dossier :</td>
+	<td><input jwcid="@core/show/Id" object="ognl:paph.dossier" /></td>
+	</tr>
+	<tr><td>Passage permanent</td>
+	<td><input jwcid="@core/edit/Date" value="ognl:paph.passagePermanent"/></td>
+	</tr>
+	<tr><td>Revenus nets mensuels</td>
+	<td><input jwcid="@TextField" value="ognl:paph.revenuNetMensuel" translator="translator:number"/>&nbsp;XPF</td>
+	</tr>
+	<tr>
+	<td>Nombre d'enfants</td>
+	<td><input jwcid="@TextField" value="ognl:paph.nombreEnfants" translator="translator:number"/></td>
+	</tr>
+	<tr><td>Situation sociale</td>
+	<td><input jwcid="@core/edit/Enum" value="ognl:paph.situationSociale" enum="SituationSociale" null="ognl:null" /></td>
+	</tr>
+	<tr><td>Statut d'occupation</td>
+	<td><input jwcid="@core/edit/Enum" value="ognl:paph.statutOccupation" enum="StatutOccupation" null="ognl:null" /></td>
+	</tr>
+	<tr><td>Besoin de logement ?</td>
+	<td>
+		<select jwcid="@PropertySelection" value="ognl:paph.besoinLogement" model="ognl:psm.ouiNon"/>
+	</td>
+	</tr>
+	<tr><td>Besoin de mobilier ?</td>
+	<td>
+	    <select jwcid="@PropertySelection" value="ognl:paph.besoinMobilier" model="ognl:psm.ouiNon"/>
+	</td>
+	</tr>
+	<tr><td>Aides provisoires ?</td>
+	<td>
+		<select jwcid="@PropertySelection" value="ognl:paph.aidesProvisoires" model="ognl:psm.ouiNon"/>
+	</td>
+	</tr>
+	<tr><td>Sous curatelle ? </td>
+	<td>
+		<select jwcid="@PropertySelection" value="ognl:paph.sousCuratelle" model="ognl:psm.ouiNon"/>
+	</td>
+	</tr>
+</tbody></table>
+</div>
+
+<div jwcid="@core/Onglet" titre="Handicap">
+
+	<table><tbody>
+	<tr>
+	<td>Dossier personne handicapée ?</td>
+	<td><select jwcid="@PropertySelection" value="ognl:paph.estHandicape" model="ognl:psm.ouiNon" onchange="refreshPage()"/></td>
+	</tr>
+	</tbody></table>
+	
+	<span jwcid="@If" condition="ognl:paph.estHandicape">
+	<table class="invis">
+	<tr>
+	<td colspan="2">CORH :</td>
+	<td><select jwcid="@PropertySelection" value="ognl:paph.corh" model="ognl:psm.ouiNon"  onchange="refreshPage()" /></td>
+	</tr>
+	<tr>
+	<td colspan="2">Date de passage handicap :</td>
+	<td><input jwcid="@core/edit/Date" value="ognl:paph.passageHandicapee"/></td>
+	</tr>
+	<span jwcid="@If" condition="ognl:paph.corh">
+	<tr>
+	<td colspan="2">Date de fin CORH :</td>
+	<td><input jwcid="@core/edit/Date" value="ognl:paph.finCorh"/></td>
+	</tr>
+	</span>
+	<tr><td colspan="3" style="text-align:right;">&nbsp;</td>
+	</tr>
+	</table>
+	<table jwcid="@core/Tableau" source="ognl:paph.specificitesCarte" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Spécificité" value="ognl:row.specificite" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:paph" liste="specificitesCarte"/>
+	</table>
+	<table class="invis">
+	<tr>
+		<td colspan="2"><strong>Ajouter une spécificité :</strong></td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:specificite" enum="SpecificiteCarteHand" /></td>
+		<td><input jwcid="ajouterSpecificite@Submit" class="button" value="Ajouter" action="listener:ajouterSpecificite"/></td>
+	</tr>
+	
+	<tr><td colspan="3" style="text-align:right;">&nbsp;</td></tr>
+	</table>
+	<table jwcid="@core/Tableau" source="ognl:paph.handicaps" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Handicap" value="ognl:row.handicap" />
+			<div jwcid="@core/tableau/Colonne" titre="Taux de handicap" value="ognl:row.taux" />			
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:paph" liste="handicaps"/>
+	</table>
+	<table class="invis">
+		<tr>
+		<td colspan="4"><strong>Ajouter un handicap :</strong></td>
+		</tr>
+		<tr>
+		<td>Handicap :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:handicap" enum="Handicap" null="ognl:null" /></td>
+		<td>Taux :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:tauxHandicap" enum="TauxHandicap" null="ognl:null" /></td>
+		<td><input jwcid="ajouterHandicap@Submit" class="button" value="Ajouter" action="listener:ajouterHandicap"/></td>
+		</tr>
+		<tr>
+		<td colspan="4" style="text-align:right;"></td></tr>
+	</table>
+	</span>
+</div>
+
+<div jwcid="@core/Onglet" titre="Accompagnements">
+
+	<div jwcid="@core/Tableau" source="ognl:paph.accompagnements" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Projet" value="ognl:row.projet"/>
+		<div jwcid="@core/tableau/Colonne" titre="Commentaire" value="ognl:row.commentaire"/>
+		<div jwcid="@core/tableau/ObjectPageAction" page="paph/EditerAccompagnement" parentProperty="dossier"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:paph" liste="accompagnements"/>
+		
+	    <input class="button" jwcid="ajouterAccompagnement@Submit" value="Ajouter" action="listener:ajouterAccompagnement"/>
+	</div>
+
+</div>
+
+
+<div jwcid="@core/Onglet" titre="Taxi">
+
+<table><tbody>
+	<tr><td>
+		<div jwcid="@budget/EntetePeriode" debut="ognl:periodeDebut" fin="ognl:periodeFin"
+			titre="ognl:null"/>
+		
+		<table jwcid="@core/Tableau" source="ognl:demandesTaxi" value="ognl:row" titre="Demandes de taxi">
+			<div jwcid="@core/tableau/Colonne" titre="Date demande" value="ognl:row.dateDemande" />
+			<div jwcid="@core/tableau/Colonne" titre="Accompagnateur" value="ognl:row.necessiteAccompagnateur?'oui':'non'" />
+			<div jwcid="@core/tableau/Colonne" titre="Avis commission" value="ognl:row.commission?(row.commission.valide?'ok':'refus'):null" />
+			<div jwcid="@core/tableau/Colonne" titre="Fin de validité" value="ognl:row.dateFinValidite" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="paph/DemanderTaxi" parentProperty="dossier"/>
+			<div jwcid="@core/tableau/ActionSupprimer" titre="Actions" parent="ognl:paph" liste="demandesTaxi"/>
+			<input jwcid="ajouterDemande@Submit" value="Ajouter" action="listener:ajouterDemande" class="button"/>
+		</table>
+	</td></tr>
+	<tr>
+		<td>
+		<table jwcid="@core/Tableau" source="ognl:deplacementsTaxi" value="ognl:row" titre="Déplacements effectués">
+			<div jwcid="@core/tableau/Colonne" titre="N° Ticket" value="ognl:row.numeroTicket" />
+			<div jwcid="@core/tableau/Colonne" titre="N° Série Ticket" value="ognl:row.numeroSerieTicket" />
+			<div jwcid="@core/tableau/Colonne" titre="Date déplacement" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Nb Personnes Transportées" value="ognl:row.nbPersonnesTransportees" />
+			<div jwcid="@core/tableau/Colonne" titre="Lieu" value="ognl:row.lieu" />
+			<div jwcid="@core/tableau/Colonne" titre="Objet" value="ognl:row.nature" />
+			<div jwcid="@core/tableau/Colonne" titre="Montant course" value="ognl:row.montantCourse" />
+			<div jwcid="@core/tableau/Colonne" titre="Part Usager" value="ognl:row.participationUsager" />
+			<div jwcid="@core/tableau/Colonne" titre="Part CCAS" value="ognl:row.participationCCAS" />
+			<div jwcid="@core/tableau/Colonne" titre="Num Facture" value="ognl:row.numeroFacture" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="paph/EditerDeplacement" parentProperty="dossier"/>
+			<div jwcid="@core/tableau/ActionSupprimer" titre="Actions" parent="ognl:paph" liste="deplacementsTaxi"/>
+			<input jwcid="ajouterDeplacement@Submit" value="Ajouter" action="listener:ajouterDeplacement" class="button"/>
+		</table>
+		</td>
+	</tr>
+</tbody></table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

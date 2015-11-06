@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.habitat" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module dossier="habitat" titre="Habitat">
+			<partie-module titre="Habitat">
+				<point-entree titre="Créer Site RHI" page="EditerRHI">
+					Permet de créer un site RHI.
+				</point-entree>
+				<point-entree titre="Sites RHI" page="SiteRHISearch">
+					Permet de rechercher un site RHI.
+				</point-entree>
+				<!-- 
+				<point-entree titre="Créer Action Collective" page="EditerActionCollective">
+					Permet de créer une action collective.
+				</point-entree>
+				 -->
+				<point-entree titre="Rechercher / Créer" page="Recherche">
+					Permet de rechercher et/ou de créer un dossier habitat.
+				</point-entree>
+			</partie-module>
+			<!-- 
+			<partie-module titre="Statistiques" dossier="stats">
+				<point-entree titre="150 Familles" page="Rapport150Familles">
+					Tableau récapitulatif 150 familles.
+				</point-entree>
+			</partie-module>
+			 -->
+		</module>
+	</contribution>
+
+</module>

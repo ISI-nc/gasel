@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.core.enums"/>
+	<db-entity name="activite">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="categorie_charge">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="categorie_ressource">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="couverture_sociale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="lien_parente">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="mutuelle">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="origine_signalement">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="problematique">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="reponse_problematique">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="situation_familiale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="situation_professionelle">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="statut_personne">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_activite">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_charge">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_contrat">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_habitat">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_problematique">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_public">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="code" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_ressource">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="parent_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="Activite" className="nc.ccas.gasel.model.core.enums.Activite" dbEntityName="activite">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="CategorieCharge" className="nc.ccas.gasel.model.core.enums.CategorieCharge" dbEntityName="categorie_charge">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="CategorieRessource" className="nc.ccas.gasel.model.core.enums.CategorieRessource" dbEntityName="categorie_ressource">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="CouvertureSociale" className="nc.ccas.gasel.model.core.enums.CouvertureSociale" dbEntityName="couverture_sociale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="LienParente" className="nc.ccas.gasel.model.core.enums.LienParente" dbEntityName="lien_parente">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Mutuelle" className="nc.ccas.gasel.model.core.enums.Mutuelle" dbEntityName="mutuelle">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="OrigineSignalement" className="nc.ccas.gasel.model.core.enums.OrigineSignalement" dbEntityName="origine_signalement">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Problematique" className="nc.ccas.gasel.model.core.enums.Problematique" dbEntityName="problematique">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ReponseProblematique" className="nc.ccas.gasel.model.core.enums.ReponseProblematique" dbEntityName="reponse_problematique">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="SituationFamiliale" className="nc.ccas.gasel.model.core.enums.SituationFamiliale" dbEntityName="situation_familiale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="SituationProfessionelle" className="nc.ccas.gasel.model.core.enums.SituationProfessionelle" dbEntityName="situation_professionelle">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="StatutPersonne" className="nc.ccas.gasel.model.core.enums.StatutPersonne" dbEntityName="statut_personne">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeActivite" className="nc.ccas.gasel.model.core.enums.TypeActivite" dbEntityName="type_activite">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeCharge" className="nc.ccas.gasel.model.core.enums.TypeCharge" dbEntityName="type_charge">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeContrat" className="nc.ccas.gasel.model.core.enums.TypeContrat" dbEntityName="type_contrat">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeHabitat" className="nc.ccas.gasel.model.core.enums.TypeHabitat" dbEntityName="type_habitat">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeProblematique" className="nc.ccas.gasel.model.core.enums.TypeProblematique" dbEntityName="type_problematique">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypePublic" className="nc.ccas.gasel.model.core.enums.TypePublic" dbEntityName="type_public">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="code" type="java.lang.Integer" db-attribute-path="code"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeRessource" className="nc.ccas.gasel.model.core.enums.TypeRessource" dbEntityName="type_ressource">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="REV_type_charge_parent" source="categorie_charge" target="type_charge" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_type_ressource_parent" source="categorie_ressource" target="type_ressource" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_couverture_sociale" source="couverture_sociale" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="couverture_sociale_id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_lien_chef_famille" source="lien_parente" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="lien_chef_famille_id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_mutuelle" source="mutuelle" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="mutuelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_signalement" source="origine_signalement" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="signalement_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_action_collective_ARRAY_problematiques" source="problematique" target="action_collective_problematiques" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_dossier_ARRAY_problematiques" source="problematique" target="dossier_problematiques" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_habitat_problematique" source="problematique" target="objectif_prob_habitat" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_paph_problematique" source="problematique" target="objectif_prob_paph" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="problematique" target="type_problematique" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="FROM_objectif_prob_habitat_ARRAY_reponses" source="reponse_problematique" target="objectif_prob_habitat_reponses" toMany="true">
+		<db-attribute-pair source="id" target="reponse_problematique_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_objectif_prob_paph_ARRAY_reponses" source="reponse_problematique" target="objectif_prob_paph_reponses" toMany="true">
+		<db-attribute-pair source="id" target="reponse_problematique_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="reponse_problematique" target="type_problematique" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_situation_familiale" source="situation_familiale" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="situation_familiale_id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_situation_professionelle" source="situation_professionelle" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="situation_professionelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_personne_statut" source="statut_personne" target="personne" toMany="true">
+		<db-attribute-pair source="id" target="statut_id"/>
+	</db-relationship>
+	<db-relationship name="REV_activite_personne_type" source="type_activite" target="activite_personne" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_charge_type" source="type_charge" target="charge" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="type_charge" target="categorie_charge" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_activite_personne_contrat" source="type_contrat" target="activite_personne" toMany="true">
+		<db-attribute-pair source="id" target="contrat_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_type_habitat" source="type_habitat" target="dossier" toMany="true">
+		<db-attribute-pair source="id" target="type_habitat_id"/>
+	</db-relationship>
+	<db-relationship name="REV_problematique_parent" source="type_problematique" target="problematique" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="REV_reponse_problematique_parent" source="type_problematique" target="reponse_problematique" toMany="true">
+		<db-attribute-pair source="id" target="parent_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_dossier_ARRAY_types_public" source="type_public" target="dossier_types_public" toMany="true">
+		<db-attribute-pair source="id" target="type_public_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_public" source="type_public" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="public_id"/>
+	</db-relationship>
+	<db-relationship name="REV_budget_type_public_type_public" source="type_public" target="budget_type_public" toMany="true">
+		<db-attribute-pair source="id" target="type_public_id"/>
+	</db-relationship>
+	<db-relationship name="REV_type_public_nature_type_public" source="type_public" target="type_public_nature" toMany="true">
+		<db-attribute-pair source="id" target="type_public_id"/>
+	</db-relationship>
+	<db-relationship name="aideMontants" source="type_public" target="aide_resume_montants" toMany="true">
+		<db-attribute-pair source="id" target="public_id"/>
+	</db-relationship>
+	<db-relationship name="REV_ressource_type" source="type_ressource" target="ressource" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="parent" source="type_ressource" target="categorie_ressource" toMany="false">
+		<db-attribute-pair source="parent_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="types" source="CategorieCharge" target="TypeCharge" db-relationship-path="REV_type_charge_parent"/>
+	<obj-relationship name="types" source="CategorieRessource" target="TypeRessource" db-relationship-path="REV_type_ressource_parent"/>
+	<obj-relationship name="parent" source="Problematique" target="TypeProblematique" db-relationship-path="parent"/>
+	<obj-relationship name="parent" source="ReponseProblematique" target="TypeProblematique" db-relationship-path="parent"/>
+	<obj-relationship name="parent" source="TypeCharge" target="CategorieCharge" db-relationship-path="parent"/>
+	<obj-relationship name="problematiques" source="TypeProblematique" target="Problematique" db-relationship-path="REV_problematique_parent"/>
+	<obj-relationship name="reponses" source="TypeProblematique" target="ReponseProblematique" db-relationship-path="REV_reponse_problematique_parent"/>
+	<obj-relationship name="parent" source="TypeRessource" target="CategorieRessource" db-relationship-path="parent"/>
+</data-map>

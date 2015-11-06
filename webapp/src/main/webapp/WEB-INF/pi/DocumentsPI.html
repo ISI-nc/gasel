@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/LayoutActions" actions="component:actions">
+
+<table class="invis">
+	<tbody>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('pi.arrete_attribution')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('pi.arrete_attribution').modele" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('pi.arrete_renouvellement')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('pi.arrete_renouvellement').modele" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('pi.retard_paiement')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('pi.retard_paiement').modele" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('pi.entretien')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('pi.entretien').modele" /></td>
+		</tr>
+		<tr>
+			<td class="label"><span jwcid="@Insert" value="ognl:label('pi.entretien_paiement')"/>&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:ref('pi.entretien_paiement').modele" /></td>
+		</tr>
+	</tbody>
+</table>
+
+<div jwcid="actions@Block">
+
+	<div jwcid="@core/show/Validator" validator="ognl:checkResult"/>
+
+	<p><input jwcid="@core/BoutonRetour" value="Annuler" /></p>
+
+	<p><input jwcid="enregistrerEtFermer@Submit" class="button" value="Enregistrer et fermer"
+		action="listener:enregistrerEtFermer" /></p>
+		
+	<p><input jwcid="enregistrerSansFermer@Submit" class="button" value="Enregistrer sans fermer"
+		action="listener:enregistrer" /></p>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

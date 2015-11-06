@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.import_v1"/>
+	<property name="defaultSchema" value="gasel_v2"/>
+	<db-entity name="import_v1" schema="gasel_v2">
+		<db-attribute name="dst_entity" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="dst_id" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="src_entity" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="src_id" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<obj-entity name="ImportV1" className="nc.ccas.gasel.model.import_v1.ImportV1" dbEntityName="import_v1">
+		<obj-attribute name="dstEntity" type="java.lang.String" db-attribute-path="dst_entity"/>
+		<obj-attribute name="dstId" type="java.lang.String" db-attribute-path="dst_id"/>
+		<obj-attribute name="srcEntity" type="java.lang.String" db-attribute-path="src_entity"/>
+		<obj-attribute name="srcId" type="java.lang.String" db-attribute-path="src_id"/>
+	</obj-entity>
+</data-map>

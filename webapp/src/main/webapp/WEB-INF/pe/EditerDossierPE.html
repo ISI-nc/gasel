@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<div style="float:right;border: 1px dotted;padding: 1ex; width: 300px;">
+		<div><strong>Absences :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.absences" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:row.debut" />
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:row.fin" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="absences"/>
+		</table>
+					
+		<div><strong>Ajouter une absence :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="absences" value="ognl:absence">
+			<tr><td class="label">Début :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:absence.debut"/></td></tr>
+			<tr><td class="label">Fin :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:absence.fin"/></td></tr>
+		</table>
+	</div>
+
+	<table><tbody>
+		<tr>
+		<td>Nom :</td>
+		<td><input jwcid="@Insert" value="ognl:object.personne.nom" /></td>
+		</tr>
+		<tr>
+		<td>Prénom :</td>
+		<td><input jwcid="@Insert" value="ognl:object.personne.prenom" /></td>
+		</tr>
+		<tr>
+		<td>N° Dossier :</td>
+		<td><input jwcid="@core/show/Id" object="ognl:object.dossier" /></td>
+		</tr>
+		<tr>
+		<td>Entrée :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.entree"/></td>
+		</tr>
+		<tr>
+		<td>Sortie :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.sortie"/></td>
+		</tr>
+		<tr>
+		<td>Dernier contact le :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.dernierContact"/></td>
+		</tr>
+		<tr>
+		<td>Certificat médical :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.certificatMedical" model="ognl:psm.ouiNon"/></td>
+		</tr>
+		<tr>
+		<td>Lieu de travail des parents :</td>
+		<td><select jwcid="@voirie/edit/Quartier" value="ognl:object.quartierTravailParent" /></td>
+		</tr>
+	</tbody></table>
+	
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Autorisation">
+
+	<table jwcid="@core/Tableau" source="ognl:object.autorisations" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Accepté" value="ognl:row.accepte?'oui':'non'" />
+		<div jwcid="@core/tableau/Colonne" titre="Autorisation parentale" value="ognl:row.autorisationParentale" />
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="autorisations"/>
+	</table>
+	
+	<table jwcid="@core/edit/SubForm" source="ognl:object" liste="autorisations" value="ognl:autorisation">
+		<tr><td>Acceptée :</td>
+			<td><select jwcid="@PropertySelection" value="ognl:autorisation.accepte" model="ognl:psm.ouiNon"/></td>
+		</tr>
+		<tr><td>Autorisation parentale :</td>
+			<td><select jwcid="@core/edit/Enum" value="ognl:autorisation.autorisationParentale" enum="AutorisationParentale"/></td>
+		</tr>
+	</table>
+
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="handicap">
+
+	<table><tbody>
+		<tr>
+		<td>Handicap :</td>
+		<td><input jwcid="@TextField" value="ognl-protect:object.handicap.libelle" /></td>
+		</tr>
+		<tr>
+		<td>Pondération : (compris entre 1 et 3)</td>
+		<td><input jwcid="@TextField" value="ognl-protect:object.handicap.ponderation" /></td>
+		</tr>
+	</tbody></table>
+
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Aide au paiement">
+
+	<table jwcid="@core/Tableau" source="ognl:object.aidesPaiement" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Organisme" value="ognl:row.organisme" />
+		<div jwcid="@core/tableau/Colonne" titre="Montant de l'aide" value="ognl:row.montantAide" />
+		<div jwcid="@core/tableau/Colonne" titre="Montant pris en charge" value="ognl:row.montantPrisEnCharge" />
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="aidesPaiement"/>
+	</table>
+	
+	<table jwcid="@core/edit/SubForm" source="ognl:object" liste="aidesPaiement" value="ognl:aidePaiement">
+		<tr><td>Organisme d'aide sociale :</td>
+			<td><select jwcid="@PropertySelection" value="ognl:aidePaiement.organisme"
+			 model="ognl:psm.all('OrganismeSocial')" /></td>
+		</tr>
+		<tr><td>Montant de l'aide :</td>
+			<td><select jwcid="@core/edit/Montant" value="ognl:aidePaiement.montantAide" /></td>
+		</tr>
+		<tr><td>Montant de la prise en charge :</td>
+			<td><select jwcid="@core/edit/Montant" value="ognl:aidePaiement.montantPrisEnCharge" /></td>
+		</tr>
+	</table>
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Garde">
+
+	<table jwcid="@core/Tableau" source="ognl:sort(object.gardes).by('ordre').results" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Date début" value="ognl:row.debut" />
+		<div jwcid="@core/tableau/Colonne" titre="Date fin" value="ognl:row.fin" />
+		<div jwcid="@core/tableau/Colonne" titre="Assistante maternelle" value="ognl:row.assistanteMaternelle" />
+		<div jwcid="@core/tableau/Colonne" titre="Mode de garderie" value="ognl:row.mode" />
+		<div jwcid="@core/tableau/Colonne" titre="Ordre" value="ognl:row.ordre" />
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="gardes"/>
+	</table>
+	
+	<table jwcid="@core/edit/SubForm" source="ognl:object" liste="gardes" value="ognl:garde" oninit="listener:prepareGarde">
+		<tr><td>Date début :</td>
+			<td><select jwcid="@core/edit/Date" value="ognl:garde.debut" /></td>
+		</tr>
+		<tr><td>Date fin :</td>
+			<td><select jwcid="@core/edit/Date" value="ognl:garde.fin" /></td>
+		</tr>
+		<tr><td>Assistante maternelle :</td>
+			<td><select jwcid="@PropertySelection" value="ognl:garde.assistanteMaternelle"
+					model="ognl:psm.dataObject(sort(sql.query.all('AssistanteMaternelle')).by('personne.nom').by('personne.prenom').results)" /></td>
+		</tr>
+		<tr><td>Mode de garderie :</td>
+			<td><select jwcid="@PropertySelection" value="ognl:garde.mode" model="ognl:psm.all('ModeGarde')" /></td>
+		</tr>
+	</table>
+
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

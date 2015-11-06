@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.pa"/>
+	<property name="defaultSchema" value="gasel_v2"/>
+	<db-entity name="accompagnement_pa" schema="gasel_v2">
+		<db-attribute name="dossier_pa_accompagnements_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="projet" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_pa" schema="gasel_v2">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_pa" schema="gasel_v2">
+		<db-attribute name="montant_revenus_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="personne_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="situation_sociale_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="statut_occupation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="tranche_age_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="dossier_pa" schema="gasel_v2">
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="passage_permanent" type="TIMESTAMP"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="sous_curatelle" type="BIT" isMandatory="true"/>
+		<db-attribute name="sous_tutelle" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="montant_revenus" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_pa" schema="gasel_v2">
+		<db-attribute name="accompagnement_pa_objectifs_id" type="INTEGER"/>
+		<db-attribute name="echeance" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_prob_pa" schema="gasel_v2">
+		<db-attribute name="objectif_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="objectif_pa_problematiques_id" type="INTEGER"/>
+		<db-attribute name="problematique_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="origine_dossier" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="prob_dossier_pa" schema="gasel_v2">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="problematique_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="problematique_paph" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="procuration_pa" schema="gasel_v2">
+		<db-attribute name="dossier_pa_procurations_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nom" type="CLOB" isMandatory="true"/>
+		<db-attribute name="prenom" type="CLOB" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="situation_sociale" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="statut_occupation" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="tranche_age" schema="gasel_v2">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="AccompagnementPA" className="nc.ccas.gasel.model.pa.AccompagnementPA" dbEntityName="accompagnement_pa">
+		<obj-attribute name="projet" type="java.lang.String" db-attribute-path="projet"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierPA" className="nc.ccas.gasel.model.pa.AspectDossierPA" dbEntityName="aspect_dossier_pa">
+	</obj-entity>
+	<obj-entity name="AspectPA" className="nc.ccas.gasel.model.pa.AspectPA" dbEntityName="aspect_pa">
+	</obj-entity>
+	<obj-entity name="DossierPA" className="nc.ccas.gasel.model.pa.DossierPA" dbEntityName="dossier_pa">
+		<obj-attribute name="passagePermanent" type="java.util.Date" db-attribute-path="passage_permanent"/>
+		<obj-attribute name="sousCuratelle" type="java.lang.Boolean" db-attribute-path="sous_curatelle"/>
+		<obj-attribute name="sousTutelle" type="java.lang.Boolean" db-attribute-path="sous_tutelle"/>
+	</obj-entity>
+	<obj-entity name="MontantRevenus" className="nc.ccas.gasel.model.pa.MontantRevenus" dbEntityName="montant_revenus">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ObjectifPA" className="nc.ccas.gasel.model.pa.ObjectifPA" dbEntityName="objectif_pa">
+		<obj-attribute name="echeance" type="java.util.Date" db-attribute-path="echeance"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="ObjectifProbPA" className="nc.ccas.gasel.model.pa.ObjectifProbPA" dbEntityName="objectif_prob_pa">
+	</obj-entity>
+	<obj-entity name="OrigineDossier" className="nc.ccas.gasel.model.pa.OrigineDossier" dbEntityName="origine_dossier">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ProbDossierPA" className="nc.ccas.gasel.model.pa.ProbDossierPA" dbEntityName="prob_dossier_pa">
+	</obj-entity>
+	<obj-entity name="ProblematiquePAPH" className="nc.ccas.gasel.model.pa.ProblematiquePAPH" dbEntityName="problematique_paph">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="ProcurationPA" className="nc.ccas.gasel.model.pa.ProcurationPA" dbEntityName="procuration_pa">
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="prenom" type="java.lang.String" db-attribute-path="prenom"/>
+	</obj-entity>
+	<obj-entity name="SituationSociale" className="nc.ccas.gasel.model.pa.SituationSociale" dbEntityName="situation_sociale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="StatutOccupation" className="nc.ccas.gasel.model.pa.StatutOccupation" dbEntityName="statut_occupation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TrancheAge" className="nc.ccas.gasel.model.pa.TrancheAge" dbEntityName="tranche_age">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="dossier_pa_accompagnements" source="accompagnement_pa" target="dossier_pa" toMany="false">
+		<db-attribute-pair source="dossier_pa_accompagnements_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectifs" source="accompagnement_pa" target="objectif_pa" toMany="true">
+		<db-attribute-pair source="id" target="accompagnement_pa_objectifs_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_pa_dossier" source="aspect_dossier_pa" target="dossier_pa" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_pa" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="montant_revenus" source="aspect_pa" target="montant_revenus" toMany="false">
+		<db-attribute-pair source="montant_revenus_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="aspect_pa" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="situation_sociale" source="aspect_pa" target="situation_sociale" toMany="false">
+		<db-attribute-pair source="situation_sociale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="statut_occupation" source="aspect_pa" target="statut_occupation" toMany="false">
+		<db-attribute-pair source="statut_occupation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="tranche_age" source="aspect_pa" target="tranche_age" toMany="false">
+		<db-attribute-pair source="tranche_age_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_prob_dossier_pa_dossier" source="dossier_pa" target="prob_dossier_pa" toMany="true">
+		<db-attribute-pair source="id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="accompagnements" source="dossier_pa" target="accompagnement_pa" toMany="true">
+		<db-attribute-pair source="id" target="dossier_pa_accompagnements_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="dossier_pa" target="aspect_dossier_pa" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="dossier_pa" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="procurations" source="dossier_pa" target="procuration_pa" toMany="true">
+		<db-attribute-pair source="id" target="dossier_pa_procurations_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_pa_montant_revenus" source="montant_revenus" target="aspect_pa" toMany="true">
+		<db-attribute-pair source="id" target="montant_revenus_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_pa_objectif" source="objectif_pa" target="objectif_prob_pa" toMany="true">
+		<db-attribute-pair source="id" target="objectif_id"/>
+	</db-relationship>
+	<db-relationship name="accompagnement_pa_objectifs" source="objectif_pa" target="accompagnement_pa" toMany="false">
+		<db-attribute-pair source="accompagnement_pa_objectifs_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematiques" source="objectif_pa" target="objectif_prob_pa" toMany="true">
+		<db-attribute-pair source="id" target="objectif_pa_problematiques_id"/>
+	</db-relationship>
+	<db-relationship name="objectif" source="objectif_prob_pa" target="objectif_pa" toMany="false">
+		<db-attribute-pair source="objectif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectif_pa_problematiques" source="objectif_prob_pa" target="objectif_pa" toMany="false">
+		<db-attribute-pair source="objectif_pa_problematiques_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="objectif_prob_pa" target="problematique_paph" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="prob_dossier_pa" target="dossier_pa" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="prob_dossier_pa" target="problematique_paph" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_pa_problematique" source="problematique_paph" target="objectif_prob_pa" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_ph_problematique" source="problematique_paph" target="objectif_prob_ph" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="REV_prob_dossier_pa_problematique" source="problematique_paph" target="prob_dossier_pa" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="REV_prob_dossier_ph_problematique" source="problematique_paph" target="prob_dossier_ph" toMany="true">
+		<db-attribute-pair source="id" target="problematique_id"/>
+	</db-relationship>
+	<db-relationship name="dossier_pa_procurations" source="procuration_pa" target="dossier_pa" toMany="false">
+		<db-attribute-pair source="dossier_pa_procurations_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_pa_situation_sociale" source="situation_sociale" target="aspect_pa" toMany="true">
+		<db-attribute-pair source="id" target="situation_sociale_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_pa_statut_occupation" source="statut_occupation" target="aspect_pa" toMany="true">
+		<db-attribute-pair source="id" target="statut_occupation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_pa_tranche_age" source="tranche_age" target="aspect_pa" toMany="true">
+		<db-attribute-pair source="id" target="tranche_age_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_ph_tranche_age" source="tranche_age" target="aspect_ph" toMany="true">
+		<db-attribute-pair source="id" target="tranche_age_id"/>
+	</db-relationship>
+	<obj-relationship name="objectifs" source="AccompagnementPA" target="ObjectifPA" db-relationship-path="objectifs"/>
+	<obj-relationship name="dossier" source="AspectDossierPA" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="dossiers" source="AspectDossierPA" target="DossierPA" db-relationship-path="REV_dossier_pa_dossier"/>
+	<obj-relationship name="montantRevenus" source="AspectPA" target="MontantRevenus" db-relationship-path="montant_revenus"/>
+	<obj-relationship name="personne" source="AspectPA" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="situationSociale" source="AspectPA" target="SituationSociale" db-relationship-path="situation_sociale"/>
+	<obj-relationship name="statutOccupation" source="AspectPA" target="StatutOccupation" db-relationship-path="statut_occupation"/>
+	<obj-relationship name="trancheAge" source="AspectPA" target="TrancheAge" db-relationship-path="tranche_age"/>
+	<obj-relationship name="accompagnements" source="DossierPA" target="AccompagnementPA" db-relationship-path="accompagnements"/>
+	<obj-relationship name="dossier" source="DossierPA" target="AspectDossierPA" db-relationship-path="dossier"/>
+	<obj-relationship name="personne" source="DossierPA" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="problematiques" source="DossierPA" target="ProbDossierPA" db-relationship-path="REV_prob_dossier_pa_dossier"/>
+	<obj-relationship name="procurations" source="DossierPA" target="ProcurationPA" db-relationship-path="procurations"/>
+	<obj-relationship name="problematiques" source="ObjectifPA" target="ObjectifProbPA" db-relationship-path="problematiques"/>
+	<obj-relationship name="objectif" source="ObjectifProbPA" target="ObjectifPA" db-relationship-path="objectif"/>
+	<obj-relationship name="problematique" source="ObjectifProbPA" target="ProblematiquePAPH" db-relationship-path="problematique"/>
+	<obj-relationship name="dossier" source="ProbDossierPA" target="DossierPA" db-relationship-path="dossier"/>
+	<obj-relationship name="problematique" source="ProbDossierPA" target="ProblematiquePAPH" db-relationship-path="problematique"/>
+</data-map>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<meta key="security" value="skip"/>
+
+	<component id="restart" type="ServiceLink">
+		<binding name="service"
+			value="@org.apache.tapestry.Tapestry@RESTART_SERVICE" />
+	</component>
+
+	<asset name="stylesheet"
+		path="classpath:/org/apache/tapestry/pages/Exception.css" />
+</page-specification>

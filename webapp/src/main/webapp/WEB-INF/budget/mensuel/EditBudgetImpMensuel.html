@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<table class="section">
+    <tbody>
+      <tr>
+        <td colspan="2" rowspan="1">Budget d'imputation par secteur d'aide :</td>
+      </tr>
+      <tr>
+        <td class="section">
+        <table style="width: 100%;">
+          <tbody>
+            <tr>
+              <td colspan="3">
+              <table>
+                  <tr>
+                    <td class="label">Année :</td>
+					<td class="label"><input size="8" jwcid="@Insert"
+					 value="ognl:object.parent.annee"></input></td>
+					<td>Montant total du budget annuel :</td>
+					<td><div jwcid="@Insert" value="ognl:object.parent.montant" format="ognl:format.montant"></div></td>
+                  </tr>
+                  <tr>
+                    <td class="label">Imputation :</td>
+					<td class="label"><input nsize="8" jwcid="@Insert"
+					 value="ognl:object.imputation"></input></td>
+                    <td class="label">Montant pour l'imputation :</td>
+					<td class="label"><input size="8" jwcid="@Insert" value="ognl:object.montant" format="ognl:format.montant"></input></td>
+                  </tr>
+              </table>
+              </td>
+            </tr>
+            <tr>
+            <td>Gérer le budget par :
+	            <select jwcid="@PropertySelection" value="ognl:object.repartitionParSecteur"
+	            	model="ognl:psm.bool('Secteur d\'aide','Type de public')"
+	            	onchange="refreshPage()">
+				</select>
+			</td>
+			<td>&nbsp;</td>
+            </tr>
+            <tr>
+              <td><p>&nbsp;</p>
+              	  
+              	<span jwcid="@If" condition="ognl:!object.repartitionParSecteur">
+              	<div style="width=950px;overflow: scroll;"><p><table><tbody><tr><td>
+              	<table class="data-table">
+              	<tbody>
+              	<tr>
+              	<th colspan="20">Détail du budget d'imputation</th>
+              	</tr>
+	              	<tr>
+	              		<th>Mois</th>
+	              		<th jwcid="@For" source="ognl:secteursAide" value="ognl:secteurAide" colspan="ognl:typesPublic.size()">
+	              			<span jwcid="@Insert" value="ognl:secteurAide.libelle">[secteuraide]</span>
+	              		</th>
+	              		<th>Total</th>
+	              		<th>Budget</th>
+	              		<th>Reste à répartir</th>
+	              	</tr>
+	              	<tr>
+	              		<th></th>
+	              		<span jwcid="@For" source="ognl:secteursAide" value="ognl:secteurAide">
+	              		  <th jwcid="@For" source="ognl:typesPublic" value="ognl:typePublic">
+	              			<span jwcid="@Insert" value="ognl:typePublic.libelle">[typePublic]</span>
+	              		  </th>
+	              		</span>
+	              		<th></th>
+	              		<th></th>
+	              		<th></th>
+	              	</tr>
+	              	<tr jwcid="@For" source="ognl:moiss" value="ognl:mois">
+	              		<td><div jwcid="@Insert" value="ognl:mois"></div></td>
+	              		<span jwcid="@For" source="ognl:secteursAide" value="ognl:secteurAide">
+	              		 <td jwcid="@For" source="ognl:typesPublic" value="ognl:typePublic">
+	              			<span jwcid="@TextField" value="ognl-protect:budgetTypePublic.montant"
+	              					translator="translator:reel" size="10"></span>
+	              		  </td>
+	              		</span>
+	              		<td><div jwcid="@Insert" value="ognl-protect:totalLigne" format="ognl:format.montant"></div></td>
+	              		<td><div jwcid="@Insert" value="ognl-protect:budgetImpMensuel.montant" format="ognl:format.montant"></div></td>
+	              		<td jwcid="td@Any" style="ognl:resteARepartir ? 'color:red;font-weight:bold;' : null">
+	              			<span jwcid="@Insert" value="ognl:resteARepartir" format="ognl:format.montant"></span></td>
+	              	</tr>
+	              	</td></tr></tbody></table></p></div>
+              	</span>
+              	<span jwcid="@Else"><p>
+              	<table class="data-table">
+              	<tbody>
+	              	<tr>
+	              	<th colspan="20">Détail du budget d'imputation</th>
+	              	</tr>
+	              	<tr>
+	              		<th>Mois</th>
+	              		<th jwcid="@For" source="ognl:secteursAide" value="ognl:secteurAide">
+	              			<span jwcid="@Insert" value="ognl:secteurAide.libelle">[secteuraide]</span>
+	              		</th>
+	              		<th>Total</th>
+	              		<th>Budget</th>
+	              		<th>Reste à répartir</th>
+	              	</tr>
+	              	<tr jwcid="@For" source="ognl:moiss" value="ognl:mois">
+	              		<td><div jwcid="@Insert" value="ognl:mois"></div></td>
+	              		<td jwcid="@For" source="ognl:secteursAide" value="ognl:secteurAide">
+	              			<span jwcid="@TextField" value="ognl-protect:budgetSecteurAide.montant"
+	              					translator="translator:reel" size="10"></span>
+	              		</td>
+	              		<td><div jwcid="@Insert" value="ognl-protect:totalLigne" format="ognl:format.montant"></div></td>
+	              		<td><div jwcid="@Insert" value="ognl-protect:budgetImpMensuel.montant" format="ognl:format.montant"></div></td>
+	              		<td jwcid="td2@Any" style="ognl:resteARepartir ? 'color:red;font-weight:bold;' : null">
+	              			<span jwcid="@Insert" value="ognl:resteARepartir" format="ognl:format.montant"></span></td>
+	              	</tr>
+              	</tbody>
+              	</table>
+              	  </p>
+              	  </span>
+	          </td>
+	        </tr>
+	    </tbody>
+	  </table>
+
+</div>
+</div>
+</body>
+</html>

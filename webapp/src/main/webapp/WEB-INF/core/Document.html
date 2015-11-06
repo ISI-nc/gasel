@@ -1,0 +1,18 @@
+<span jwcid="@Insert" value="ognl:document? 'défini' : 'indéfini'">défini</span>
+<span jwcid="@If" condition="ognl:document">
+	<span jwcid="@If" condition="ognl:not document.objectId.temporary">
+		<span style="display:none;"><a jwcid="@ServiceLink" id="ognl:clientId"
+			service="modele_document" parameters="ognl:document"
+			target="_window" onlick="setTimeout('refreshPage()',100)"></a></span>
+		<button jwcid="@Any" onclick="ognl:'popupLink(\''+clientId+'\')'">Récupérer</button>
+	</span>
+	<input jwcid="supprimer@Submit" class="button" type="submit" value="Supprimer"
+		listener="listener:remove"/>
+</span><span jwcid="@Else">
+	<input jwcid="@Upload" file="ognl:file"/>
+</span>
+<span jwcid="@If" condition="ognl:variables">
+<span onclick="toggleDisplay(nextSibling)"><small>(variables)</small></span><ul
+	style="border: 1px solid; display:none; background:white;">
+	<li jwcid="@For" source="ognl:variables" value="ognl:variable" volatile="true">${<span jwcid="@Insert" value="ognl:variable">xxx</span>}</li>
+</ul></span>

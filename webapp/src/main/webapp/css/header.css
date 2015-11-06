@@ -1,0 +1,16 @@
+
+#print {
+	vertical-align: top;
+	cursor: pointer;
+}
+
+#session-timeout {
+	height:30px;
+	background: #ccc;
+}
+
+#loading { margin-right: 6px; }
+
+#chrono {
+	font-family: monospace;
+}
