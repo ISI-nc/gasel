@@ -74,6 +74,9 @@ public class AspectDossierHabitat extends _AspectDossierHabitat implements
 		DeletionUtils.delete(getDemandesAffectation());
 		DeletionUtils.delete(getDemandesAideLogement());
 		DeletionUtils.delete(getPlanning());
+		
+		DeletionUtils.empty(this, AspectDossierHabitat.AIDES_COMPLEMENTAIRES_PROPERTY);
+		DeletionUtils.empty(this, AspectDossierHabitat.PLANNING_PROPERTY);
 	}
 
 	public void modified(Utilisateur user, Date date) {
