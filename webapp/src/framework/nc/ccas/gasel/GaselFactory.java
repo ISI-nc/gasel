@@ -4,7 +4,7 @@ import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.DataObject;
 import org.apache.cayenne.ObjectContext;
 
-import com.asystan.common.cache.CacheMap;
+import com.asystan.common.cache_new.CacheMap;
 
 /**
  * Constructeur de DataObjects.

@@ -31,7 +31,6 @@ import org.apache.fop.apps.Fop;
 import org.apache.fop.apps.FopFactory;
 import org.apache.fop.apps.MimeConstants;
 
-
 public class TestArrete extends TestCase {
 
 	@Override

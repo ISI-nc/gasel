@@ -8,7 +8,7 @@ import org.apache.cayenne.access.DataContext;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
-import com.asystan.common.cache.CacheMap;
+import com.asystan.common.cache_new.CacheMap;
 
 @Feminin
 public class Constante {
