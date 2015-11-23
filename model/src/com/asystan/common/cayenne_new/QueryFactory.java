@@ -1,4 +1,4 @@
-package com.asystan.common.cayenne;
+package com.asystan.common.cayenne_new;
 
 import static nc.ccas.gasel.modelUtils.DateUtils.sqlTimestamp;
 
@@ -22,6 +22,7 @@ import org.apache.cayenne.exp.parser.ASTObjPath;
 import org.apache.cayenne.exp.parser.ASTOr;
 import org.apache.cayenne.exp.parser.ASTPath;
 import org.apache.cayenne.exp.parser.Node;
+
 
 /**
  * Réimplémentation minimale pour suppression d'une dépendance morte.
@@ -81,10 +82,12 @@ public class QueryFactory {
 			Expression... objects) {
 		return checkedNodes(Arrays.asList(objects));
 	}
-
+	
 	/**
 	 * Check all objects are nodes, strip nulls, and return that result.
 	 */
+	
+
 	private static List<Node> checkedNodes(Collection<?> objects) {
 		List<Node> nodes = new ArrayList<Node>(objects.size());
 		for (Object object : objects) {

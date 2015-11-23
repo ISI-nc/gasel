@@ -1,6 +1,6 @@
 package nc.ccas.gasel.jwcs.core.edit;
 
-import static com.asystan.common.cayenne.QueryFactory.createTrue;
+import static com.asystan.common.cayenne_new.QueryFactory.createTrue;
 import static nc.ccas.gasel.modelUtils.CayenneUtils.resolveEntity;
 
 import java.util.List;

@@ -14,7 +14,7 @@ import nc.ccas.gasel.modelUtils.ListUtils;
 import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.query.SelectQuery;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public class AspectDossierHabitat extends _AspectDossierHabitat implements
 		ComplexDeletion, ModifListener {

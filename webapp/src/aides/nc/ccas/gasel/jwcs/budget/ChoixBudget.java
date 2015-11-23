@@ -1,7 +1,7 @@
 package nc.ccas.gasel.jwcs.budget;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 import nc.ccas.gasel.BaseComponent;
 import nc.ccas.gasel.model.budget.BudgetImpAnnuel;
 import nc.ccas.gasel.model.budget.LigneVirementHelper;

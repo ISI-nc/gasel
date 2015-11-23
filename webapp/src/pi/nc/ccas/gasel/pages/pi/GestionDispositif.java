@@ -1,7 +1,7 @@
 package nc.ccas.gasel.pages.pi;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 import static org.apache.cayenne.exp.Expression.fromString;
 
 import java.util.LinkedList;

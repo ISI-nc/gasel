@@ -1,9 +1,9 @@
 package nc.ccas.gasel.validator;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
-import static com.asystan.common.cayenne.QueryFactory.createNot;
-import static com.asystan.common.cayenne.QueryFactory.createOr;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createNot;
+import static com.asystan.common.cayenne_new.QueryFactory.createOr;
 import static org.apache.cayenne.DataObjectUtils.intPKForObject;
 import static nc.ccas.gasel.modelUtils.CayenneUtils.createDataContext;
 
