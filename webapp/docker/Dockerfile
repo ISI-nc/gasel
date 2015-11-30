@@ -18,12 +18,12 @@ RUN sed -i 's,ident\|peer$,trust,' /var/lib/pgsql/9.3/data/pg_hba.conf
 RUN yum install -y xz
 
 USER postgres
-COPY gasel_adm-prod-20151124-104743.sql.xz /tmp/
+COPY gasel.sql.xz /tmp/
 RUN /usr/pgsql-9.3/bin/postmaster -p 5432 -D /var/lib/pgsql/9.3/data ${PGOPTS} & \
     sleep 1 && \
     createuser -R -S gasel_adm && \
     createdb -E UTF-8 -O gasel_adm gasel && \
-    xzcat /tmp/gasel_adm-prod-20151124-104743.sql.xz |psql -U gasel_adm gasel && \
+    xzcat /tmp/gasel.sql.xz |psql -U gasel_adm gasel && \
     psql -U gasel_adm gasel -c "vacuum full analyze" && \
     kill $! && sleep 1
 
