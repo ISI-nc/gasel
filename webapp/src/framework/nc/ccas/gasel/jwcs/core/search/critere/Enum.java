@@ -1,6 +1,6 @@
 package nc.ccas.gasel.jwcs.core.search.critere;
 
-import static com.asystan.common.cayenne.QueryFactory.createTrue;
+import static com.asystan.common.cayenne_new.QueryFactory.createTrue;
 
 import java.util.Collection;
 import java.util.HashSet;

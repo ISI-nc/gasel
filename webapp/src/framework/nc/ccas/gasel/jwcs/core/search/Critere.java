@@ -22,7 +22,7 @@ import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Parameter;
 import org.apache.tapestry.form.AbstractFormComponent;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class Critere extends AbstractFormComponent {
 

@@ -26,7 +26,7 @@ import org.apache.tapestry.TapestryUtils;
 import org.apache.tapestry.annotations.InitialValue;
 import org.apache.tapestry.annotations.Parameter;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class Form<T extends DataObject> extends BaseComponent {
 

@@ -20,11 +20,11 @@
 		<icon></icon>
 		<servlet-name>web</servlet-name>
 		<servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
 		<init-param>
 			<param-name>org.apache.tapestry.accepted-locales</param-name>
 			<param-value>fr</param-value>
 		</init-param>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<!-- Listener -->

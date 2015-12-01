@@ -14,7 +14,7 @@ import nc.ccas.gasel.modelUtils.ListUtils;
 import org.apache.cayenne.exp.Expression;
 import org.apache.cayenne.query.SelectQuery;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public class AspectDossierHabitat extends _AspectDossierHabitat implements
 		ComplexDeletion, ModifListener {
@@ -74,6 +74,9 @@ public class AspectDossierHabitat extends _AspectDossierHabitat implements
 		DeletionUtils.delete(getDemandesAffectation());
 		DeletionUtils.delete(getDemandesAideLogement());
 		DeletionUtils.delete(getPlanning());
+		
+		DeletionUtils.empty(this, AspectDossierHabitat.AIDES_COMPLEMENTAIRES_PROPERTY);
+		DeletionUtils.empty(this, AspectDossierHabitat.PLANNING_PROPERTY);
 	}
 
 	public void modified(Utilisateur user, Date date) {

@@ -11,7 +11,7 @@ import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.form.TextField;
 import org.apache.tapestry.form.translator.Translator;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class Egal extends Critere {
 

@@ -1,6 +1,6 @@
 package nc.ccas.gasel.pages.habitat;
 
-import static com.asystan.common.cayenne.QueryFactory.createContains;
+import static com.asystan.common.cayenne_new.QueryFactory.createContains;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import org.apache.cayenne.query.SelectQuery;
 import org.apache.tapestry.IRequestCycle;
 import org.apache.tapestry.annotations.Persist;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 import com.asystan.common.lists.ListUtils;
 
 public abstract class DossierHabitatSearch extends

@@ -1,9 +1,9 @@
 package nc.ccas.gasel.model.aides;
 
 import static com.asystan.common.beans.BeanUtils.nullSafeEquals;
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createBetween;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createBetween;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 import static nc.ccas.gasel.model.DeletionUtils.delete;
 import static nc.ccas.gasel.modelUtils.DateUtils.debutMois;
 import static nc.ccas.gasel.modelUtils.DateUtils.finMois;

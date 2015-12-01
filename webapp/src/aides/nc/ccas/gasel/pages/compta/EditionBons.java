@@ -1,8 +1,8 @@
 package nc.ccas.gasel.pages.compta;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createBetween;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createBetween;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 
 import java.util.Comparator;
 import java.util.Date;

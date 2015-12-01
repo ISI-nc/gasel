@@ -9,3 +9,5 @@ bin
 /test-output
 /data.json
 /tmp
+Arrete_*.pdf
+Arrete_*.xml

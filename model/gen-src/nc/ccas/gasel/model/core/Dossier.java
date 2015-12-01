@@ -1,5 +1,6 @@
 package nc.ccas.gasel.model.core;
 
+import static nc.ccas.gasel.modelUtils.CommonQueries.select;
 import static org.apache.cayenne.DataObjectUtils.objectForPK;
 import static org.apache.cayenne.DataObjectUtils.pkForObject;
 
@@ -10,13 +11,25 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.apache.cayenne.DataObject;
+import org.apache.cayenne.ObjectId;
+import org.apache.cayenne.exp.Expression;
+
+import com.asystan.common.Filter;
+import com.asystan.common.lists.ListUtils;
 
 import nc.ccas.gasel.model.ComplexDeletion;
 import nc.ccas.gasel.model.DeletionUtils;
 import nc.ccas.gasel.model.ModifUtils;
 import nc.ccas.gasel.model.TraqueModifs;
+import nc.ccas.gasel.model.aides.Aide;
 import nc.ccas.gasel.model.aides.AspectAides;
+import nc.ccas.gasel.model.aides.Bon;
 import nc.ccas.gasel.model.core.auto._Dossier;
+import nc.ccas.gasel.model.habitat.AideSociale;
 import nc.ccas.gasel.model.habitat.AspectDossierHabitat;
 import nc.ccas.gasel.model.habitat.AspectSIE;
 import nc.ccas.gasel.model.paph.AspectDossierPAPH;
@@ -27,32 +40,23 @@ import nc.ccas.gasel.modelUtils.CayenneUtils;
 import nc.ccas.gasel.modelUtils.CommonQueries;
 import nc.ccas.gasel.modelUtils.SqlUtils;
 
-import org.apache.cayenne.DataObject;
-import org.apache.cayenne.ObjectId;
-
-import com.asystan.common.Filter;
-import com.asystan.common.lists.ListUtils;
-
 public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 	private static final long serialVersionUID = 8454370168358653226L;
 
-	public static final Class<?>[] ASPECTS = new Class[] { AspectAides.class,
-			AspectDossierAM.class, AspectDossierEnfant.class,
-			AspectDossierHabitat.class, AspectDossierPAPH.class,
-			AspectDossierPI.class, AspectSIE.class };
+	public static final Class<?>[] ASPECTS = new Class[] { AspectAides.class, AspectDossierAM.class,
+			AspectDossierEnfant.class, AspectDossierHabitat.class, AspectDossierPAPH.class, AspectDossierPI.class,
+			AspectSIE.class };
 
-	public static final String aspectsActifsSql(String exprIdDossier,
-			Collection<Class<?>> aspects) {
+	public static final String aspectsActifsSql(String exprIdDossier, Collection<Class<?>> aspects) {
 		StringBuilder buf = new StringBuilder("((");
 		int idx = 0;
 		for (Class<?> aspectClass : Dossier.ASPECTS) {
-			String table = CayenneUtils.entityResolver()
-					.lookupObjEntity(aspectClass).getDbEntity()
+			String table = CayenneUtils.entityResolver().lookupObjEntity(aspectClass).getDbEntity()
 					.getFullyQualifiedName();
 			if (idx++ > 0)
 				buf.append(") UNION (");
-			buf.append("SELECT '" + aspectClass.getSimpleName() + "' FROM "
-					+ table + " WHERE dossier_id=" + exprIdDossier);
+			buf.append("SELECT '" + aspectClass.getSimpleName() + "' FROM " + table + " WHERE dossier_id="
+					+ exprIdDossier);
 		}
 		buf.append("))");
 		return buf.toString();
@@ -75,14 +79,12 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 			}
 			return null;
 		}
-		return clazz.cast(objectForPK(getObjectContext(), clazz,
-				pkForObject(this)));
+		return clazz.cast(objectForPK(getObjectContext(), clazz, pkForObject(this)));
 	}
 
 	@SuppressWarnings("unchecked")
 	public DataObject getAspect(String className) {
-		return getAspect(getObjectContext().getEntityResolver()
-				.getObjEntity(className).getJavaClass()
+		return getAspect(getObjectContext().getEntityResolver().getObjEntity(className).getJavaClass()
 				.asSubclass(DataObject.class));
 	}
 
@@ -176,8 +178,7 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 		return personnes(false, false, true, true);
 	}
 
-	private List<Personne> personnes(boolean chefFamille, boolean conjoint,
-			boolean aCharge, boolean nonACharge) {
+	private List<Personne> personnes(boolean chefFamille, boolean conjoint, boolean aCharge, boolean nonACharge) {
 		List<Personne> ret = new ArrayList<Personne>();
 		if (chefFamille && getChefFamille() != null) {
 			ret.add(getChefFamille());
@@ -230,8 +231,8 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 
 		int year = new GregorianCalendar().get(Calendar.YEAR);
 
-		Integer currentMax = CommonQueries.max(Dossier.class, "id", "id >= "
-				+ year * MULT + " AND id < " + (year + 1) * MULT);
+		Integer currentMax = CommonQueries.max(Dossier.class, "id",
+				"id >= " + year * MULT + " AND id < " + (year + 1) * MULT);
 
 		int currentSequenceMax;
 		if (currentMax == null) {
@@ -251,13 +252,27 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 		// Suppression des aspects
 		for (Class<?> clazz : ASPECTS) {
 			DataObject aspect = getAspect(clazz.asSubclass(DataObject.class));
-			if (aspect == null)
+			if (aspect == null) {
 				continue;
+			}
 			DeletionUtils.delete(aspect);
 		}
 
 		// Des personnes
-		DeletionUtils.delete(getPersonnes());
+		Expression expr = Expression.fromString("personne = $personne and aide.dossier.dossier <> $dossier");
+		Map<String, Object> parameters = new TreeMap<>();
+		for (Personne personne : getPersonnes()) {
+			parameters.put("personne", personne);
+			parameters.put("dossier", this);
+
+			// Recherche des bons sur la personne considérée et étant sur
+			// d'autres dossiers
+			List<Bon> bons = select(Bon.class, expr.expWithParameters(parameters));
+			if (bons.isEmpty()) {
+				// On ne peut supprimer que si la personne n'en a pas.
+				DeletionUtils.delete(personne);
+			}
+		}
 
 		// Des problématiques
 		DeletionUtils.empty(this, PROBLEMATIQUES_PROPERTY);

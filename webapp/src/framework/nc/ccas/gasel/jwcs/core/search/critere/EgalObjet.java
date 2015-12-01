@@ -16,7 +16,7 @@ import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.form.IPropertySelectionModel;
 import org.apache.tapestry.form.PropertySelection;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class EgalObjet extends Critere {
 

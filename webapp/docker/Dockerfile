@@ -4,7 +4,7 @@ RUN yum install -y java-1.7.0-openjdk
 RUN yum install -y tar
 
 ENV TOMCAT_MIRROR  http://mirror.lagoon.nc/pub/apache/tomcat
-ENV TOMCAT_VERSION 7.0.57
+ENV TOMCAT_VERSION 7.0.65
 
 WORKDIR /opt
 RUN curl -s $TOMCAT_MIRROR/tomcat-7/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz |tar zxv

@@ -1,7 +1,7 @@
 package nc.ccas.gasel.pages.budget;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;

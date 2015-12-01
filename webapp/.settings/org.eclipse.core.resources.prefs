@@ -6,6 +6,7 @@ encoding//src/habitat=UTF-8
 encoding//src/paph=UTF-8
 encoding//src/pe=UTF-8
 encoding//src/pi=UTF-8
+encoding//src/test/java=UTF-8
 encoding/<project>=UTF-8
 encoding/maintenance=UTF-8
 encoding/tests=UTF-8

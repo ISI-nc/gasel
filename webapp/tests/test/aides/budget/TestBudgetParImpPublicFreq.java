@@ -1,7 +1,7 @@
 package test.aides.budget;
 
-import static com.asystan.common.cayenne.QueryFactory.createBetween;
-import static com.asystan.common.cayenne.QueryFactory.createIn;
+import static com.asystan.common.cayenne_new.QueryFactory.createBetween;
+import static com.asystan.common.cayenne_new.QueryFactory.createIn;
 import static nc.ccas.gasel.agents.budget.BudgetParImpPublicFreq.INSTANCE;
 import static nc.ccas.gasel.model.aides.StatutAide.PLURIMENSUELLE;
 import static nc.ccas.gasel.modelUtils.DateUtils.intersection;

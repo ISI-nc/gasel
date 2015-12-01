@@ -1,4 +1,4 @@
-package com.asystan.common.cache;
+package com.asystan.common.cache_new;
 
 import java.io.Serializable;
 import java.lang.ref.SoftReference;

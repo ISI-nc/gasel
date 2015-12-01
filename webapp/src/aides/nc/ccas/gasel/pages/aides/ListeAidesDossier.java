@@ -1,6 +1,6 @@
 package nc.ccas.gasel.pages.aides;
 
-import static com.asystan.common.cayenne.QueryFactory.createBetween;
+import static com.asystan.common.cayenne_new.QueryFactory.createBetween;
 import static nc.ccas.gasel.modelUtils.DateUtils.intersection;
 
 import java.util.Date;

@@ -1,6 +1,6 @@
 package nc.ccas.gasel.model.budget;
 
-import static com.asystan.common.cayenne.QueryFactory.createOr;
+import static com.asystan.common.cayenne_new.QueryFactory.createOr;
 import static nc.ccas.gasel.model.budget.auto._LigneVirement.DESTINATION_ID_PROPERTY;
 import static nc.ccas.gasel.model.budget.auto._LigneVirement.DESTINATION_TYPE_PROPERTY;
 import static nc.ccas.gasel.model.budget.auto._LigneVirement.SOURCE_ID_PROPERTY;

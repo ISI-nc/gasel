@@ -1,6 +1,6 @@
 package nc.ccas.gasel.model.pi;
 
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 import static nc.ccas.gasel.modelUtils.CommonQueries.select;
 import static org.apache.cayenne.DataObjectUtils.intPKForObject;
 

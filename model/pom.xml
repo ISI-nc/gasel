@@ -49,7 +49,6 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>src</source>
 								<source>gen-src</source>
 							</sources>
 							<add-test-source>
@@ -105,18 +104,12 @@
 		<dependency>
 			<groupId>org.apache.tapestry</groupId>
 			<artifactId>tapestry-annotations</artifactId>
-			<version>4.1.6</version>
+			<version>4.1.6.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.3-1100-jdbc41</version>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jt400</groupId>
-			<artifactId>jt400</artifactId>
-			<version>6.7</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>

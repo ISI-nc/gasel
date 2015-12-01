@@ -1,8 +1,8 @@
 package nc.ccas.gasel.pages.aides;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
-import static com.asystan.common.cayenne.QueryFactory.createTrue;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createTrue;
 import static nc.ccas.gasel.model.aides.StatutAide.IMMEDIATE;
 import static nc.ccas.gasel.modelUtils.CommonQueries.select;
 import static nc.ccas.gasel.pages.aides.CalculetteAideEau.TRIMESTRE_PSM;
