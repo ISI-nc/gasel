@@ -93,10 +93,10 @@ public abstract class CalculetteAideEau extends
 
 	public void calculer() {
 		// nb de m3 par personnes du foyer
-		Double nbM3PremierePersonne = getDouble("aides/eau/conso_1ere_pers");
-		Double nbM3ParPersonneDuFoyer = getDouble("aides/eau/conso_pers");
+		Double nbM3PremierePersonne = getDouble("Conso 1ere personne (aides eau)");
+		Double nbM3ParPersonneDuFoyer = getDouble("Conso personnelle (aides eau)");
 
-		Double consoMaxPriseEnCharge = getDouble("aides/eau/conso_max");
+		Double consoMaxPriseEnCharge = getDouble("Conso maximum (aides eau)");
 
 		// conso Max accordée:
 		// = (nbPersonnes * nbM3parFoyer) + (nbHandicapés *
@@ -137,7 +137,7 @@ public abstract class CalculetteAideEau extends
 
 		// récupération du montant mini de restant du (sinon prise en charge par
 		// le ccas)
-		Double borneInfRestantDu = (double) getInt("aides/eau/restant_du_min");
+		Double borneInfRestantDu = (double) getInt("Montant min de restant du (aides eau)");
 
 		// comparaison de la borne inf avec le restantDu
 		if (restantDu <= borneInfRestantDu) {
