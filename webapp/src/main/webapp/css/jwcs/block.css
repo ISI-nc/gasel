@@ -1,0 +1,19 @@
+
+/* -----------------------------------------------------------------------------
+** Blocks
+*/
+
+.block {
+	border: 1px solid #fff;
+	margin-bottom: 12px;
+}
+
+.block-title {
+	background-color: #bbd7fe;
+	padding: 3px 6px;
+	font-weight: bold;
+}
+
+.block-contents {
+	padding: 6px;
+}

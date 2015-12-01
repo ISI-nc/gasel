@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form">
+
+<table class="invis">
+	<tbody>
+		<tr>
+			<td class="label">Intitulé&nbsp;:</td>
+			<td><input type="text" size="30" jwcid="@TextField"
+				 value="ognl:activite.libelle"/></td>
+		</tr><tr class="pad">
+			<td class="label">Date début&nbsp;:</td>
+			<td><input jwcid="@core/edit/Date" size="10" type="text"
+				value="ognl:activite.debut"/>
+			</td>
+		</tr><tr class="pad">
+			<td class="label">Date fin&nbsp;:</td>
+			<td><input jwcid="@core/edit/Date" size="10" type="text"
+				value="ognl:activite.fin" />
+			</td>
+		</tr><tr class="pad">
+			<td class="label">Type de contrat&nbsp;:</td>
+			<td><select jwcid="@core/edit/Enum" value="ognl:activite.contrat" enum="TypeContrat"/>
+			</td>
+		</tr><tr class="pad">
+			<td class="label">Type d'activité&nbsp;:</td>
+			<td><select jwcid="@core/edit/Enum" value="ognl:activite.type" enum="TypeActivite"/>
+			</td>
+		</tr><tr class="pad">
+			<td class="label">Description&nbsp;:</td>
+			<td><textarea jwcid="@TextArea" value="ognl:activite.description"
+					cols="30" rows="3"/>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</form>
+
+</div>
+</body>
+</html>

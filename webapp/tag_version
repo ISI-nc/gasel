@@ -1,0 +1,40 @@
+#! /usr/bin/ruby
+
+require 'xml'
+
+doc = XML::Parser.file('pom.xml').parse
+
+p doc.root.namespaces.default.prefix
+version_tag = doc.find_first('/m:project/m:version', "m:#{doc.root.namespaces.default.href}")
+
+version = version_tag.content
+release_version = version.sub(/-SNAPSHOT$/, '')
+next_version = release_version.split(".").map{|v|v.to_i}
+next_version[-1] += 1
+next_version = next_version.join(".")+"-SNAPSHOT"
+
+puts "Current: #{version}"
+puts "Release: #{release_version}"
+puts "Next:    #{next_version}"
+
+def git(*args)
+    system "git",*args or exit $?.exitstatus
+end
+
+version_tag.content = release_version
+doc.save("pom.xml")
+sleep 2 # let eclipse change its files...
+
+tag = "v#{release_version}"
+git "add","pom.xml",".settings",".classpath"
+git "commit","-m",tag
+git "svn","dcommit"
+git "svn","tag",tag
+git "tag",tag
+
+version_tag.content = next_version
+doc.save("pom.xml")
+git "add","pom.xml"
+git "commit","-m","Move to v#{next_version}"
+git "svn","dcommit"
+git "push","-f"

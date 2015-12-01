@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+	
+	<parameter name="value" required="yes" />
+	
+	<parameter name="label" />
+	
+	<parameter name="searchPage" required="yes"/>
+	
+	<parameter name="canDelete" default-value="true"/>
+	
+	<parameter name="viewPage"/>
+	
+	<parameter name="onSet"/>
+	
+	<asset name="details" path="context:/images/loupe.gif"/>
+	<asset name="recherche" path="context:/images/jumelle.gif"/>
+	<asset name="delete" path="context:/images/delete.gif"/>
+	
+</component-specification>

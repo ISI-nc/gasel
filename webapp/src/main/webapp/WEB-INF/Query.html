@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div style="float: right;"><input jwcid="@core/BoutonRetour"
+	value="Fermer" /></div>
+
+<p>Requête :</p>
+
+<p><textarea jwcid="@TextArea" value="ognl:query" rows="10"
+	cols="120" style="font-family: monospace;"></textarea></p>
+
+<p><input jwcid="executeQuery@Submit" class="button" action="listener:executeQuery" /></p>
+
+
+<div jwcid="@If" condition="ognl:error">
+	<div style="border:1px solid;padding:1ex;background-color:white;color:red;float:left;">
+		<span jwcid="@Insert" value="ognl:error">Erreur</span>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+<div jwcid="@If" condition="ognl:rows">
+
+<p>Tri : <select jwcid="@PropertySelection" value="ognl:postTri"
+	model="ognl:psm.withNull(psm.string(cols))" onchange="refreshPage()">
+	...
+</select></p>
+
+<p><div jwcid="@DataRows" rows="ognl:rows">[Résultats]</div></p>
+
+</div>
+
+</div>
+</body>
+</html>

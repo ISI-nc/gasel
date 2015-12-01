@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+<table><tbody>
+	<tr>
+		<td colspan="2"><strong>Dossier jardin familial pour collectivité :</strong></td>
+	</tr>
+	<tr><td class="label">Désignation :</td>
+			<td><input jwcid="@TextField" value="ognl:object.designation" /></td>
+	</tr>
+	<tr><td class="label">Nom du responsable :</td>
+		<td><input jwcid="@TextField" value="ognl:object.nomResponsable" /></td>
+	</tr>
+	<tr><td class="label">Adresse:</td>
+		<td><input jwcid="@voirie/edit/Adresse" value="ognl:object.adresse" avecBoitePostale="true" /></td>
+	</tr>
+	<tr><td class="label">Numéro de RIDET :</td>
+		<td><input jwcid="@TextField" value="ognl:object.ridet" displayName="literal:RIDET"/></td>
+	</tr>
+	<tr>
+	<td colspan="2">
+		<div><strong>Demandes :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.demandes" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Actif" value="ognl:row.active?'oui':'non'"" />
+			<div jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.jardin" />
+			<div jwcid="@core/tableau/Colonne" titre="Origine" value="ognl:row.origine" />
+			
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="demandes" disabled="ognl:row.attributions"/>
+			<div jwcid="@core/tableau/Action" title="Attribuer" action="listener:ajouterAttribution"
+					disabled="ognl:row.attribution"/>
+		</table>
+		
+		<div><strong>Ajouter une demande :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="demandes" value="ognl:demande">
+		<tr>
+			<td>Demandeur :</td>
+			<td>
+				<input jwcid="@Insert" value="ognl:object.designation"/></td>
+			</tr>
+			<tr>
+			<td>Jardin :</td><td><input jwcid="@PropertySelection" value="ognl:demande.jardin" model="ognl:psm.dataObject(sort(sql.query.all('JardinFamilial')).by('nom').results)" /></td>
+			</tr>
+			<tr>
+			<td>Date de la demande :</td><td><input jwcid="@core/edit/Date" value="ognl:demande.date" /></td>
+			</tr>
+			<tr>
+			<td>Origine :</td><td><input jwcid="@core/edit/Enum" value="ognl:demande.origine" enum="OrigineDemandeJF" /></td>
+			</tr>
+			<tr>
+			<td>Commission :</td>
+			<td>
+				<input jwcid="@core/edit/Date" value="ognl:demande.commission" />
+			</td>
+			</tr>
+		</table>
+	</td>
+	</tr></tbody></table>
+</div>
+
+<div jwcid="@core/Onglet" titre="Attributions">
+	<div><strong>Attributions :</strong></div>
+	<table jwcid="@core/Tableau" source="ognl:object.attributions" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Date attr." value="ognl:row.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Date dem." value="ognl:row.demande.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:row.demande.jardin.nom" />
+		<div jwcid="@core/tableau/Colonne" titre="Parcelle" value="ognl:row.parcelle.numero" />
+		<div jwcid="@core/tableau/Colonne" titre="Type prévu" value="ognl:row.typePrevu" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerAttribution"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl-protect:row.demande" liste="attributions"/>
+	</table>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

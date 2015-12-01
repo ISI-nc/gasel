@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.pi"/>
+	<db-entity name="arrete_jf">
+		<db-attribute name="attribution_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="numero" type="VARCHAR" length="30"/>
+		<db-attribute name="type_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_pi">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="referent_familial_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="attribution_jf">
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="demande_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="parcelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_prevu_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="avis_commission_jf">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="validant" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="collectivite">
+		<db-attribute name="adresse_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="designation" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="nom_responsable" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="ridet" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="controle_entretien">
+		<db-attribute name="attribution_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="etat_parcelle_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="courrier">
+		<db-attribute name="arrivee" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="demande_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="numero" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="demande_jf">
+		<db-attribute name="avis_commission_id" type="INTEGER"/>
+		<db-attribute name="collectivite_id" type="INTEGER"/>
+		<db-attribute name="commission" type="TIMESTAMP"/>
+		<db-attribute name="courrier_id" type="INTEGER"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="jardin_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="num_enregistrement" type="VARCHAR" length="50"/>
+		<db-attribute name="origine_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="jardin_familial">
+		<db-attribute name="arrete_attribution_id" type="INTEGER"/>
+		<db-attribute name="arrete_renouvellement_id" type="INTEGER"/>
+		<db-attribute name="courier_entretien_id" type="INTEGER"/>
+		<db-attribute name="courier_paiement_entretien_id" type="INTEGER"/>
+		<db-attribute name="courier_paiement_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="lieu_id" type="INTEGER"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="lieu">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="code_quartier" type="VARCHAR" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="paiement">
+		<db-attribute name="attribution_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="DOUBLE" isMandatory="true"/>
+		<db-attribute name="num_recu" type="VARCHAR" length="255"/>
+		<db-attribute name="num_titre_recette" type="VARCHAR" length="30"/>
+	</db-entity>
+	<db-entity name="parcelle">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="jardin_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="numero" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="ArreteJF" className="nc.ccas.gasel.model.pi.ArreteJF" dbEntityName="arrete_jf">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierPI" className="nc.ccas.gasel.model.pi.AspectDossierPI" dbEntityName="aspect_dossier_pi">
+	</obj-entity>
+	<obj-entity name="AttributionJF" className="nc.ccas.gasel.model.pi.AttributionJF" dbEntityName="attribution_jf">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+	</obj-entity>
+	<obj-entity name="AvisCommissionJF" className="nc.ccas.gasel.model.pi.AvisCommissionJF" dbEntityName="avis_commission_jf">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+		<obj-attribute name="validant" type="java.lang.Boolean" db-attribute-path="validant"/>
+	</obj-entity>
+	<obj-entity name="Collectivite" className="nc.ccas.gasel.model.pi.Collectivite" dbEntityName="collectivite">
+		<obj-attribute name="designation" type="java.lang.String" db-attribute-path="designation"/>
+		<obj-attribute name="nomResponsable" type="java.lang.String" db-attribute-path="nom_responsable"/>
+		<obj-attribute name="ridet" type="java.lang.String" db-attribute-path="ridet"/>
+	</obj-entity>
+	<obj-entity name="ControleEntretien" className="nc.ccas.gasel.model.pi.ControleEntretien" dbEntityName="controle_entretien">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+	</obj-entity>
+	<obj-entity name="Courrier" className="nc.ccas.gasel.model.pi.Courrier" dbEntityName="courrier">
+		<obj-attribute name="arrivee" type="java.util.Date" db-attribute-path="arrivee"/>
+		<obj-attribute name="numero" type="java.lang.Integer" db-attribute-path="numero"/>
+	</obj-entity>
+	<obj-entity name="DemandeJF" className="nc.ccas.gasel.model.pi.DemandeJF" dbEntityName="demande_jf">
+		<obj-attribute name="commission" type="java.util.Date" db-attribute-path="commission"/>
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="numEnregistrement" type="java.lang.String" db-attribute-path="num_enregistrement"/>
+	</obj-entity>
+	<obj-entity name="JardinFamilial" className="nc.ccas.gasel.model.pi.JardinFamilial" dbEntityName="jardin_familial">
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+	</obj-entity>
+	<obj-entity name="Lieu" className="nc.ccas.gasel.model.pi.Lieu" dbEntityName="lieu">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="codeQuartier" type="java.lang.String" db-attribute-path="code_quartier"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Paiement" className="nc.ccas.gasel.model.pi.Paiement" dbEntityName="paiement">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="montant" type="java.lang.Double" db-attribute-path="montant"/>
+		<obj-attribute name="numRecu" type="java.lang.String" db-attribute-path="num_recu"/>
+		<obj-attribute name="numTitreRecette" type="java.lang.String" db-attribute-path="num_titre_recette"/>
+	</obj-entity>
+	<obj-entity name="Parcelle" className="nc.ccas.gasel.model.pi.Parcelle" dbEntityName="parcelle">
+		<obj-attribute name="numero" type="java.lang.Integer" db-attribute-path="numero"/>
+	</obj-entity>
+	<db-relationship name="attribution" source="arrete_jf" target="attribution_jf" toMany="false">
+		<db-attribute-pair source="attribution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="arrete_jf" target="type_arrete_jf" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_dossier" source="aspect_dossier_pi" target="demande_jf" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_pi" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent_familial" source="aspect_dossier_pi" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_familial_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_arrete_jf_attribution" source="attribution_jf" target="arrete_jf" toMany="true">
+		<db-attribute-pair source="id" target="attribution_id"/>
+	</db-relationship>
+	<db-relationship name="REV_controle_entretien_attribution" source="attribution_jf" target="controle_entretien" toMany="true">
+		<db-attribute-pair source="id" target="attribution_id"/>
+	</db-relationship>
+	<db-relationship name="REV_paiement_attribution" source="attribution_jf" target="paiement" toMany="true">
+		<db-attribute-pair source="id" target="attribution_id"/>
+	</db-relationship>
+	<db-relationship name="demande" source="attribution_jf" target="demande_jf" toMany="false">
+		<db-attribute-pair source="demande_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="parcelle" source="attribution_jf" target="parcelle" toMany="false">
+		<db-attribute-pair source="parcelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_prevu" source="attribution_jf" target="type_parcelle" toMany="false">
+		<db-attribute-pair source="type_prevu_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_demandes" source="avis_commission_jf" target="avis_commission_jf_demandes" toMany="true">
+		<db-attribute-pair source="id" target="avis_commission_jf_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_avis_commission" source="avis_commission_jf" target="demande_jf" toMany="true">
+		<db-attribute-pair source="id" target="avis_commission_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_collectivite" source="collectivite" target="demande_jf" toMany="true">
+		<db-attribute-pair source="id" target="collectivite_id"/>
+	</db-relationship>
+	<db-relationship name="adresse" source="collectivite" target="adresse" toMany="false">
+		<db-attribute-pair source="adresse_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="attribution" source="controle_entretien" target="attribution_jf" toMany="false">
+		<db-attribute-pair source="attribution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="etat_parcelle" source="controle_entretien" target="etat_parcelle" toMany="false">
+		<db-attribute-pair source="etat_parcelle_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_courrier" source="courrier" target="demande_jf" toMany="true">
+		<db-attribute-pair source="id" target="courrier_id"/>
+	</db-relationship>
+	<db-relationship name="demande" source="courrier" target="demande_jf" toMany="false">
+		<db-attribute-pair source="demande_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="courrier" target="type_courrier_jf" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="FROM_avis_commission_jf_ARRAY_demandes" source="demande_jf" target="avis_commission_jf_demandes" toMany="true">
+		<db-attribute-pair source="id" target="demande_jf_id"/>
+	</db-relationship>
+	<db-relationship name="REV_attribution_jf_demande" source="demande_jf" target="attribution_jf" toMany="true">
+		<db-attribute-pair source="id" target="demande_id"/>
+	</db-relationship>
+	<db-relationship name="REV_courrier_demande" source="demande_jf" target="courrier" toMany="true">
+		<db-attribute-pair source="id" target="demande_id"/>
+	</db-relationship>
+	<db-relationship name="avis_commission" source="demande_jf" target="avis_commission_jf" toMany="false">
+		<db-attribute-pair source="avis_commission_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="collectivite" source="demande_jf" target="collectivite" toMany="false">
+		<db-attribute-pair source="collectivite_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="courrier" source="demande_jf" target="courrier" toMany="false">
+		<db-attribute-pair source="courrier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="demande_jf" target="aspect_dossier_pi" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="jardin" source="demande_jf" target="jardin_familial" toMany="false">
+		<db-attribute-pair source="jardin_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="origine" source="demande_jf" target="origine_demande_jf" toMany="false">
+		<db-attribute-pair source="origine_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_jardin" source="jardin_familial" target="demande_jf" toMany="true">
+		<db-attribute-pair source="id" target="jardin_id"/>
+	</db-relationship>
+	<db-relationship name="REV_parcelle_jardin" source="jardin_familial" target="parcelle" toMany="true">
+		<db-attribute-pair source="id" target="jardin_id"/>
+	</db-relationship>
+	<db-relationship name="arrete_attribution" source="jardin_familial" target="modele_document" toMany="false">
+		<db-attribute-pair source="arrete_attribution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="arrete_renouvellement" source="jardin_familial" target="modele_document" toMany="false">
+		<db-attribute-pair source="arrete_renouvellement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="courier_entretien" source="jardin_familial" target="modele_document" toMany="false">
+		<db-attribute-pair source="courier_entretien_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="courier_paiement" source="jardin_familial" target="modele_document" toMany="false">
+		<db-attribute-pair source="courier_paiement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="courier_paiement_entretien" source="jardin_familial" target="modele_document" toMany="false">
+		<db-attribute-pair source="courier_paiement_entretien_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="lieu" source="jardin_familial" target="lieu" toMany="false">
+		<db-attribute-pair source="lieu_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_jardin_familial_lieu" source="lieu" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="lieu_id"/>
+	</db-relationship>
+	<db-relationship name="attribution" source="paiement" target="attribution_jf" toMany="false">
+		<db-attribute-pair source="attribution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_attribution_jf_parcelle" source="parcelle" target="attribution_jf" toMany="true">
+		<db-attribute-pair source="id" target="parcelle_id"/>
+	</db-relationship>
+	<db-relationship name="jardin" source="parcelle" target="jardin_familial" toMany="false">
+		<db-attribute-pair source="jardin_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="attribution" source="ArreteJF" target="AttributionJF" db-relationship-path="attribution"/>
+	<obj-relationship name="type" source="ArreteJF" target="TypeArreteJF" db-relationship-path="type"/>
+	<obj-relationship name="demandes" source="AspectDossierPI" target="DemandeJF" db-relationship-path="REV_demande_jf_dossier"/>
+	<obj-relationship name="dossier" source="AspectDossierPI" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="referentFamilial" source="AspectDossierPI" target="Utilisateur" db-relationship-path="referent_familial"/>
+	<obj-relationship name="arretes" source="AttributionJF" target="ArreteJF" db-relationship-path="REV_arrete_jf_attribution"/>
+	<obj-relationship name="controles" source="AttributionJF" target="ControleEntretien" db-relationship-path="REV_controle_entretien_attribution"/>
+	<obj-relationship name="demande" source="AttributionJF" target="DemandeJF" db-relationship-path="demande"/>
+	<obj-relationship name="paiements" source="AttributionJF" target="Paiement" db-relationship-path="REV_paiement_attribution"/>
+	<obj-relationship name="parcelle" source="AttributionJF" target="Parcelle" db-relationship-path="parcelle"/>
+	<obj-relationship name="typePrevu" source="AttributionJF" target="TypeParcelle" db-relationship-path="type_prevu"/>
+	<obj-relationship name="demandes" source="AvisCommissionJF" target="DemandeJF" db-relationship-path="ARRAY_demandes.demande_jf"/>
+	<obj-relationship name="adresse" source="Collectivite" target="Adresse" db-relationship-path="adresse"/>
+	<obj-relationship name="demandes" source="Collectivite" target="DemandeJF" db-relationship-path="REV_demande_jf_collectivite"/>
+	<obj-relationship name="attribution" source="ControleEntretien" target="AttributionJF" db-relationship-path="attribution"/>
+	<obj-relationship name="etatParcelle" source="ControleEntretien" target="EtatParcelle" db-relationship-path="etat_parcelle"/>
+	<obj-relationship name="demande" source="Courrier" target="DemandeJF" db-relationship-path="demande"/>
+	<obj-relationship name="type" source="Courrier" target="TypeCourrierJF" db-relationship-path="type"/>
+	<obj-relationship name="attributions" source="DemandeJF" target="AttributionJF" db-relationship-path="REV_attribution_jf_demande"/>
+	<obj-relationship name="avisCommission" source="DemandeJF" target="AvisCommissionJF" db-relationship-path="avis_commission"/>
+	<obj-relationship name="collectivite" source="DemandeJF" target="Collectivite" db-relationship-path="collectivite"/>
+	<obj-relationship name="courrier" source="DemandeJF" target="Courrier" db-relationship-path="courrier"/>
+	<obj-relationship name="dossier" source="DemandeJF" target="AspectDossierPI" db-relationship-path="dossier"/>
+	<obj-relationship name="jardin" source="DemandeJF" target="JardinFamilial" db-relationship-path="jardin"/>
+	<obj-relationship name="origine" source="DemandeJF" target="OrigineDemandeJF" db-relationship-path="origine"/>
+	<obj-relationship name="arreteAttribution" source="JardinFamilial" target="ModeleDocument" db-relationship-path="arrete_attribution"/>
+	<obj-relationship name="arreteRenouvellement" source="JardinFamilial" target="ModeleDocument" db-relationship-path="arrete_renouvellement"/>
+	<obj-relationship name="courierEntretien" source="JardinFamilial" target="ModeleDocument" db-relationship-path="courier_entretien"/>
+	<obj-relationship name="courierPaiement" source="JardinFamilial" target="ModeleDocument" db-relationship-path="courier_paiement"/>
+	<obj-relationship name="courierPaiementEntretien" source="JardinFamilial" target="ModeleDocument" db-relationship-path="courier_paiement_entretien"/>
+	<obj-relationship name="demandes" source="JardinFamilial" target="DemandeJF" db-relationship-path="REV_demande_jf_jardin"/>
+	<obj-relationship name="lieu" source="JardinFamilial" target="Lieu" db-relationship-path="lieu"/>
+	<obj-relationship name="parcelles" source="JardinFamilial" target="Parcelle" db-relationship-path="REV_parcelle_jardin"/>
+	<obj-relationship name="jardins" source="Lieu" target="JardinFamilial" db-relationship-path="REV_jardin_familial_lieu"/>
+	<obj-relationship name="attribution" source="Paiement" target="AttributionJF" db-relationship-path="attribution"/>
+	<obj-relationship name="attributions" source="Parcelle" target="AttributionJF" db-relationship-path="REV_attribution_jf_parcelle"/>
+	<obj-relationship name="jardin" source="Parcelle" target="JardinFamilial" db-relationship-path="jardin"/>
+</data-map>

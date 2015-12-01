@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.core.docs"/>
+	<db-entity name="modele_document">
+		<db-attribute name="data" type="CLOB" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="ref_modele_document">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="key" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="modele_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="ModeleDocument" className="nc.ccas.gasel.model.core.docs.ModeleDocument" dbEntityName="modele_document">
+		<obj-attribute name="data" type="java.lang.String" db-attribute-path="data"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+	</obj-entity>
+	<obj-entity name="RefModeleDocument" className="nc.ccas.gasel.model.core.docs.RefModeleDocument" dbEntityName="ref_modele_document">
+		<obj-attribute name="key" type="java.lang.String" db-attribute-path="key"/>
+	</obj-entity>
+	<db-relationship name="REV_jardin_familial_arrete_attribution" source="modele_document" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="arrete_attribution_id"/>
+	</db-relationship>
+	<db-relationship name="REV_jardin_familial_arrete_renouvellement" source="modele_document" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="arrete_renouvellement_id"/>
+	</db-relationship>
+	<db-relationship name="REV_jardin_familial_courier_entretien" source="modele_document" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="courier_entretien_id"/>
+	</db-relationship>
+	<db-relationship name="REV_jardin_familial_courier_paiement" source="modele_document" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="courier_paiement_id"/>
+	</db-relationship>
+	<db-relationship name="REV_jardin_familial_courier_paiement_entretien" source="modele_document" target="jardin_familial" toMany="true">
+		<db-attribute-pair source="id" target="courier_paiement_entretien_id"/>
+	</db-relationship>
+	<db-relationship name="REV_ref_modele_document_modele" source="modele_document" target="ref_modele_document" toMany="true">
+		<db-attribute-pair source="id" target="modele_id"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="modele_document" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="modele" source="ref_modele_document" target="modele_document" toMany="false">
+		<db-attribute-pair source="modele_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="modifUtilisateur" source="ModeleDocument" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="modele" source="RefModeleDocument" target="ModeleDocument" db-relationship-path="modele"/>
+</data-map>

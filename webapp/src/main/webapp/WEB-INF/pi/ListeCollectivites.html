@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="Collectivite" results="ognl:results">
+	<tr><td class="label">Désignation :</td><td><input jwcid="@core/search/critere/Contient" path="designation" /></td></tr>
+	<tr><td class="label">Nom du responsable :</td><td><input jwcid="@core/search/critere/Contient" path="nomResponsable" /></td></tr>
+	<tr><td class="label">N° RIDET :</td><td><input jwcid="@core/search/critere/Contient" path="ridet" /></td></tr>
+</table>
+
+<p jwcid="@If" condition="ognl:results != null">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="Désignation" value="ognl:value.designation" />
+		<div jwcid="@core/tableau/Colonne" titre="Nom du responsable" value="ognl:value.nomResponsable" />
+        <div jwcid="@core/tableau/Colonne" titre="Adresse" value="ognl:value.adresse" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerCollectivite" />
+	</div>
+</p>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="pi/EditerCollectivite"/>
+	<input jwcid="@core/BoutonRetour" />
+</p>
+
+</div>
+</body>
+</html>

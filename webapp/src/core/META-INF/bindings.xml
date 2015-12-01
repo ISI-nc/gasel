@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.bindings" version="1.0.0"
+	package="nc.ccas.gasel.bindings">
+
+	<service-point id="CayenneAllBindingFactory"
+		interface="org.apache.tapestry.binding.BindingFactory">
+		<invoke-factory>
+			<construct class="CayenneAllBindingFactory">
+				<set-object property="valueConverter"
+					value="infrastructure:valueConverter" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="EnumerationBindingFactory"
+		interface="org.apache.tapestry.binding.BindingFactory">
+		<invoke-factory>
+			<construct class="EnumerationBindingFactory">
+				<set-object property="valueConverter"
+					value="infrastructure:valueConverter" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="OgnlProtectBindingFactory"
+		interface="org.apache.tapestry.binding.BindingFactory">
+		<invoke-factory>
+			<construct class="ProtectBindingFactory">
+				<set-object property="delegate" value="service:tapestry.bindings.OGNLBindingFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<contribution
+		configuration-id="tapestry.bindings.BindingFactories">
+		<binding prefix="cay-all" service-id="CayenneAllBindingFactory" />
+		<binding prefix="enum" service-id="EnumerationBindingFactory" />
+		<binding prefix="ognl-protect" service-id="OgnlProtectBindingFactory" />
+	</contribution>
+
+</module>

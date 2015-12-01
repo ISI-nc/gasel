@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.fop" version="1.0.0" package="nc.ccas.gasel.services.fop">
+	
+	<service-point id="XslFoService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="XslFoService">
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="xslfo" object="service:XslFoService" />
+	</contribution>
+
+</module>

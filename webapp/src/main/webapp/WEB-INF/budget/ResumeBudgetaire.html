@@ -1,0 +1,23 @@
+<div jwcid="@core/Tableau" source="ognl:rows" value="ognl:row" lignesParPage="500"
+	titre="ognl:titre">
+	<span jwcid="@core/tableau/Colonne" titre="ognl:titreLibelle"
+		value="ognl:row.libelle" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="ognl:titreBudget"
+		value="ognl:row.budget" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="+ ou - virements"
+		value="ognl:row.virements" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="Bons annulés ou part. ut."
+		value="ognl:row.inutilise" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="Total bons édités"
+		value="ognl:row.totalBons" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="% édité" format="ognl:formats.pourcent"
+		value="ognl:row.bonsPourcent" highlight="ognl:row.highlight or row.tropUtilise"/>
+	<span jwcid="@core/tableau/Colonne" titre="Reste après mandatement"
+		value="ognl:row.reste" highlight="ognl:row.highlight or row.tropUtilise"/>
+	<span jwcid="@core/tableau/Colonne" titre="Total engagé"
+		value="ognl:row.engage" highlight="ognl:row.highlight"/>
+	<span jwcid="@core/tableau/Colonne" titre="% engagé" format="ognl:formats.pourcent"
+		value="ognl:row.engagePourcent" highlight="ognl:row.highlight or row.tropEngage"/>
+	<span jwcid="@core/tableau/Colonne" titre="Reste après engagement"
+		value="ognl:row.resteApresEngage" highlight="ognl:row.highlight or row.tropEngage"/>
+</div>

@@ -1,0 +1,36 @@
+<div jwcid="@core/LayoutActions" actions="component:side">
+
+<div jwcid="@RenderBody">[Contenu]</div>
+
+<div jwcid="side@Block">
+
+	<div jwcid="@If" condition="ognl:page.messageEnregistrement" class="message"
+		style="ognl:'color:'+(page.messageEnregistrementOk?'green':'red')">
+		<span jwcid="@Insert" value="ognl:page.messageEnregistrement">[Message]</span>
+	</div>
+
+	<div jwcid="@core/show/Validator">
+		<div jwcid="@If" condition="ognl:!workflow.hasChildren"
+			style="color: red; margin-left: 2ex;font-size:small;">
+			<input jwcid="ignoreWarnings@Checkbox" value="ognl:page.ignoreWarnings"/>
+			<label for="ignoreWarnings">Ignorer</label>
+		</div>
+	</div>
+
+	<p><input value="ognl:page.enregistrementDesactive?'Fermer':'Annuler'" style="width:100%;" class="button"
+		jwcid="annuler@Submit" action="listener:annuler"
+		onclick="ognl:page.enregistrementDesactive?null:'return confirm(\'Annuler les modifications ?\');'"/></p>
+	<p><input value="Enregistrer et fermer" jwcid="enregistrer@Submit" action="listener:enregistrer"
+		style="width:100%;" class="button"
+		disabled="ognl:page.enregistrementDesactive or workflow.hasChildren"/></p>
+	<p><input value="Enregistrer sans fermer" jwcid="enregistrerSansFermer@Submit" action="listener:enregistrerSansFermer"
+		style="width:100%;" class="button"
+		disabled="ognl:page.enregistrementDesactive or workflow.hasChildren"/></p>
+	<div jwcid="@If" condition="ognl:extraActions">
+		<hr/>
+		<div jwcid="@RenderBlock" block="ognl:extraActions">[Autres actions]</div>
+	</div>
+
+</div>
+
+</div>

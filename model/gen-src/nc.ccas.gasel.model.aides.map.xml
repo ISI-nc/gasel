@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.aides"/>
+	<db-entity name="aide">
+		<db-attribute name="date_commission" type="DATE"/>
+		<db-attribute name="debut" type="DATE" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="eau_id" type="INTEGER"/>
+		<db-attribute name="fin" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="nature_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="numero" type="VARCHAR" length="255"/>
+		<db-attribute name="ordures_menageres_id" type="INTEGER"/>
+		<db-attribute name="public_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="quantite_mensuelle" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="statut_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aide_eau">
+		<db-attribute name="depassement_m3" type="DOUBLE"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant_deja_paye" type="INTEGER"/>
+		<db-attribute name="periode_prestation" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="police" type="VARCHAR" length="255"/>
+		<db-attribute name="prise_en_charge_conso" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="restant_du" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="aide_om">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="numero_facture" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="numero_redevable" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="periode_prestation" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="aide_refusee">
+		<db-attribute name="demande" type="DATE" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="motif_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="nature_demande_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="refus" type="DATE"/>
+	</db-entity>
+	<db-entity name="arrete">
+		<db-attribute name="champ" type="VARCHAR" length="4096"/>
+		<db-attribute name="creation" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="edite" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+		<db-attribute name="numero" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="reference_fichier" type="VARCHAR" length="4096"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_aides">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="bon">
+		<db-attribute name="aide_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="debut" type="DATE" isMandatory="true"/>
+		<db-attribute name="etat_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="fin" type="DATE" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="numero" type="VARCHAR" isMandatory="true" length="12"/>
+		<db-attribute name="personne_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="session_edition" type="VARCHAR" isMandatory="true" length="50"/>
+	</db-entity>
+	<db-entity name="etat_bon">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="facture">
+		<db-attribute name="code_fournisseur" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="creation" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" length="255"/>
+		<db-attribute name="modif_date" type="TIMESTAMP"/>
+		<db-attribute name="modif_utilisateur_id" type="INTEGER"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="numero" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="validation" type="TIMESTAMP"/>
+		<db-attribute name="valide" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_refus_aide">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="partie_facture">
+		<db-attribute name="facture_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" length="255"/>
+	</db-entity>
+	<db-entity name="statut_aide">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_arrete">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="article1" type="CLOB"/>
+		<db-attribute name="avec_factures" type="BIT"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="infos_imputation" type="CLOB"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="titre" type="VARCHAR" length="250"/>
+	</db-entity>
+	<db-entity name="type_article">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="usage_bon">
+		<db-attribute name="arrete_id" type="INTEGER"/>
+		<db-attribute name="bon_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="date" type="DATE" isMandatory="true"/>
+		<db-attribute name="facture_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant_utilise" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="Aide" className="nc.ccas.gasel.model.aides.Aide" dbEntityName="aide">
+		<obj-attribute name="dateCommission" type="java.util.Date" db-attribute-path="date_commission"/>
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+		<obj-attribute name="quantiteMensuelle" type="java.lang.Integer" db-attribute-path="quantite_mensuelle"/>
+	</obj-entity>
+	<obj-entity name="AideEau" className="nc.ccas.gasel.model.aides.AideEau" dbEntityName="aide_eau">
+		<obj-attribute name="depassementM3" type="java.lang.Double" db-attribute-path="depassement_m3"/>
+		<obj-attribute name="montantDejaPaye" type="java.lang.Integer" db-attribute-path="montant_deja_paye"/>
+		<obj-attribute name="periodePrestation" type="java.lang.String" db-attribute-path="periode_prestation"/>
+		<obj-attribute name="police" type="java.lang.String" db-attribute-path="police"/>
+		<obj-attribute name="priseEnChargeConso" type="java.lang.Integer" db-attribute-path="prise_en_charge_conso"/>
+		<obj-attribute name="restantDu" type="java.lang.Integer" db-attribute-path="restant_du"/>
+	</obj-entity>
+	<obj-entity name="AideOM" className="nc.ccas.gasel.model.aides.AideOM" dbEntityName="aide_om">
+		<obj-attribute name="numeroFacture" type="java.lang.String" db-attribute-path="numero_facture"/>
+		<obj-attribute name="numeroRedevable" type="java.lang.String" db-attribute-path="numero_redevable"/>
+		<obj-attribute name="periodePrestation" type="java.lang.String" db-attribute-path="periode_prestation"/>
+	</obj-entity>
+	<obj-entity name="AideRefusee" className="nc.ccas.gasel.model.aides.AideRefusee" dbEntityName="aide_refusee">
+		<obj-attribute name="demande" type="java.util.Date" db-attribute-path="demande"/>
+		<obj-attribute name="refus" type="java.util.Date" db-attribute-path="refus"/>
+	</obj-entity>
+	<obj-entity name="Arrete" className="nc.ccas.gasel.model.aides.Arrete" dbEntityName="arrete">
+		<obj-attribute name="champ" type="java.lang.String" db-attribute-path="champ"/>
+		<obj-attribute name="creation" type="java.util.Date" db-attribute-path="creation"/>
+		<obj-attribute name="edite" type="java.lang.Boolean" db-attribute-path="edite"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+		<obj-attribute name="referenceFichier" type="java.lang.String" db-attribute-path="reference_fichier"/>
+	</obj-entity>
+	<obj-entity name="AspectAides" className="nc.ccas.gasel.model.aides.AspectAides" dbEntityName="aspect_aides">
+	</obj-entity>
+	<obj-entity name="Bon" className="nc.ccas.gasel.model.aides.Bon" dbEntityName="bon">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+		<obj-attribute name="sessionEdition" type="java.lang.String" db-attribute-path="session_edition"/>
+	</obj-entity>
+	<obj-entity name="EtatBon" className="nc.ccas.gasel.model.aides.EtatBon" dbEntityName="etat_bon">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="Facture" className="nc.ccas.gasel.model.aides.Facture" dbEntityName="facture">
+		<obj-attribute name="creation" type="java.util.Date" db-attribute-path="creation"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="modifDate" type="java.util.Date" db-attribute-path="modif_date"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+		<obj-attribute name="numero" type="java.lang.String" db-attribute-path="numero"/>
+		<obj-attribute name="validation" type="java.util.Date" db-attribute-path="validation"/>
+		<obj-attribute name="valide" type="java.lang.Boolean" db-attribute-path="valide"/>
+	</obj-entity>
+	<obj-entity name="MotifRefusAide" className="nc.ccas.gasel.model.aides.MotifRefusAide" dbEntityName="motif_refus_aide">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="PartieFacture" className="nc.ccas.gasel.model.aides.PartieFacture" dbEntityName="partie_facture">
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="StatutAide" className="nc.ccas.gasel.model.aides.StatutAide" dbEntityName="statut_aide">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeArrete" className="nc.ccas.gasel.model.aides.TypeArrete" dbEntityName="type_arrete">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="article1" type="java.lang.String" db-attribute-path="article1"/>
+		<obj-attribute name="avecFactures" type="java.lang.Boolean" db-attribute-path="avec_factures"/>
+		<obj-attribute name="infosImputation" type="java.lang.String" db-attribute-path="infos_imputation"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+		<obj-attribute name="titre" type="java.lang.String" db-attribute-path="titre"/>
+	</obj-entity>
+	<obj-entity name="TypeArticle" className="nc.ccas.gasel.model.aides.TypeArticle" dbEntityName="type_article">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="UsageBon" className="nc.ccas.gasel.model.aides.UsageBon" dbEntityName="usage_bon">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="montantUtilise" type="java.lang.Integer" db-attribute-path="montant_utilise"/>
+	</obj-entity>
+	<db-relationship name="REV_bon_aide" source="aide" target="bon" toMany="true">
+		<db-attribute-pair source="id" target="aide_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aide" target="aspect_aides" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="eau" source="aide" target="aide_eau" toMany="false">
+		<db-attribute-pair source="eau_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="aide" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="montants" source="aide" target="aide_resume_montants" toMany="true">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+	<db-relationship name="nature" source="aide" target="nature_aide" toMany="false">
+		<db-attribute-pair source="nature_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ordures_menageres" source="aide" target="aide_om" toMany="false">
+		<db-attribute-pair source="ordures_menageres_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="public" source="aide" target="type_public" toMany="false">
+		<db-attribute-pair source="public_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="statut" source="aide" target="statut_aide" toMany="false">
+		<db-attribute-pair source="statut_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_eau" source="aide_eau" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="eau_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_ordures_menageres" source="aide_om" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="ordures_menageres_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aide_refusee" target="aspect_aides" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="motif" source="aide_refusee" target="motif_refus_aide" toMany="false">
+		<db-attribute-pair source="motif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="nature_demande" source="aide_refusee" target="nature_aide" toMany="false">
+		<db-attribute-pair source="nature_demande_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_usage_bon_arrete" source="arrete" target="usage_bon" toMany="true">
+		<db-attribute-pair source="id" target="arrete_id"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="arrete" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type" source="arrete" target="type_arrete" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_dossier" source="aspect_aides" target="aide" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_refusee_dossier" source="aspect_aides" target="aide_refusee" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_aides" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_usage_bon_bon" source="bon" target="usage_bon" toMany="true">
+		<db-attribute-pair source="id" target="bon_id"/>
+	</db-relationship>
+	<db-relationship name="aide" source="bon" target="aide" toMany="false">
+		<db-attribute-pair source="aide_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="etat" source="bon" target="etat_bon" toMany="false">
+		<db-attribute-pair source="etat_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="bon" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="personne" source="bon" target="personne" toMany="false">
+		<db-attribute-pair source="personne_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_bon_etat" source="etat_bon" target="bon" toMany="true">
+		<db-attribute-pair source="id" target="etat_id"/>
+	</db-relationship>
+	<db-relationship name="REV_partie_facture_facture" source="facture" target="partie_facture" toMany="true">
+		<db-attribute-pair source="id" target="facture_id"/>
+	</db-relationship>
+	<db-relationship name="fournisseur" source="facture" target="mairccas__gftiers" toMany="false">
+		<db-attribute-pair source="code_fournisseur" target="idetbs"/>
+	</db-relationship>
+	<db-relationship name="modif_utilisateur" source="facture" target="utilisateur" toMany="false">
+		<db-attribute-pair source="modif_utilisateur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_refusee_motif" source="motif_refus_aide" target="aide_refusee" toMany="true">
+		<db-attribute-pair source="id" target="motif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_usage_bon_facture" source="partie_facture" target="usage_bon" toMany="true">
+		<db-attribute-pair source="id" target="facture_id"/>
+	</db-relationship>
+	<db-relationship name="facture" source="partie_facture" target="facture" toMany="false">
+		<db-attribute-pair source="facture_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_statut" source="statut_aide" target="aide" toMany="true">
+		<db-attribute-pair source="id" target="statut_id"/>
+	</db-relationship>
+	<db-relationship name="REV_arrete_type" source="type_arrete" target="arrete" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_type_arrete" source="type_arrete" target="nature_aide" toMany="true">
+		<db-attribute-pair source="id" target="type_arrete_id"/>
+	</db-relationship>
+	<db-relationship name="arrete" source="usage_bon" target="arrete" toMany="false">
+		<db-attribute-pair source="arrete_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="bon" source="usage_bon" target="bon" toMany="false">
+		<db-attribute-pair source="bon_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="facture" source="usage_bon" target="partie_facture" toMany="false">
+		<db-attribute-pair source="facture_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="bons" source="Aide" target="Bon" db-relationship-path="REV_bon_aide"/>
+	<obj-relationship name="dossier" source="Aide" target="AspectAides" db-relationship-path="dossier"/>
+	<obj-relationship name="eau" source="Aide" target="AideEau" db-relationship-path="eau"/>
+	<obj-relationship name="modifUtilisateur" source="Aide" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="montants" source="Aide" target="AideResumeMontants" db-relationship-path="montants"/>
+	<obj-relationship name="nature" source="Aide" target="NatureAide" db-relationship-path="nature"/>
+	<obj-relationship name="orduresMenageres" source="Aide" target="AideOM" db-relationship-path="ordures_menageres"/>
+	<obj-relationship name="public" source="Aide" target="TypePublic" db-relationship-path="public"/>
+	<obj-relationship name="statut" source="Aide" target="StatutAide" db-relationship-path="statut"/>
+	<obj-relationship name="dossier" source="AideRefusee" target="AspectAides" db-relationship-path="dossier"/>
+	<obj-relationship name="motif" source="AideRefusee" target="MotifRefusAide" db-relationship-path="motif"/>
+	<obj-relationship name="natureDemande" source="AideRefusee" target="NatureAide" db-relationship-path="nature_demande"/>
+	<obj-relationship name="bonsValides" source="Arrete" target="UsageBon" db-relationship-path="REV_usage_bon_arrete"/>
+	<obj-relationship name="modifUtilisateur" source="Arrete" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="type" source="Arrete" target="TypeArrete" db-relationship-path="type"/>
+	<obj-relationship name="aides" source="AspectAides" target="Aide" db-relationship-path="REV_aide_dossier"/>
+	<obj-relationship name="aidesRefusees" source="AspectAides" target="AideRefusee" db-relationship-path="REV_aide_refusee_dossier"/>
+	<obj-relationship name="dossier" source="AspectAides" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="aide" source="Bon" target="Aide" db-relationship-path="aide"/>
+	<obj-relationship name="etat" source="Bon" target="EtatBon" db-relationship-path="etat"/>
+	<obj-relationship name="modifUtilisateur" source="Bon" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="personne" source="Bon" target="Personne" db-relationship-path="personne"/>
+	<obj-relationship name="usages" source="Bon" target="UsageBon" db-relationship-path="REV_usage_bon_bon"/>
+	<obj-relationship name="fournisseur" source="Facture" target="FournisseurMairie" db-relationship-path="fournisseur"/>
+	<obj-relationship name="modifUtilisateur" source="Facture" target="Utilisateur" db-relationship-path="modif_utilisateur"/>
+	<obj-relationship name="parties" source="Facture" target="PartieFacture" db-relationship-path="REV_partie_facture_facture"/>
+	<obj-relationship name="bons" source="PartieFacture" target="UsageBon" db-relationship-path="REV_usage_bon_facture"/>
+	<obj-relationship name="facture" source="PartieFacture" target="Facture" db-relationship-path="facture"/>
+	<obj-relationship name="arrete" source="UsageBon" target="Arrete" db-relationship-path="arrete"/>
+	<obj-relationship name="bon" source="UsageBon" target="Bon" db-relationship-path="bon"/>
+	<obj-relationship name="facture" source="UsageBon" target="PartieFacture" db-relationship-path="facture"/>
+</data-map>

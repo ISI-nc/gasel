@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Budget annuel</description>
+	
+	<property name="titre">literal: Budget annuel</property>
+	<property name="budget"></property>
+	<property name="annee" />
+	<property name="montant" />
+	<property name="restant" />
+	<property name="budImp" />
+	<property name="budgetsImputation"></property>
+	<property name="budgetImpAnnuel" />
+	<property name="orderSize"></property>
+	
+	<asset name="loupe" path="context:/images/loupe.gif"/>
+	
+</page-specification>

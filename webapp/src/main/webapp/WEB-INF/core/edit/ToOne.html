@@ -1,0 +1,16 @@
+<div style="float:right;">
+<span jwcid="@If" renderTag="false" condition="ognl:canDelete and value"
+><img jwcid="@ImageSubmit" action="listener:delete" image="asset:delete" alt="" title="Supprimer" onclick="doConfirm(event,'Êtes-vous sûr(e) ?')"/></span>
+<span jwcid="@If" renderTag="false" condition="ognl:viewPage and value"
+><img jwcid="@ImageSubmit" action="listener:details" image="asset:details" alt="" title="Détails"/></span>
+<img jwcid="@ImageSubmit" action="listener:recherche" image="asset:recherche" alt="" title="Rechercher"/>
+</div>
+<span jwcid="@If" condition="ognl:label" renderTag="false">
+	<span jwcid="@Insert" value="ognl:label">Label</span>&nbsp;:
+</span>
+<span jwcid="@If" condition="ognl:value" renderTag="false">
+	<span jwcid="@RenderBody">[body]</span>
+</span><span jwcid="@Else" renderTag="false">
+	--
+</span>
+<div style="clear:both;"></div>

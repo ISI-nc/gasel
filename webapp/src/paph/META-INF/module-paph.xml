@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.paph" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module dossier="paph" titre="PA PH">
+			<partie-module titre="PA PH">
+				<point-entree titre="Recherche / Création" page="Recherche">
+					Permet de créer ou de rechercher un dossier PAPH.
+				</point-entree>
+				<!-- 
+				<point-entree titre="Avis Commission" page="EditerAvisCommission">
+					Permet de valider les demandes de taxi.
+				</point-entree>
+				 -->
+			</partie-module>
+			<!-- 
+			<partie-module titre="Statistiques" dossier="stats">
+				<point-entree titre="Statistiques" page="Statistiques">
+					Stastistiques générales sur les personnes agées ou handicapées.
+				</point-entree>
+			</partie-module>
+			 -->
+		</module>
+	</contribution>
+
+</module>

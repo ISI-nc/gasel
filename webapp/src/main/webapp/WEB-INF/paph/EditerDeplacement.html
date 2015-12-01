@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<table><tbody>
+	<tr>
+		<td>Usager :</td>
+		<td><input jwcid="@Insert" value="ognl:parent.personne.prenom"/>&nbsp;
+			<input jwcid="@Insert" value="ognl:parent.personne.nom"/></td>
+	</tr>
+	<tr>
+		<td>Date du déplacement</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.date"/></td>
+	</tr>
+	<tr>
+		<td>Numéro du ticket</td>
+		<td><input jwcid="@TextField" value="ognl:object.numeroTicket" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Numéro de la série</td>
+		<td><input jwcid="@TextField" value="ognl:object.numeroSerieTicket" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Nombre de personne transportées :</td>
+		<td><input jwcid="@TextField" value="ognl:object.nbPersonnesTransportees" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Lieu de destination :</td>
+		<td><input jwcid="@TextField" value="ognl:object.lieu"/></td>
+	</tr>
+	<tr>
+		<td>Nature du déplacement :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:object.nature" enum="NatureDeplacementTaxi"/></td>
+	</tr>
+	<tr>
+		<td>Montant de la course :</td>
+		<td><input jwcid="@TextField" value="ognl:object.montantCourse" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Participation usager :</td>
+		<td><input jwcid="@TextField" value="ognl:object.participationUsager" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Participation CCAS :</td>
+		<td><input jwcid="@TextField" value="ognl:object.participationCCAS" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td>Numéro de facture :</td>
+		<td><input jwcid="@TextField" value="ognl:object.numeroFacture"/></td>
+	</tr>
+</tbody></table>
+	
+</div>
+</div>
+</body>
+</html>

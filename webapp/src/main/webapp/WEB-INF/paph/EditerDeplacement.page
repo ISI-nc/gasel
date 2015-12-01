@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Déplacement</description>
+	
+		<property name="titre">literal: Déplacement en Taxi</property>	
+		<property name="results"/>
+		<property name="value"/>
+		<property name="x"/>
+
+</page-specification>

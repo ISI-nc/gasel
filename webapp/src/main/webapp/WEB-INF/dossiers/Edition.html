@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<form jwcid="@core/Form" extraActions="component:extraActions">
+
+
+<table class="invis" style="width:100%;"><tr><td style="padding-right:12px;">
+
+<!-- ======================================================================= -->
+<div jwcid="@core/Bloc" titre="Infos dossier">
+	
+	<div class="block-contents">
+		<div>N°&nbsp;: <span jwcid="@core/show/Id" object="ognl:dossier" /></div>
+		<div class="pad">Ouverture&nbsp;: <input name="dateOuverture" size="8" jwcid="@core/edit/Date"
+					tabindex="1" value="ognl:dossier.dateOuverture"/></div>
+		<div class="pad">Référent&nbsp;:
+			<select jwcid="@PropertySelection" value="ognl:dossier.referent" model="ognl:modeleReferent"/>
+		</div>
+	</div>
+	
+	<div class="section-title">Actualisation</div>
+	
+	<div class="block-contents">
+		<div>Par&nbsp;: <span jwcid="@Insert" value="ognl:dossier.modifUtilisateur"/></div>
+		<div>Le&nbsp;: <span jwcid="@core/show/DateTime" value="ognl:dossier.modifDate" /></div>
+	</div>
+	
+	<div jwcid="@If" condition="ognl:dossier.chefFamille" renderTag="false">
+		<div class="section-title">Contacts</div>
+		
+		<div class="block-contents">
+			<div>Tel.&nbsp;: <span jwcid="@Insert" value="ognl:dossier.chefFamille.telephoneFixe"/></div>
+			<div>Mobile&nbsp;: <span jwcid="@Insert" value="ognl:dossier.chefFamille.telephonePortable"/></div>
+			<div>E-mail&nbsp;: <span jwcid="@Insert" value="ognl:dossier.chefFamille.email"/></div>
+		</div>
+	</div>
+	
+	<div class="section-title">Signalement</div>
+	
+	<div class="block-contents">
+		<span jwcid="@core/edit/Enum" value="ognl:dossier.signalement" enum="OrigineSignalement"
+			null="ognl:null"/>
+	</div>
+	
+</div>
+
+</td><td>
+
+<!-- ======================================================================= -->
+<div jwcid="@core/Bloc" titre="Logement">
+	<div class="section-title">Adresse d'habitation</div>
+	<div class="block-contents">
+		
+		<div jwcid="@voirie/edit/Adresse" value="ognl:dossier.adresseHabitation">
+			[Adresse d'habitation]
+		</div>
+	</div>
+	
+	<div class="section-title">Adresse postale</div>
+	<div class="block-contents">
+		<div jwcid="@voirie/edit/Adresse" value="ognl:dossier.adressePostale"
+			required="false" avecBoitePostale="true">
+			[Adresse postale]
+		</div>
+	</div>
+	
+	<div class="section-title">Autres</div>
+	<div class="block-contents">
+		<table class="invis">
+		<tr><td>Habitat :</td>
+			<td><select jwcid="@core/edit/Enum" enum="TypeHabitat" value="ognl:dossier.typeHabitat" /></td>
+		</tr>
+		<tr><td class="label">Arrivée sur Nouméa :</td>
+			<td class="label"><input jwcid="@core/edit/Date" value="ognl:dossier.dateArriveeCommune" size="8"/></td>
+		</tr>
+		</table>
+	</div>
+</div>
+</td></tr></table>
+
+<!-- ======================================================================= -->
+<div jwcid="@core/Bloc" titre="Composition du foyer">
+
+<div class="block-contents">
+	<table class="invis" style="width:100%;">
+	<tr><td style="width:50%;padding-right:6px;">
+		<div jwcid="@core/edit/ToOne" value="ognl:dossier.chefFamille" label="Chef de famille"
+			searchPage="dossiers/PersonneSearch" viewPage="dossiers/PersonneEdit"
+			canDelete="ognl:isNew(object)">
+			<span jwcid="@Insert" value="ognl:dossier.chefFamille"/>
+		</div>
+	
+	</td><td style="width:50%;padding-left:6px;">
+		<div jwcid="@core/edit/ToOne" value="ognl:dossier.conjoint" label="Conjoint"
+			searchPage="dossiers/PersonneSearch" viewPage="dossiers/PersonneEdit">
+			<span jwcid="@Insert" value="ognl:dossier.conjoint"/>
+		</div></td>
+	</tr>
+	
+	<tr class="pad"><td style="padding-right:6px;">
+		<div jwcid="@core/Tableau" titre="Personnes à charge"
+			source="ognl:dossier.personnesACharge" value="ognl:personne">
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:personne.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:personne.prenom"/>
+			<div jwcid="@core/tableau/ObjectPageAction" title="Modifier" page="dossiers/PersonneEdit" />
+			<div jwcid="@core/tableau/Action" icon="asset:suppr" title="Supprimer des personnes à charge"
+				action="listener:delACharge" parameters="ognl:personne" confirm="true"/>
+			<input jwcid="ajouterACharge@Submit" value="Ajouter" class="button" action="listener:ajouterACharge"/>
+		</div>
+	
+	</td><td style="padding-left:6px;">
+	
+		<div jwcid="@core/Tableau" titre="Personnes non à charge"
+			source="ognl:dossier.personnesNonACharge" value="ognl:personne">
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:personne.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:personne.prenom"/>
+			<div jwcid="@core/tableau/ObjectPageAction" title="Modifier" page="dossiers/PersonneEdit" />
+			<div jwcid="@core/tableau/Action" icon="asset:suppr" title="Supprimer des personnes non à charge"
+					action="listener:delNonACharge" parameters="ognl:personne" confirm="true"/>
+			<input jwcid="ajouterNonACharge@Submit" value="Ajouter" class="button" action="listener:ajouterNonACharge"/>
+		</div>
+	
+	</td></tr>
+	</table>
+</div>
+</div>
+
+<!-- ======================================================================= -->
+<div jwcid="@core/Bloc" titre="Ressources et charges" ouvert="false">
+
+<div class="block-contents">
+	<div><strong>Période :</strong>
+		<input jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" size="4" onchange="refreshPage()" />
+		<input jwcid="ok@Submit" class="button" value="Ok" action="listener:redirect"/></div>
+	
+	<div style="margin-top:6px;" jwcid="@If" condition="ognl:periodeDebut">
+		<div jwcid="@If" condition="ognl:dossier.personnesRessources">
+			<table class="invis" style="width:100%">
+			<tr><td style="padding-right:12px;">
+				<div jwcid="tableauRessources@core/Tableau" titre="Ressources" source="ognl:filtrerRessCharge(dossier.ressources)" value="ognl:montant">
+					<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:montant.personne.repr"/>
+					<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:montant.libelle"/>
+					<div jwcid="@core/tableau/Colonne" titre="Du" value="ognl:montant.debut" format="ognl:dates.formatDense"/>
+					<div jwcid="@core/tableau/Colonne" titre="Au" value="ognl:montant.fin" format="ognl:dates.formatDense"/>
+					<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:montant.montant" format="ognl:format.montant" sort="desc"/>
+					<div jwcid="@core/tableau/Action" icon="asset:suppr" title="Supprimer la ressource"
+						action="listener:delRessource" parameters="ognl:montant" confirm="true"/>
+				</div>
+			</td><td>
+				<div jwcid="tableauCharges@core/Tableau" titre="Charges" source="ognl:filtrerRessCharge(dossier.charges)" value="ognl:montant">
+					<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:montant.personne.repr"/>
+					<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:montant.libelle"/>
+					<div jwcid="@core/tableau/Colonne" titre="Du" value="ognl:montant.debut" format="ognl:dateFormat"/>
+					<div jwcid="@core/tableau/Colonne" titre="Au" value="ognl:montant.fin" format="ognl:dateFormat"/>
+					<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:montant.montant" format="ognl:format.montant" sort="desc"/>
+					<div jwcid="@core/tableau/Action" icon="asset:suppr" title="Supprimer la charge"
+						action="listener:delCharge" parameters="ognl:montant" confirm="true"/>
+				</div>
+	 		</td></tr>
+	 		
+	 		<tr class="pad"><td><div class="section-title">
+	 			Total des ressources : <span jwcid="@Insert" value="ognl:totalRessCharge(dossier.ressources)"
+	 										format="ognl:format.montant">1234</span>
+	 		</div></td><td><div class="section-title">
+				Total des charges : <span jwcid="@Insert" value="ognl:totalRessCharge(dossier.charges)"
+											format="ognl:format.montant">1234</span></div>
+			</td></tr>
+			
+			<tr class="pad"><td colspan="2">
+				<div class="section-title">
+				Différence entre les ressources et les charges :
+				<span jwcid="@Insert" value="ognl:totalRessCharge(dossier.ressources)-totalRessCharge(dossier.charges)"
+						format="ognl:format.montant">1234</span>.
+				</div>
+			</td></tr>
+			
+			<!-- Ajouts ---------------------------------------------------- -->
+			<tr class="pad"><td>
+				<div style="font-weight:bold;">Ajouter une ressource :</div>
+	 			<div jwcid="@dossiers/ResCharge" liste="ressources" personnesModel="ognl:personnesDossierPSM"/>
+				
+			</td><td>
+				<div style="font-weight:bold;">Ajouter une charge :</div>
+	 			<div jwcid="@dossiers/ResCharge" liste="charges" personnesModel="ognl:personnesDossierPSM"/>
+			</td></tr>
+			</table>
+		
+		</div><div jwcid="@Else">
+			Pas de personnes ressources.
+		</div>
+	</div><div jwcid="@Else">
+		Pas de période spécifiée.
+	</div>
+
+</div>
+</div>
+
+<!-- ======================================================================= -->
+<div jwcid="@core/Bloc" titre="Problématiques" ouvert="false">
+<div class="block-contents">
+	<span jwcid="@dossiers/Problematiques" dossier="ognl:dossier"/>
+</div>
+</div>
+
+<div class="section" jwcid="extraActions@Block">
+
+	<div class="side-section-title">Aspects actifs</div>
+
+	<p jwcid="@For" source="ognl:aspectsActifs" value="ognl:spec">
+		<input jwcid="open1@Submit" class="button" action="listener:openAspect" parameters="ognl:spec[1]"
+			value="ognl:spec[0]"/>
+	</p>
+
+	<div class="side-section-title">Aspects inactifs</div>
+
+	<p jwcid="@For" source="ognl:aspectsInactifs" value="ognl:spec">
+		<input jwcid="open2@Submit" class="button" action="listener:openAspect" parameters="ognl:spec[1]"
+			value="ognl:spec[0]"/>
+	</p>
+	
+</div>
+
+</form>
+
+</div>
+</body>
+</html>

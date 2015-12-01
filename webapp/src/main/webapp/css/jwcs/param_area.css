@@ -1,0 +1,37 @@
+
+.param-area {
+	margin: 12px 0;
+	clear: both;
+}
+
+.param-area-top {
+	border-right: 1px dotted #666;
+	border-top: solid black 1px;
+	border-left: solid black 1px;
+	padding-left: 3px;
+	margin: 0;
+	
+	font-weight: bold;
+	font-size: small;
+}
+
+.param-area-bottom {
+	border-bottom: solid black 1px;
+	border-right: solid black 1px;
+	border-left: 1px dotted #666;
+	padding-top: 6px;
+	margin: 0;
+	
+	text-align: right;
+}
+
+.param-area-contents {
+	border-left: 1px dotted #666;
+	border-right: 1px dotted #666;
+	padding: 0 6px;
+	margin: 0;
+}
+
+.param-area-action-button {
+	margin: -1px;
+}

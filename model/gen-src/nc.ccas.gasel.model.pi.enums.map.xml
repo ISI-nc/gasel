@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.pi.enums"/>
+	<db-entity name="etat_parcelle">
+		<db-attribute name="a_corriger" type="BIT" isMandatory="true"/>
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="origine_demande_jf">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="titre_recette">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_arrete_jf">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+		<db-attribute name="renouvellement" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_courrier_jf">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="type_parcelle">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="autorise_collectivite" type="BIT" isMandatory="true"/>
+		<db-attribute name="autorise_dossier" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="EtatParcelle" className="nc.ccas.gasel.model.pi.enums.EtatParcelle" dbEntityName="etat_parcelle">
+		<obj-attribute name="aCorriger" type="java.lang.Boolean" db-attribute-path="a_corriger"/>
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="OrigineDemandeJF" className="nc.ccas.gasel.model.pi.enums.OrigineDemandeJF" dbEntityName="origine_demande_jf">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TitreRecette" className="nc.ccas.gasel.model.pi.enums.TitreRecette" dbEntityName="titre_recette">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeArreteJF" className="nc.ccas.gasel.model.pi.enums.TypeArreteJF" dbEntityName="type_arrete_jf">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+		<obj-attribute name="renouvellement" type="java.lang.Boolean" db-attribute-path="renouvellement"/>
+	</obj-entity>
+	<obj-entity name="TypeCourrierJF" className="nc.ccas.gasel.model.pi.enums.TypeCourrierJF" dbEntityName="type_courrier_jf">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TypeParcelle" className="nc.ccas.gasel.model.pi.enums.TypeParcelle" dbEntityName="type_parcelle">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="autoriseCollectivite" type="java.lang.Boolean" db-attribute-path="autorise_collectivite"/>
+		<obj-attribute name="autoriseDossier" type="java.lang.Boolean" db-attribute-path="autorise_dossier"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="REV_controle_entretien_etat_parcelle" source="etat_parcelle" target="controle_entretien" toMany="true">
+		<db-attribute-pair source="id" target="etat_parcelle_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_jf_origine" source="origine_demande_jf" target="demande_jf" toMany="true">
+		<db-attribute-pair source="id" target="origine_id"/>
+	</db-relationship>
+	<db-relationship name="REV_arrete_jf_type" source="type_arrete_jf" target="arrete_jf" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_courrier_type" source="type_courrier_jf" target="courrier" toMany="true">
+		<db-attribute-pair source="id" target="type_id"/>
+	</db-relationship>
+	<db-relationship name="REV_attribution_jf_type_prevu" source="type_parcelle" target="attribution_jf" toMany="true">
+		<db-attribute-pair source="id" target="type_prevu_id"/>
+	</db-relationship>
+</data-map>

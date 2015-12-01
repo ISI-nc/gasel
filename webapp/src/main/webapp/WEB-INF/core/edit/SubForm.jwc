@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+
+	<parameter name="colspan" default-value="2"/>
+	<parameter name="buttonLabel" default-value="literal:Ajouter"/>
+	
+	<property name="error"/>
+	
+	<component id="table" inherit-informal-parameters="yes" type="Any"/>
+	
+</component-specification>

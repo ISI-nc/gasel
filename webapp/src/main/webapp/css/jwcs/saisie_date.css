@@ -1,0 +1,29 @@
+
+div.date-calendar {
+	font-size: small;
+	background-color: #eee;
+	border: 1px solid;
+	padding: 3px;
+	z-index: 400;
+}
+
+table.date-calendar {
+	clear: both;
+}
+
+table.date-calendar tbody td {
+	text-align: right;
+	cursor: pointer;
+}
+
+.date-calendar tbody td:hover {
+	background-color: #fff;
+}
+
+div.date-calendar {
+	position: absolute;
+}
+
+.date-icon {
+	cursor: pointer;
+}

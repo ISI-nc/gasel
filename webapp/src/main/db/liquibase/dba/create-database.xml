@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+ <!-- Parameters -->
+ 
+ <!-- Accounts -->
+ <property name="account.adm" value="gasel_adm"/>
+ <property name="account.usr" value="gasel_usr"/>
+ <property name="account.read" value="gasel_read"/>
+ 
+ <!-- Passwords -->
+ <property name="password.adm" value="changeme"/>
+ <property name="password.usr" value="changeme"/>
+ <property name="password.read" value="changeme"/>
+  
+    
+ <!-- Pre-conditions (DBA Access required) -->
+ <preConditions>
+        <dbms type="postgresql" />
+	<runningAs username="adminpg" />
+</preConditions>
+    
+
+<changeSet author="salad74" id="drop-cascade-owned-by-gasel_adm" runInTransaction="false" failOnError="false">
+  <comment>DROP all objects owned by ${account.adm} (if the account does exist !)</comment>
+  <sql>DROP OWNED BY ${account.adm} CASCADE</sql>
+</changeSet>
+
+
+<changeSet author="salad74" id="create-role-gasel_adm" runInTransaction="false">
+    <comment>drop (IF EXISTS) the ROLE ${account.adm}, then (re-)create it</comment>
+    <sql>drop ROLE IF EXISTS ${account.adm}</sql>
+    <sql>CREATE ROLE ${account.adm}  LOGIN ENCRYPTED PASSWORD '${password.adm}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+
+<changeSet author="salad74" id="drop-cascade-owned-by-gasel_usr" runInTransaction="false" failOnError="false">
+    <comment>DROP CASCADE objects OWNED BY ${account.usr} </comment>
+    <sql>DROP OWNED BY ${account.usr} CASCADE</sql>
+</changeSet>
+
+
+<changeSet author="salad74" id="create-role-gasel_usr" runInTransaction="false">
+    <comment>drop (IF EXISTS) ROLE ${account.usr} then (re-) create it</comment>
+    <sql>drop ROLE IF EXISTS ${account.usr}</sql>
+    <sql>CREATE ROLE ${account.usr}  LOGIN ENCRYPTED PASSWORD '${password.usr}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-gasel_read" runInTransaction="false">
+    <comment>drop (IF EXISTS) ROLE ${account.read}, then (re-)create it</comment>
+    <sql>drop ROLE IF EXISTS ${account.read}</sql>
+    <sql>CREATE ROLE ${account.read}  LOGIN ENCRYPTED PASSWORD '${password.read}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-gasel_adm" runInTransaction="false">
+  <comment>DROP (if exists) SCHEMA ${account.adm}, give AUTHORIZATION to ${account.adm} then make him OWNER of its own objects</comment>
+    <sql>DROP SCHEMA if exists ${account.adm}</sql>
+    <sql>CREATE SCHEMA ${account.adm} AUTHORIZATION ${account.adm}</sql>
+    <sql>ALTER SCHEMA ${account.adm} OWNER TO ${account.adm}</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-gasel_usr" runInTransaction="false">
+    <comment>Set ${account.usr} search_path to ${account.adm} objects</comment>
+    <sql>ALTER USER ${account.usr} SET search_path TO '${account.adm}'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-gasel_read" runInTransaction="false">
+    <comment>Set ${account.read} search_path to ${account.adm} objects</comment>
+    <sql>ALTER USER ${account.read} SET search_path TO '${account.adm}'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-gasel_adm-to-gasel_adm" runInTransaction="false">
+    <comment>GRANT ALL ON SCHEMA ${account.adm} TO ${account.adm}</comment>
+    <sql>GRANT ALL ON SCHEMA ${account.adm} TO ${account.adm}</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-usages-on-gasel_adm" runInTransaction="false">
+    <comment>Grant usage on ${account.adm} to ${account.usr} and ${account.read}</comment>
+    <sql>GRANT USAGE ON SCHEMA ${account.adm} TO ${account.usr}</sql>
+    <sql>GRANT USAGE ON SCHEMA ${account.adm} TO ${account.read}</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-default-privileges" runInTransaction="false">
+    <comment>grant privileges Read/Write (tables, sequences) to ${account.usr}, grant READ ONLY to ${account.read}</comment>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE ${account.adm} IN SCHEMA ${account.adm} GRANT SELECT,INSERT,UPDATE,DELETE ON TABLES TO ${account.usr}</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE ${account.adm} IN SCHEMA ${account.adm} GRANT SELECT,UPDATE ON SEQUENCES TO ${account.usr}</sql>
+    
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE ${account.adm} IN SCHEMA ${account.adm} GRANT SELECT ON TABLES TO ${account.read}</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE ${account.adm} IN SCHEMA ${account.adm} GRANT SELECT ON SEQUENCES TO ${account.read}</sql>
+</changeSet>
+
+</databaseChangeLog>

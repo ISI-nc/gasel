@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+Liste des bons annulés
+
+       	<table jwcid="@core/search/Form" entity="Bon" results="ognl:results"> 
+        	<tr>
+        		<td class="label" height="45"><b>Mois/Année:</b></td>
+        		<td>
+	              <span jwcid="@core/search/critere/MoisAnnee" path="debut">[...]</span>
+	              <span jwcid="@core/search/critere/HiddenEquals" path="etat" value="3"/>
+        		</td>
+        		<td class="label" height="45"><b>Type de public:</b></td>
+        		<td>	
+	              <span jwcid="@core/search/critere/Enum" path="aide.public" enum="TypePublic" />
+        		</td>
+        	</tr>
+        	<tr>
+        		<td class="label" height="60px"><b>Imputation:</b></td>
+        		<td>
+	              <span jwcid="@core/search/critere/Enum" path="aide.nature.imputation" enum="Imputation" />
+        		</td>
+        		<td class="label" height="60px"><b>Article:</b></td>
+        		<td>
+	              <span jwcid="@core/search/critere/Enum" path="aide.nature" enum="NatureAide" />
+        		</td>
+        	</tr>
+        	<tr>
+        		<td class="label" height="60px"><b>Numéro:</b></td>
+        		<td>
+	              <span jwcid="@core/search/critere/Contient" path="numero" />
+        		</td>
+        	</tr>
+			</table>
+			<p jwcid="@If" condition="ognl:results">
+				<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+					<div jwcid="@core/tableau/Colonne" titre="Matricule" value="ognl:sql.idOf(value)"/>
+					<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:value.aide.dossier.dossier.chefFamille.nom"/>
+					<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:value.aide.dossier.dossier.chefFamille.prenom"/>
+					<div jwcid="@core/tableau/Colonne" titre="Aide" value="ognl:value.aide.nature.parent"/>
+					<div jwcid="@core/tableau/Colonne" titre="Type aide" value="ognl:value.aide.nature"/>
+					<div jwcid="@core/tableau/Colonne" titre="N° de bon" value="ognl:value.numero"/>
+					<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:value.aide.statut"/>
+					<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:value.montant"/>
+					
+					<div jwcid="@core/tableau/Action" action="listener:desannulerBon" disabled="ognl:!login.user.hasAccesDirection" title="Désannuler"
+						confirm="ognl:value ? 'Désannuler le bon n°'+value.numero+' ?' : false" />
+				</div>
+			</p>
+				<p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</body>
+</html>

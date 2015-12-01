@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<table class="section">
+    <tbody>
+      <tr>
+        <td colspan="2" rowspan="1">Gérer le budget annuel :</td>
+      </tr>
+      <tr>
+        <td class="section">
+        <table style="width: 100%;">
+          <tbody>
+            <tr>
+              <td colspan="2">
+              <table width="100%">
+                  <tr>
+                    <td>Année :</td>
+					<td><input size="35" jwcid="@TextField" tabindex="1" value="ognl:object.annee"/></td>
+					<td>Validé :</td>
+					<td><input jwcid="@Checkbox" value="ognl:isValide" /></td>
+                  </tr>
+                  <tr>
+					<td>Montant :</td>
+					<td><input jwcid="@core/edit/Montant" value="ognl:object.montant" size="35"></input></td>
+					<td>Date de validation :</td>
+					<td><input jwcid="@core/show/DateTime" value="ognl:object.validation" /></td>
+				  </tr>
+              </table>
+              </td>
+            </tr>
+            <tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+            <tr>
+              <td>
+				<table class="data-table">
+				<tbody>
+				<tr>
+					<th colspan="3">Budgets d'imputation</th>
+				</tr>
+				<tr>
+					<th>Imputation</th>
+					<th>Montant</th>
+					<th></th>
+				</tr>
+				<tr jwcid="@For" source="ognl:object.budgetsImputation" value="ognl:budImp">
+					<td><input jwcid="@Insert" value="ognl:budImp.imputation.libelle" /></td>
+					<td><input jwcid="@core/edit/Montant" value="ognl:budImp.montant"/></td>
+					<td><input jwcid="@ImageSubmit"
+						title="ognl:'Gérer le budget &quot;'+budImp.imputation.libelle+'&quot;'"
+						action="listener:editerBudgetImpAnnuel" parameters="ognl:budImp"
+						image="asset:loupe"/></td>
+				</tr>
+				</tbody>
+				</table>
+			  </td>
+			</tr>
+          </tbody>
+        </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</div>
+</body>
+</html>

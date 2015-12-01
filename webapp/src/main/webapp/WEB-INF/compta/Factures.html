@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<p><strong>Liste des factures</strong></p>
+
+<table jwcid="@core/search/Form" entity="Facture" results="ognl:results" prefetch="fournisseur">
+<tr><td class="label">Période&nbsp;:</td>
+	<td><span jwcid="@core/search/critere/PeriodeMois" path="creation">[...]</span></td>
+	<td class="label">&nbsp;Numéro&nbsp;:</td>
+	<td><span jwcid="@core/search/critere/Contient" path="numero"/></td>
+</tr>
+<tr class="pad">
+	<td class="label">Fournisseur&nbsp;:</td>
+	<td><span jwcid="@core/search/critere/Contient" path="fournisseur.libelle"/></td>
+	<td class="label">&nbsp;Contenant le bon n°&nbsp;:</td>
+	<td><span jwcid="@core/search/critere/Egal" path="parties.bons.bon.numero"/></td>
+</tr>
+<tr class="pad">
+	<td></td>
+	<td></td>
+	<td class="label" style="padding-left:12px;">N° d'arrêté&nbsp;:</td>
+	<td><input jwcid="@core/search/critere/Contient" path="parties.bons.arrete.numero"/></td>
+</tr>
+</table>
+
+<p jwcid="@If" condition="ognl:results">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="N° facture" value="ognl:value.numero"/>
+		<div jwcid="@core/tableau/Colonne" titre="Date facture" value="ognl:value.creation" format="ognl:dateFormat"/>
+		<div jwcid="@core/tableau/Colonne" titre="Fournisseur" value="ognl:value.fournisseur.libelle"/>
+		<div jwcid="@core/tableau/Colonne" titre="Montant facture" value="ognl:value.montant"/>
+		
+		<div jwcid="@core/tableau/ObjectPageAction" page="compta/RetoursBons"/>
+		<div jwcid="@core/tableau/ActionSupprimer"/>
+	</div>
+</p>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="compta/RetoursBons" />
+	<input jwcid="@core/BoutonRetour"/>
+</p>
+
+</div>
+</body>
+</html>

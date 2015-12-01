@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table jwcid="@budget/EntetePeriode" debut="ognl:periodeDebut" fin="ognl:periodeFin"
+	colspan="6">
+
+	<tr><td class="label">Article :</td>
+		<td><select jwcid="@core/edit/Enum" value="ognl:article" 
+	            			values="ognl:naturesAide" /></td>
+		<td class="label">Statut :</td>
+		<td><select jwcid="@core/edit/Enum" value="ognl:statut" 
+	            			values="enum:StatutAide" /></td>
+		<td class="label">Public :</td>
+		<td><select jwcid="@core/edit/Enum" value="ognl:typePublic" 
+	            			values="enum:TypePublic" /></td>
+	</tr>
+
+</table>
+
+<p>
+<div jwcid="@core/Tableau" source="ognl:tableau" value="ognl:row" lignesParPage="500">
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Nom" value="ognl:row.nom"/>
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Prénom" value="ognl:row.prenom"/>
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Article" value="ognl:row.na_libelle" />
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Statut" value="ognl:row.fa_libelle" />
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Bénéficiaires" value="ognl:row.nb_beneficiaire" />
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Fréquence" value="ognl:row.nb_mois" />
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Montant" value="ognl:row.montant_aide"/>
+	<span jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight" titre="Montant non utilisé" value="ognl:row.inutilise" />
+</div>
+</p>
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

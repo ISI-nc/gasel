@@ -1,0 +1,15 @@
+<div jwcid="@If" condition="ognl:ongletActif">
+<table jwcid="table" class="onglets">
+	<tr><span jwcid="@For" renderTag="false" volatile="true" source="ognl:onglets" value="ognl:onglet">
+		<td jwcid="@Any" class="ognl:'leftOnglet'+suffixeClasse"><br/></td>
+		<td jwcid="@Any" class="ognl:'centerOnglet'+suffixeClasse">
+			<input jwcid="onglet@Submit" action="listener:activeOnglet" parameters="ognl:onglet.clientId"
+				label="ognl:onglet.titre" class="invis-button"/>
+		</td>
+		<td jwcid="@Any" class="ognl:'rightOnglet'+suffixeClasse"><br/></td>
+		</span></tr>
+	<tr><td jwcid="@Any" class="corpsOnglet" colspan="ognl:onglets.size()*3+1">
+		<div jwcid="@RenderBlock" block="ognl:ongletActif">[Onglet actif]</div>
+	</td></tr>
+</table>
+</div>

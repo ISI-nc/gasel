@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border"><div jwcid="@core/Form">
+
+<table class="invis">
+	<tr><td class="label">Date début de recouvrement :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:paiement.debut"/></td></tr>
+	<tr><td class="label">Date fin de recouvrement :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:paiement.fin"/></td></tr>
+	<tr><td class="label">Montant :</td>
+		<td><input jwcid="@TextField" value="ognl:paiement.montant"/></td></tr>
+	<tr><td class="label">Numéro de reçu :</td>
+		<td><input jwcid="@TextField" value="ognl:paiement.numRecu"/></td></tr>
+	<tr><td class="label">Numéro de titre recette :</td>
+		<td><input jwcid="@TextField" value="ognl:paiement.numTitreRecette"/></td></tr>
+</table>
+
+</div>
+</div>
+</body>
+</html>

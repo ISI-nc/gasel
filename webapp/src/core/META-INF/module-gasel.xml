@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.gasel" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module position="999999" titre="GASEL">
+			<partie-module dossier="parametres" titre="Paramètres">
+				<point-entree titre="Constantes" page="Constantes">
+					Permet de gérer les constantes (prix unitaires de la
+					calédonienne des eaux...)
+				</point-entree>
+				<point-entree titre="Listes" page="Listes">
+					Permet de gérer les listes de GASEL (types d'aide,
+					articles, etc).
+				</point-entree>
+			</partie-module>
+			
+			<partie-module dossier="habilitations" titre="Habilitations">
+				<point-entree titre="Utilisateurs" page="Comptes">
+					Permet de modifier les utilisateurs et leurs groupes.
+				</point-entree>
+				<point-entree titre="Groupes d'utilisateurs" page="Groupes">
+					Permet de créer ou modifier les groupes.
+				</point-entree>
+			</partie-module>
+		</module>
+	</contribution>
+
+</module>

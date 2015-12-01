@@ -1,0 +1,6 @@
+mairie.dev-mode=true
+mairie.on-db2=true
+mairie.jdbc.driver=com.ibm.as400.access.AS400JDBCDriver
+mairie.jdbc.url=jdbc:as400:robinnw;prompt=false;date format=iso
+mairie.jdbc.user=isinc
+mairie.jdbc.pass=P@ssw0rd

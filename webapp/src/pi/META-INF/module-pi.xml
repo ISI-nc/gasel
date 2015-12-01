@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.pi" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module position="200" dossier="pi" titre="Jardins familiaux">
+			<partie-module titre="Gestion">
+				<point-entree titre="Gestion" page="GestionDispositif">
+					Permet de gérer le dispositif.
+				</point-entree>
+				<point-entree titre="Tableaux de bord" page="TableauDeBord">
+					Permet de voir le tableau de bord.
+				</point-entree>
+				<point-entree titre="Documents" page="DocumentsPI">
+					Permet de gérer les documents du module (courriers, arrêtés, etc).
+				</point-entree>
+			</partie-module>
+			<partie-module titre="Sites">
+				<point-entree titre="Liste" page="ListeJardinsFamiliaux">
+					Permet de consulter les jardins familiaux.
+				</point-entree>
+				<point-entree titre="Création" page="EditerJardinFamilial">
+					Permet de créer un jardin familial.
+				</point-entree>
+			</partie-module>
+			<partie-module titre="Collectivite">
+				<point-entree titre="Recherche / Création" page="ListeCollectivites">
+					Permet de créer ou de rechercher une collectivité qui a fait une demande de jardin familial.
+				</point-entree>
+				<point-entree titre="Collectivités" page="EditerCollectivite">
+					Permet de créer une collectivité.
+				</point-entree>
+			</partie-module>
+			<partie-module titre="Dossiers">
+				<point-entree titre="Recherche / Création" page="Recherche">
+					Permet de créer ou de rechercher un dossier qui a fait une demande de jardin familial.
+				</point-entree>
+			</partie-module>
+		</module>
+	</contribution>
+
+</module>

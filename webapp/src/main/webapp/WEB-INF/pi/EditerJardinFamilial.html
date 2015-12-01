@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border"><div jwcid="@core/Form">
+
+<p>Jardin familial :
+	<strong><input jwcid="@Insert" value="ognl:object.nom" /></strong>
+</p>
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<table><tbody>
+	<tr>
+		<td>Nom :</td>
+		<td><input jwcid="@TextField" value="ognl:object.nom" /></td>
+	</tr>
+	<tr>
+		<td>Quartier :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:object.lieu" enum="Lieu" /></td>
+	</tr>
+	</tbody></table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Parcelles">
+
+	<table jwcid="@core/Tableau" source="ognl:sort(object.parcelles).by('numero').results" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:row.numero" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerParcelle"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="parcelles"/>
+	</table>
+
+	<div><strong>Ajouter une parcelle :</strong></div>
+	<table jwcid="@core/edit/SubForm" source="ognl:object" liste="parcelles" value="ognl:parcelle">
+		<tr><td class="label">Numéro :</td>
+			<td><input jwcid="@TextField" value="ognl:parcelle.numero" translator="translator:number,omitZero"/></td></tr>
+	</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Attributions">
+
+	<p><strong>Période :</strong>
+		<span jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" />
+	</p>
+
+	<table jwcid="@core/Tableau" source="ognl:sort(attributionsPeriode).by('parcelle.numero').results" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Date de l'attribution" value="ognl:row.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:object.nom" />
+		<div jwcid="@core/tableau/Colonne" titre="Parcelle" value="ognl:row.parcelle.numero" />
+		<div jwcid="@core/tableau/Colonne" titre="Type prévu" value="ognl:row.typePrevu" />
+		<div jwcid="@core/tableau/Colonne" titre="Dossier/collectivité" value="ognl:row.demande.collectivite?row.demande.collectivite:row.demande.dossier.dossier.chefFamille" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerAttribution"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="attributions" disabled="ognl-protect:estEnCours(row)"/>
+	</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Liste d'attente">
+
+	<p><strong>Période :</strong>
+		<span jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" />
+		<input jwcid="ok@Submit" class="button" action="listener:redirect" value="Ok"/>
+	</p>
+
+	<table jwcid="@core/Tableau" source="ognl:object.demandesEnAttente" value="ognl:row">
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Demande">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Dossier" value="ognl-protect:row.dossier.dossier.chefFamille.repr"/>
+			<div jwcid="@core/tableau/Colonne" titre="Collectivités" value="ognl-protect:row.collectivite.designation"/>
+			<div jwcid="@core/tableau/Colonne" titre="Actif" value="ognl:estActif(row)?'oui':'non'" />
+			<div jwcid="@core/tableau/Colonne" titre="Origine" value="ognl:row.origine" />
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Commission">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.commission" />
+			<div jwcid="@core/tableau/Colonne" titre="Avis" value="ognl:row.avisCommission" />
+		</div>
+		
+		<div jwcid="@core/tableau/ObjectPageAction" page="pi/EditerDemandeJF" parentProperty="jardin" />
+		<div jwcid="@core/tableau/Action" title="Attribuer une parcelle" action="listener:attribution"/>
+	</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Documents">
+	
+	<table class="invis">
+	<tbody>
+		<tr>
+			<td class="label">Arrêté d'attribution&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:object.arreteAttribution" /></td>
+		</tr>
+		<tr>
+			<td class="label">Arrêté de renouvellement&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:object.arreteRenouvellement" /></td>
+		</tr>
+		<tr>
+			<td class="label">Retard de paiement&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:object.courierPaiement" /></td>
+		</tr>
+		<tr>
+			<td class="label">Entretien insuffisant&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:object.courierEntretien" /></td>
+		</tr>
+		<tr>
+			<td class="label">Paiement+entretien&nbsp;:</td>
+			<td><input jwcid="@core/Document" document="ognl:object.courierPaiementEntretien" /></td>
+		</tr>
+	</tbody>
+	</table>
+	
+</div>
+
+</div>
+
+</div></div>
+</body>
+</html>

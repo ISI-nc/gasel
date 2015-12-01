@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+ <!-- Parameters -->
+ <property name="password.gasel_v2" value="changeme"/>
+ <property name="password.mairie" value="changeme"/>
+ <property name="password.mairccas" value="changeme"/>
+ 
+ <!--
+ <property name="password.gasel_v2" value="changeme"/>
+ <property name="password.pdc_usr" value="changeme"/>
+ <property name="password.pdc_read" value="changeme"/>
+ <property name="password.pdc_bo" value="changeme"/>
+ -->
+ 
+ <!--
+ <property name="password.pdc_qrtz_adm" value="changeme"/>
+ <property name="password.pdc_qrtz_usr" value="changeme"/>
+ <property name="password.pdc_qrtz_read" value="changeme"/>
+ -->
+    
+ <!-- Pre-conditions (DBA Access required) -->
+ <preConditions>
+        <dbms type="postgresql" />
+	<runningAs username="adminpg" />
+</preConditions>
+
+ <!-- Creation of gasel_v2 schema -->
+<changeSet author="salad74" id="drop-owned-by-gasel_v2" runInTransaction="false" failOnError="false">
+  <comment>DROP OWNED BY gasel_v2 CASCADE</comment>  
+  <sql>DROP OWNED BY gasel_v2 CASCADE</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-gasel_v2" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS gasel_v2</sql>
+    <sql>CREATE ROLE gasel_v2  LOGIN ENCRYPTED PASSWORD '${password.gasel_v2}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-gasel_v2" runInTransaction="false">
+    <sql>DROP SCHEMA if exists gasel_v2</sql>
+    <sql>CREATE SCHEMA gasel_v2 AUTHORIZATION gasel_v2</sql>
+    <sql>ALTER SCHEMA gasel_v2 OWNER TO gasel_v2</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-gasel_v2-to-gasel_v2" runInTransaction="false">
+    <sql>GRANT ALL ON SCHEMA gasel_v2 TO gasel_v2</sql>
+</changeSet>
+
+ <!-- Creation of mairie schema -->
+ <changeSet author="salad74" id="drop-owned-by-mairie" runInTransaction="false" failOnError="false">
+  <comment>DROP OWNED BY mairie CASCADE</comment>  
+  <sql>DROP OWNED BY mairie CASCADE</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-mairie" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS mairie</sql>
+    <sql>CREATE ROLE mairie LOGIN ENCRYPTED PASSWORD '${password.mairie}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-mairie" runInTransaction="false">
+    <sql>DROP SCHEMA if exists mairie</sql>
+    <sql>CREATE SCHEMA mairie AUTHORIZATION mairie</sql>
+    <sql>ALTER SCHEMA mairie OWNER TO mairie</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-mairie-to-mairie" runInTransaction="false">
+    <sql>GRANT ALL ON SCHEMA mairie TO mairie</sql>
+</changeSet>
+
+ <!-- Creation of mairccas schema -->
+ <changeSet author="salad74" id="drop-owned-by-mairccas" runInTransaction="false" failOnError="false">
+  <comment>DROP OWNED BY mairccas CASCADE</comment>  
+  <sql>DROP OWNED BY mairccas CASCADE</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-mairccas" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS mairccas</sql>
+    <sql>CREATE ROLE mairccas LOGIN ENCRYPTED PASSWORD '${password.mairccas}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-mairccas" runInTransaction="false">
+    <sql>DROP SCHEMA if exists mairccas</sql>
+    <sql>CREATE SCHEMA mairccas AUTHORIZATION mairccas</sql>
+    <sql>ALTER SCHEMA mairccas OWNER TO mairccas</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-mairccas-to-mairccas" runInTransaction="false">
+    <sql>GRANT ALL ON SCHEMA mairccas TO mairccas</sql>
+</changeSet>
+
+
+<!--
+<changeSet author="salad74" id="create-role-pdc_adm" runInTransaction="false">
+    <sql>DROP OWNED BY pdc_adm CASCADE</sql>
+    <sql>drop ROLE IF EXISTS pdc_adm</sql>
+    <sql>CREATE ROLE pdc_adm  LOGIN ENCRYPTED PASSWORD '${password.pdc_adm}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-pdc_usr" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_usr</sql>
+    <sql>CREATE ROLE pdc_usr  LOGIN ENCRYPTED PASSWORD '${password.pdc_usr}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-pdc_read" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_read</sql>
+    <sql>CREATE ROLE pdc_read  LOGIN ENCRYPTED PASSWORD '${password.pdc_read}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-pdc_bo" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_bo</sql>
+    <sql>CREATE ROLE pdc_bo  LOGIN ENCRYPTED PASSWORD '${password.pdc_bo}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-pdc_adm" runInTransaction="false">
+    <sql>DROP SCHEMA if exists pdc_adm</sql>
+    <sql>CREATE SCHEMA pdc_adm AUTHORIZATION pdc_adm</sql>
+    <sql>ALTER SCHEMA pdc_adm OWNER TO pdc_adm</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-pdc_usr" runInTransaction="false">
+    <sql>ALTER USER pdc_usr  SET search_path TO 'pdc_adm'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-pdc_read" runInTransaction="false">
+    <sql>ALTER USER pdc_read  SET search_path TO 'pdc_adm'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-pdc_bo" runInTransaction="false">
+    <sql>ALTER USER pdc_bo  SET search_path TO 'pdc_adm'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-pdc_adm-to-pdc_adm" runInTransaction="false">
+    <sql>GRANT ALL ON SCHEMA pdc_adm TO pdc_adm</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-usages-on-pdc_adm" runInTransaction="false">
+    <sql>GRANT USAGE ON SCHEMA pdc_adm TO pdc_usr</sql>
+    <sql>GRANT USAGE ON SCHEMA pdc_adm TO pdc_read</sql>
+    <sql>GRANT USAGE ON SCHEMA pdc_adm TO pdc_bo</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-default-privileges" runInTransaction="false">
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT,INSERT,UPDATE,DELETE ON TABLES TO pdc_usr</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT,UPDATE ON SEQUENCES TO pdc_usr</sql>
+    
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT ON TABLES TO pdc_read</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT ON SEQUENCES TO pdc_read</sql>
+    
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT ON TABLES TO pdc_bo</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_adm IN SCHEMA pdc_adm GRANT SELECT ON SEQUENCES TO pdc_bo</sql>
+</changeSet>
+
+<changeSet author="salad74" id="pdc_password_reminder" runInTransaction="false">
+<comment>Think about updating pdc_adm, pdc_usr and pdc_read passwords !!!</comment>
+</changeSet>
+
+ -->
+
+ <!-- Création du schema pdc_qrtz_adm -->
+ <!--
+  <changeSet author="salad74" id="create-role-pdc_qrtz_adm" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_qrtz_adm</sql>
+    <sql>CREATE ROLE pdc_qrtz_adm  LOGIN ENCRYPTED PASSWORD 'changeme' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+
+<changeSet author="salad74" id="create-role-pdc_qrtz_usr" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_qrtz_usr</sql>
+    <sql>CREATE ROLE pdc_qrtz_usr  LOGIN ENCRYPTED PASSWORD '${password.pdc_qrtz_usr}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-role-pdc_qrtz_read" runInTransaction="false">
+    <sql>drop ROLE IF EXISTS pdc_qrtz_read</sql>
+    <sql>CREATE ROLE pdc_qrtz_read  LOGIN ENCRYPTED PASSWORD '${password.pdc_qrtz_read}' NOSUPERUSER INHERIT NOCREATEDB NOCREATEROLE NOREPLICATION</sql>
+</changeSet>
+
+<changeSet author="salad74" id="create-schema-pdc_qrtz_adm" runInTransaction="false">
+    <sql>DROP SCHEMA if exists pdc_qrtz_adm</sql>
+    <sql>CREATE SCHEMA pdc_qrtz_adm AUTHORIZATION pdc_qrtz_adm</sql>
+    <sql>ALTER SCHEMA pdc_qrtz_adm OWNER TO pdc_qrtz_adm</sql>
+</changeSet>
+ 
+<changeSet author="salad74" id="update-search-path-pdc_qrtz_usr" runInTransaction="false">
+    <sql>ALTER USER pdc_qrtz_usr  SET search_path TO 'pdc_qrtz_adm'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="update-search-path-pdc_qrtz_read" runInTransaction="false">
+    <sql>ALTER USER pdc_qrtz_read  SET search_path TO 'pdc_qrtz_adm'</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-all-on-pdc_qrtz_adm-to-pdc_qrtz_adm" runInTransaction="false">
+    <sql>GRANT ALL ON SCHEMA pdc_qrtz_adm TO pdc_qrtz_adm</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-usages-on-pdc_qrtz_adm" runInTransaction="false">
+    <sql>GRANT USAGE ON SCHEMA pdc_qrtz_adm TO pdc_qrtz_usr</sql>
+    <sql>GRANT USAGE ON SCHEMA pdc_qrtz_adm TO pdc_qrtz_read</sql>
+</changeSet>
+
+<changeSet author="salad74" id="grant-default-privileges_pdc_qrtz" runInTransaction="false">
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_qrtz_adm IN SCHEMA pdc_qrtz_adm GRANT SELECT,INSERT,UPDATE,DELETE ON TABLES TO pdc_qrtz_usr</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_qrtz_adm IN SCHEMA pdc_qrtz_adm GRANT SELECT,UPDATE ON SEQUENCES TO pdc_qrtz_usr</sql>
+    
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_qrtz_adm IN SCHEMA pdc_adm GRANT SELECT ON TABLES TO pdc_qrtz_read</sql>
+    <sql>ALTER DEFAULT PRIVILEGES FOR ROLE pdc_qrtz_adm IN SCHEMA pdc_adm GRANT SELECT ON SEQUENCES TO pdc_qrtz_read</sql>
+</changeSet>
+-->
+
+ <!-- Grant usage on qartz table to pdc_usr -->
+ <!--
+ <changeSet author="salad74" id="grant-usages-on-pdc_qrtz_adm-to-pdc_usr" runInTransaction="false">
+    <sql>ALTER USER pdc_usr SET search_path TO pdc_adm,pdc_qrtz_adm</sql>
+    <sql>grant USAGE on SCHEMA pdc_qrtz_adm to pdc_usr</sql>
+    <sql>GRANT SELECT, UPDATE, DELETE ON ALL TABLES IN SCHEMA pdc_qrtz_adm TO pdc_usr</sql>
+    <sql>GRANT SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA pdc_qrtz_adm TO pdc_usr</sql>
+</changeSet>
+-->
+
+</databaseChangeLog>

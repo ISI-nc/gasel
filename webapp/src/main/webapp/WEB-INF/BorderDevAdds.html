@@ -1,0 +1,69 @@
+<div jwcid="@If" condition="ognl:page.isTestMode" class="debug-footer">
+
+<!-- ================================================================
+     ====== MAIN CONTENTS - DEVELOPMENT MODE ADDITIONS         ======
+     ================================================================ -->
+
+	<hr/>
+
+	<span jwcid="@contrib:InspectorButton"/>
+	<div style="float:right;">
+		<strong>Page :</strong>
+		<span jwcid="@Insert" value="ognl:page.pageName">Page</span>
+		| <a href="#" jwcid="@DirectLink" listener="listener:openQueryPage" parameters="Query">SQL</a>
+		&nbsp;
+	</div>
+	
+	<div style="float:left;border: 1px dotted gray; padding:1ex;font-size:small;">
+		Page&nbsp;:
+		<input jwcid="pageName@TextField" value="ognl:pageName" size="15"/>
+		<input jwcid="open@Submit" action="listener:workflowOpen" value="open"/>
+	</div>
+
+	<div jwcid="@If" condition="ognl:page.sql.query.records" renderTag="false">
+		<div style="font-weight:bold;" onclick="toggleDisplay(nextSibling)">
+			Requêtes enregistrées
+			(<span jwcid="@Insert" value="ognl:page.sql.query.records.size()">1</span>)
+		</div><div style="display:none;">
+		<div jwcid="@For" source="ognl:page.sql.query.records" value="ognl:record" volatile="true"
+			style="padding: 6px;">
+			<div style="float:right;background-color:#eee;padding:3px;">
+				<a href="#" onclick="return toggle(parentNode.parentNode.lastChild)">[+]</a>
+				<a href="#" jwcid="@DirectLink" listener="listener:openQuery"
+					parameters="ognl:record.query">[Q]</a>
+			</div>
+			<div style="font-family:monospace;margin:3px;padding:3px;background-color: #ccc;"><span jwcid="@Insert" value="ognl:record.query" mode="ognl:@org.apache.tapestry.components.InsertMode@BREAK">
+				[Résultats]
+			</span></div>
+			<div style="display:none;">
+				<div jwcid="@DataRows" rows="ognl:record.results">[Résultats]</div>
+		</div></div></div>
+	</div>
+	
+	<div>
+		<input jwcid="exceptionTest@Submit" action="listener:exceptionTest" value="Test d'exception"/>
+	</div>
+	
+	<hr style="clear:both;"/>
+	<p style="font-weight:bold">DataContext
+		(<input jwcid="cleanContext@Submit" class="invis-button" value="Nettoyer" action="listener:cleanContext"/>)</p>
+	
+	<div jwcid="@For" source="ognl:{{'créés', objectContext.newObjects()},
+	                              {'modifiés', objectContext.modifiedObjects()},
+	                              {'supprimés', objectContext.deletedObjects()}}"
+			value="ognl:iter" volatile="true">
+		<p>
+			<span onclick="toggleDisplay(parentNode.nextSibling)">
+				Objets <span jwcid="@Insert" value="ognl:iter[0]">créés</span> :
+				<span jwcid="@Insert" value="ognl:iter[1].size()"/>
+			</span>
+		</p><ul style="display:none;">
+			<li jwcid="@For" volatile="true"
+				source="ognl:iter[1]" value="ognl:record">
+					<span jwcid="@Insert" value="ognl:record.class"/>:
+					<span jwcid="@Insert" value="ognl:record"/>
+			</li>
+		</ul>
+	</div>
+
+</div>

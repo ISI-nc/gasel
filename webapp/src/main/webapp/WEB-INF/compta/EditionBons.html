@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<p><strong>Édition des bons</strong></p>
+
+<p>Période :
+	<input jwcid="@core/edit/MoisAnnee" mois="ognl:mois" size="5"/>
+	| Imputation
+	<select jwcid="@core/edit/Enum" value="ognl:imputation" values="enum:Imputation" />
+	<input jwcid="ok@Submit" class="button" value="Ok" action="listener:redirect"/>
+</p>
+
+<p jwcid="@If" condition="ognl:mois">
+	<p>Montant global : <input jwcid="@Insert" value="ognl:total.montant" format="ognl:formats.montant"/> CFP
+		(<span jwcid="@Insert" value="ognl:total.count_aides"/> aides,
+		 <span jwcid="@Insert" value="ognl:total.count_bons"/> bons).</p>
+	
+	<div jwcid="@core/Tableau" titre="Bons à éditer" source="ognl:tableau" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" titre="Imputation" value="ognl:row.imputation"/>
+		<div jwcid="@core/tableau/Colonne" titre="Nature" value="ognl:row.nature"/>
+		<div jwcid="@core/tableau/Colonne" titre="Public" value="ognl:row.public"/>
+		<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:row.statut"/>
+		<div jwcid="@core/tableau/Colonne" titre="Aides" value="ognl:row.count_aides"/>
+		<div jwcid="@core/tableau/Colonne" titre="Bons" value="ognl:row.count_bons"/>
+		<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant"/>
+		
+		<span jwcid="@If" condition="ognl:tableau" renderTag="false">
+			<a href="#" jwcid="lienEditer@DirectLink" listener="listener:editer" target="_window" style="display:none;"
+				onclick="ognl:'if (confirm(\'Générer '+total.count_bons+' bons ?\')){setTimeout(\'refreshPage()\',100);return true;}else{return false;}'">
+				x
+			</a>
+			<button class="button" onclick="return popupLink('lienEditer');">Éditer</button>
+		</span>
+	</div>
+</p>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

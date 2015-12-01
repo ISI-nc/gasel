@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE script PUBLIC
+  "-//Apache Software Foundation//Tapestry Script Specification 3.0//EN" 
+  "http://tapestry.apache.org/dtd/Script_3_0.dtd">
+
+<script>
+    <body>
+        <unique>
+            dojo.require("tapestry.fx");
+        </unique>
+    </body>
+    <initialization>
+if(tapestry.fx) {
+	tapestry.fx.attachAjaxStatus(function (show) {
+		if (show) {
+			setProcessing();
+		} else {
+			hideProcessing();
+		}
+	});
+}
+    </initialization>
+</script>

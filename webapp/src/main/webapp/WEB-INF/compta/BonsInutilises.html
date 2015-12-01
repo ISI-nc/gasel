@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<p><strong>Liste des bons</strong></p>
+
+<table jwcid="@core/search/Form" entity="Bon" results="ognl:results"
+	order="aide.dossier,debut,aide,numero"
+	prefetch="aide.dossier.dossier.chefFamille,aide.nature.parent,usages">
+	<tr><td class="label" style="vertical-align: top;"><table class="invis">
+
+	<tr><td colspan="2" class="section">Dossier</td></tr>
+	<tr><td class="label">Nom :</td>
+		<td><input jwcid="@core/search/critere/Contient"
+					path="aide.dossier.dossier.chefFamille.nom"/></td></tr>
+	<tr><td class="label">Prénom :</td>
+		<td><input jwcid="@core/search/critere/Contient"
+					path="aide.dossier.dossier.chefFamille.prenom"/></td></tr>
+	<tr><td class="label">Date de naissance :</td>
+		<td><input jwcid="@core/search/critere/MoisAnnee"
+					path="aide.dossier.dossier.chefFamille.dateNaissance"/></td></tr>
+	
+	<tr><td colspan="2" class="section">Aide</td></tr>
+	<tr><td class="label">Imputation :</td>
+		<td><input jwcid="@core/search/critere/Enum"
+				path="aide.nature.imputation" enum="Imputation"/></td></tr>
+	<tr><td class="label">Public :</td>
+		<td><input jwcid="@core/search/critere/Enum"
+				path="aide.public" enum="TypePublic"/></td></tr>
+	
+	</table></td><td><table class="invis">
+	
+	<tr><td colspan="2" class="section">Bon</td></tr>
+	<tr><td class="label">Début :</td>
+		<td><input jwcid="@core/search/critere/PeriodeMois" path="debut"/></td></tr>
+	<tr class="pad"><td class="label">État :</td>
+		<td><span jwcid="@core/search/critere/Enum" path="etat" enum="EtatBon"/></td></tr>
+	<tr><td class="label">Numéro :</td>
+		<td><input jwcid="@core/search/critere/Contient" path="numero"
+					ignoreCase="false" only="commence par"/></td></tr>
+
+	</table></td></tr>
+</table>
+
+<p jwcid="@If" condition="ognl:results">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Dossier">
+			<div jwcid="@core/tableau/Colonne" titre="N°" value="ognl:sql.idOf(value.aide.dossier.dossier)" format="ognl:formatNumeroDossier"/>
+			<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:value.aide.dossier.dossier.chefFamille.nom"/>
+			<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:value.aide.dossier.dossier.chefFamille.prenom"/>
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Aide">
+			<div jwcid="@core/tableau/Colonne" titre="N°" value="ognl:sql.idOf(value.aide)"/>
+			<div jwcid="@core/tableau/Colonne" titre="Secteur" value="ognl:value.aide.nature.parent"/>
+			<div jwcid="@core/tableau/Colonne" titre="Article" value="ognl:value.aide.nature"/>
+			<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:value.aide.statut"/>
+		</div>
+		<div jwcid="@core/tableau/GroupeColonnes" titre="Bon">
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:value.debut" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:value.fin" format="ognl:dateFormat"/>
+			<div jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:value.numero"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:value.montant"/>
+			<div jwcid="@core/tableau/Colonne" titre="Montant utilisé" value="ognl:value.usage?value.usage.montantUtilise:0"/>
+			<div jwcid="@core/tableau/Colonne" titre="État" value="ognl:value.etat"/>
+		</div>
+		<div jwcid="@core/tableau/Action" action="listener:annulerBon" title="Annuler"
+			confirm="ognl:'Annuler le bon n°'+value.numero+' ?'"
+			disabled="ognl:!(value.etat.cree or value.etat.edite)" />
+	</div>
+</p>
+
+<p><input jwcid="@core/BoutonRetour" /></p>
+
+</div>
+</body>
+</html>

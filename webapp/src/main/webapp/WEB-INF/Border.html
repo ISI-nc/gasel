@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="fr"/>
+<title>GASEL</title>
+</head>
+<body jwcid="$content$"><div jwcid="shell"><div jwcid="@Body"
+	onkeydown="return documentKeyDown(event)" onclick="documentClicked(event)">
+<form jwcid="form">
+<input jwcid="workflowEntry@Hidden" value="ognl:workflowEntryId"/>
+<input jwcid="flowSync@Hidden" value="ognl:flowSync.token"/>
+<input jwcid="refresh@Submit" action="listener:reloadPage" value="Recharger" style="width:0; height: 0; position:absolute; left:0;top:0;padding:0;border:none;"/>
+
+<div id="nav_bar">
+	<span jwcid="@If" condition="ognl:page.login.loggedIn" renderTag="false">
+		<div jwcid="@core/Workflow">
+			[Workflow]
+		</div>
+	</span>
+</div>
+
+
+<div id="contents">
+<!-- ================================================================
+     ====== BEGINING OF MAIN CONTENTS                          ======
+     ================================================================ -->
+
+<div jwcid="@RenderBody">[Contenu]</div>
+
+<div jwcid="@BorderDevAdds"/>
+
+<!-- ================================================================
+     ====== END OF MAIN CONTENTS                               ======
+     ================================================================ -->
+</div>
+
+<script type="text/javascript" jwcid="@Any" src="asset:prototypeJs"></script>
+<script type="text/javascript" jwcid="@Any" src="asset:effectsJs"></script>
+<script type="text/javascript" jwcid="@Any" src="asset:commonJs"></script>
+<script jwcid="@core/AjaxStatus"/>
+<script type="text/javascript"><!--
+tapestry.addOnLoad(function (e) {
+	checkTimeout(30);
+
+	if (header()) {
+		headerHide("loading");
+		headerElement("chrono").stop();
+		parent.document.title = document.title;
+	}
+	
+	dojo.byId('form').addEventListener("submit",
+			function(event) {setProcessing(); tapestry.form.submit = function (form, element) {};}, true);
+
+	dojo.require("tapestry.form");
+	tapestry.form._old_submit = tapestry.form.submit;
+	tapestry.form.submit = function (form, element) {
+		//alert('tapestry.format.submit('+form+','+element+')');
+		setProcessing();
+		tapestry.form._old_submit(form, element);
+	};
+});
+// --></script>
+</form></div></div></body>
+</html>

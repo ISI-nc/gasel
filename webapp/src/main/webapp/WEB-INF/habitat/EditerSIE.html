@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent" />
+	
+	<table jwcid="@core/Tableau" source="ognl:object.secours" value="ognl:row">
+					<div jwcid="@core/tableau/Colonne" titre="Institution" value="ognl:row.institution" />
+					<div jwcid="@core/tableau/Colonne" titre="Motif" value="ognl:row.motif" />
+					<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant" />
+					<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="secours"/>
+	</table>
+	<table jwcid="@core/edit/SubForm" source="ognl:object" liste="secours" value="ognl:secour">
+	<tr>
+		<td class="label">Institution :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:secour.institution"
+				model="ognl:psm.all('Institution')">
+				<option>institution</option></select></td>
+	</tr>
+	<tr>
+		<td class="label">Motif :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:secour.motif"
+				model="ognl:psm.all('MotifSIE')">
+				<option>motif</option></select></td>
+	<tr>
+		<td class="label">Montant :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:secour.montant" translator="translator:number" /></td>
+	</tr>
+	</table>
+
+</div>
+
+</div>
+</body>
+</html>

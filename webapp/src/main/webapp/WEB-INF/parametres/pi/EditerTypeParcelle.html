@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<table>
+	<tr>
+		<td>Libellé :</td>
+		<td><input jwcid="@TextField" value="ognl:object.libelle" /></td>
+	</tr>
+	<tr>
+		<td>Autorisation dossier :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.autoriseDossier" model="ognl:psm.ouiNon" /></td>
+	</tr>
+	<tr>
+		<td>Autorisation collectivité :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.autoriseCollectivite" model="ognl:psm.ouiNon" /></td>
+	</tr>
+</table>
+
+</div>
+
+</div>
+</body>
+</html>

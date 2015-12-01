@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier.dossier" />
+
+<table><tbody>
+<tr>
+<td>Libelle :</td>
+<td colspan="3"><input jwcid="@TextArea" value="ognl:object.libelle" /><br/></td>
+</tr>
+<tr>
+<td>Echéance :</td>
+<td colspan="3"><input jwcid="@core/edit/Date" value="ognl:object.echeance" /><br/></td>
+</tr>
+<tr>
+	<td colspan="2"><div><strong>Intervention :</strong></div>
+			<table jwcid="@core/Tableau" source="ognl:object.interventions" value="ognl:row">
+				<div jwcid="@core/tableau/Colonne" titre="par un TS" value="ognl:row.parTS?'oui':'non'" />
+				<div jwcid="@core/tableau/Colonne" titre="Motif" value="ognl:row.motif" />
+				<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="interventions"/>
+			</table>
+			<table jwcid="@core/edit/SubForm" source="ognl:object" liste="interventions" value="ognl:intervention">
+				<tr><td class="label">Effectuée par un Travailleur Social :</td>
+					<td><select jwcid="@PropertySelection" value="ognl:intervention.parTS" model="ognl:psm.ouiNon"/></td>
+				</tr>
+				<tr><td class="label">Motif :</td>
+					<td><select jwcid="@PropertySelection" value="ognl:intervention.motif"
+			model="ognl:psm.all('MotifIntervention')">
+			<option>motif</option></select></td>
+				</tr>
+			</table></td>
+</tr>
+<tr><td colspan="2">
+	<table jwcid="@core/Tableau" source="ognl:object.problematiques" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Type de problématique" value="ognl:row.problematique.parent" />
+			<div jwcid="@core/tableau/Colonne" titre="Problématique" value="ognl:row.problematique" />
+			<div jwcid="@core/tableau/Colonne" titre="Réponses" value="ognl:lists.join(', ', row.reponses)" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditerProblematique" parentProperty="objectif"/>
+			<div jwcid="@core/tableau/ActionSupprimer" titre="Actions" parent="ognl:object" liste="problematiques"/>
+			<input jwcid="ajouterProblematique@Submit" value="Ajouter" action="listener:ajouterProblematique" class="button"/>
+	</table>
+</td></tr>
+</tbody></table>
+
+</div>
+</div>
+</body>
+</html>

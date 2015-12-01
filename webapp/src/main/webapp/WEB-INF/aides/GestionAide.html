@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form" extraActions="component:extraActions">
+<table class="section">
+<tr>
+	<td>Aide du dossier:&nbsp;</td>
+</tr>
+<tr>
+	<td class="section" valign="top">
+	<table>
+		<thead>
+			<tr><td colspan="4">
+					<div jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier">[infos
+					dossier]</div>
+			</td></tr>
+
+			<tr jwcid="@If" condition="ognl:isNew(aide) or !modifAideDisabled">
+				<td>Type de public :</td>
+				<td>Secteur :</td>
+				<td>Nature :</td>
+				<td></td>
+			</tr>
+		</thead>
+
+		<tr jwcid="@If" condition="ognl:isNew(aide)">
+			<td><select jwcid="@core/edit/Enum" value="ognl:typePublic" values="ognl:typesPublic"
+					onchange="refreshPage()"/></td>
+			<td><span jwcid="@If" condition="ognl:typePublic"><select jwcid="@core/edit/Enum"
+				value="ognl:secteurAide" values="ognl:secteursAide" onchange="refreshPage()"/></span><span
+				jwcid="@Else"><small>Pas de public</small></span></td>
+			<td><span jwcid="@If" condition="ognl:secteurAide"><select jwcid="@core/edit/Enum"
+				value="ognl:aide.nature" values="ognl:naturesAide"
+				onchange="refreshPage()"/></span><span
+				jwcid="@Else"><small>Pas de secteur</small></span></td>
+			<td></td>
+		</tr>
+		
+		<span jwcid="@Else" renderTag="false">
+		
+		<tr jwcid="@If" condition="ognl:!modifAideDisabled">
+			<td><select jwcid="@core/edit/Enum" value="ognl:aide.public" values="ognl:typesPublic"/></td>
+			<td><span jwcid="@Insert" value="ognl:aide.nature.parent">secteur</span></td>
+			<td><span jwcid="@Insert" value="ognl:aide.nature">[nature]</span></td>
+			<td></td>
+		</tr>
+		
+		<tbody jwcid="@Else" renderTag="false">
+			<tr>
+				<td class="label">Type de public :</td>
+				<td><span jwcid="@Insert" value="ognl:aide.public">typePublic</span></td>
+				<td class="label">Secteur :</td>
+				<td><span jwcid="@Insert" value="ognl:aide.nature.parent">secteur</span></td>
+			</tr>
+			<tr>
+				<td class="label">Nature (article) :</td>
+				<td><span jwcid="@Insert" value="ognl:aide.nature">[nature]</span></td>
+				<td style="width: 25%;">Imputation :</td>
+				<td><span jwcid="@Insert" value="ognl:aide.nature.imputation">[nature]</span></td>
+			</tr>
+		</tbody>
+		
+		</span>
+		
+		<tr>
+			<td>Commission du:</td>
+			<td><input jwcid="@core/edit/Date" size="8"
+				value="ognl:aide.dateCommission" /></td>
+            <td>Fréquence<!--Durée (mois)-->&nbsp;:</td>
+			<td><span jwcid="@Insert" value="ognl:aide.dureeMois">1</span></td>
+		</tr>
+		<tr>
+			<td>Statut:</td>
+			<td colspan="3"><span jwcid="@If" condition="ognl:isNew(aide)"><select
+				jwcid="@core/edit/Enum" value="ognl:aide.statut"
+				enum="StatutAide" disabled="ognl:modifAideAlwaysDisabled"
+				null="ognl:null">
+				<option>statutList</option>
+			</select></span><span jwcid="@Else"><span
+				jwcid="@Insert" value="ognl:aide.statut">[statut]</span></span></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Date de début:</td>
+			<td><input jwcid="@core/edit/Date" size="8"
+				value="ognl:aide.debut" /></td>
+			<td>Date de fin:</td>
+			<td><input jwcid="@core/edit/Date" size="8"
+				value="ognl:aide.fin" /></td>
+		</tr>
+		<tr>
+			<td>Montant unitaire:</td>
+			<td><input jwcid="@TextField" size="10" class="montant"
+				type="text" value="ognl:aide.montantUnitaire"
+				disabled="ognl:modifAideDisabled" /><span jwcid="@If"
+				condition="ognl:!modifAideDisabled and aide.nature and aide.nature.eau"><img
+				alt="Calculette" jwcid="@ImageSubmit" image="asset:calculette"
+				action="listener:ouvrirCalculette" /></span></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Quantité:</td>
+			<td><select jwcid="@PropertySelection"
+				value="ognl:aide.quantiteMensuelle" model="ognl:quantitePSM"
+				disabled="ognl:modifAideDisabled">
+				<!-- GestionDisabled -->
+				<option>quantiteList</option>
+			</select></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Montant mensuel:</td>
+			<td><input jwcid="@Insert" value="ognl:aide.montant" /></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<span jwcid="@If" condition="ognl:aide.nature and aide.nature.eau">
+		<tr>
+			<td>Police:</td>
+			<td><input jwcid="@TextField" size="10" type="text"
+				value="ognl:aide.eau.police" disabled="ognl:modifAideDisabled" /></td>
+			<td>Periode de prestation:</td>
+			<td><input jwcid="@PropertySelection"
+				value="ognl:aide.eau.periodePrestation" model="ognl:periodePSM"
+				disabled="ognl:modifAideDisabled" />
+			</td>
+		</tr>
+		<tr>
+			<td>Depassement (m3):</td>
+			<td><input jwcid="@TextField" size="10"
+				value="ognl:aide.eau.depassementM3"
+				disabled="ognl:modifAideDisabled" /></td>
+			<td>Montant déjà payé:</td>
+			<td><input jwcid="@TextField" size="10" type="text"
+				value="ognl:aide.eau.montantDejaPaye"
+				disabled="true" /></td>
+		</tr>
+		<tr>
+			<td>Prise en charge conso.</td>
+			<td><input jwcid="@TextField"
+				readOnly="readOnly" size="10" type="text"
+				value="ognl:aide.eau.priseEnChargeConso"
+				disabled="ognl:modifAideDisabled" /></td>
+			<td>Restant dû:</td>
+			<td><input jwcid="@TextField" size="10" type="text"
+				value="ognl:aide.eau.restantDu" disabled="ognl:modifAideDisabled" /></td>
+		</tr>
+		</span>
+		<span jwcid="@If" condition="ognl:aide.nature and aide.nature.orduresMenageres">
+		<tr>
+			<td>Numéro redevable:</td>
+			<td><input jwcid="@TextField" size="5" type="text"
+				value="ognl:aide.orduresMenageres.numeroRedevable"
+				disabled="ognl:modifAideDisabled" /></td>
+			<td>Numéro de facture:</td>
+			<td><input jwcid="@TextField" size="10" type="text"
+				value="ognl:aide.orduresMenageres.numeroFacture"
+				disabled="ognl:modifAideDisabled" />
+			</td>
+		</tr>
+		<tr>
+			<td>Periode de prestation</td>
+			<td><input jwcid="@PropertySelection"
+				value="ognl:aide.orduresMenageres.periodePrestation" model="ognl:periodePSM"
+				disabled="ognl:modifAideDisabled" /></td>
+			<td></td>
+			<td></td>
+		</tr>
+		</span>
+	</table>
+	
+	<h3>Bons annulés</h3>
+	<div jwcid="@core/Tableau" class="small-data-table" source="ognl:aide.bonsAnnules" value="ognl:bon">
+		<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.bon.etat" titre="État"/>
+		<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.numero" titre="Numéro"/>
+		<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.personne" titre="Au nom de..."/>
+		<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.montant" titre="Montant"/>
+	</div>
+
+	</td>
+	<td class="section" jwcid="extraActions@Block">
+		
+		<p><input value="Ajouter une aide" class="button"
+			jwcid="ajouter@Submit" action="listener:ajouterAide" /></p>
+		
+		<p><input value="Éditer les bons" class="button"
+			jwcid="editer@Submit" action="listener:editerBons"
+			disabled="ognl:isNew(aide) or !aide.statut.immediate"/></p>
+		
+		<p><button jwcid="@core/DocButton" source="ognl:aide.eau" ref="aides.courrier_eau"
+			label="Courrier eau" disabled="ognl:aide.eau == null or isNew(aide)" class="button"/></p>
+		<p><button jwcid="@core/DocButton" source="ognl:aide.eau" ref="aides.courrier_eau_partiel"
+			label="Courrier eau (PeC partielle)" disabled="ognl:aide.eau == null or isNew(aide)" class="button"/></p>
+		
+		<p><button jwcid="@core/DocButton" source="ognl:aide.orduresMenageres" ref="aides.courrier_om"
+			label="Courrier OM" disabled="ognl:aide.orduresMenageres == null or isNew(aide)" class="button"/></p>
+		
+		<div jwcid="@If" condition="ognl:courriers">
+			<p jwcid="@For" source="ognl:courriers" value="ognl:courrier" volatile="true">
+				<button jwcid="@core/DocButton" source="ognl:courrier.subject" ref="ognl:courrier.ref"
+				label="ognl:courrier.label" class="button"/>
+			</p>
+		</div>
+	
+	</td>
+</tr>
+</table>
+</form>
+
+</div>
+</body>
+</html>

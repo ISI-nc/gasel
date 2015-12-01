@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+	<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />	
+
+		<table>
+		<tr>
+			<td class="label">Date de la demande :</td>
+			<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.date"/></td>
+		</tr>
+		<tr>
+			<td class="label">Typologie de logement demandé :</td>
+			<td class="label"><select jwcid="@PropertySelection" value="ognl:object.type"
+				model="ognl:psm.all('TypeLogement')">
+				<option>catégorie</option></select></td>
+		</tr>
+		<tr>
+			<td class="label">Quartier demandé :</td>
+			<td class="label"><input jwcid="@voirie/edit/Quartier" value="ognl:object.quartier" /></td>
+		</tr>
+		<tr>
+			<td class="label">Type de demande :</td>
+			<td class="label"><select jwcid="@core/edit/Enum" value="ognl:object.typeDemande" 
+			    enum="TypeAffDemandeHabitat" onchange="refreshPage()" disabled="ognl:!isNew(object)">
+					<option>referent</option></select></td>
+		</tr>
+		<tr jwcid="@If" condition="ognl:(object.typeDemande) and (object.typeDemande.locatif)">
+		<td colspan="2">
+			<table>
+					<tr><td class="label">Typologie de logement affecté :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.type"
+								model="ognl:psm.all('TypeLogement')">
+				<option>type de logement</option></select>
+					</td>
+					</tr>
+					<tr><td class="label">Catégorie sociale affectée :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.categorie"
+								model="ognl:psm.all('CategorieSocialeLogement')">
+				<option>Catégorie sociale de logement</option></select></td>
+					</tr>
+					<tr><td class="label">Quartier affecté :</td>
+						<td><input jwcid="@voirie/edit/Quartier" value="ognl:affLocatif.quartier"/></td>
+					</tr>
+					<tr>
+						<td class="label">Bailleur :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.bailleur"
+							model="ognl:psm.all('Bailleur')">
+						<option>bailleur</option></select></td>
+					</tr>
+					<tr>
+						<td class="label">Date d'entrée :</td>
+						<td><input jwcid="@core/edit/Date" value="ognl:affLocatif.entree"/></td>
+					</tr>
+					<tr>
+					<td class="label">Numéro du bail :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.numeroBail" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Loyer hors charges :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.loyerHC" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Charges :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.charges" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Dépot garantie :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.depotGarantie" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Assurance habitation :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.assuranceHabitation"
+				model="ognl:psm.all('AssuranceHabitation')">
+				<option>type de logement</option></select></td>
+					</tr>
+					<tr><td class="label">Montant assurance habitation :</td>
+						<td><input jwcid="@TextField" value="ognl:affLocatif.montantAssuranceHabitation" translator="translator:number"/></td>
+					</tr>
+					<tr>
+						<td class="label">Adresse :</td>
+						<td><span jwcid="@Insert" value="ognl:parent.dossier.adresseHabitation" /></td>
+					</tr>
+					<tr><td class="label">Compteur d'eau :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.compteurEau" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Compteur d'électricité :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.compteurElectricite" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Frais complémentaires :</td>
+						<td><div jwcid="@TextField" value="ognl:affLocatif.fraisComplementaires" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Complément FSH :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.complementFSH" model="ognl:psm.ouiNon"/></td>
+					</tr>
+					<tr><td class="label">Commission ALT :</td>
+						<td><div jwcid="@core/edit/Date" value="ognl:affLocatif.commissionALT"></div></td>
+					</tr>
+					<tr><td class="label">Caution solidaire :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.cautionSolidaire" model="ognl:psm.ouiNon"/></td>
+					</tr>
+					<tr><td class="label">Bail pour le compte de :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affLocatif.bailPourLeCompteDe" model="ognl:psm.ouiNon"/></td>
+					</tr>
+			</table>
+		</td>	
+		</tr>
+		<tr jwcid="@If" condition="ognl:(object.typeDemande) and (object.typeDemande.rehabilitation)">
+		<td colspan="2">
+			<table>
+					<tr><td class="label">Typologie de logement :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affRehabilitation.type"
+				model="ognl:psm.all('TypeLogement')">
+				<option>type de logement</option></select></td>
+					</tr>
+					<tr><td class="label">Code quartier :</td>
+						<td><input jwcid="@voirie/edit/Quartier" value="ognl:affRehabilitation.quartier"/></td>
+					</tr>
+					<tr><td class="label">Montant assurance habitation :</td>
+						<td><input jwcid="@TextField" value="ognl:affRehabilitation.montantAssuranceHabitation" translator="translator:number"/></td>
+					</tr>
+					<tr><td class="label">Type d'emprunt :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affRehabilitation.typeEmprunt"
+				model="ognl:psm.all('TypeEmprunt')">
+				<option>type d'emprunt</option></select></td>
+					</tr>
+					<tr><td class="label">Traites :</td>
+						<td><div jwcid="@TextField" value="ognl:affRehabilitation.traite" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Charges :</td>
+						<td><input jwcid="@TextField" value="ognl:affRehabilitation.charges" translator="translator:number"/></td>
+					</tr>
+					<tr><td class="label">Assurance habitation :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affRehabilitation.assuranceHabitation"
+				model="ognl:psm.all('AssuranceHabitation')">
+				<option>type de logement</option></select></td>
+					</tr>
+			</table>
+		</td>
+		</tr>
+		<tr jwcid="@If" condition="ognl:(object.typeDemande) and (object.typeDemande.accession)">
+		<td colspan="2">
+			<table>
+					<tr><td class="label">Typologie de logement :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affAccession.type"
+				model="ognl:psm.all('TypeLogement')">
+				<option>type de logement</option></select></td>
+					</tr>
+					<tr><td class="label">Code quartier :</td>
+						<td><input jwcid="@voirie/edit/Quartier" value="ognl:affAccession.quartier"/></td>
+					</tr>
+					<tr><td class="label">Type d'emprunt :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affAccession.typeEmprunt"
+				model="ognl:psm.all('TypeEmprunt')">
+				<option>type d'emprunt</option></select></td>
+					</tr>
+					<tr><td class="label">Traites :</td>
+						<td><div jwcid="@TextField" value="ognl:affAccession.traite" translator="translator:number"></div></td>
+					</tr>
+					<tr><td class="label">Charges :</td>
+						<td><input jwcid="@TextField" value="ognl:affAccession.charges" translator="translator:number"/></td>
+					</tr>
+					<tr><td class="label">Assurance habitation :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affAccession.assuranceHabitation"
+				model="ognl:psm.all('AssuranceHabitation')">
+				<option>type de logement</option></select></td>
+					</tr>
+					<tr><td class="label">Montant assurance habitation :</td>
+						<td><input jwcid="@TextField" value="ognl:affAccession.montantAssuranceHabitation"/></td>
+					</tr>
+					<tr><td class="label">Acte notarié :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:affAccession.acteNotarie" model="ognl:psm.ouiNon"/></td>
+					</tr>
+					<tr><td class="label">Montant acte notarié :</td>
+						<td><input jwcid="@TextField" value="ognl:affAccession.montantActeNotarie" translator="translator:number"/></td>
+					</tr>
+					<tr><td class="label">Compteur d'eau :</td>
+						<td><input jwcid="@TextField" value="ognl:affAccession.compteurEau" translator="translator:number"/></td>
+					</tr>
+					<tr><td class="label">Compteur d'électricité :</td>
+						<td><input jwcid="@TextField" value="ognl:affAccession.compteurElectricite" translator="translator:number"/></td>
+					</tr>
+			</table>
+		</td>
+		</tr>
+		</table>
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Rapport Nombre de dossiers aidés</description>
+	
+	<property name="titre">literal:Nombre de dossiers différents aidés</property>
+	<property name="public"/>
+	<property name="secteur"/>
+	<property name="row"/>
+	
+</page-specification>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/TitrePage"/>
+
+<p>
+	<strong>Jardin :</strong>
+	<select jwcid="@PropertySelection" value="ognl:jardin"
+		model="ognl:psm.all('JardinFamilial', null, 'Tous')"
+		onchange="refreshPage()"/>
+	
+	<strong>Attribution active :</strong>
+	<select jwcid="@PropertySelection" value="ognl:attributionActive" model="ognl:psm.ouiNon"
+		onchange="refreshPage()"/>
+	
+</p>
+
+<div jwcid="@core/Tableau" titre="ognl:titreTableau" source="ognl:attributionsEnCours" value="ognl:attr">
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Parcelle">
+		<span jwcid="@core/tableau/Colonne" titre="Jardin" value="ognl:attr.parcelle.jardin.nom"
+				visible="ognl:!jardin"/>
+		<span jwcid="@core/tableau/Colonne" titre="Lot" value="ognl:attr.parcelle.numero"/>
+	</span>
+	
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Dossier / Collectivité">
+		<span jwcid="@core/tableau/Colonne" titre="Nom/Désignation" value="ognl:attr.demande.demandeur"/>
+		<span jwcid="@core/tableau/Colonne" titre="Adresse" value="ognl:adresseAttr"/>
+		<span jwcid="@core/tableau/Colonne" titre="Tél." value="ognl:telephone"/>
+	</span>
+	
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Dernier arrêté">
+		<span jwcid="@core/tableau/Colonne" titre="Numéro" value="ognl:attr.dernierArrete?attr.dernierArrete.numero:null"/>
+		<span jwcid="@core/tableau/Colonne" titre="Début" value="ognl:attr.dernierArrete?attr.dernierArrete.debut:null"/>
+		<span jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:attr.dernierArrete?attr.dernierArrete.fin:null"
+				highlight="ognl:attr.enFinDeLocation"/>
+	</span>
+	
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Paiement">
+	<span jwcid="@core/tableau/Colonne" titre="Payé jusqu'au" value="ognl:attr.payeJusquA"
+				highlight="ognl:attr.retardPaiement"/>
+	</span>
+	
+	<span jwcid="@core/tableau/GroupeColonnes" titre="Dernier contrôle">
+		<span jwcid="@core/tableau/Colonne" titre="Date" value="ognl:attr.dernierControle?attr.dernierControle.date:null"
+			highlight="ognl:attr.retardEntretien" />
+		<span jwcid="@core/tableau/Colonne" titre="État" value="ognl:attr.dernierControle?attr.dernierControle.etatParcelle:null"
+			highlight="ognl:attr.retardEntretien" />
+	</span>
+	
+	<button jwcid="@core/tableau/ObjectPageAction" page="pi/EditerAspectPI" value="ognl:attr.demande.dossier"
+			disabled="ognl:attr.demande.collectivite"/>
+	
+	<button jwcid="@core/tableau/ObjectPageAction" page="pi/EditerCollectivite" value="ognl:attr.demande.collectivite"
+			disabled="ognl:attr.demande.dossier"/>
+	
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

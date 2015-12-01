@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Recherche de fournisseur</description>
+
+	<property name="titre" initial-value="literal:Recherche de fournisseur"/>
+
+	<property name="results"/>
+	<property name="value"/>
+
+	<property name="typeRecherche"/>	
+	<property name="nomFournisseur"/>
+</page-specification>

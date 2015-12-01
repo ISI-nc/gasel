@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+Consultation de la comptabilité
+        <table jwcid="@core/search/Form" entity="Bon" results="ognl:results" prefetch="usages,aide,usages.arrete">
+	       	<tr>
+	       		<td class="label">N° facture&nbsp;:</td>
+	       		<td><input jwcid="@core/search/critere/Contient" tabindex="1"
+	       				path="usages.facture.facture.numero"/></td>
+	       		<td class="label">Mois:</td>
+	       		<td>
+					<span jwcid="@core/search/critere/MoisAnnee" path="usages.facture.facture.creation">[...]</span>
+	       		</td>
+	       	</tr>
+	       	<tr>
+	       		<td class="label">Imputation:</td>
+	       		<td>
+	              <select jwcid="@core/search/critere/EnumEgal" values="cay-all:Imputation"
+	              		 path="aide.nature.imputation"/>
+	       		</td>
+				<td class="label" style="padding-left:12px;">N° d'arrêté&nbsp;:</td>
+				<td><input jwcid="@core/search/critere/Contient" path="usages.arrete.numero"/></td>
+	       	</tr>
+		</table>
+		<p jwcid="@If" condition="ognl:results">
+			<p>Total des montants utilisés du tableau&nbsp;:
+				<input jwcid="@Insert" value="ognl:montantTotal" format="ognl:format.montant"/></p>
+			<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+				<div jwcid="@core/tableau/Colonne" titre="N° bon" value="ognl:value.numero"/>
+				<div jwcid="@core/tableau/Colonne" titre="Imputation" value="ognl:value.aide.nature.imputation"/>
+				<div jwcid="@core/tableau/Colonne" titre="Type d'aide" value="ognl:value.aide.public"/>
+				<div jwcid="@core/tableau/Colonne" titre="Date du bon" value="ognl:value.debut" format="ognl:dateFormat"/>
+				<div jwcid="@core/tableau/Colonne" titre="Facture" value="ognl:value.usage.facture.facture.numero"/>
+				<div jwcid="@core/tableau/Colonne" titre="Arrêté" value="ognl:value.usage.arrete?value.usage.arrete.numero:null"/>
+				<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:value.aide.statut?value.aide.statut.libelle:null	"/>
+				<div jwcid="@core/tableau/Colonne" titre="Chef de famille" value="ognl:value.aide.dossier.dossier.chefFamille"/>
+				<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:value.montant"/>
+				<div jwcid="@core/tableau/Colonne" titre="Montant utilisé" value="ognl:value.usage.montantUtilise"/>
+			</div>
+		</p>
+		<p><input jwcid="@core/BoutonRetour"/></p>
+</div>
+</body>
+</html>

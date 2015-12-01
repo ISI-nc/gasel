@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+	
+	<table>
+	<tr>
+		<td class="label">Nom :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.nom"/></td>
+	</tr>
+	<tr>
+		<td class="label">Résorbé :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.resorbe" model="ognl:psm.ouiNon"/>
+		</td>
+	<tr>
+		<td class="label">Projet :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.projet" /></td>
+	</tr>
+	<tr>
+		<td class="label">Inscription :</td>
+		<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.inscription"/></td>
+	</tr>
+	<tr>
+		<td class="label">Familles estimées :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.familleEstimees" translator="translator:number"/></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div><strong>Observations sur site:</strong></div>
+			<table jwcid="@core/Tableau" source="ognl:object.observations" value="ognl:row">
+				<div jwcid="@core/tableau/Colonne" titre="Observation" value="ognl:row.observation" />
+				<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="observations"/>
+			</table>
+			<table jwcid="@core/edit/SubForm" source="ognl:object" liste="observations" value="ognl:observation">
+				<tr><td class="label">Observation :</td>
+				<td><input jwcid="@TextArea" value="ognl:observation.observation"/></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	</table>
+
+</div>
+
+</div>
+</body>
+</html>

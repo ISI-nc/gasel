@@ -1,0 +1,255 @@
+/* ****************************************************************************
+** ANCIEN
+*/
+input,textarea,INPUT.pagininput {
+	border: 1 solid #000080;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+select {
+	border: 1 solid #000080;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+}
+
+INPUT.date {
+	font-size: 8pt
+}
+
+INPUT.disabled,INPUT.datedisabled,INPUT.integerdisabled,INPUT.periodedisabled,INPUT.montantdisabled
+	{
+	color: #4A4A4A;
+	border-color: Gray;
+	background-color: #F6F6F6;
+}
+
+INPUT.integer,INPUT.integerdisabled,INPUT.montant,INPUT.montantdisabled
+	{
+	text-align: right;
+}
+
+INPUT.periode,INPUT.periodedisabled {
+	text-align: center;
+}
+
+input.radio {
+	border-style: solid;
+	border-width: 0
+}
+
+input.radiodisabled {
+	border-style: solid;
+	border-width: 0
+}
+
+input.dateError {
+	border: 2 solid #FF0000
+}
+
+.button,INPUT.buttondisabled,span.button,span.buttondisabled,span.menubutton,span.menubuttondisabled,span.paginbutton,span.paginbuttondisabled
+	{
+	font-size: 8pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	cursor: hand;
+	background-color: #BBD7FE;
+	color: #191970;
+	text-align: center;
+	font-family: Arial, Helvetica, sans-serif;
+	border: solid #000080 1;
+}
+
+.buttondisabled,span.buttondisabled,span.menubuttondisabled,span.paginbuttondisabled
+	{
+	cursor: default;
+	background-color: #E1E1E1;
+	color: Gray;
+}
+
+span.path {
+	cursor: hand;
+}
+
+span.errorMessage {
+	background-color: Red;
+	color: White;
+	text-decoration: blink;
+}
+
+span.confirmMessage {
+	background-color: Blue;
+	color: White;
+	text-decoration: blink;
+}
+
+span {
+	scrollbar-face-color: #ACC2E3;
+	scrollbar-highlight-color: #F7F7F7;
+	scrollbar-shadow-color: #F7F7F7;
+	scrollbar-3dlight-color: #ACC2E3;
+	scrollbar-arrow-color: #F7F7F7;
+	scrollbar-track-color: #D7ECFF;
+	scrollbar-darkshadow-color: #ACC2E3;
+	scrollbar-base-color: #F7F7F7;
+	overflow-x: auto;
+	overflow-y: auto;
+}
+
+table.large {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	line-height: normal;
+	letter-spacing: normal;
+	vertical-align: middle;
+	word-spacing: normal;
+	text-align: left;
+	list-style-type: lower-alpha;
+	color: #555555;
+	position: static;
+	width: 98%;
+}
+
+.section {
+	font-size: 14 pt;
+	text-align: center;
+	font-weight: bold;
+	border: 1 solid #808080
+}
+
+.pathDisplay {
+	font-size: 8 pt;
+	text-align: left;
+}
+
+.sousSection {
+	border: 1 solid #808080;;
+	width: 100%
+}
+
+td.titresousSection {
+	border: 1 solid #808080;
+	font-weight: bold;
+}  /*text-align: center */
+td.section {
+	font-size: 14 pt;
+	text-align: center;
+	font-weight: bold;
+	border: 1 solid #808080;
+	padding: 5
+}
+
+/*----TABLEAU------------*/
+table.tableau {
+	border-collapse: collapse;
+}
+
+/*----TITRE TABLEAU*/
+td.titretableau,td.titretableauOver {
+	text-align: center;
+	background-color: #BBD7FE;
+	color: #16175D;
+	font-weight: bold;
+	cursor: default;
+}
+
+/*----TD TABLEAU------------*/ /*Bords du TABLEAU*/
+table.tableau,td.tableau,td.tableauOver,td.tableauSubTitle,td.tableauSubTitleOver,td.righttableau,td.righttableauOver,td.righttableauSubTitle,td.righttableauSubTitleOver,td.lefttableau,td.lefttableauOver,td.lefttableauSubTitle,td.lefttableauSubTitleOver,td.centertableau,td.centertableauOver,td.centertableauSubTitle,td.centertableauSubTitleOver,th.centertableau,th.centertableauOver,th.righttableau,th.lefttableau,th.righttableauOver,th.lefttableauOver
+	{
+	border-style: solid;
+	border-width: 1;
+	border-color: Gray;
+}
+
+td.tableau,td.tableauOver,td.tableauSubTitle,td.tableauSubTitleOver,td.righttableau,td.righttableauOver,td.righttableauSubTitle,td.righttableauSubTitleOver,td.lefttableau,td.lefttableauOver,td.lefttableauSubTitle,td.lefttableauSubTitleOver,td.centertableau,td.centertableauOver,td.centertableauSubTitle,td.centertableauSubTitleOver
+	{
+	cursor: hand;
+}
+
+/*----OVER sur les cellules TABLEAU-----*/ /*---TD---*/
+td.tableauOver,td.righttableauOver,td.lefttableauOver,td.centertableauOver
+	{
+	color: #0000FF;
+}
+
+td.righttableau,td.righttableauOver,td.righttableauSubTitle,td.righttableauSubTitleOver
+	{
+	text-align: right;
+}
+
+td.lefttableau,td.lefttableauOver,td.lefttableauSubTitle,td.lefttableauSubTitleOver
+	{
+	text-align: left;
+}
+
+td.centertableau,td.centertableauOver,td.centertableauSubTitle,td.centertableauSubTitleOver
+	{
+	text-align: center;
+}
+
+td.tableauSubTitle,td.tableauSubTitleOver,td.righttableauSubTitle,td.righttableauSubTitleOver,td.lefttableauSubTitle,td.lefttableauSubTitleOver,td.centertableauSubTitle,td.centertableauSubTitleOver
+	{ /*	color: #0000FF;*/
+	background-color: #B0E0E6;
+}
+
+/*---TH et TH-OVER----*/
+th.centertableau,th.centertableauOver,th.righttableau,th.lefttableau,th.righttableauOver,th.lefttableauOver
+	{
+	border-bottom: 2 solid;
+	border-left: solid 1 solid;
+	border-right: solid 1;
+}
+
+th.centertableau,th.centertableauOver {
+	text-align: center;
+}
+
+th.righttableau,th.righttableauOver {
+	text-align: right;
+}
+
+th.lefttableau,th.lefttableauOver {
+	text-align: left;
+}
+
+/*-----------------*/
+td.bord {
+	border-style: solid;
+	border-width: 1;
+	cursor: hand
+}
+
+td.right {
+	text-align: right;
+}
+
+/*----------IMAGES*/
+img {
+	vertical-align: text-bottom;;
+	border-width: 0
+}
+
+img.recherche {
+	cursor: hand;
+}
+
+img.delete {
+	cursor: move;
+}
+
+img.calendrier {
+	cursor: hand;
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Budget d'imputation mensuel</description>
+	
+	<property name="titre">literal: Budget d'imputation mensuel</property>
+	<property name="montant"/>
+	
+	<property name="typeBudget" />
+	
+</page-specification>

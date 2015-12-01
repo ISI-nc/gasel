@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border" afficherTitre="false">
+
+<div align="center">
+<div class="section">Identifiez vous :</div>
+
+<table class="invis" onkeypress="return clickIfEnter(event,'login');">
+	<tr>
+		<td class="label">Utilisateur&nbsp;:</td>
+		<td><input jwcid="@TextField" size="10" value="ognl:userId"
+			validators="validators:required" /></td>
+	</tr>
+	<tr class="pad">
+		<td class="label">Mot de passe&nbsp;:</td>
+		<td><input jwcid="@TextField" hidden="true" size="10"
+			value="ognl:password" validators="validators:required" /></td>
+	</tr>
+	<tr>
+		<td colspan="2" class="error"><input jwcid="@Insert" value="ognl:error"/></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input jwcid="login@Submit" class="button" value="OK" action="listener:doLogin" /></td>
+	</tr>
+</table>
+</div>
+
+</div>
+</body>
+</html>

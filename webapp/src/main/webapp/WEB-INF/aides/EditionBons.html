@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@dossiers/InfosDossier" dossier="ognl-protect:aide.dossier.dossier"/>
+<div class="infos-dossier">
+	Infos aide :
+	public <span jwcid="@Insert" value="ognl-protect:aide.public"/>,
+	nature <span jwcid="@Insert" value="ognl-protect:aide.nature"/>,
+	montant mensuel <span jwcid="@Insert" value="ognl-protect:aide.montant"/>XPF
+	répartis sur <span jwcid="@Insert" value="ognl-protect:aide.quantiteMensuelle"/> bon(s).
+</div>
+
+<p>Mois :
+	<select jwcid="@core/edit/MoisAnnee" mois="ognl:mois"
+		min="ognl-protect:dates.annee(aide.debut)" max="ognl-protect:dates.annee(aide.fin)"
+		onchange="refreshPage()"/>
+</p>
+
+<div jwcid="@core/Tableau" class="small-data-table" source="ognl:bonsMois" value="ognl:bon">
+	<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.bon.etat" titre="État"/>
+	<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.numero" titre="Numéro"/>
+	<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.personne" titre="Au nom de..."/>
+	<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.aide.statut" titre="Statut"/>
+	<span jwcid="@core/tableau/Colonne" value="ognl-protect:bon.montant" titre="Montant"/>
+	
+	<span jwcid="@If" condition="ognl:bonsMois.size() lt aide.quantiteMensuelle" renderTag="false">
+		<input jwcid="@PropertySelection"
+			value="ognl:personne"
+			model="ognl:psm.dataObject(aide.dossier.dossier.personnes)"/>
+		<input jwcid="creer@Submit" class="button" action="listener:creerBons" value="Créer"
+			title="Créer les bons manquants"/>
+	</span>
+	
+	<a href="#" jwcid="@DirectLink" listener="listener:editer"
+		title="Édite les bons manquants (création si besoin)"
+		renderer="ognl:popupLink" class="button" disabled="ognl:bonsAEditer lt 1"
+		onclick="ognl:'return confirm(\'Générer '+bonsAEditer+' bons ?\')'">
+		Éditer</a>
+	
+	<a href="#" jwcid="@DirectLink" listener="listener:reediter"
+		title="Ré-édite les bons déjà édités"
+		renderer="ognl:popupLink" class="button" disabled="ognl:bonsEdites.empty">
+		Rééditer</a>
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

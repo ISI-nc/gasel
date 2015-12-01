@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification class="nc.ccas.gasel.BaseComponent">
+
+	<parameter name="areaTitle" default-value="literal:Paramètres"></parameter>
+
+	<parameter name="buttonLabel" default-value="literal:Appliquer"/>
+	
+	<parameter name="action" default-value="listener:reloadPage" />
+
+	<parameter name="listener" />
+	
+	<component id="div" type="Any">
+		<binding name="onkeydown">
+			"return clickIfEnter(event,'"+components.actionButton.clientId+"');" 
+		</binding>
+	</component>
+	
+	<component id="actionButton" type="Submit">
+		<binding name="value" value="buttonLabel"/>
+		<binding name="listener" value="listener"/>
+		<binding name="action" value="action"/>
+	</component>
+	
+</component-specification>

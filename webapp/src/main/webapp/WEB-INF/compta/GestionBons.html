@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form">
+        <table>
+        <tbody>
+            <tr>
+	            <td class="label">N° du bon:</td>
+	            <td ><input jwcid="@Insert" value="ognl:bon.numero"/></td>
+	            <td></td>
+	            <td></td>
+			</tr>
+			<tr>
+	            <td class="label">Montant du bon:</td>
+	            <td><input jwcid="@Insert" value="ognl:bon.montant" format="ognl:format.montant"/></td>
+	            <td class="label">Montant utilisé:</td>
+	            <td>
+	            	<span jwcid="@If" condition="ognl:bon.usage">
+			            <input jwcid="@TextField" class="montant" value="ognl:bon.usage.montantUtilise" size="10"/>
+			        </span><span jwcid="@Else">
+			            Pas utilisé
+			        </span>
+		        </td>
+			</tr>
+			<tr>
+	            <td class="label">Date début:</td>
+	            <td><input jwcid="@core/edit/Date" size="9" value="ognl:bon.debut"/></td>
+	            <td class="label">Date fin:</td>
+	            <td><input jwcid="@core/edit/Date" size="9" value="ognl:bon.fin"/></td>
+			</tr>
+	          <tr>
+                <td class="label">Secteur:</td>
+	            <td>
+	            <input jwcid="@Insert" value="ognl:bon.aide.nature.parent" />
+                </td>
+	            <td class="label">Article:</td>
+	            <td>
+				<input jwcid="@Insert" value="ognl:bon.aide.nature"/>
+                </td>
+              </tr>
+              <tr>
+                <td class="label">Type de public:</td>
+	            <td>
+				<input jwcid="@Insert" value="ognl:bon.aide.public"/>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+        </tbody>
+        </table>
+</form>
+</div>
+</body>
+</html>

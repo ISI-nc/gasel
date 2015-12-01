@@ -1,0 +1,9 @@
+<div jwcid="@core/ParamArea" action="listener:search" buttonLabel="ognl:buttonLabel">
+	<div jwcid="@If" condition="ognl:showError" volatile="true" class="error">
+		Aucun critère de recherche donné !
+	</div>
+	
+	<table jwcid="table" class="invis">
+		<tr jwcid="@RenderBody"><td>[Contenu]</td></tr>
+	</table>
+</div>

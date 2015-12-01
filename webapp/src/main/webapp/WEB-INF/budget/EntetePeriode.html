@@ -1,0 +1,24 @@
+<div class="section">
+<div style="float:right;font-size:small;">
+	Du <input jwcid="@Insert" value="ognl:debut" format="ognl:page.dateFormat"/>
+	au <input jwcid="@Insert" value="ognl:fin" format="ognl:page.dateFormat"/>
+</div>
+
+<span jwcid="@Insert" value="ognl:titre">[Titre]</span>
+</div>
+
+<!-- <div style="border:red solid 1px;color:red;padding:0.2ex;margin:0.2ex;float:right;">
+	<span jwcid="@Insert" value="ognl:@nc.ccas.gasel.agents.budget.DataUpdateAgent@lastUpdate"></span>
+</div> -->
+
+<div jwcid="@core/ParamArea">
+<table>
+	<tr><td>Période&nbsp;:</td>
+		<td jwcid="td@Any" colspan="ognl:colspan > 2 ? colspan - 1 : null"><input jwcid="@core/edit/PeriodeMois"
+	 		debut="ognl:debut" fin="ognl:fin" memeAnnee="ognl:memeAnnee"
+	 		style="width:5em" min="1990" max="2020" onchange="ognl:autoSubmit?'refreshPage()':null"/>
+	 	</td>
+	 </tr>
+	 <tr jwcid="@RenderBody"><td>[Contents]</td></tr>
+</table>
+</div>

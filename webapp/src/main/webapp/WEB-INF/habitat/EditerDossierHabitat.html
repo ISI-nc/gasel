@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent" />
+
+<p></p>
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<table>
+	<tr>
+		<td class="label">Référent social :</td>
+		<td class="label">
+			<select jwcid="@PropertySelection" value="ognl:object.referentSocial" model="ognl:tisfModel">
+				<option>referent</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="label">T.I.S.F. :</td>
+		<td class="label">
+			<select jwcid="@PropertySelection" value="ognl:object.referentFamilial" model="ognl:tisfModel">
+				<option>referent</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="label">Phase relogement :</td>
+		<td class="label">
+			<select jwcid="@PropertySelection" value="ognl:object.phase"
+				model="ognl:psm.all('PhaseRelogement')">
+				<option>phase relogement</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="label">Date de relogement :</td>
+		<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.dateRelogement"/></td>
+	</tr>
+	<tr>
+		<td class="label">Quartier de relogement :</td>
+		<td class="label"><input jwcid="@voirie/edit/Quartier" value="ognl:object.quartierRelogement" /></td>
+	</tr>
+	<tr>
+		<td class="label">Origine (site RHI):</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.origine"
+				model="ognl:psm.all('SiteRHI')">
+				<option>referent</option></select></td>
+	</tr>
+	<tr>
+		<td class="label">Début ASL :</td>
+		<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.debutASL"/></td>
+	</tr>
+	<tr>
+		<td class="label">Type logement d'origine :</td>
+		<td class="label"><input jwcid="@core/edit/Enum" value="ognl:object.typeLogementOrigine"
+			enum="TypeLogement"/></td>
+	</tr>
+	<tr>
+		<td class="label">Origine signalement :</td>
+		<td class="label"><input jwcid="@core/edit/Enum" value="ognl:object.origineSignalement"
+			enum="OrigineSignalementHb"/></td>
+	</tr>
+	<tr>
+		<td class="label">Numéro MH :</td>
+		<td class="label"><input jwcid="@TextField" value="ognl:object.numeroMH"/></td>
+	</tr>
+	<tr>
+		<td class="label">Demande d'intervention :</td>
+		<td class="label"><select jwcid="@PropertySelection" value="ognl:object.demandeIntervention" model="ognl:psm.ouiNon"/></td>
+	</tr>
+	<tr>
+		<td class="label">Echéance sortie :</td>
+		<td class="label"><input jwcid="@core/edit/Date" value="ognl:object.echeanceSortie"/></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div><strong>Catégorie sortie protocole :</strong></div>
+			<table jwcid="@core/Tableau" source="ognl:object.planning" value="ognl:row">
+				<div jwcid="@core/tableau/Colonne" titre="Catégorie" value="ognl:row.categorieSortie" />
+				<div jwcid="@core/tableau/Colonne" titre="Echéance" value="ognl:row.echeance" />
+				<div jwcid="@core/tableau/Colonne" titre="Date réelle" value="ognl:row.reel" />
+				<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="planning"/>
+			</table>
+			<table jwcid="@core/edit/SubForm" source="ognl:object" liste="planning" value="ognl:previsionnel">
+				<tr><td class="label">Catégorie sortie protocole :</td>
+					<td><select jwcid="@PropertySelection" value="ognl:previsionnel.categorieSortie"
+							model="ognl:psm.all('CategorieSortieProtocole')">
+			<option>catégorie</option></select>
+				</td>
+				</tr>
+				<tr><td class="label">Début :</td>
+					<td><input jwcid="@core/edit/Date" value="ognl:previsionnel.echeance"/></td>
+				</tr>
+				<tr><td class="label">Fin :</td>
+					<td><input jwcid="@core/edit/Date" value="ognl:previsionnel.reel"/></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><div><strong>Aide extra légale :</strong></div>
+				<table jwcid="@core/Tableau" source="ognl:object.aidesComplementaires" value="ognl:row">
+					<div jwcid="@core/tableau/Colonne" titre="Perçue" value="ognl:row.percue" />
+					<div jwcid="@core/tableau/Colonne" titre="Nature" value="ognl:row.nature" />
+					<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:row.montant" />
+					<div jwcid="@core/tableau/Colonne" titre="Organisme" value="ognl:row.organisme" />
+					<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="aidesComplementaires"/>
+				</table>
+				<table jwcid="@core/edit/SubForm" source="ognl:object" liste="aidesComplementaires" value="ognl:aideSociale">
+					<tr><td class="label">Montant :</td>
+						<td><input jwcid="@TextField" value="ognl:aideSociale.montant" translator="translator:number" /></td>
+					</tr>
+					<tr><td class="label">Perçue :</td>
+						<td><select jwcid="@core/edit/Date" value="ognl:aideSociale.percue" /></td>
+					</tr>
+					<tr><td class="label">Nature :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:aideSociale.nature"
+				model="ognl:psm.all('NatureAideSociale')">
+				<option>nature</option></select>
+					</td>
+					</tr>
+					<tr><td class="label">Organisme :</td>
+						<td><select jwcid="@PropertySelection" value="ognl:aideSociale.organisme"
+				model="ognl:psm.all('OrganismeAideSociale')">
+				<option>organisme</option></select>
+					</td>
+					</tr>
+				</table></td>
+	</tr>
+	</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Actions">
+
+	<table jwcid="@core/Tableau" source="ognl:object.autresProblemes" value="ognl:row"
+		titre="Actions sociales">
+		<div jwcid="@core/tableau/Colonne" titre="Projet" value="ognl:row.projet" />
+		<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+		<div jwcid="@core/tableau/Colonne" titre="Description" value="ognl:row.description" />
+		<div jwcid="@core/tableau/Colonne" titre="En cours" value="ognl:row.enCours?'oui':'non'" />
+		<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditActionSociale" parentProperty="dossier"/>
+		<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="autresProblemes"/>
+		
+		<input jwcid="ajouterAction@Submit" value="Ajouter" class="button"
+			action="listener:ajouterActionSociale"/>
+	</table>
+
+</div>
+
+<div jwcid="@core/Onglet" titre="Demandes d'aide">
+
+		<table jwcid="@core/Tableau" source="ognl:object.demandesAideLogement" value="ognl:row"
+			titre="Demandes d'aide">
+			<div jwcid="@core/tableau/Colonne" titre="Motif" value="ognl:row.motifCT" />
+			<div jwcid="@core/tableau/Colonne" titre="Date Comité de coordination" value="ognl:row.dateCC" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditDemandeAideLogement" parentProperty="dossierHabitat"/>
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="demandesAideLogement"/>
+			
+			<input jwcid="ajouterDemandeAL@Submit" value="Ajouter" class="button"
+				action="listener:ajouterDemandeAideLogement"/>
+		</table>
+		
+</div>
+
+<div jwcid="@core/Onglet" titre="Affectation">
+	
+		<table jwcid="@core/Tableau" source="ognl:object.demandesAffectation" value="ognl:row"
+			titre="Demandes d'affectation">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.date" />
+			<div jwcid="@core/tableau/Colonne" titre="Type de logement" value="ognl:row.type" />
+			<div jwcid="@core/tableau/Colonne" titre="Type de demande" value="ognl:row.typeDemande" />
+			<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditDemandeAffectation" parentProperty="dossier"/>
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="demandesAffectation"/>
+			<input jwcid="ajouterDemandeAff@Submit" value="Ajouter" class="button"
+				action="listener:ajouterDemandeAffectation"/>
+		</table>
+
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

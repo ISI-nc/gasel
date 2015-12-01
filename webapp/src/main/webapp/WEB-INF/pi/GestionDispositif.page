@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Gestion du dispositif</description>
+
+	<property name="titre">literal:PI: gestion du dispositif</property>
+	
+	<property name="site" persist="workflow" />
+	
+	<property name="jardin" persist="workflow"/>
+	
+	<property name="attr"/>
+
+</page-specification>

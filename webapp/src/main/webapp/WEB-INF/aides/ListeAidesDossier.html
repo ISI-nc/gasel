@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<form jwcid="@core/Form">
+
+	<p class="page-title">Aides du dossier :</p>
+	
+	<div jwcid="@dossiers/InfosDossier" dossier="ognl:dossier">[Dossier]</div>
+	        	
+	<p><strong>Période :</strong>
+		<input jwcid="critAnnee@core/edit/PeriodeMois" size="6"
+	          		debut="ognl:periodeDebut" fin="ognl:periodeFin"/>
+	</p>
+
+	<div jwcid="@core/Onglets">
+	<div jwcid="@core/Onglet" titre="Aides accordées">
+
+		<div jwcid="@core/Tableau" source="ognl:sort(aides).by('debut').by('fin').results" value="ognl:aide">
+		
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Nature">
+				<div jwcid="@core/tableau/Colonne" titre="Secteur" value="ognl:aide.nature.parent"/>
+				<div jwcid="@core/tableau/Colonne" titre="Type" value="ognl:aide.nature"/>
+				<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:aide.statut"/>
+				<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:aide.public"/>
+			</div>
+			
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Période">
+				<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:aide.debut" format="ognl:dateFormat"/>
+				<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:aide.fin" format="ognl:dateFormat"/>
+			</div>
+			
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Montant mensuel">
+				<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:aide.montant"/>
+				<div jwcid="@core/tableau/Colonne" titre="Qté" value="ognl:aide.quantiteMensuelle"/>
+			</div>
+			
+			<div jwcid="@core/tableau/Colonne" titre="Bons annulés" value="ognl:aide.bonsAnnules.size()"/>
+			
+			<div jwcid="@core/tableau/ObjectPageAction" page="aides/GestionAide" parentProperty="dossier"/>
+			<div jwcid="@core/tableau/ActionSupprimer" disabled="ognl:aide.bons" parent="ognl:object" liste="aides"/>
+			<div jwcid="@core/tableau/ObjectPageAction" page="aides/EditionBons" icon="asset:editBons" title="Éditer les bons"
+					disabled="ognl:!aide.statut.immediate" />
+			
+            <input class="button" jwcid="ajouter@Submit" value="Ajouter" action="listener:ajouterAide"/>
+		</div>
+	</div>
+	
+	<div jwcid="@core/Onglet" titre="Aides refusées">
+	
+		<div jwcid="@core/Tableau" source="ognl:aidesRefusees" value="ognl:aide">
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Demande">
+				<div jwcid="@core/tableau/Colonne" titre="Nature" value="ognl:aide.natureDemande"/>
+				<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:aide.demande" format="ognl:dateFormat"/>
+				<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:aide.statut"/>
+				<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:aide.public"/>
+			</div>
+			<div jwcid="@core/tableau/GroupeColonnes" titre="Refus">
+				<div jwcid="@core/tableau/Colonne" titre="Motif" value="ognl:aide.motif.libelle"/>
+				<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:aide.refus" format="ognl:dateFormat"/>
+			</div>
+			
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="aidesRefusees"/>
+		</div>
+		
+		<p><strong>Ajout</strong></p>
+		
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="aidesRefusees" value="ognl:refus"
+			onadd="listener:redirect" colspan="4">
+			<tr><td class="label">Demande :</td>
+				<td class="label"><input jwcid="@core/edit/Date" value="ognl:refus.demande" size="8"/> (date)</td>
+				<td class="label">Refus :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:refus.refus" size="8"/> (date)</td></tr>
+			
+			<tr><td><br/></td>
+				<td><input jwcid="@core/edit/Enum" value="ognl:secteurDemande" enum="SecteurAide"
+							onchange="refreshPage()"/>
+					<input jwcid="@core/edit/Enum" value="ognl:refus.natureDemande"
+							values="ognl:secteurDemande?secteurDemande.natures:{}"/></td>
+				<td><br/></td>
+				<td><input jwcid="@core/edit/Enum" value="ognl:refus.motif" enum="MotifRefusAide"/> (motif)</td></tr>
+		</table>
+	
+	</div>
+	</div>
+
+</form>
+
+</div>
+</body>
+</html>

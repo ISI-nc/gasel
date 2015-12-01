@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+	<table jwcid="@core/search/Form" entity="Aide" results="ognl:aides" prefetch="nature,statut,public,dossier.dossier.chefFamille">
+		<tr><td class="label">Période :</td>
+			<td><input jwcid="@core/search/critere/Periode" path="dateCommission" toujoursActif="true"/></td>
+		</tr>
+	</table>
+
+	<div jwcid="@core/Tableau" source="ognl:aides" value="ognl:aide">
+		<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:aide.public"/>
+		<div jwcid="@core/tableau/Colonne" titre="Nature d'aide" value="ognl:aide.nature"/>
+		<div jwcid="@core/tableau/Colonne" titre="Bénéficiaire" value="ognl:aide.dossier.dossier.chefFamille"/>
+		<div jwcid="@core/tableau/Colonne" titre="Date Commission" value="ognl:aide.dateCommission"/>
+		<div jwcid="@core/tableau/Colonne" titre="Date de début de validité" value="ognl:aide.debut"/>
+		<div jwcid="@core/tableau/Colonne" titre="Date de fin de validité" value="ognl:aide.fin"/>
+		<div jwcid="@core/tableau/Colonne" titre="Fréquence" value="ognl:aide.dureeMois"/>
+		
+		<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:aide.montant"/>
+	</div>
+	
+	<input class="button" jwcid="@core/BoutonRetour"/>
+
+</div>
+</body>
+</html>

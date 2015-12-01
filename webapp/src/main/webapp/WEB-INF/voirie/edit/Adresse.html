@@ -1,0 +1,43 @@
+<div jwcid="bloc@Any">
+<div jwcid="@If" condition="ognl:adresse"> 
+<table class="invis" width="100%">
+	<tbody>
+		<tr jwcid="@If" condition="ognl:!required">
+			<td style="text-align: right" colspan="4"><input jwcid="supprimer@Submit" value="Supprimer" action="listener:supprimer" onclick="return confirm('Êtes-vous sûr ?')"/></td>
+		</tr>
+		<tr class="pad">
+			<td class="label">N°</td>
+			<td><input jwcid="@TextField" size="8" type="text" value="ognl:adresse.numero" /></td>
+			<td class="label">Rue :</td>
+			<td><input jwcid="voie@core/edit/ToOne" value="ognl:adresse.rue"
+				searchPage="voirie/VoieSearch" onSet="listener:rueChanged">
+				<span jwcid="@Insert" value="ognl:adresse.rue.libelle"/>
+				</input>
+			</td>
+		</tr>
+		<tr jwcid="@If" condition="ognl:avecBoitePostale" renderTag="true" class="pad">
+			<td class="label">BP :</td>
+			<td colspan="3"><input jwcid="@TextField" value="ognl:adresse.boitePostale"/></td>
+		</tr>
+		<tr class="pad">
+			<td class="label">CP :</td>
+			<td><input jwcid="@TextField" translator="translator:number,omitZero" value="ognl:adresse.codePostal"
+				size="4" type="text" /></td>
+			<td class="label">Ville :</td>
+			<td><input jwcid="ville@core/edit/ToOne" value="ognl:adresse.ville"
+				 	searchPage="voirie/CommuneSearch">
+				 <span jwcid="@Insert" value="ognl:adresse.ville.libelle"/>
+				</input>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<div style="margin-top:6px;">Autres : <input jwcid="@TextField" value="ognl:adresse.autres"
+					size="38" type="text" /></div>
+
+</div><div jwcid="@Else">
+	<div style="float:right;"><input jwcid="creer@Submit" value="Créer" action="listener:creer" class="button"/></div>
+	Adresse indéfinie.
+</div>
+</div>

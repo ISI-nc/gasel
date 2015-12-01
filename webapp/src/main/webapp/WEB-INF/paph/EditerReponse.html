@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+
+<div jwcid="@core/Form">
+
+<table><tbody>
+	<tr>
+		<td>Type problématique :</td>
+		<td><input jwcid="@Insert" value="ognl:object.problematique.parent"/></td>
+	</tr>
+	<tr>
+		<td>Problématique :</td>
+		<td><input jwcid="@Insert" value="ognl:object.problematique"/></td>
+	</tr>	
+	<tr>
+		<td>Réponses :</td>
+		<td><span jwcid="@core/edit/SubSet"
+				elements="ognl:object.problematique.parent.reponses"
+				from="ognl:object" list="reponses">
+		</span></td>
+	</tr>
+</tbody></table>
+
+</div>
+</div>
+</body>
+</html>

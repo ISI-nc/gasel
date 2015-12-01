@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<table jwcid="@core/search/Form" entity="Personne" results="ognl:results" order="nom,prenom">
+	<tr><td class="label">Nom :</td><td><input jwcid="nomCF@core/search/critere/Contient" path="nom"/></td></tr>
+	<tr><td class="label">Prénom :</td><td><input jwcid="@core/search/critere/Contient" path="prenom"/></td></tr>
+</table>
+
+<div jwcid="@If" condition="ognl:results">
+	<div jwcid="@core/Tableau" titre="Résultats" source="ognl:results" value="ognl:value">
+		<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:value.nom"/>
+		<div jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:value.prenom"/>
+		<div jwcid="@core/tableau/Action" icon="asset:select" title="Choisir" action="listener:success" parameters="ognl:value"/>
+	</div>
+</div>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="dossiers/PersonneEdit"/>
+	<input jwcid="@core/BoutonRetour" value="Annuler" />
+</p>
+
+</div></body>
+</html>

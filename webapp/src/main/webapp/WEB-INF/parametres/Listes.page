@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE page-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<page-specification>
+	<description>Listes</description>
+	
+	<property name="enums">{
+		category("Dossiers et personnes")
+			.add("CouvertureSociale",       "Couvertures sociales")
+			.add("LienParente",             "Liens de parenté")
+			.add("Mutuelle",                "Mutuelles")
+			.add("OrigineSignalement",      "Origines de signalement")
+			.add("SituationFamiliale",      "Situations familiales")
+			.add("SituationProfessionelle", "Situations prof.")
+			.add("StatutPersonne",          "Statuts d'une personne")
+			.add("TypeActivite",            "Types d'activité")
+			.add("TypeContrat",             "Types de contrats")
+			.add("TypeHabitat",             "Types d'habitat")
+			.add("TypePublic",              "Types de public", "parametres/aides/TypePublicEdit")
+			
+			.add("TypeProblematique",    "Types de problématiques")
+			.add("Problematique",        "Problématiques")
+			.add("ReponseProblematique", "Réponses aux problématiques")
+			,
+		category("Ressources et charges")
+			.add("CategorieRessource", "Catégories de ressources")
+			.add("TypeRessource",      "Types de ressources")
+			.add("CategorieCharge",    "Catégories de charges")
+			.add("TypeCharge",         "Types de charges")
+		    ,
+		category("Bons, aides et arrêtés")
+			.add("TypeArrete",  "Types d'arrêtés", "parametres/aides/TypeArreteEdit")
+			.add("SecteurAide", "Secteurs d'aide", "parametres/aides/SecteurAideEdit")
+			.add("NatureAide",  "Natures d'aide",  "parametres/aides/NatureAideEdit")
+			.add("MotifRefusAide", "Motifs de refus")
+			,
+		category("Personnes agées/handicapées")
+			.add("StatutOccupation", "Statuts d'occupation")
+			.add("SituationSociale", "Situations sociales")
+			.add("Handicap", "Handicaps")
+			.add("TauxHandicap", "Taux de handicap")
+			.add("SpecificiteCarteHand", "Spécificité de la carte handicapée")
+			.add("NatureDeplacementTaxi", "Nature des déplacements")
+			.add("MotifDerogationPAPH", "Motifs des dérogations")
+			,
+		category("Petite enfance")
+			.add("SecteurFormation",      "Secteur de formation")
+			.add("Formation",             "Formation",              "parametres/pe/FormationEdit")
+			.add("AutorisationParentale", "Autorisation parentale", "parametres/pe/AutorisationParentaleEdit")
+			.add("OrganismeSocial",       "Organisme social")
+			.add("ModeGarde",             "Mode de garde",          "parametres/pe/ModeGardeEdit")
+			,
+		category("Prévention / Insertion")
+			.add("AvisCommissionJF", "Avis de commission",  "parametres/pi/EditerAvisCommissionJF")
+			.add("EtatParcelle",     "Etats des parcelles", "parametres/pi/EditerEtatParcelle")
+			.add("Lieu",             "Lieux")
+			.add("OrigineDemandeJF", "Origines des demandes")
+			.add("TypeParcelle",     "Types de parcelle",   "parametres/pi/EditerTypeParcelle")
+			.add("TypeCourrierJF",   "Types de courrier")
+			.add("TypeArreteJF",     "Types d'arrêtés", "parametres/pi/EditerTypeArreteJF")
+			,
+		category("Habitat")
+			.add("NatureAideLogement", "Natures d'aide")
+			.add("EtatDemandeAideLogement", "États des demandes d'aide au logement")
+			.add("MotifCT", "Motif du Comité Technique")
+			
+			.add("PhaseRelogement", "Phases de relogement")
+			.add("TypeLogement", "Types de logement")
+			.add("CategorieSortieProtocole", "Catégories de sortie de protocole")
+			.add("OrigineSignalementHb", "Origines de signalement")
+			.add("CategorieSocialeLogement", "Catégorie sociale logement")
+			.add("Bailleur", "Bailleur")
+			
+			.add("TypeEmprunt", "Type d'emprunt")
+			.add("AssuranceLocative", "Assurance locative")
+			.add("AssuranceHabitation", "Assurance habitation")
+			
+			.add("MotifDerogationHabitat", "Motif de dérogation")
+			
+			.add("NatureAideSociale", "Nature aide sociale")
+			.add("OrganismeAideSociale", "Organisme aide sociale")
+			.add("Institution", "Institution")
+			.add("MotifSIE", "Motif secours immédiat exceptionnel")
+			.add("MotifIntervention", "Motif intervention")
+	}</property>
+	
+	<property name="value"/>
+	<property name="newValue"/>
+	
+</page-specification>

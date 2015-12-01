@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Tableau"
+	source="ognl:sort(sql.query.all('SiteRHI')).by('nom').results"
+	value="ognl:value">
+	<div jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:value.nom"/>
+	<div jwcid="@core/tableau/Colonne" titre="Résorbé" value="ognl:value.resorbe?'oui':'non'" highlight="ognl:value.resorbe"/>
+	<div jwcid="@core/tableau/ObjectPageAction" page="habitat/EditerRHI" />
+	<div jwcid="@core/tableau/ActionSupprimer" disabled="ognl:value.observations" />
+</div>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="habitat/EditerRHI"/>
+	<input jwcid="@core/BoutonRetour" />
+</p>
+</div>
+</body>
+</html>

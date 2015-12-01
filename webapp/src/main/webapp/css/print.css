@@ -1,0 +1,9 @@
+@import url('main.css');
+
+#header,.noprint,.button {
+	display: none;
+}
+
+#content {
+	overflow: visible;
+}

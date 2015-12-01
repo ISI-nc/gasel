@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.vues"/>
+	<db-entity name="aide_resume_montants">
+		<db-attribute name="annee" type="INTEGER"/>
+		<db-attribute name="annee_mois" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="bim_id" type="INTEGER"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="mois" type="INTEGER"/>
+		<db-attribute name="montant_aide" type="INTEGER"/>
+		<db-attribute name="montant_bons" type="INTEGER"/>
+		<db-attribute name="montant_bons_annule" type="INTEGER"/>
+		<db-attribute name="montant_bons_edite" type="INTEGER"/>
+		<db-attribute name="montant_bons_inutilise" type="INTEGER"/>
+		<db-attribute name="montant_bons_inutilise_brut" type="INTEGER"/>
+		<db-attribute name="montant_bons_utilise" type="INTEGER"/>
+		<db-attribute name="public_id" type="INTEGER"/>
+		<db-attribute name="secteur_id" type="INTEGER"/>
+	</db-entity>
+	<obj-entity name="AideResumeMontants" className="nc.ccas.gasel.model.vues.AideResumeMontants" dbEntityName="aide_resume_montants">
+		<obj-attribute name="annee" type="java.lang.Integer" db-attribute-path="annee"/>
+		<obj-attribute name="mois" type="java.lang.Integer" db-attribute-path="mois"/>
+		<obj-attribute name="montantAide" type="java.lang.Integer" db-attribute-path="montant_aide"/>
+		<obj-attribute name="montantBons" type="java.lang.Integer" db-attribute-path="montant_bons"/>
+		<obj-attribute name="montantBonsAnnule" type="java.lang.Integer" db-attribute-path="montant_bons_annule"/>
+		<obj-attribute name="montantBonsEdite" type="java.lang.Integer" db-attribute-path="montant_bons_edite"/>
+		<obj-attribute name="montantBonsInutilise" type="java.lang.Integer" db-attribute-path="montant_bons_inutilise"/>
+		<obj-attribute name="montantBonsInutiliseBrut" type="java.lang.Integer" db-attribute-path="montant_bons_inutilise_brut"/>
+		<obj-attribute name="montantBonsUtilise" type="java.lang.Integer" db-attribute-path="montant_bons_utilise"/>
+	</obj-entity>
+	<db-relationship name="aide" source="aide_resume_montants" target="aide" toMany="false">
+		<db-attribute-pair source="id" target="id"/>
+	</db-relationship>
+	<db-relationship name="bim" source="aide_resume_montants" target="budget_imp_mensuel" toMany="false">
+		<db-attribute-pair source="bim_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="public" source="aide_resume_montants" target="type_public" toMany="false">
+		<db-attribute-pair source="public_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="secteur" source="aide_resume_montants" target="secteur_aide" toMany="false">
+		<db-attribute-pair source="secteur_id" target="id"/>
+	</db-relationship>
+	<obj-relationship name="aide" source="AideResumeMontants" target="Aide" db-relationship-path="aide"/>
+	<obj-relationship name="bim" source="AideResumeMontants" target="BudgetImpMensuel" db-relationship-path="bim"/>
+	<obj-relationship name="public" source="AideResumeMontants" target="TypePublic" db-relationship-path="public"/>
+	<obj-relationship name="secteur" source="AideResumeMontants" target="SecteurAide" db-relationship-path="secteur"/>
+</data-map>

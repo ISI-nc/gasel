@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<table class="section">
+	<tbody>
+		<tr>
+			<td colspan="2" rowspan="1">Calculette:&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="section">
+			<table style="width: 100%;">
+				<tbody>
+					<tr>
+						<td colspan="4">Dossier:
+						<table class="sousSection" width="100%">
+							<tbody>
+								<tr>
+									<td colspan="4"><span jwcid="@dossiers/InfosDossier"
+										dossier="ognl:dossier">[Infos dossier]</span></td>
+								</tr>
+								<tr>
+									<td>Nb de personnes dans le foyer:</td>
+									<td><input jwcid="@TextField" value="ognl:nbPersonnes"
+										translator="translator:entier" /></td>
+									<td>Nb de personnes handicapées:</td>
+									<td><input jwcid="@TextField" value="ognl:nbHandicapes"
+										translator="translator:entier" /></td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="25%">Catégorie d'aide:</td>
+						<td width="15%"><!-- <input jwcid="@core/edit/Enum" value="ognl:typeAide" enum="TypeAide"/> -->
+						</td>
+						<td width="15%">Période:</td>
+						<td width="35%"><select jwcid="@PropertySelection"
+							value="ognl:periodePrestation" model="ognl:periodePrestationPSM">
+							<option>1er trimestre</option>
+						</select> <input jwcid="@TextField" value="ognl:anneePrestation"
+							translator="translator:entier" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" rowspan="1">
+						<hr>
+						</td>
+					</tr>
+					<tr>
+						<td>Montant de la facture:</td>
+						<td><input jwcid="@TextField" value="ognl:montantFacture"
+							translator="translator:reel" /></td>
+						<td>Déja payé:</td>
+						<td><input jwcid="@TextField" value="ognl:dejaPaye"
+							translator="translator:reel" /></td>
+					</tr>
+					<tr>
+						<td>Conso. effective (m<sup>3</sup>):</td>
+						<td><input jwcid="@TextField" value="ognl:consoEffective"
+							translator="translator:reel" /></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>Prise en charge remise compteur ou frais:</td>
+						<td><input jwcid="@TextField" value="ognl:pecRemise"
+							translator="translator:reel" /></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td colspan="4" rowspan="1">
+						<hr>
+						</td>
+					</tr>
+					<tr>
+						<td>Prix unitaire du m<sup>3</sup>:</td>
+						<td><input jwcid="@TextField" value="ognl:prixUnitaireM3"
+							translator="translator:reel" /></td>
+						<td>Abonnement:</td>
+						<td><input jwcid="@TextField" value="ognl:prixAbonnement"
+							translator="translator:reel" /></td>
+					</tr>
+					<tr>
+						<td>Collecte, traitement des eaux usées:</td>
+						<td><input jwcid="@TextField" value="ognl:prixEauxUsees"
+							translator="translator:reel" /></td>
+						<td>Service de l'eau:</td>
+						<td><input jwcid="@TextField" value="ognl:prixServiceEau"
+							translator="translator:reel" /></td>
+					</tr>
+					<tr>
+						<td>Service d'assainissement:</td>
+						<td><input jwcid="@TextField" value="ognl:prixAssainissement"
+							translator="translator:reel" /></td>
+						<td>Grand Tuyau:</td>
+						<td><input jwcid="@TextField" value="ognl:prixGdTuyau"
+							translator="translator:reel" /></td>
+					</tr>
+					<tr>
+						<td colspan="4" rowspan="1">
+						<hr>
+						</td>
+					</tr>
+					<tr>
+						<td>Conso. accordée(m<sup>3</sup>)</td>
+						<td><input jwcid="@Insert" value="ognl:consoAccordee"
+							translator="translator:reel" /></td>
+						<td>Prise en charge conso:</td>
+						<td><input jwcid="@Insert" value="ognl:priseEnCharge"
+							translator="translator:reel" /></td>
+					</tr>
+					<tr>
+						<td>Prise en charge Totale</td>
+						<td><input jwcid="@Insert" value="ognl:priseEnChargeTotale"
+							translator="translator:reel" /></td>
+						<td>Montant restant dû:</td>
+						<td><input jwcid="@Insert" value="ognl:restantDu"
+							translator="translator:reel" /></td>
+					</tr>
+				</tbody>
+			</table>
+			</td>
+			<td class="section">
+			<p><input jwcid="calculer@Submit" value="Calculer"
+				action="listener:redirect" class="button" /></p>
+			<p><input jwcid="valider@Submit" value="Valider"
+				action="listener:success" class="button" /></p>
+			<p><input jwcid="@core/BoutonRetour" /></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</body>
+</html>

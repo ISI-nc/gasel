@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.starjet" version="1.0.0" package="nc.ccas.gasel.starjet">
+	
+	<service-point id="StarjetService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="StarjetService">
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="starjet" object="service:StarjetService" />
+	</contribution>
+
+</module>

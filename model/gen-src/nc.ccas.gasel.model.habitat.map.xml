@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.habitat"/>
+	<db-entity name="action_collective">
+		<db-attribute name="description" type="CLOB" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="referent_familial_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="referent_social_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="action_sociale">
+		<db-attribute name="contrat_objectifs" type="BIT" isMandatory="true"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="description" type="CLOB" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="en_cours" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="par_famille" type="BIT" isMandatory="true"/>
+		<db-attribute name="par_referent_social" type="BIT" isMandatory="true"/>
+		<db-attribute name="projet" type="CLOB" isMandatory="true"/>
+		<db-attribute name="projet_insertion" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="affectation_accession">
+		<db-attribute name="acte_notarie" type="BIT" isMandatory="true"/>
+		<db-attribute name="assurance_habitation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="charges" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="code_quartier" type="SMALLINT" isMandatory="true" length="255"/>
+		<db-attribute name="compteur_eau" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="compteur_electricite" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant_acte_notarie" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant_assurance_habitation" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="traite" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_emprunt_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="affectation_locatif">
+		<db-attribute name="assurance_habitation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="bail_pour_le_compte_de" type="BIT" isMandatory="true"/>
+		<db-attribute name="bailleur_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="categorie_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="caution_solidaire" type="BIT" isMandatory="true"/>
+		<db-attribute name="charges" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="code_quartier" type="SMALLINT" isMandatory="true" length="255"/>
+		<db-attribute name="commission_alt" type="TIMESTAMP"/>
+		<db-attribute name="complement_fsh" type="BIT" isMandatory="true"/>
+		<db-attribute name="compteur_eau" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="compteur_electricite" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="depot_garantie" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="entree" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="frais_complementaires" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="loyer_hc" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant_assurance_habitation" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="numero_bail" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="affectation_rehabilitation">
+		<db-attribute name="assurance_habitation_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="charges" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="code_quartier" type="SMALLINT" isMandatory="true" length="255"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant_assurance_habitation" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="traite" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_emprunt_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aide_logement">
+		<db-attribute name="accord_commission" type="BIT" isMandatory="true"/>
+		<db-attribute name="date_commission" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="date_effet" type="TIMESTAMP"/>
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="demande_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="derogation_id" type="INTEGER"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant_al" type="INTEGER"/>
+		<db-attribute name="montant_altotal" type="INTEGER"/>
+		<db-attribute name="montant_dg" type="INTEGER"/>
+		<db-attribute name="motif_refus" type="VARCHAR" length="4096"/>
+		<db-attribute name="nature_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aide_sociale">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="INTEGER"/>
+		<db-attribute name="nature_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="organisme_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="percue" type="TIMESTAMP" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="aspect_dossier_habitat">
+		<db-attribute name="date_relogement" type="TIMESTAMP"/>
+		<db-attribute name="debut_asl" type="TIMESTAMP"/>
+		<db-attribute name="demande_intervention" type="BIT" isMandatory="true"/>
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+		<db-attribute name="echeance_sortie" type="TIMESTAMP"/>
+		<db-attribute name="numero_mh" type="VARCHAR" length="255"/>
+		<db-attribute name="origine_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="origine_signalement_id" type="INTEGER"/>
+		<db-attribute name="phase_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="quartier_relogement" type="VARCHAR" length="255"/>
+		<db-attribute name="referent_familial_id" type="INTEGER"/>
+		<db-attribute name="referent_social_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="type_logement_origine_id" type="INTEGER"/>
+	</db-entity>
+	<db-entity name="aspect_sie">
+		<db-attribute name="dossier_id" type="INTEGER" isPrimaryKey="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="attribution">
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="demande_affectation">
+		<db-attribute name="aff_accession_id" type="INTEGER"/>
+		<db-attribute name="aff_locatif_id" type="INTEGER"/>
+		<db-attribute name="aff_rehabilitation_id" type="INTEGER"/>
+		<db-attribute name="code_quartier" type="SMALLINT" isMandatory="true" length="255"/>
+		<db-attribute name="date" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="type_demande_id" type="INTEGER"/>
+		<db-attribute name="type_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="demande_aide_logement">
+		<db-attribute name="attribution_id" type="INTEGER"/>
+		<db-attribute name="date_cc" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="date_ct" type="TIMESTAMP"/>
+		<db-attribute name="dossier_habitat_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="evaluation_sociale" type="CLOB"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="motif_ct_id" type="INTEGER"/>
+		<db-attribute name="resume_cc" type="CLOB"/>
+	</db-entity>
+	<db-entity name="derogation_aide_logement">
+		<db-attribute name="debut" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="fin" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="motif_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="intervention">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="motif_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="objectif_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="par_ts" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="objectif_habitat">
+		<db-attribute name="action_sociale_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="echeance" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="255"/>
+	</db-entity>
+	<db-entity name="objectif_prob_habitat">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="objectif_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="problematique_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="observation_site_rhi">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="observation" type="CLOB" isMandatory="true"/>
+		<db-attribute name="site_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="previsionnel_habitat">
+		<db-attribute name="categorie_sortie_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="echeance" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="reel" type="TIMESTAMP"/>
+	</db-entity>
+	<db-entity name="secours_immediat_exceptionnel">
+		<db-attribute name="dossier_dossier_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="institution_id" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="montant" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="motif_id" type="INTEGER" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="site_rhi">
+		<db-attribute name="famille_estimees" type="INTEGER" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="inscription" type="TIMESTAMP" isMandatory="true"/>
+		<db-attribute name="nom" type="VARCHAR" isMandatory="true" length="255"/>
+		<db-attribute name="projet" type="CLOB" isMandatory="true"/>
+		<db-attribute name="resorbe" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="ActionCollective" className="nc.ccas.gasel.model.habitat.ActionCollective" dbEntityName="action_collective">
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="ActionSociale" className="nc.ccas.gasel.model.habitat.ActionSociale" dbEntityName="action_sociale">
+		<obj-attribute name="contratObjectifs" type="java.lang.Boolean" db-attribute-path="contrat_objectifs"/>
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+		<obj-attribute name="description" type="java.lang.String" db-attribute-path="description"/>
+		<obj-attribute name="enCours" type="java.lang.Boolean" db-attribute-path="en_cours"/>
+		<obj-attribute name="parFamille" type="java.lang.Boolean" db-attribute-path="par_famille"/>
+		<obj-attribute name="parReferentSocial" type="java.lang.Boolean" db-attribute-path="par_referent_social"/>
+		<obj-attribute name="projet" type="java.lang.String" db-attribute-path="projet"/>
+		<obj-attribute name="projetInsertion" type="java.lang.Boolean" db-attribute-path="projet_insertion"/>
+	</obj-entity>
+	<obj-entity name="AffectationAccession" className="nc.ccas.gasel.model.habitat.AffectationAccession" dbEntityName="affectation_accession">
+		<obj-attribute name="acteNotarie" type="java.lang.Boolean" db-attribute-path="acte_notarie"/>
+		<obj-attribute name="charges" type="java.lang.Integer" db-attribute-path="charges"/>
+		<obj-attribute name="compteurEau" type="java.lang.Integer" db-attribute-path="compteur_eau"/>
+		<obj-attribute name="compteurElectricite" type="java.lang.Integer" db-attribute-path="compteur_electricite"/>
+		<obj-attribute name="montantActeNotarie" type="java.lang.Integer" db-attribute-path="montant_acte_notarie"/>
+		<obj-attribute name="montantAssuranceHabitation" type="java.lang.Integer" db-attribute-path="montant_assurance_habitation"/>
+		<obj-attribute name="traite" type="java.lang.Integer" db-attribute-path="traite"/>
+	</obj-entity>
+	<obj-entity name="AffectationLocatif" className="nc.ccas.gasel.model.habitat.AffectationLocatif" dbEntityName="affectation_locatif">
+		<obj-attribute name="bailPourLeCompteDe" type="java.lang.Boolean" db-attribute-path="bail_pour_le_compte_de"/>
+		<obj-attribute name="cautionSolidaire" type="java.lang.Boolean" db-attribute-path="caution_solidaire"/>
+		<obj-attribute name="charges" type="java.lang.Integer" db-attribute-path="charges"/>
+		<obj-attribute name="commissionALT" type="java.util.Date" db-attribute-path="commission_alt"/>
+		<obj-attribute name="complementFSH" type="java.lang.Boolean" db-attribute-path="complement_fsh"/>
+		<obj-attribute name="compteurEau" type="java.lang.Integer" db-attribute-path="compteur_eau"/>
+		<obj-attribute name="compteurElectricite" type="java.lang.Integer" db-attribute-path="compteur_electricite"/>
+		<obj-attribute name="depotGarantie" type="java.lang.Integer" db-attribute-path="depot_garantie"/>
+		<obj-attribute name="entree" type="java.util.Date" db-attribute-path="entree"/>
+		<obj-attribute name="fraisComplementaires" type="java.lang.Integer" db-attribute-path="frais_complementaires"/>
+		<obj-attribute name="loyerHC" type="java.lang.Integer" db-attribute-path="loyer_hc"/>
+		<obj-attribute name="montantAssuranceHabitation" type="java.lang.Integer" db-attribute-path="montant_assurance_habitation"/>
+		<obj-attribute name="numeroBail" type="java.lang.Integer" db-attribute-path="numero_bail"/>
+	</obj-entity>
+	<obj-entity name="AffectationRehabilitation" className="nc.ccas.gasel.model.habitat.AffectationRehabilitation" dbEntityName="affectation_rehabilitation">
+		<obj-attribute name="charges" type="java.lang.Integer" db-attribute-path="charges"/>
+		<obj-attribute name="montantAssuranceHabitation" type="java.lang.Integer" db-attribute-path="montant_assurance_habitation"/>
+		<obj-attribute name="traite" type="java.lang.Integer" db-attribute-path="traite"/>
+	</obj-entity>
+	<obj-entity name="AideLogement" className="nc.ccas.gasel.model.habitat.AideLogement" dbEntityName="aide_logement">
+		<obj-attribute name="accordCommission" type="java.lang.Boolean" db-attribute-path="accord_commission"/>
+		<obj-attribute name="dateCommission" type="java.util.Date" db-attribute-path="date_commission"/>
+		<obj-attribute name="dateEffet" type="java.util.Date" db-attribute-path="date_effet"/>
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="montantAL" type="java.lang.Integer" db-attribute-path="montant_al"/>
+		<obj-attribute name="montantALTotal" type="java.lang.Integer" db-attribute-path="montant_altotal"/>
+		<obj-attribute name="montantDG" type="java.lang.Integer" db-attribute-path="montant_dg"/>
+		<obj-attribute name="motifRefus" type="java.lang.String" db-attribute-path="motif_refus"/>
+	</obj-entity>
+	<obj-entity name="AideSociale" className="nc.ccas.gasel.model.habitat.AideSociale" dbEntityName="aide_sociale">
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+		<obj-attribute name="percue" type="java.util.Date" db-attribute-path="percue"/>
+	</obj-entity>
+	<obj-entity name="AspectDossierHabitat" className="nc.ccas.gasel.model.habitat.AspectDossierHabitat" dbEntityName="aspect_dossier_habitat">
+		<obj-attribute name="dateRelogement" type="java.util.Date" db-attribute-path="date_relogement"/>
+		<obj-attribute name="debutASL" type="java.util.Date" db-attribute-path="debut_asl"/>
+		<obj-attribute name="demandeIntervention" type="java.lang.Boolean" db-attribute-path="demande_intervention"/>
+		<obj-attribute name="echeanceSortie" type="java.util.Date" db-attribute-path="echeance_sortie"/>
+		<obj-attribute name="numeroMH" type="java.lang.String" db-attribute-path="numero_mh"/>
+	</obj-entity>
+	<obj-entity name="AspectSIE" className="nc.ccas.gasel.model.habitat.AspectSIE" dbEntityName="aspect_sie">
+	</obj-entity>
+	<obj-entity name="Attribution" className="nc.ccas.gasel.model.habitat.Attribution" dbEntityName="attribution">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+	</obj-entity>
+	<obj-entity name="DemandeAffectation" className="nc.ccas.gasel.model.habitat.DemandeAffectation" dbEntityName="demande_affectation">
+		<obj-attribute name="date" type="java.util.Date" db-attribute-path="date"/>
+	</obj-entity>
+	<obj-entity name="DemandeAideLogement" className="nc.ccas.gasel.model.habitat.DemandeAideLogement" dbEntityName="demande_aide_logement">
+		<obj-attribute name="dateCC" type="java.util.Date" db-attribute-path="date_cc"/>
+		<obj-attribute name="dateCT" type="java.util.Date" db-attribute-path="date_ct"/>
+		<obj-attribute name="evaluationSociale" type="java.lang.String" db-attribute-path="evaluation_sociale"/>
+		<obj-attribute name="resumeCC" type="java.lang.String" db-attribute-path="resume_cc"/>
+	</obj-entity>
+	<obj-entity name="DerogationAideLogement" className="nc.ccas.gasel.model.habitat.DerogationAideLogement" dbEntityName="derogation_aide_logement">
+		<obj-attribute name="debut" type="java.util.Date" db-attribute-path="debut"/>
+		<obj-attribute name="fin" type="java.util.Date" db-attribute-path="fin"/>
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+	</obj-entity>
+	<obj-entity name="Intervention" className="nc.ccas.gasel.model.habitat.Intervention" dbEntityName="intervention">
+		<obj-attribute name="parTS" type="java.lang.Boolean" db-attribute-path="par_ts"/>
+	</obj-entity>
+	<obj-entity name="ObjectifHabitat" className="nc.ccas.gasel.model.habitat.ObjectifHabitat" dbEntityName="objectif_habitat">
+		<obj-attribute name="echeance" type="java.util.Date" db-attribute-path="echeance"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+	</obj-entity>
+	<obj-entity name="ObjectifProbHabitat" className="nc.ccas.gasel.model.habitat.ObjectifProbHabitat" dbEntityName="objectif_prob_habitat">
+	</obj-entity>
+	<obj-entity name="ObservationSiteRHI" className="nc.ccas.gasel.model.habitat.ObservationSiteRHI" dbEntityName="observation_site_rhi">
+		<obj-attribute name="observation" type="java.lang.String" db-attribute-path="observation"/>
+	</obj-entity>
+	<obj-entity name="PrevisionnelHabitat" className="nc.ccas.gasel.model.habitat.PrevisionnelHabitat" dbEntityName="previsionnel_habitat">
+		<obj-attribute name="echeance" type="java.util.Date" db-attribute-path="echeance"/>
+		<obj-attribute name="reel" type="java.util.Date" db-attribute-path="reel"/>
+	</obj-entity>
+	<obj-entity name="SecoursImmediatExceptionnel" className="nc.ccas.gasel.model.habitat.SecoursImmediatExceptionnel" dbEntityName="secours_immediat_exceptionnel">
+		<obj-attribute name="montant" type="java.lang.Integer" db-attribute-path="montant"/>
+	</obj-entity>
+	<obj-entity name="SiteRHI" className="nc.ccas.gasel.model.habitat.SiteRHI" dbEntityName="site_rhi">
+		<obj-attribute name="familleEstimees" type="java.lang.Integer" db-attribute-path="famille_estimees"/>
+		<obj-attribute name="inscription" type="java.util.Date" db-attribute-path="inscription"/>
+		<obj-attribute name="nom" type="java.lang.String" db-attribute-path="nom"/>
+		<obj-attribute name="projet" type="java.lang.String" db-attribute-path="projet"/>
+		<obj-attribute name="resorbe" type="java.lang.Boolean" db-attribute-path="resorbe"/>
+	</obj-entity>
+	<db-relationship name="ARRAY_dossiers" source="action_collective" target="action_collective_dossiers" toMany="true">
+		<db-attribute-pair source="id" target="action_collective_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_problematiques" source="action_collective" target="action_collective_problematiques" toMany="true">
+		<db-attribute-pair source="id" target="action_collective_id"/>
+	</db-relationship>
+	<db-relationship name="referent_familial" source="action_collective" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_familial_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent_social" source="action_collective" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_social_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_habitat_action_sociale" source="action_sociale" target="objectif_habitat" toMany="true">
+		<db-attribute-pair source="id" target="action_sociale_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="action_sociale" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_aff_accession" source="affectation_accession" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="id" target="aff_accession_id"/>
+	</db-relationship>
+	<db-relationship name="assurance_habitation" source="affectation_accession" target="assurance_habitation" toMany="false">
+		<db-attribute-pair source="assurance_habitation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="quartier" source="affectation_accession" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="code_quartier" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="type" source="affectation_accession" target="type_logement" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_emprunt" source="affectation_accession" target="type_emprunt" toMany="false">
+		<db-attribute-pair source="type_emprunt_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_problemes" source="affectation_locatif" target="affectation_locatif_problemes" toMany="true">
+		<db-attribute-pair source="id" target="affectation_locatif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_aff_locatif" source="affectation_locatif" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="id" target="aff_locatif_id"/>
+	</db-relationship>
+	<db-relationship name="assurance_habitation" source="affectation_locatif" target="assurance_habitation" toMany="false">
+		<db-attribute-pair source="assurance_habitation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="bailleur" source="affectation_locatif" target="bailleur" toMany="false">
+		<db-attribute-pair source="bailleur_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="categorie" source="affectation_locatif" target="categorie_sociale_logement" toMany="false">
+		<db-attribute-pair source="categorie_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="quartier" source="affectation_locatif" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="code_quartier" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="type" source="affectation_locatif" target="type_logement" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_aff_rehabilitation" source="affectation_rehabilitation" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="id" target="aff_rehabilitation_id"/>
+	</db-relationship>
+	<db-relationship name="assurance_habitation" source="affectation_rehabilitation" target="assurance_habitation" toMany="false">
+		<db-attribute-pair source="assurance_habitation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="quartier" source="affectation_rehabilitation" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="code_quartier" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="type" source="affectation_rehabilitation" target="type_logement" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_emprunt" source="affectation_rehabilitation" target="type_emprunt" toMany="false">
+		<db-attribute-pair source="type_emprunt_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="FROM_aspect_dossier_habitat_ARRAY_aides" source="aide_logement" target="aspect_dossier_habitat_aides" toMany="true">
+		<db-attribute-pair source="id" target="aide_logement_id"/>
+	</db-relationship>
+	<db-relationship name="demande" source="aide_logement" target="demande_aide_logement" toMany="false">
+		<db-attribute-pair source="demande_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="derogation" source="aide_logement" target="derogation_aide_logement" toMany="false">
+		<db-attribute-pair source="derogation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="nature" source="aide_logement" target="nature_aide_logement" toMany="false">
+		<db-attribute-pair source="nature_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="FROM_aspect_dossier_habitat_ARRAY_aides_complementaires" source="aide_sociale" target="aspect_dossier_habitat_aides_complementaires" toMany="true">
+		<db-attribute-pair source="id" target="aide_sociale_id"/>
+	</db-relationship>
+	<db-relationship name="nature" source="aide_sociale" target="nature_aide_sociale" toMany="false">
+		<db-attribute-pair source="nature_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="organisme" source="aide_sociale" target="organisme_aide_sociale" toMany="false">
+		<db-attribute-pair source="organisme_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_aides" source="aspect_dossier_habitat" target="aspect_dossier_habitat_aides" toMany="true">
+		<db-attribute-pair source="dossier_id" target="aspect_dossier_habitat_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_aides_complementaires" source="aspect_dossier_habitat" target="aspect_dossier_habitat_aides_complementaires" toMany="true">
+		<db-attribute-pair source="dossier_id" target="aspect_dossier_habitat_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_planning" source="aspect_dossier_habitat" target="aspect_dossier_habitat_planning" toMany="true">
+		<db-attribute-pair source="dossier_id" target="aspect_dossier_habitat_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="FROM_action_collective_ARRAY_dossiers" source="aspect_dossier_habitat" target="action_collective_dossiers" toMany="true">
+		<db-attribute-pair source="dossier_id" target="aspect_dossier_habitat_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_action_sociale_dossier" source="aspect_dossier_habitat" target="action_sociale" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_affectation_dossier" source="aspect_dossier_habitat" target="demande_affectation" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_aide_logement_dossier_habitat" source="aspect_dossier_habitat" target="demande_aide_logement" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_habitat_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="_quartier_relogement" source="aspect_dossier_habitat" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="quartier_relogement" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_dossier_habitat" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="origine" source="aspect_dossier_habitat" target="site_rhi" toMany="false">
+		<db-attribute-pair source="origine_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="origine_signalement" source="aspect_dossier_habitat" target="origine_signalement_hb" toMany="false">
+		<db-attribute-pair source="origine_signalement_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="phase" source="aspect_dossier_habitat" target="phase_relogement" toMany="false">
+		<db-attribute-pair source="phase_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent_familial" source="aspect_dossier_habitat" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_familial_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="referent_social" source="aspect_dossier_habitat" target="utilisateur" toMany="false">
+		<db-attribute-pair source="referent_social_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_logement_origine" source="aspect_dossier_habitat" target="type_logement" toMany="false">
+		<db-attribute-pair source="type_logement_origine_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_secours_immediat_exceptionnel_dossier" source="aspect_sie" target="secours_immediat_exceptionnel" toMany="true">
+		<db-attribute-pair source="dossier_id" target="dossier_dossier_id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="aspect_sie" target="dossier" toMany="false">
+		<db-attribute-pair source="dossier_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_aide_logement_attribution" source="attribution" target="demande_aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="attribution_id"/>
+	</db-relationship>
+	<db-relationship name="aff_accession" source="demande_affectation" target="affectation_accession" toMany="false">
+		<db-attribute-pair source="aff_accession_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aff_locatif" source="demande_affectation" target="affectation_locatif" toMany="false">
+		<db-attribute-pair source="aff_locatif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="aff_rehabilitation" source="demande_affectation" target="affectation_rehabilitation" toMany="false">
+		<db-attribute-pair source="aff_rehabilitation_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="demande_affectation" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="quartier" source="demande_affectation" target="mairie__siqurt" toMany="false">
+		<db-attribute-pair source="code_quartier" target="quarti"/>
+	</db-relationship>
+	<db-relationship name="type" source="demande_affectation" target="type_logement" toMany="false">
+		<db-attribute-pair source="type_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="type_demande" source="demande_affectation" target="type_aff_demande_habitat" toMany="false">
+		<db-attribute-pair source="type_demande_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_logement_demande" source="demande_aide_logement" target="aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="demande_id"/>
+	</db-relationship>
+	<db-relationship name="attribution" source="demande_aide_logement" target="attribution" toMany="false">
+		<db-attribute-pair source="attribution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier_habitat" source="demande_aide_logement" target="aspect_dossier_habitat" toMany="false">
+		<db-attribute-pair source="dossier_habitat_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="motif_ct" source="demande_aide_logement" target="motif_ct" toMany="false">
+		<db-attribute-pair source="motif_ct_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aide_logement_derogation" source="derogation_aide_logement" target="aide_logement" toMany="true">
+		<db-attribute-pair source="id" target="derogation_id"/>
+	</db-relationship>
+	<db-relationship name="motif" source="derogation_aide_logement" target="motif_derogation_habitat" toMany="false">
+		<db-attribute-pair source="motif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="motif" source="intervention" target="motif_intervention" toMany="false">
+		<db-attribute-pair source="motif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="objectif" source="intervention" target="objectif_habitat" toMany="false">
+		<db-attribute-pair source="objectif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_intervention_objectif" source="objectif_habitat" target="intervention" toMany="true">
+		<db-attribute-pair source="id" target="objectif_id"/>
+	</db-relationship>
+	<db-relationship name="REV_objectif_prob_habitat_objectif" source="objectif_habitat" target="objectif_prob_habitat" toMany="true">
+		<db-attribute-pair source="id" target="objectif_id"/>
+	</db-relationship>
+	<db-relationship name="action_sociale" source="objectif_habitat" target="action_sociale" toMany="false">
+		<db-attribute-pair source="action_sociale_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="ARRAY_reponses" source="objectif_prob_habitat" target="objectif_prob_habitat_reponses" toMany="true">
+		<db-attribute-pair source="id" target="objectif_prob_habitat_id"/>
+	</db-relationship>
+	<db-relationship name="objectif" source="objectif_prob_habitat" target="objectif_habitat" toMany="false">
+		<db-attribute-pair source="objectif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="problematique" source="objectif_prob_habitat" target="problematique" toMany="false">
+		<db-attribute-pair source="problematique_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="site" source="observation_site_rhi" target="site_rhi" toMany="false">
+		<db-attribute-pair source="site_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="FROM_aspect_dossier_habitat_ARRAY_planning" source="previsionnel_habitat" target="aspect_dossier_habitat_planning" toMany="true">
+		<db-attribute-pair source="id" target="previsionnel_habitat_id"/>
+	</db-relationship>
+	<db-relationship name="categorie_sortie" source="previsionnel_habitat" target="categorie_sortie_protocole" toMany="false">
+		<db-attribute-pair source="categorie_sortie_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="dossier" source="secours_immediat_exceptionnel" target="aspect_sie" toMany="false">
+		<db-attribute-pair source="dossier_dossier_id" target="dossier_id"/>
+	</db-relationship>
+	<db-relationship name="institution" source="secours_immediat_exceptionnel" target="institution" toMany="false">
+		<db-attribute-pair source="institution_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="motif" source="secours_immediat_exceptionnel" target="motif_sie" toMany="false">
+		<db-attribute-pair source="motif_id" target="id"/>
+	</db-relationship>
+	<db-relationship name="REV_aspect_dossier_habitat_origine" source="site_rhi" target="aspect_dossier_habitat" toMany="true">
+		<db-attribute-pair source="id" target="origine_id"/>
+	</db-relationship>
+	<db-relationship name="REV_observation_site_rhi_site" source="site_rhi" target="observation_site_rhi" toMany="true">
+		<db-attribute-pair source="id" target="site_id"/>
+	</db-relationship>
+	<obj-relationship name="dossiers" source="ActionCollective" target="AspectDossierHabitat" db-relationship-path="ARRAY_dossiers.aspect_dossier_habitat"/>
+	<obj-relationship name="problematiques" source="ActionCollective" target="Problematique" db-relationship-path="ARRAY_problematiques.problematique"/>
+	<obj-relationship name="referentFamilial" source="ActionCollective" target="Utilisateur" db-relationship-path="referent_familial"/>
+	<obj-relationship name="referentSocial" source="ActionCollective" target="Utilisateur" db-relationship-path="referent_social"/>
+	<obj-relationship name="detailsPrives" source="ActionSociale" target="ObjectifHabitat" db-relationship-path="REV_objectif_habitat_action_sociale"/>
+	<obj-relationship name="dossier" source="ActionSociale" target="AspectDossierHabitat" db-relationship-path="dossier"/>
+	<obj-relationship name="assuranceHabitation" source="AffectationAccession" target="AssuranceHabitation" db-relationship-path="assurance_habitation"/>
+	<obj-relationship name="quartier" source="AffectationAccession" target="Quartier" db-relationship-path="quartier"/>
+	<obj-relationship name="type" source="AffectationAccession" target="TypeLogement" db-relationship-path="type"/>
+	<obj-relationship name="typeEmprunt" source="AffectationAccession" target="TypeEmprunt" db-relationship-path="type_emprunt"/>
+	<obj-relationship name="assuranceHabitation" source="AffectationLocatif" target="AssuranceHabitation" db-relationship-path="assurance_habitation"/>
+	<obj-relationship name="bailleur" source="AffectationLocatif" target="Bailleur" db-relationship-path="bailleur"/>
+	<obj-relationship name="categorie" source="AffectationLocatif" target="CategorieSocialeLogement" db-relationship-path="categorie"/>
+	<obj-relationship name="problemes" source="AffectationLocatif" target="ProblemeLogement" db-relationship-path="ARRAY_problemes.probleme_logement"/>
+	<obj-relationship name="quartier" source="AffectationLocatif" target="Quartier" db-relationship-path="quartier"/>
+	<obj-relationship name="type" source="AffectationLocatif" target="TypeLogement" db-relationship-path="type"/>
+	<obj-relationship name="assuranceHabitation" source="AffectationRehabilitation" target="AssuranceHabitation" db-relationship-path="assurance_habitation"/>
+	<obj-relationship name="quartier" source="AffectationRehabilitation" target="Quartier" db-relationship-path="quartier"/>
+	<obj-relationship name="type" source="AffectationRehabilitation" target="TypeLogement" db-relationship-path="type"/>
+	<obj-relationship name="typeEmprunt" source="AffectationRehabilitation" target="TypeEmprunt" db-relationship-path="type_emprunt"/>
+	<obj-relationship name="demande" source="AideLogement" target="DemandeAideLogement" db-relationship-path="demande"/>
+	<obj-relationship name="derogation" source="AideLogement" target="DerogationAideLogement" db-relationship-path="derogation"/>
+	<obj-relationship name="nature" source="AideLogement" target="NatureAideLogement" db-relationship-path="nature"/>
+	<obj-relationship name="nature" source="AideSociale" target="NatureAideSociale" db-relationship-path="nature"/>
+	<obj-relationship name="organisme" source="AideSociale" target="OrganismeAideSociale" db-relationship-path="organisme"/>
+	<obj-relationship name="aides" source="AspectDossierHabitat" target="AideLogement" db-relationship-path="ARRAY_aides.aide_logement"/>
+	<obj-relationship name="aidesComplementaires" source="AspectDossierHabitat" target="AideSociale" db-relationship-path="ARRAY_aides_complementaires.aide_sociale"/>
+	<obj-relationship name="autresProblemes" source="AspectDossierHabitat" target="ActionSociale" db-relationship-path="REV_action_sociale_dossier"/>
+	<obj-relationship name="demandesAffectation" source="AspectDossierHabitat" target="DemandeAffectation" db-relationship-path="REV_demande_affectation_dossier"/>
+	<obj-relationship name="demandesAideLogement" source="AspectDossierHabitat" target="DemandeAideLogement" db-relationship-path="REV_demande_aide_logement_dossier_habitat"/>
+	<obj-relationship name="dossier" source="AspectDossierHabitat" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="origine" source="AspectDossierHabitat" target="SiteRHI" db-relationship-path="origine"/>
+	<obj-relationship name="origineSignalement" source="AspectDossierHabitat" target="OrigineSignalementHb" db-relationship-path="origine_signalement"/>
+	<obj-relationship name="phase" source="AspectDossierHabitat" target="PhaseRelogement" db-relationship-path="phase"/>
+	<obj-relationship name="planning" source="AspectDossierHabitat" target="PrevisionnelHabitat" db-relationship-path="ARRAY_planning.previsionnel_habitat"/>
+	<obj-relationship name="quartierRelogement" source="AspectDossierHabitat" target="Quartier" db-relationship-path="_quartier_relogement"/>
+	<obj-relationship name="referentFamilial" source="AspectDossierHabitat" target="Utilisateur" db-relationship-path="referent_familial"/>
+	<obj-relationship name="referentSocial" source="AspectDossierHabitat" target="Utilisateur" db-relationship-path="referent_social"/>
+	<obj-relationship name="typeLogementOrigine" source="AspectDossierHabitat" target="TypeLogement" db-relationship-path="type_logement_origine"/>
+	<obj-relationship name="dossier" source="AspectSIE" target="Dossier" db-relationship-path="dossier"/>
+	<obj-relationship name="secours" source="AspectSIE" target="SecoursImmediatExceptionnel" db-relationship-path="REV_secours_immediat_exceptionnel_dossier"/>
+	<obj-relationship name="affAccession" source="DemandeAffectation" target="AffectationAccession" db-relationship-path="aff_accession"/>
+	<obj-relationship name="affLocatif" source="DemandeAffectation" target="AffectationLocatif" db-relationship-path="aff_locatif"/>
+	<obj-relationship name="affRehabilitation" source="DemandeAffectation" target="AffectationRehabilitation" db-relationship-path="aff_rehabilitation"/>
+	<obj-relationship name="dossier" source="DemandeAffectation" target="AspectDossierHabitat" db-relationship-path="dossier"/>
+	<obj-relationship name="quartier" source="DemandeAffectation" target="Quartier" db-relationship-path="quartier"/>
+	<obj-relationship name="type" source="DemandeAffectation" target="TypeLogement" db-relationship-path="type"/>
+	<obj-relationship name="typeDemande" source="DemandeAffectation" target="TypeAffDemandeHabitat" db-relationship-path="type_demande"/>
+	<obj-relationship name="aides" source="DemandeAideLogement" target="AideLogement" db-relationship-path="REV_aide_logement_demande"/>
+	<obj-relationship name="attribution" source="DemandeAideLogement" target="Attribution" db-relationship-path="attribution"/>
+	<obj-relationship name="dossierHabitat" source="DemandeAideLogement" target="AspectDossierHabitat" db-relationship-path="dossier_habitat"/>
+	<obj-relationship name="motifCT" source="DemandeAideLogement" target="MotifCT" db-relationship-path="motif_ct"/>
+	<obj-relationship name="motif" source="DerogationAideLogement" target="MotifDerogationHabitat" db-relationship-path="motif"/>
+	<obj-relationship name="motif" source="Intervention" target="MotifIntervention" db-relationship-path="motif"/>
+	<obj-relationship name="objectif" source="Intervention" target="ObjectifHabitat" db-relationship-path="objectif"/>
+	<obj-relationship name="actionSociale" source="ObjectifHabitat" target="ActionSociale" db-relationship-path="action_sociale"/>
+	<obj-relationship name="interventions" source="ObjectifHabitat" target="Intervention" db-relationship-path="REV_intervention_objectif"/>
+	<obj-relationship name="problematiques" source="ObjectifHabitat" target="ObjectifProbHabitat" db-relationship-path="REV_objectif_prob_habitat_objectif"/>
+	<obj-relationship name="objectif" source="ObjectifProbHabitat" target="ObjectifHabitat" db-relationship-path="objectif"/>
+	<obj-relationship name="problematique" source="ObjectifProbHabitat" target="Problematique" db-relationship-path="problematique"/>
+	<obj-relationship name="reponses" source="ObjectifProbHabitat" target="ReponseProblematique" db-relationship-path="ARRAY_reponses.reponse_problematique"/>
+	<obj-relationship name="site" source="ObservationSiteRHI" target="SiteRHI" db-relationship-path="site"/>
+	<obj-relationship name="categorieSortie" source="PrevisionnelHabitat" target="CategorieSortieProtocole" db-relationship-path="categorie_sortie"/>
+	<obj-relationship name="dossier" source="SecoursImmediatExceptionnel" target="AspectSIE" db-relationship-path="dossier"/>
+	<obj-relationship name="institution" source="SecoursImmediatExceptionnel" target="Institution" db-relationship-path="institution"/>
+	<obj-relationship name="motif" source="SecoursImmediatExceptionnel" target="MotifSIE" db-relationship-path="motif"/>
+	<obj-relationship name="observations" source="SiteRHI" target="ObservationSiteRHI" db-relationship-path="REV_observation_site_rhi_site"/>
+</data-map>

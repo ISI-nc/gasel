@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$"><div jwcid="@Border">
+
+<div jwcid="@core/Tableau" source="ognl:sort(sql.query.all('Groupe')).by('libelle').results"
+	value="ognl:groupe">
+	<span jwcid="@core/tableau/Colonne" titre="Groupe" value="ognl:groupe.libelle" />
+	
+	<span jwcid="@core/tableau/ObjectPageAction" page="habilitations/GroupeEdit" />
+	<span jwcid="@core/tableau/ActionSupprimer" />
+</div>
+
+<p>
+	<input jwcid="@core/BoutonCreer" pageCreation="habilitations/GroupeEdit" />
+	<input jwcid="@core/BoutonRetour" />
+</p>
+
+</div>
+</body>
+</html>

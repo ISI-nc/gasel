@@ -1,0 +1,36 @@
+
+#header {
+	text-align: center;
+	height: 37px;
+	padding: 6px 6px 0px 6px;
+	background-image: url('../../images/fond_titre.jpg');
+}
+
+/* -----------------------------------------------------------------------------
+** Infos session
+*/
+
+#session-timeout { border: 1px; padding:0; font-family: monospace; font-weight: bold; color: #000; }
+.session-timeout-warning { background-color: #f90 ! important; }
+.session-timeout-red-alert { background-color: #f00 ! important; }
+
+/* -----------------------------------------------------------------------------
+** Barre de navigation dans le workflow
+*/
+
+#nav_bar {
+	background-color: #bdbfbe;
+	padding: 0px 3px 3px 3px;
+	font-size: 8pt;
+	overflow: auto;
+}
+
+#nav_bar .invis-button {
+	background-color: #bdbfbe;
+	font-size: 8pt;
+	padding: 3px 6px;
+}
+
+#nav_bar .invis-button:hover { background-color: #999 ! important; }
+.wf-current .invis-button { font-weight: bold; }
+.wf-path .invis-button, .wf-current .invis-button { font-size: 9pt ! important; }

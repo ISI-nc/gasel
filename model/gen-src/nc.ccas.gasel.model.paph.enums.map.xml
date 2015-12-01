@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map project-version="2.0">
+	<property name="defaultPackage" value="nc.ccas.gasel.model.paph.enums"/>
+	<db-entity name="handicap">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="motif_derogation_paph">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="nature_deplacement_taxi">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="situation_sociale">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="specificite_carte_hand">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="statut_occupation">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<db-entity name="taux_handicap">
+		<db-attribute name="actif" type="BIT" isMandatory="true"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isGenerated="true" isMandatory="true"/>
+		<db-attribute name="libelle" type="VARCHAR" isMandatory="true" length="250"/>
+		<db-attribute name="locked" type="BIT" isMandatory="true"/>
+	</db-entity>
+	<obj-entity name="Handicap" className="nc.ccas.gasel.model.paph.enums.Handicap" dbEntityName="handicap">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="MotifDerogationPAPH" className="nc.ccas.gasel.model.paph.enums.MotifDerogationPAPH" dbEntityName="motif_derogation_paph">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="NatureDeplacementTaxi" className="nc.ccas.gasel.model.paph.enums.NatureDeplacementTaxi" dbEntityName="nature_deplacement_taxi">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="SituationSociale" className="nc.ccas.gasel.model.paph.enums.SituationSociale" dbEntityName="situation_sociale">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="SpecificiteCarteHand" className="nc.ccas.gasel.model.paph.enums.SpecificiteCarteHand" dbEntityName="specificite_carte_hand">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="StatutOccupation" className="nc.ccas.gasel.model.paph.enums.StatutOccupation" dbEntityName="statut_occupation">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<obj-entity name="TauxHandicap" className="nc.ccas.gasel.model.paph.enums.TauxHandicap" dbEntityName="taux_handicap">
+		<obj-attribute name="actif" type="java.lang.Boolean" db-attribute-path="actif"/>
+		<obj-attribute name="libelle" type="java.lang.String" db-attribute-path="libelle"/>
+		<obj-attribute name="locked" type="java.lang.Boolean" db-attribute-path="locked"/>
+	</obj-entity>
+	<db-relationship name="REV_demande_taxi_type_handicap" source="handicap" target="demande_taxi" toMany="true">
+		<db-attribute-pair source="id" target="type_handicap_id"/>
+	</db-relationship>
+	<db-relationship name="REV_handicap_paph_handicap" source="handicap" target="handicap_paph" toMany="true">
+		<db-attribute-pair source="id" target="handicap_id"/>
+	</db-relationship>
+	<db-relationship name="REV_demande_taxi_motif_derogation" source="motif_derogation_paph" target="demande_taxi" toMany="true">
+		<db-attribute-pair source="id" target="motif_derogation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_deplacement_taxi_nature" source="nature_deplacement_taxi" target="deplacement_taxi" toMany="true">
+		<db-attribute-pair source="id" target="nature_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_paph_situation_sociale" source="situation_sociale" target="dossier_paph" toMany="true">
+		<db-attribute-pair source="id" target="situation_sociale_id"/>
+	</db-relationship>
+	<db-relationship name="REV_specificite_carte_paph_specificite" source="specificite_carte_hand" target="specificite_carte_paph" toMany="true">
+		<db-attribute-pair source="id" target="specificite_id"/>
+	</db-relationship>
+	<db-relationship name="REV_dossier_paph_statut_occupation" source="statut_occupation" target="dossier_paph" toMany="true">
+		<db-attribute-pair source="id" target="statut_occupation_id"/>
+	</db-relationship>
+	<db-relationship name="REV_handicap_paph_taux" source="taux_handicap" target="handicap_paph" toMany="true">
+		<db-attribute-pair source="id" target="taux_id"/>
+	</db-relationship>
+</data-map>

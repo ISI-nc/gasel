@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+
+	<table><tbody>
+	<tr>
+		<td colspan="2"><strong>Avis de commission :</strong></td>
+	</tr>
+	<tr>
+		<td>Date :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.date"/></td>
+	</tr>
+	<tr>
+		<td>Nom du représentant :</td>
+		<td><input jwcid="@TextField" value="ognl:object.nom" /></td>
+	</tr>
+	<tr>
+		<td>Avis de la commssion :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.valide" model="ognl:psm.ouiNon" />
+		</td>
+	</tr>
+	</tbody></table>
+	
+	<table><tr><td>
+	<div>Demandes de taxi à traiter :</div>
+		<table jwcid="@core/Tableau" source="ognl:object.demandesTaxi" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Num" value="ognl:sql.idOf(row)" />
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.dateDemande" />
+			<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:row.dossier.personne" />
+			<div jwcid="@core/tableau/Action" action="listener:enleverDemande" title="-"/>
+		</table>
+	</td>
+	<td>&nbsp;</td>
+	<td>
+	<div>Demandes de taxi en attente :</div>
+		<table jwcid="@core/Tableau" source="ognl:demandesDispo" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:row.dateDemande" />
+			<div jwcid="@core/tableau/Colonne" titre="Personne" value="ognl:row.dossier.personne" />
+			<div jwcid="@core/tableau/Action" action="listener:ajouterDemande" title="+"/>
+		</table>
+	</td>
+	</tr>
+	</table>
+	
+</div>
+	
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.workflow" package="nc.ccas.gasel.workflow" version="0.0.1">
+
+	<service-point id="WorkflowFactory" interface="org.apache.tapestry.engine.state.StateObjectFactory">
+		<invoke-factory>
+			<construct class="WorkflowStateObjectFactory">
+				<set property="pageName" value="Accueil" />
+				<set property="title" value="Accueil" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="WorkflowScopeManager" interface="IWorkflowScopeManager">
+		<invoke-factory>
+			<construct class="WorkflowScopeManager">
+				<set-service property="stateManager" service-id="tapestry.state.ApplicationStateManager" />
+				<set property="workflowName" value="workflow" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="WorkflowPropertyPersistenceStrategy"
+		interface="org.apache.tapestry.record.PropertyPersistenceStrategy">
+		<invoke-factory>
+			<construct class="WorkflowPropertyPersistenceStrategy">
+				<set-service property="workflowScopeManager"
+					service-id="WorkflowScopeManager" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<service-point id="WorkflowService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="WorkflowService">
+				<set-service property="workflowScopeManager" service-id="WorkflowScopeManager" />
+				<set-service property="responseBuilder" service-id="tapestry.globals.ResponseBuilder" />
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<contribution configuration-id="tapestry.persist.PersistenceStrategy">
+		<strategy name="workflow"
+			object="service:WorkflowPropertyPersistenceStrategy" />
+	</contribution>
+
+	<contribution configuration-id="tapestry.state.StateObjectPersistenceManagers">
+		<manager object="service:WorkflowScopeManager" scope="workflow" />
+	</contribution>
+
+	<contribution configuration-id="tapestry.state.ApplicationObjects">
+		<state-object name="workflow" scope="session">
+			<invoke-factory object="service:WorkflowFactory" />
+		</state-object>
+		<state-object name="flowSynchroniser" scope="session">
+			<create-instance class="FlowSynchroniser"/>
+		</state-object>
+	</contribution>
+	
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="workflow" object="service:WorkflowService" />
+	</contribution>
+
+</module>

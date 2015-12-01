@@ -1,0 +1,5 @@
+mairie.dev-mode=true
+mairie.jdbc.driver=org.postgresql.Driver
+mairie.jdbc.url=jdbc:postgresql://localhost:5432/gasel_v2
+mairie.jdbc.user=postgres
+mairie.jdbc.pass=

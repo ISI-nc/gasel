@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border" focus="component:numeroBon">
+
+<form jwcid="@core/Form" extraActions="component:extraActions">
+        <table style="width:100%">
+        <tbody>
+            <tr>
+	            <td colspan="2">Facture&nbsp;:
+	              <table class="sousSection" width="100%">
+	                <tbody>
+	                  <tr>
+	                    <td width="25%" class="label">N° facture&nbsp;:</td>
+	                    <td width="15%" class="label"><input jwcid="@TextField" value="ognl:facture.numero" size="20"/></td>
+	                    <td width="20%" class="label">Montant de la facture&nbsp;:</td>
+	                    <td width="50%" class="label"><input jwcid="@TextField" class="montant" value="ognl:facture.montant" translator="translator:entier" size="10"/></td>
+	                  </tr>
+	                  <tr>
+	                    <td>Date de la facture&nbsp;:</td>
+	                    <td>
+	                    <input jwcid="@core/edit/Date" size="9" value="ognl:facture.creation"/>
+	                    </td>
+	                    <td class="label">Validée&nbsp;:</td>
+	                    <td>
+	                    <span jwcid="@RadioGroup" selected="ognl:facture.valide">
+	                    	<input jwcid="@Radio" type="radio" disabled class="radiodisabled" value="ognl:true"/>Oui
+	                    	<input jwcid="@Radio" type="radio" disabled class="radiodisabled" value="ognl:false"/>Non
+	                    </span>
+	                    </td>
+	                  </tr>
+	                  <tr>
+	                    <td class="label">Fournisseur&nbsp;:</td>
+	                    <td colspan="3">
+	                    <span jwcid="@core/edit/ToOne" value="ognl:facture.fournisseur"
+	                    		searchPage="aides/RechercheFournisseur">
+	                    	<span jwcid="@Insert" value="ognl:facture.fournisseur.libelle"/>
+	                    </span>
+	                    </td>
+	                  </tr>
+	                  <tr>
+	                    <td class="label">Total des bons:</td>
+	                    <td><input jwcid="@Insert" value="ognl:montantTotal" format="ognl:format.montant"/></td>
+	                    <td></td>
+	                    <td></td>
+	                  </tr>
+	                </tbody>
+	              </table>
+	            </td>
+            </tr>
+		<tr><td colspan="2">
+			<p><strong>Ajout de parties à la facture</strong></p>
+		</td></tr>
+<div jwcid="@If" condition="ognl:!isNew(facture)" renderTag="false">
+            <tr onkeydown="return clickIfEnter(event,'ajouterPartie');">
+	            <td class="label" colspan="2"><p>
+	            	Nouvelle partie&nbsp;:
+		        	<input jwcid="@TextField" value="ognl:libelleNouvellePartie"/>
+		        	<input jwcid="ajouterPartie@Submit" action="listener:ajouterPartie" value="Ajouter" class="button"/>
+	        	</p></td>
+            </tr>
+
+		<tr><td colspan="2">
+			<p><strong>Ajout de bons à une partie</strong></p>
+		</td></tr>
+
+	<div jwcid="@If" condition="ognl:facture.parties" renderTag="false">
+
+        	<tr onkeypress="return clickIfEnter(event,'ajouterBon');">
+	        	<td class="label" colspan="2">
+		        	<div jwcid="@If" condition="ognl:erreurAjout" style="font-weight:bold;color:red;">
+		        		<span jwcid="@Insert" value="ognl:erreurAjout">Erreur</span></div>
+		        	Ajouter le bon n°&nbsp;:
+		        	<input jwcid="numeroBon@TextField" type="text" tabindex="1" size="10" value="ognl:bonAjout" />
+		        	à la partie <select jwcid="@PropertySelection" value="ognl:partieAjout" model="ognl:partiesModel" />
+		        	<input class="button" jwcid="ajouterBon@Submit" action="listener:ajouterBon" value="Ajouter le bon" autocomplete="off"/>
+		        	<script type="text/javascript">document.getElementById('numeroBon').focus();document.getElementById('numeroBon').value="";</script>
+	        	</td>
+            </tr>
+			<tr jwcid="@If" condition="ognl:bonsCorrespondants and (bonsCorrespondants.size() &gt; 1)"
+				renderTag="literal:tr">
+				<td>
+					<div jwcid="@core/Tableau" lignesParPage="20"
+						titre="Plusieurs bons correspondent, choisissez..."
+						source="ognl:bonsCorrespondants" value="ognl:bon">
+						<div jwcid="@core/tableau/Colonne" titre="N° bon" value="ognl:bon.numero"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:bon.debut" format="ognl:dateFormat"/>
+						<div jwcid="@core/tableau/Colonne" titre="Au nom de..." value="ognl:bon.personne.repr"/>
+						<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:bon.aide.public"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="Article" value="ognl:bon.aide.nature"/>
+						<div jwcid="@core/tableau/Colonne" titre="Imputation" value="ognl:bon.aide.nature.imputation"/>
+						<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:bon.aide.statut"/>
+
+						<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:bon.montant"/>
+						
+						<div jwcid="@core/tableau/ActionChoisir" action="listener:ajouterBon" disabled="false"/>
+					</div>
+				</td>
+			</tr>
+        	<tr>
+	    		<td>
+	    			<p>	<strong>Partie active :</strong>
+	    				<input jwcid="@PropertySelection"
+	    					value="ognl:partieActive"
+	    					model="ognl:psm.withNull('-- toutes --', psm.dataObject(sort(facture.parties).byToString.results, 'libelle'))"
+	    					onchange="refreshPage()"/>
+	    				
+	    				<!-- <input jwcid="changePartie@Submit" value="Ok" class="button"/> -->
+	    			</p>
+					<div jwcid="@core/Tableau" lignesParPage="20"
+						titre="ognl:partieActive ? partieActive.libelle + ' (' + format.montant.format(partieActive.total) + ' CFP)' : null"
+						source="ognl:bonsTableau" value="ognl:usageBon">
+						<div jwcid="@core/tableau/Colonne" titre="Partie"
+							value="ognl:usageBon.facture.libelle" 
+							visible="ognl:!partieActive"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="N° bon" value="ognl:usageBon.bon.numero"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="Date" value="ognl:usageBon.bon.debut" format="ognl:dateFormat"/>
+						<div jwcid="@core/tableau/Colonne" titre="Au nom de..." value="ognl:usageBon.bon.personne.repr"/>
+						<div jwcid="@core/tableau/Colonne" titre="Type de public" value="ognl:usageBon.bon.aide.public"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="Article" value="ognl:usageBon.bon.aide.nature"/>
+						<div jwcid="@core/tableau/Colonne" titre="Imputation" value="ognl:usageBon.bon.aide.nature.imputation"/>
+						<div jwcid="@core/tableau/Colonne" titre="Statut" value="ognl:usageBon.bon.aide.statut"/>
+
+						<div jwcid="@core/tableau/Colonne" titre="Montant" value="ognl:usageBon.bon.montant"/>
+						<div jwcid="@core/tableau/Colonne" titre="Montant utilisé" value="ognl:usageBon.montantUtilise"/>
+						
+						<div jwcid="@core/tableau/Colonne" titre="Arrêté" value="ognl:usageBon.arrete?usageBon.arrete.numero:null"/>
+						
+						<div jwcid="@core/tableau/ObjectPageAction" page="compta/GestionBons"/>
+						<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:usageBon.facture" liste="bons"
+								afterDelete="listener:sauver"/>
+						<span jwcid="@If" condition="ognl:partieActive and partieActive.bons.empty">
+							<input jwcid="supprimer@Submit"
+								class="button" value="Suppprimer"
+								listener="listener:setPartieASupprimer"
+								action="listener:supprimerPartie"/></span>
+					</div>
+		        </td>
+		    </tr>
+
+	</div><div jwcid="@Else" renderTag="false">
+		<tr><td colspan="2">
+			<div><em>Vous devez ajouter une partie pour ajouter des bons.</em></div>
+		</td></tr>
+	</div>
+</div><div jwcid="@Else" renderTag="false">
+		<tr><td colspan="2">
+			<div><em>Vous devez enregistrer avant de créer une partie de facture.</em></div>
+		</td></tr>
+</div>
+        </tbody>
+        </table>
+        
+<p jwcid="extraActions@Block">
+	<input jwcid="nouvelleFacture@Submit" class="button" action="listener:nouvelleFacture" value="Nouvelle facture"/>
+</p>
+</form>
+</div>
+</body>
+</html>

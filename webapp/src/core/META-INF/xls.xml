@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel.xls" version="1.0.0" package="nc.ccas.gasel.xls">
+	
+	<service-point id="XlsService" interface="org.apache.tapestry.engine.IEngineService">
+		<invoke-factory>
+			<construct class="XlsService">
+				<set-service property="workflowScopeManager" service-id="gasel.workflow.WorkflowScopeManager" />
+				<set-service property="linkFactory" service-id="tapestry.url.LinkFactory" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+	
+	<contribution configuration-id="tapestry.services.ApplicationServices">
+		<service name="xls" object="service:XlsService" />
+	</contribution>
+
+</module>

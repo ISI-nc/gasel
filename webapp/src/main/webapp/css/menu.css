@@ -1,0 +1,31 @@
+.Dossier{
+  cursor:hand;
+  font-Family:Verdana;
+  font-weight : bold;
+  text-decoration:non;
+  font-size : 11px;
+}
+
+.LienActif{
+  cursor:hand;
+  font-size : 10px;
+
+}
+
+.LienInactif{
+  font-weight : bold;
+  font-style : italic;
+  font-size : 10px;
+  cursor : default;
+  color : silver;
+}
+
+.LienCourant{
+  
+  
+  font-size : 10px;
+  cursor : default;
+  color : teal;
+  text-decoration : underline;
+}
+

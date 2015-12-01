@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+<div jwcid="@core/Form">
+
+<span jwcid="@If" condition="ognl:object.dossier" renderTag="false">
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:object.dossier.dossier" />
+</span><span jwcid="@Else" renderTag="false">
+	<p>Collectivité : <span jwcid="@Insert" value="ognl:object.collectivite"/>.</p>
+</span>
+
+<table>
+		<tr>
+			<td>Demandeur :</td>
+			<td jwcid="@If" condition="ognl:object.dossier">
+				<span jwcid="@Insert" value="ognl:object.dossier.dossier.chefFamille.prenom"/>
+				<span jwcid="@Insert" value="ognl:object.dossier.dossier.chefFamille.nom"/>
+			</td>
+			<td jwcid="@Else">
+				<span jwcid="@Insert" value="ognl:object.collectivite"/>
+			</td>
+			</tr>
+			<tr>
+			<td>Jardin :</td>
+			<td><input jwcid="@Insert" value="ognl:object.jardin" /></td>
+			</tr>
+			<tr>
+			<td>Date de la demande :</td><td><input jwcid="@core/edit/Date" value="ognl:object.date" /></td>
+			</tr>
+			<tr><td>Num. enregistrement :</td>
+				<td><input jwcid="@TextField" value="ognl:object.numEnregistrement" /></td>
+			</tr>
+			<tr>
+			<td colspan="2" style="font-weight:bold;">Commission :</td>
+			</tr>
+			<tr><td>Date :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:object.commission" /></td>
+			</tr>
+			<tr><td>Avis :</td>
+				<td><input jwcid="@core/edit/Enum" value="ognl:object.avisCommission" enum="AvisCommissionJF" /></td>
+			</tr>
+		</table>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+#! /bin/bash
+set -ex
+rm -f target/*.war
+mvn package -DskipTests
+ln target/*.war docker/gasel.war
+docker build -t gasel docker

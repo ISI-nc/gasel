@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="modules.aides" version="1.0.0" package="nc.ccas.gasel">
+
+	<contribution configuration-id="gasel.Modules">
+		<module position="100" dossier="" titre="Aides sociales">
+			<partie-module titre="Aides sociales" dossier="aides">
+				<point-entree titre="Rechercher / Créer" page="Recherche">
+					Permet de rechercher et/ou de créer un dossier aides sociales.
+				</point-entree>
+				<point-entree titre="PV de commissions" page="PVCommissions">
+					Permet de récupérer le tableau du PV des commissions entre deux dates.
+				</point-entree>
+				<point-entree titre="Aides de Noël" page="AidesNoel">
+					Créer les aides de Noël.
+				</point-entree>
+				<point-entree titre="Documents" page="DocumentsAides">
+					Permet de gérer les documents du module (courriers).
+				</point-entree>
+			</partie-module>
+			
+			<partie-module dossier="budget" titre="Budget">
+				<point-entree titre="Création" page="Creation">
+					Permet la création d'un budget annuel.
+				</point-entree>
+				<point-entree titre="Liste" page="Liste">
+					Permet de consulter les budgets des années précédentes
+					ou le budget de l'année courante.
+				</point-entree>
+				<point-entree titre="Mouvement de crédit"
+					page="Mouvement">
+					Permet de faire un mouvement de crédit d'un budget à un
+					autre.
+				</point-entree>
+				
+				<point-entree titre="Consultation" page="Consultation">
+					Suivi résumé et détaillé des budgets.
+				</point-entree>
+			</partie-module>
+	
+			<partie-module dossier="budget/mensuel"
+				titre="Suivi de budget mensuel">
+				<point-entree titre="Suivi général" page="SuiviBudgetMensuel">
+					Permet de suivre le budget mois par mois.
+				</point-entree>
+				<point-entree titre="Alimentation" page="Alimentation">
+					Permet de suivre le budget mois par mois de la caisse
+					d'alimentation.
+				</point-entree>
+				<point-entree titre="Solidarité" page="Solidarite">
+					Permet de suivre le budget mois par mois de la caisse de
+					solidarité.
+				</point-entree>
+				<point-entree titre="Avance" page="Avance">
+					Permet de suivre le budget mois par mois de la caisse
+					d'avance.
+				</point-entree>
+				<point-entree
+					titre="Aide alimentaires occasionnelles et immédiates"
+					page="AlimOccImm">
+					Permet de suivre les interventions en aide
+					d'alimentation.
+				</point-entree>
+				<point-entree titre="Aide alimentaires plurimensuelles"
+					page="AlimPlurimensuel">
+					Permet de suivre les interventions en aide
+					d'alimentation.
+				</point-entree>
+				<point-entree titre="Aides alimentaires"
+					page="AlimTous">
+					Permet de suivre les interventions en aide
+					d'alimentation.
+				</point-entree>
+				<point-entree titre="Bons annulés" page="BonsAnnules">
+					Permet de suivre la liste des bons annulés, par mois.
+				</point-entree>
+			</partie-module>
+	
+			<partie-module dossier="budget/annuel"
+				titre="Suivi de budget annuel">
+				<point-entree titre="Suivi général" page="SuiviBudgetAnnuel">
+					Permet de suivre le budget d'une année.
+				</point-entree>
+				<point-entree titre="Mouvements de crédits"
+					page="MouvementsCredit">
+					Permet de suivre les mouvements de crédits.
+				</point-entree>
+				<point-entree titre="Foyers aidés" page="NbDossierAides">
+					Permet de compter les foyers aidés sur une année.
+				</point-entree>
+				<point-entree titre="Alimentation occasionnelle et immédiate"
+					page="AlimOccImm">
+					Répartition des aides occasionnelles et immédiates de la
+					caisse d'alimentation sur l'année.
+				</point-entree>
+				<point-entree titre="Alimentation plurimensuelle"
+					page="AlimPlurimensuel">
+					Répartition des aides plurimensuelles de la caisse
+					d'alimentation sur l'année.
+				</point-entree>
+				<point-entree titre="Hors alimentaire en nombre"
+					page="HANombre">
+					Récapitulatif en nombre, regroupé en secteur, de toutes
+					les aides hors alimentation.
+				</point-entree>
+				<point-entree titre="Hors alimentaire en valeur"
+					page="HAValeur">
+					Récapitulatif en valeur, regroupé en secteur, de toutes
+					les aides hors alimentation.
+				</point-entree>
+				<point-entree titre="Hors alimentaire par public"
+					page="HATypePublic">
+					Récapitulatif en nombre et en valeur, regroupé en
+					secteur, de toutes les aides hors alimentation par type
+					de public.
+				</point-entree>
+				<point-entree titre="Suivi annuel des articles d'alimentation"
+					page="SuiviAnnuelArticleAlimentation">
+					Répartition des articles d'alimentation par type de
+					public sur l'année.
+				</point-entree>
+			</partie-module>
+	
+			<partie-module dossier="compta" titre="Comptabilité">
+				<point-entree titre="Retours de bons" page="RetoursBons">
+					Enregistrer les bons retournés par les fournisseurs.
+				</point-entree>
+				<point-entree titre="Factures" page="Factures">
+					Permet de visualiser la liste des factures sur un mois
+					donné.
+				</point-entree>
+				<point-entree titre="Bons inutilisés"
+					page="BonsInutilises">
+					Permet d'annuler les bons non utilisés. Restitution des
+					bons non encore utilisés des mois précédents.
+				</point-entree>
+				<point-entree titre="Consultation" page="Consultation">
+					Restitution des informations (bons, montants,...) par
+					facture ou par imputation.
+				</point-entree>
+				<point-entree titre="Édition des bons" page="EditionBons">
+					Édition des bons plurimensuels et occasionnels.
+				</point-entree>
+			</partie-module>
+	
+			<partie-module dossier="arretes" titre="Arrêtés">
+				<point-entree titre="Création" page="Creation">
+					Permet de créer un nouvel arrêté.
+				</point-entree>
+				<point-entree titre="Liste" page="Liste">
+					Permet de visualiser la liste des arrêtés d'une année et
+					d'en modifier le contenu.
+				</point-entree>
+			</partie-module>
+		</module>
+	</contribution>
+	
+	<!-- <contribution configuration-id="hivemind.Startup">
+		<startup object="instance:agents.budget.DataUpdateSetup"/>
+	</contribution> -->
+
+</module>

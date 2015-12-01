@@ -1,0 +1,21 @@
+
+<div jwcid="@core/Tableau" source="ognl:dossier.problematiques" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="Type" value="ognl:row.parent" />
+	<span jwcid="@core/tableau/Colonne" titre="Libellé" value="ognl:row" />
+	<span jwcid="@core/tableau/ActionSupprimer" parent="ognl:dossier" liste="problematiques"/>
+	
+	<strong>Ajout&nbsp;:</strong>
+	<select jwcid="@core/edit/Enum"
+		value="ognl:typeFacade" enum="TypeProblematique"
+		onchange="refreshPage()"/>
+	
+	<span jwcid="@If" condition="ognl:type">
+	<select jwcid="@core/edit/Enum"
+		value="ognl:problematique" values="ognl:type?filtrer(type.problematiques):{}"
+		onchange="refreshPage()"/>
+	</span>
+
+	<input jwcid="ajouterProblematique@Submit" class="button" value="Ajouter"
+			action="listener:ajouterProblematique"
+			disabled="ognl:!problematique"/>
+</div>

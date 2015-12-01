@@ -1,0 +1,11 @@
+/build
+/dist
+/context/WEB-INF/lib/gasel-db.jar
+/tests-bin
+/context/WEB-INF/classes/
+/target
+/target
+bin
+/test-output
+/data.json
+/tmp

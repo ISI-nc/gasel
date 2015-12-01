@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<module id="gasel" version="1.0.0" package="nc.ccas.gasel.services">
+
+	<sub-module descriptor="workflow.xml" />
+	<sub-module descriptor="bindings.xml" />
+	<sub-module descriptor="validation.xml" />
+	<sub-module descriptor="xls.xml" />
+	<sub-module descriptor="fop.xml" />
+	<sub-module descriptor="starjet.xml" />
+	<sub-module descriptor="reports.xml" />
+	<sub-module descriptor="modeles-document.xml" />
+
+	<!-- Modules -->
+
+	<sub-module descriptor="module-dossiers.xml" />
+	<sub-module descriptor="module-aides.xml" />
+	<sub-module descriptor="module-paph.xml" />
+	<sub-module descriptor="module-pe.xml" />
+	<sub-module descriptor="module-pi.xml" />
+	<sub-module descriptor="module-habitat.xml" />
+	<sub-module descriptor="module-gasel.xml" />
+
+	<!-- Session -->
+	<service-point id="LoginDataFactory" interface="org.apache.tapestry.engine.state.StateObjectFactory">
+	    <invoke-factory>
+	       <construct class="LoginDataFactory">
+	           <set-service property="request" service-id="tapestry.globals.HttpServletRequest"/>
+	       </construct>
+	   </invoke-factory>  
+	</service-point>
+	<contribution
+		configuration-id="tapestry.state.ApplicationObjects">
+		<state-object name="login" scope="session">
+        	<invoke-factory object="service:LoginDataFactory" />
+		</state-object>
+	</contribution>
+
+	<!-- Points de configuration -->
+
+	<configuration-point id="Modules">
+		<schema>
+			<element name="module">
+				<attribute name="titre" required="true" />
+				<attribute name="dossier" required="false" />
+				<attribute name="position" required="false" />
+
+				<element name="partie-module">
+					<attribute name="titre" required="true" />
+					<attribute name="dossier" required="false" />
+
+					<element name="point-entree">
+						<attribute name="titre" required="true" />
+						<attribute name="page" required="true" />
+
+						<rules>
+							<create-object
+								class="nc.ccas.gasel.configuration.ModuleEntryPoint" />
+							<read-attribute property="titre"
+								attribute="titre" />
+							<read-attribute property="page"
+								attribute="page" />
+							<read-content property="description" />
+							<invoke-parent method="addEntryPoint" />
+						</rules>
+					</element>
+
+					<rules>
+						<create-object
+							class="nc.ccas.gasel.configuration.ModulePart" />
+						<read-attribute property="titre"
+							attribute="titre" />
+						<read-attribute property="dossier"
+							attribute="dossier" />
+						<invoke-parent method="addPart" />
+					</rules>
+				</element>
+
+				<conversion
+					class="nc.ccas.gasel.configuration.ModuleDescription" />
+			</element>
+		</schema>
+	</configuration-point>
+
+	<!-- Services -->
+	<service-point id="ModuleLister">
+		<invoke-factory>
+			<construct class="impl.ModuleListerImpl">
+				<set-configuration property="modules"
+					configuration-id="Modules" />
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+	<service-point id="GaselServicerFilter"
+		interface="org.apache.tapestry.services.WebRequestServicerFilter">
+		<invoke-factory>
+			<construct class="GaselServicerFilter">
+			</construct>
+		</invoke-factory>
+	</service-point>
+
+    <contribution configuration-id="tapestry.request.WebRequestServicerPipeline">
+        <filter name="GaselServicerFilter"
+            object="service:GaselServicerFilter"/>
+    </contribution>
+
+	<!-- Adapateurs pour le DataSqueezer -->
+
+	<contribution configuration-id="tapestry.data.SqueezeAdaptors">
+		<adaptor object="instance:DataObjectSqueezer" />
+	</contribution>
+	
+	<contribution configuration-id="tapestry.form.translator.Translators">
+        <bean name="entier" class="translators.EntierTranslator" />
+        <bean name="reel" class="translators.ReelTranslator" />
+	</contribution>
+	
+
+</module>

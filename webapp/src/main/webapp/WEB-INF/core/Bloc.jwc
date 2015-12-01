@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE component-specification PUBLIC
+  "-//Apache Software Foundation//Tapestry Specification 4.0//EN"
+  "http://jakarta.apache.org/tapestry/dtd/Tapestry_4_0.dtd">
+
+<component-specification>
+	
+	<parameter name="titre" required="yes"/>
+	
+	<parameter name="ouvert" property="ouvertInitial" default-value="true"/>
+	
+	<asset name="imgOuvert" path="context:/images/chevrons/du.gif"/>
+	<asset name="imgFerme" path="context:/images/chevrons/ud.gif"/>
+	
+	<component id="bloc" type="Any" inherit-informal-parameters="yes"/>
+	
+	<component id="lienToggle" type="LinkSubmit">
+		<binding name="action" value="listener:toggle"/>
+		<!--
+		<binding name="async" value="literal:true"/>
+		<binding name="updateComponents" value="literal:bloc"/>
+		 -->
+	</component>
+	
+</component-specification>

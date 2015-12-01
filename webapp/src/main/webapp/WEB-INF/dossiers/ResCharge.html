@@ -1,0 +1,22 @@
+<table class="invis" jwcid="@core/edit/SubForm" source="ognl:personne" liste="ognl:liste" value="ognl:res" type="ognl:type" colspan="4">
+	<tr><td>Personne :</td>
+		<td><input jwcid="@PropertySelection" value="ognl:personne"
+			model="ognl:personnesModel"/></td>
+	</tr>
+	<tr><td>Type :</td>
+		<td><input jwcid="@core/edit/Enum" value="ognl:res.type"
+				enum="ognl:enumToShow" null="ognl:null"/></td>
+	</tr>
+	<tr>
+		<td>Montant :</td>
+		<td><input size="8" jwcid="@TextField" value="ognl:res.montant"
+				translator="translator:number,omitZero"/></td>
+	</tr>
+	<tr><td>Début :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:res.debut" size="8"/></td>
+	</tr>
+	<tr>
+		<td>Fin :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:res.fin" size="8"/></td>
+	</tr>
+</table>

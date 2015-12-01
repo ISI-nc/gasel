@@ -1,0 +1,14 @@
+<div class="block" jwcid="bloc">
+	<div class="block-title">
+		<div style="float:right">
+			<a jwcid="@Any" name="ognl:clientId"/>
+			<a href="#" jwcid="lienToggle"><img jwcid="@Image"
+					image="ognl:ouvert?assets.imgOuvert:assets.imgFerme"/></a>
+		</div>
+		<span jwcid="@Insert" value="ognl:titre"/>
+	</div>
+		
+	<div jwcid="if@If" condition="ognl:ouvert">
+		<div jwcid="@RenderBody"/>
+	</div>
+</div>

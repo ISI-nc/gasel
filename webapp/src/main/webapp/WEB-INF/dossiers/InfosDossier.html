@@ -1,0 +1,7 @@
+<div class="infos-dossier" jwcid="div">
+	Infos dossier :
+	n°<span jwcid="@core/show/Id" object="ognl:dossier">200</span> -
+	<span jwcid="@If" condition="ognl:dossier.chefFamille">
+		<span jwcid="@Insert" value="ognl:dossier.chefFamille.repr">M Test Test</span>
+	</span><span jwcid="@Else">pas de chef de famille</span>
+</div>

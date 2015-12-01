@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Form">
+
+<span jwcid="@dossiers/InfosDossier" dossier="ognl:parent.dossier" />
+
+<div jwcid="@core/Onglets" style="width:100%">
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Généralités">
+
+	<div style="float:right;border: 1px dotted;padding: 1ex; width: 300px;">
+		<div><strong>Absences :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.absencesAM" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Début" value="ognl:row.debut" />
+			<div jwcid="@core/tableau/Colonne" titre="Fin" value="ognl:row.fin" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="absencesAM"/>
+		</table>
+
+		<div><strong>Ajouter une absence :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="absencesAM" value="ognl:absence">
+			<tr><td class="label">Début :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:absence.debut"/></td></tr>
+			<tr><td class="label">Fin :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:absence.fin"/></td></tr>
+		</table>
+	</div>
+
+	<table><tbody>
+		<tr>
+		<td>Nom :</td>
+		<td><input jwcid="@Insert" value="ognl:object.personne.nom" /></td>
+		</tr>
+		<tr>
+		<td>Prénom :</td>
+		<td><input jwcid="@Insert" value="ognl:object.personne.prenom" /></td>
+		</tr>
+		<tr>
+		<td>N° Dossier :</td>
+		<td><input jwcid="@core/show/Id" object="ognl:object.dossier" /></td>
+		</tr>
+		<tr>
+		<td>Référent :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.referent"
+					model="ognl:psm.all('Utilisateur')">
+					<option>referent</option>
+				</select></td>
+		</tr>
+		<tr>
+		<td>Date d'agrément/Entrée dans le RAM :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.agrement"/></td>
+		</tr>
+		<tr>
+		<td>Dernière visite le :</td>
+		<td><input jwcid="@core/edit/Date" value="ognl:object.derniereVisite"/></td>
+		</tr>
+		<tr>
+		<td>Permis de conduire :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.permisConduire" model="ognl:psm.ouiNon"/></td>
+		</tr>
+		<tr>
+		<td>Expiration certificat médical :</td>
+		<td><select jwcid="@core/edit/Date" value="ognl:object.certificatMedical" /></td>
+		</tr>
+		<tr>
+		<td>Expiration de l'extrait de casier judiciaire :</td>
+		<td><select jwcid="@core/edit/Date" value="ognl:object.casierJudiciaire" /></td>
+		</tr>
+		<tr>
+		<td>Expiration assurance logement :</td>
+		<td><select jwcid="@core/edit/Date" value="ognl:object.assuranceLogement" /></td>
+		</tr>
+		<tr>
+		<td>Expiration responsabilité civile :</td>
+		<td><select jwcid="@core/edit/Date" value="ognl:object.responsabiliteCivile" /></td>
+		</tr>
+		<tr>
+		<td>Expiration assurance véhicule :</td>
+		<td><select jwcid="@core/edit/Date" value="ognl:object.assuranceVehicule" /></td>
+		</tr>
+		<tr>
+		<td>Enfants souhaités / possibles par garde :</td>
+		<td><select jwcid="@PropertySelection" value="ognl:object.nbEnfantsSouhaites"
+					model="ognl:psm.range(0,3)" /></td>
+		</tr>
+		<tr>
+		<td>Motif/Observations particulières :</td>
+		<td><select jwcid="@TextArea" value="ognl:object.motifNbEnfantsSouhaites" /></td>
+		</tr>
+		<tr>
+		<td>Heure début travail souhaité :</td>
+		<td><select jwcid="@TextField" value="ognl:object.heureDebutTravail" /></td>
+		</tr>
+		<tr>
+		<td>Heure fin de travail souhaité :</td>
+		<td><select jwcid="@TextField" value="ognl:object.heureFinTravail" /></td>
+		</tr>
+	</tbody></table>
+	
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Formation">
+
+			<div><strong>Formations :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.formationsAM" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Obtention" value="ognl:row.obtention" />
+			<div jwcid="@core/tableau/Colonne" titre="Formation" value="ognl:row.formation" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="formations"/>
+		</table>
+					
+		<div><strong>Ajouter une formation :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="formationsAM" value="ognl:formation">
+			<tr><td class="label">Date d'obtention :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:formation.obtention"/></td></tr>
+			<tr><td class="label">Attestation émise :</td>
+				<td><select jwcid="@PropertySelection" value="ognl:formation.attestationEmise" model="ognl:psm.ouiNon"/></td></tr>
+			<tr><td class="label">Formation :</td>
+				<td><input jwcid="@core/edit/Enum" value="ognl:formation.formation" enum="Formation"/></td></tr>
+		</table>
+
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Intégration">
+
+		<div><strong>Intégrations :</strong></div>
+		<table jwcid="@core/Tableau" source="ognl:object.integrations" value="ognl:row">
+			<div jwcid="@core/tableau/Colonne" titre="Entrée" value="ognl:row.entree" />
+			<div jwcid="@core/tableau/Colonne" titre="Numero Patente" value="ognl:row.numeroPatente" />
+			<div jwcid="@core/tableau/Colonne" titre="Sortie" value="ognl:row.sortie" />
+			<div jwcid="@core/tableau/Colonne" titre="Motif sortie" value="ognl:row.motifSortie" />
+			<div jwcid="@core/tableau/ActionSupprimer" parent="ognl:object" liste="integrations"/>
+		</table>
+					
+		<div><strong>Ajouter une intégration :</strong></div>
+		<table jwcid="@core/edit/SubForm" source="ognl:object" liste="integrations" value="ognl:integration">
+			<tr><td class="label">Date d'entrée :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:integration.entree"/></td></tr>
+			<tr><td class="label">Numero patente :</td>
+				<td><input jwcid="@TextField" value="ognl:integration.numeroPatente" /></td></tr>
+			<tr><td class="label">Date d'expiration patente :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:integration.expirationPatente"/></td></tr>
+			<tr><td class="label">Numero RUAM :</td>
+				<td><input jwcid="@TextField" value="ognl:integration.numeroRUAM" /></td></tr>
+			<tr><td class="label">Sortie :</td>
+				<td><input jwcid="@core/edit/Date" value="ognl:integration.sortie"/></td></tr>
+			<tr><td class="label">Motif :</td>
+				<td><input jwcid="@TextArea" value="ognl:integration.motifSortie"/></td></tr>
+		</table>
+
+</div>
+
+<!-- ====================================================================== -->
+<div jwcid="@core/Onglet" titre="Calendrier">
+
+	<p>
+		Période :
+		<input jwcid="@core/edit/PeriodeMois" debut="ognl:periodeDebut" fin="ognl:periodeFin" size="5"/>
+		<input jwcid="ok@Submit" class="button" action="listener:redirect" value="Ok"/>
+	</p>
+	
+	<div jwcid="@core/Tableau" titre="ognl:'Calendrier de ' + assistante.personne"
+		source="ognl:lignesSemaine" value="ognl:row">
+		<div jwcid="@core/tableau/Colonne" highlight="true" titre="" value="ognl:row.titre"/>
+		<div jwcid="@core/tableau/ColonnesDynamiques" source="ognl:joursSemaine" value="ognl:jourSemaine">
+			<div jwcid="@core/tableau/Colonne" highlight="ognl:row.highlight or row[jourSemaine[1]]&gt;assistante.nbEnfantsSouhaites" titre="ognl:jourSemaine[0]"
+				    value="ognl:row[jourSemaine[1]]&gt;0?row[jourSemaine[1]]:null"/>
+		</div>
+	</div>
+
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>

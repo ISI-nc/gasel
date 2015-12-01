@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<p style="font-weight: bold;"><span jwcid="@Insert" value="ognl:titre"/></p>
+
+<p jwcid="@core/ParamArea">
+	<div style="float:right">
+		Mois&nbsp;: <select jwcid="@core/edit/MoisAnnee" mois="ognl:mois"
+							min="ognl:anneeMin" max="ognl:anneeMax"/>
+	</div>
+	Imputation&nbsp;: <select jwcid="@core/edit/Enum" value="ognl:imputation" enum="Imputation" />
+</p>
+
+<div style="clear:both;"></div>
+
+<p jwcid="@If" condition="ognl:imputation and budget">
+
+<div jwcid="@core/Tableau" titre="ognl:titre" source="ognl:tableau" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" value="ognl:row.titre" titre="" highlight="true"/>
+	<span jwcid="@core/tableau/ColonnesDynamiques" source="ognl:colonnes" value="ognl:col">
+		<span jwcid="@core/tableau/Colonne" value="ognl:row[col]" titre="ognl:col" highlight="ognl:row.highlight"/>
+	</span>
+	<span jwcid="@core/tableau/Colonne" value="ognl:total(row)" titre="Total" highlight="true"/>
+</div>
+
+</p>
+<p jwcid="@Else">Aucun budget correspondant.</p>
+
+<p><input jwcid="@core/BoutonPage" value="Liste nominative"
+		page="budget/mensuel/ListeNominative"
+		context="ognl:#{'imputation': imputation, 'periodeDebut': dates.debutMois(mois), 'periodeFin': dates.finMois(mois)}"/>
+	<input jwcid="@core/BoutonRetour"/></p>
+</div>
+</body>
+</html>

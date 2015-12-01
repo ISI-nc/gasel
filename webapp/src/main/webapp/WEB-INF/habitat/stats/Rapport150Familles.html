@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<div jwcid="@core/Tableau" source="cay-all:AspectDossierHabitat" value="ognl:row">
+	<span jwcid="@core/tableau/Colonne" titre="TS" value="ognl:row.dossier.referent.initiales"/>
+	<span jwcid="@core/tableau/Colonne" titre="Site origine" value="ognl:row.origine"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nom" value="ognl:row.dossier.chefFamille.nom"/>
+	<span jwcid="@core/tableau/Colonne" titre="Prénom" value="ognl:row.dossier.chefFamille.prenom"/>
+	<span jwcid="@core/tableau/Colonne" titre="Début ASL" value="ognl:row.debutASL"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nb pers. dans le foyer" value="ognl:row.dossier.nbPersonnes"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nb adultes" value="ognl-protect:row.dossier.adultes.size()"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nb enf. à charge" value="ognl-protect:row.dossier.enfantsACharge.size()"/>
+	<span jwcid="@core/tableau/Colonne" titre="Nb non à charge" value="ognl-protect:row.dossier.personnesNonACharge.size()"/>
+	<span jwcid="@core/tableau/Colonne" titre="Salaire titulaire" value="ognl:row.dossier.chefFamille.salaire"/>
+	<span jwcid="@core/tableau/Colonne" titre="Salaire conjoint" value="ognl-protect:row.dossier.conjoint.salaire"/>
+	<span jwcid="@core/tableau/Colonne" titre="Crédits" value="ognl-protect:credit"/>
+	<span jwcid="@core/tableau/Colonne" titre="Ressources autres" value="ognl-protect:autresRessources"/>
+	<span jwcid="@core/tableau/Colonne" titre="Ressources nettes" value="ognl-protect:ressourcesNettes'?'"/>
+	<span jwcid="@core/tableau/Colonne" titre="Solde" value="ognl-protect:solde"/>
+	<span jwcid="@core/tableau/Colonne" titre="Date d'entrée" value="ognl:row.debutASL"/>
+	<span jwcid="@core/tableau/Colonne" titre="Date de sortie prévisionnelle" value="ognl:row.echeanceSortie"/>
+	<span jwcid="@core/tableau/Colonne" titre="Adresse de relogement" value="ognl:row.dossier.adresseHabitation"/>
+	<span jwcid="@core/tableau/Colonne" titre="Quartier" value="ognl-protect:row.derniereDemandeAffectation.affectation.quartier"/>
+	<span jwcid="@core/tableau/Colonne" titre="Typologie de logement" value="ognl-protect:row.derniereDemandeAffectation.affectation.type"/>
+	<span jwcid="@core/tableau/Colonne" titre="Loyer CC" value="ognl-protect:row.derniereDemandeAffectation.affLocatif.loyerCC"/>
+	<span jwcid="@core/tableau/Colonne" titre="AL Province" value="ognl:row.ALProvince"/>
+	<span jwcid="@core/tableau/Colonne" titre="Date début" value="ognl-protect:row.premiereAide.debut"/>
+	<span jwcid="@core/tableau/Colonne" titre="Date fin" value="ognl-protect:row.derniereAide.fin"/>
+	<span jwcid="@core/tableau/Colonne" titre="Part contributive mens." value="ognl-protect:partContributiveMensuelle"/>
+	<span jwcid="@core/tableau/Colonne" titre="Taux d'effort" value="ognl-protect:tauxEffort" format="ognl:format.pourcent"/>
+	<span jwcid="@core/tableau/Colonne" titre="SIE montant" value="ognl-protect:montantSIE"/>
+	<span jwcid="@core/tableau/Colonne" titre="SIE motif" value="ognl-protect:motifSIE"/>
+	<span jwcid="@core/tableau/Colonne" titre="Prob. initiales repérées" value="ognl:lists.join(', ', sort(row.dossier.problematiques).byToString.results)"/>
+	<span jwcid="@core/tableau/Colonne" titre="Remarques" value=""/>
+</div>
+
+<p><input jwcid="@core/BoutonRetour"/></p>
+
+</div>
+</body>
+</html>

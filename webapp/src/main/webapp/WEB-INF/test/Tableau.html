@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body jwcid="$content$">
+<div jwcid="@Border">
+
+<p><span jwcid="@Insert" value="ognl:new java.util.Date()"/></p>
+
+<div jwcid="@core/Tableau" titre="Tableau" source="ognl:source" value="ognl:row"
+	lignesParPage="5" class="small-data-table">
+
+	<span jwcid="@core/tableau/Colonne" titre="Index" value="ognl:row[0]"/>
+	<span jwcid="@core/tableau/Colonne" titre="Value" value="ognl:row[1]"/>
+
+	<span jwcid="@Insert" value="ognl:new java.util.Date()"/>
+</div>
+
+<p>
+	<div jwcid="test@Any"><span jwcid="@Insert" value="ognl:new java.util.Date()"/></div>
+	<input jwcid="upd@Submit" value="upd" async="true" updateComponents="test"/>
+</p>
+
+<script type="text/javascript">
+dojo.event.topic.subscribe('info', function(msg) { alert(msg); });
+</script>
+
+</div>
+</body>
+</html>

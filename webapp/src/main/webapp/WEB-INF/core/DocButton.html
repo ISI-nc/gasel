@@ -1,0 +1,8 @@
+<div jwcid="@If" condition="ognl:!disabled" element="div"
+	style="display:none;">
+	<a id="ognl:clientId" href="#" target="_window"
+		jwcid="@ServiceLink" service="document"
+		parameters="ognl:{modele, source}"></a>
+</div>
+<button jwcid="button" disabled="ognl:disabled?'disabled':null"
+	onclick="ognl:'popupLink(\''+clientId+'\')'"><span jwcid="@Insert" value="ognl:label">Édition</span></button>
