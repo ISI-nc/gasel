@@ -120,7 +120,6 @@
 						<resource>
 							<directory>src/main/webapp</directory>
 							<include>**/version.jsp</include>
-							<include>**/*.jasper</include>
 							<filtering>true</filtering>
 						</resource>
 					</webResources>
