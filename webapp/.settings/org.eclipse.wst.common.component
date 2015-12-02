@@ -10,7 +10,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/pi"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/habitat"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/tests"/>
-        <dependent-module archiveName="model-3.1.9-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/model/model">
+        <dependent-module archiveName="model-3.1.9.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/model/model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="webapp"/>
