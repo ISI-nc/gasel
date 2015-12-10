@@ -6,3 +6,5 @@ cache:
   - $HOME/.m2
 before_install: 
   - export TZ=Pacific/Noumea
+notifications:
+  slack: dsi-mairie-noumea:NHnK4yj0j1r76fzOWt65oi1c
