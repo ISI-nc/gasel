@@ -7,12 +7,12 @@
 	<meta key="security" value="skip"/>
 	<property name="titre">literal:Calculette Aide Eau</property>	
 	
-	<property name="prixUnitaireM3" initial-value="getDouble('Prix du m3 (aides eau)')" persist="workflow"/>
-	<property name="prixAbonnement" initial-value="getDouble('Prix abonnement (aides eau)')" persist="workflow"/>
-	<property name="prixEauxUsees" initial-value="getDouble('Prix eaux usees (aides eau)')" persist="workflow"/>
-	<property name="prixServiceEau" initial-value="getDouble('Prix service eau (aides eau)')" persist="workflow"/>
-	<property name="prixAssainissement" initial-value="getDouble('Prix assainissement (aides eau)')" persist="workflow"/>
-	<property name="prixGdTuyau" initial-value="getDouble('Prix grand tuyau (aides eau)')" persist="workflow"/>
+	<property name="prixUnitaireM3" initial-value="getDouble('aides/eau/prix_m3')" persist="workflow"/>
+	<property name="prixAbonnement" initial-value="getDouble('aides/eau/prix_abo')" persist="workflow"/>
+	<property name="prixEauxUsees" initial-value="getDouble('aides/eau/prix_eaux_usees')" persist="workflow"/>
+	<property name="prixServiceEau" initial-value="getDouble('aides/eau/prix_service_eau')" persist="workflow"/>
+	<property name="prixAssainissement" initial-value="getDouble('aides/eau/prix_assainissement')" persist="workflow"/>
+	<property name="prixGdTuyau" initial-value="getDouble('aides/eau/prix_grand_tuyau')" persist="workflow"/>
 	
 	<property name="nbPersonnes" persist="workflow"/>
 	<property name="nbHandicapes" persist="workflow"/>
