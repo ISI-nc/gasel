@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
+	
 	<build>
 		<sourceDirectory>src/framework</sourceDirectory>
 		<resources>
@@ -74,6 +74,55 @@
 			</testResource>
 		</testResources>
 		<plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>2.5.1</version>
+                <executions>
+                    <execution>
+                        <id>install-tapestry-framework-jar</id>
+                        <configuration>
+                            <groupId>org.apache.tapestry</groupId>
+                            <artifactId>tapestry-framework</artifactId>
+                            <version>4.1.6.1</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/3rd_party/tapestry-framework-4.1.6.1.jar</file>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                    <execution>
+                        <id>install-tapestry-contrib-jar</id>
+                        <configuration>
+                            <groupId>org.apache.tapestry</groupId>
+                            <artifactId>tapestry-contrib</artifactId>
+                            <version>4.1.6.1</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/3rd_party/tapestry-contrib-4.1.6.1.jar</file>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                    <execution>
+                        <id>install-tapestry-flash-jar</id>
+                        <configuration>
+                            <groupId>com.javaforge.tapestry</groupId>
+                            <artifactId>tapestry-flash</artifactId>
+                            <version>1.0.0</version>
+                            <packaging>jar</packaging>
+                            <file>${basedir}/3rd_party/tapestry-flash-1.0.0.jar</file>
+                        </configuration>
+                        <goals>
+                            <goal>install-file</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
@@ -233,6 +282,11 @@
 			<groupId>net.sf.jt400</groupId>
 			<artifactId>jt400</artifactId>
 			<version>6.7</version>
+		</dependency>
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>2.7.3</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

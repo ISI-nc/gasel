@@ -1,12 +1,12 @@
 language: java
 jdk:
   - openjdk7
-install:
-  -
 cache:
   directories:
   - $HOME/.m2
 before_install: 
   - export TZ=Pacific/Noumea
+  - mvn validate
+script: mvn compile -DskipTests
 notifications:
   slack: dsi-mairie-noumea:NHnK4yj0j1r76fzOWt65oi1c
