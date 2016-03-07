@@ -11,3 +11,4 @@ bin
 /tmp
 Arrete_*.pdf
 Arrete_*.xml
+/target/

@@ -1,0 +1,22 @@
+cache:
+    mount:
+        - m2-repo
+        - .git
+build:
+    image: maven:3
+    pull: true
+    environment:
+        - JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
+    commands:
+        - |
+            mkdir -p $HOME/.m2 && cat >$HOME/.m2/settings.xml <<EOF
+            <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                                  https://maven.apache.org/xsd/settings-1.0.0.xsd">
+              <localRepository>$PWD/m2-repo</localRepository>
+            </settings>
+            EOF
+        - mvn validate
+        - mvn -DskipTests package
+        - ln -f webapp/target/webapp-*.war webapp/docker/gasel.war
