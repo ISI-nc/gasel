@@ -1,0 +1,5 @@
+build:
+    script:
+        - mvn validate
+        - mvn -DskipTests package
+        - cd webapp && ./build_docker

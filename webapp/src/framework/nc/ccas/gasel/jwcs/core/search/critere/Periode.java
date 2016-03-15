@@ -14,7 +14,7 @@ import org.apache.tapestry.annotations.Parameter;
 import org.apache.tapestry.annotations.Persist;
 import org.apache.tapestry.form.Checkbox;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class Periode extends Critere implements PeriodeProps {
 

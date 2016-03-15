@@ -1,0 +1,20 @@
+#! /bin/sh
+set -ex
+
+drone exec
+(cd webapp && ./build_docker)
+
+set +e
+db_running="$(docker inspect -f '{{.State.Running}}' gasel-db)"
+if [ $? -eq 0 ]; then
+    $db_running ||docker start gasel-db
+else
+    docker run -d --name gasel-db \
+        -e POSTGRES_DB=gasel \
+        -e POSTGRES_USER=gasel_adm \
+        -e POSTGRES_PASSWORD=P@ssw0rd \
+        -v $PWD/full-data:/docker-entrypoint-initdb.d:ro \
+        postgres:9.3
+    docker logs -f gasel-db |grep -m 1 "ready to accept connections"
+fi
+docker run --rm --link gasel-db:postgres -p 8080:8080 gasel

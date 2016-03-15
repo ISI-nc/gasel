@@ -1,9 +1,9 @@
 package nc.ccas.gasel.modelUtils;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createIn;
-import static com.asystan.common.cayenne.QueryFactory.createNot;
-import static com.asystan.common.cayenne.QueryFactory.createOr;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createIn;
+import static com.asystan.common.cayenne_new.QueryFactory.createNot;
+import static com.asystan.common.cayenne_new.QueryFactory.createOr;
 import static nc.ccas.gasel.cayenne.MairieExpr.createTrue;
 
 import java.util.Collection;

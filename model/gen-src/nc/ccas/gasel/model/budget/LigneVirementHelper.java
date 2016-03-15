@@ -1,7 +1,7 @@
 package nc.ccas.gasel.model.budget;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 import static nc.ccas.gasel.modelUtils.CommonQueries.unique;
 import static org.apache.cayenne.DataObjectUtils.intPKForObject;
 

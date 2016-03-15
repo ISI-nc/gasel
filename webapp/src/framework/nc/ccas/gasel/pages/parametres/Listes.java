@@ -1,7 +1,7 @@
 package nc.ccas.gasel.pages.parametres;
 
-import static com.asystan.common.cayenne.QueryFactory.createAnd;
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createAnd;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ import org.apache.cayenne.query.SelectQuery;
 import org.apache.hivemind.util.PropertyUtils;
 import org.apache.tapestry.annotations.Persist;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class Listes extends BasePage {
 

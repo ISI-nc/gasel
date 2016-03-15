@@ -25,9 +25,11 @@ import nc.ccas.gasel.model.ComplexDeletion;
 import nc.ccas.gasel.model.DeletionUtils;
 import nc.ccas.gasel.model.ModifUtils;
 import nc.ccas.gasel.model.TraqueModifs;
+import nc.ccas.gasel.model.aides.Aide;
 import nc.ccas.gasel.model.aides.AspectAides;
 import nc.ccas.gasel.model.aides.Bon;
 import nc.ccas.gasel.model.core.auto._Dossier;
+import nc.ccas.gasel.model.habitat.AideSociale;
 import nc.ccas.gasel.model.habitat.AspectDossierHabitat;
 import nc.ccas.gasel.model.habitat.AspectSIE;
 import nc.ccas.gasel.model.paph.AspectDossierPAPH;
@@ -250,8 +252,9 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 		// Suppression des aspects
 		for (Class<?> clazz : ASPECTS) {
 			DataObject aspect = getAspect(clazz.asSubclass(DataObject.class));
-			if (aspect == null)
+			if (aspect == null) {
 				continue;
+			}
 			DeletionUtils.delete(aspect);
 		}
 
@@ -259,11 +262,11 @@ public class Dossier extends _Dossier implements ComplexDeletion, TraqueModifs {
 		Expression expr = Expression.fromString("personne = $personne and aide.dossier.dossier <> $dossier");
 		Map<String, Object> parameters = new TreeMap<>();
 		for (Personne personne : getPersonnes()) {
-			// TODO check bons sur autres dossier
 			parameters.put("personne", personne);
 			parameters.put("dossier", this);
 
-			// Recherche des bons sur la personne considérée et étant sur d'autres dossier
+			// Recherche des bons sur la personne considérée et étant sur
+			// d'autres dossiers
 			List<Bon> bons = select(Bon.class, expr.expWithParameters(parameters));
 			if (bons.isEmpty()) {
 				// On ne peut supprimer que si la personne n'en a pas.

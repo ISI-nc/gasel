@@ -2,7 +2,7 @@ package nc.ccas.gasel.cayenne;
 
 import org.apache.cayenne.exp.Expression;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 
 public class MairieExpr {

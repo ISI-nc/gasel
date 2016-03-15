@@ -1,9 +1,5 @@
 package nc.ccas.gasel.reports.dossiers.actualite;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -24,7 +20,6 @@ import nc.ccas.gasel.model.paph.AccompagnementPAPH;
 import nc.ccas.gasel.model.paph.AspectDossierPAPH;
 import nc.ccas.gasel.model.paph.DossierPAPH;
 import nc.ccas.gasel.model.paph.HandicapPAPH;
-import nc.ccas.gasel.modelUtils.CayenneUtils;
 import nc.ccas.gasel.modelUtils.DateUtils;
 import nc.ccas.gasel.reports.PeriodeProps;
 import nc.ccas.gasel.reports.PeriodePropsBean;
@@ -33,7 +28,6 @@ import nc.ccas.gasel.reports.StatsTableau;
 import nc.ccas.gasel.reports.StatsTransform;
 import nc.ccas.gasel.xls.CellStyles;
 
-import org.apache.cayenne.access.DataContext;
 import org.apache.cayenne.exp.Expression;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRichTextString;
@@ -42,21 +36,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 
 public class ActualiteReport {
-
-	public static void main(String[] args) throws IOException {
-//		AllModelTests.setupDatabase("noumea");
-		DataContext.bindThreadDataContext(CayenneUtils.createDataContext());
-
-		BasePageSql sql = new BasePageSql();
-
-		creerRapport(sql, 2008, 2008);
-		creerRapport(sql, 2009, 2009);
-		creerRapport(sql, 2010, 2010);
-
-		System.out.println("Fin.");
-	}
-
-	// -----
 
 	private static final String AIDES_QUERY = "debut <= $fin and fin >= $debut";
 
@@ -108,8 +87,10 @@ public class ActualiteReport {
 				public Object transform(Dossier input) {
 					StringBuilder buf = new StringBuilder();
 					for (Personne p : input.getEnfantsACharge()) {
-						if (buf.length() > 0) buf.append(", ");
-						buf.append(DateUtils.DATE_FORMAT.format(p.getDateNaissance()));
+						if (buf.length() > 0)
+							buf.append(", ");
+						buf.append(DateUtils.DATE_FORMAT.format(p
+								.getDateNaissance()));
 					}
 					return buf.toString();
 				}
@@ -263,8 +244,10 @@ public class ActualiteReport {
 			.add("MOTIF ACCOMPAGNEMENT", new StatsTransform<HandicapPAPH>() {
 				public Object transform(HandicapPAPH input) {
 					StringBuilder buf = new StringBuilder();
-					for (AccompagnementPAPH acc : input.getDossier().getAccompagnements()) {
-						if (buf.length() > 0) buf.append("; ");
+					for (AccompagnementPAPH acc : input.getDossier()
+							.getAccompagnements()) {
+						if (buf.length() > 0)
+							buf.append("; ");
 						buf.append(acc.getProjet());
 					}
 					return buf.toString();
@@ -285,28 +268,6 @@ public class ActualiteReport {
 	private List<Personne> chefsMenage;
 
 	private List<HandicapPAPH> paPh;
-	
-	private static void creerRapport(BasePageSql sql, int anneeDebut,
-			int anneeFin) throws FileNotFoundException, IOException {
-		ActualiteReport report = new ActualiteReport(sql, anneeDebut, anneeFin);
-
-		HSSFWorkbook wb = new HSSFWorkbook();
-		// Titre de la page = "Tableau" parce que trop de contraintes (et donc
-		// de problèmes) sur les titres libres...
-
-		createSheetTableau(wb, "Menage", TABLEAU_DOSSIERS, report.getDossiers());
-		createSheetTableau(wb, "Chef menage", TABLEAU_CHEFS, report
-				.getChefsMenage());
-		createSheetTableau(wb, "Aide", TABLEAU_AIDES, report.getAides());
-		createSheetTableau(wb, "PAPH", TABLEAU_PAPH, report.getPaPh());
-
-		// Ecriture
-		System.out.println("Ecriture " + anneeDebut + " - " + anneeFin + "...");
-		OutputStream out = new FileOutputStream("stats " + anneeDebut + " - "
-				+ anneeFin + ".xls");
-		wb.write(out);
-		out.close();
-	}
 
 	private static <T> void createSheetTableau(HSSFWorkbook wb,
 			String sheetName, StatsTableau<T> tableau, List<T> values) {
@@ -318,14 +279,13 @@ public class ActualiteReport {
 		int colCount = tableau.getColonnes().size();
 
 		int rowNum = 0;
-		short colNum = 0;
+		int colNum = 0;
 		row = sheet.createRow(rowNum++);
 		for (StatsColonne<T> col : tableau.getColonnes()) {
 			HSSFCell cell = row.createCell(colNum++);
 			cell.setCellStyle(styles.title);
 			setCellValue(cell, col.getTitre());
 		}
-		System.out.println();
 
 		for (T value : values) {
 			row = sheet.createRow(rowNum++);
@@ -358,6 +318,18 @@ public class ActualiteReport {
 	public ActualiteReport(BasePageSql sql, PeriodeProps periode) {
 		this.sql = sql;
 		this.periode = periode;
+	}
+
+	public HSSFWorkbook getWorkbook() {
+		HSSFWorkbook wb = new HSSFWorkbook();
+		// Titre de la page = "Tableau" parce que trop de contraintes (et donc
+		// de problèmes) sur les titres libres...
+
+		createSheetTableau(wb, "Menage", TABLEAU_DOSSIERS, getDossiers());
+		createSheetTableau(wb, "Chef menage", TABLEAU_CHEFS, getChefsMenage());
+		createSheetTableau(wb, "Aide", TABLEAU_AIDES, getAides());
+		createSheetTableau(wb, "PAPH", TABLEAU_PAPH, getPaPh());
+		return wb;
 	}
 
 	public ActualiteReport(BasePageSql sql, Date debut, Date fin) {

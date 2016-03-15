@@ -16,7 +16,7 @@ import org.apache.tapestry.form.IPropertySelectionModel;
 import org.apache.tapestry.form.PropertySelection;
 import org.apache.tapestry.form.TextField;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public abstract class MoisAnnee extends Critere {
 

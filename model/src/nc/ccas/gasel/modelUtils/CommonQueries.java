@@ -1,6 +1,6 @@
 package nc.ccas.gasel.modelUtils;
 
-import static com.asystan.common.cayenne.QueryFactory.createIn;
+import static com.asystan.common.cayenne_new.QueryFactory.createIn;
 import static nc.ccas.gasel.modelUtils.CayenneUtils.collectIds;
 import static org.apache.cayenne.query.PrefetchTreeNode.JOINT_PREFETCH_SEMANTICS;
 
@@ -33,7 +33,7 @@ import org.apache.cayenne.query.SQLTemplate;
 import org.apache.cayenne.query.SelectQuery;
 import org.apache.commons.lang.NotImplementedException;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public class CommonQueries {
 

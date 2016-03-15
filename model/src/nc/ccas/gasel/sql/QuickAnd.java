@@ -1,6 +1,6 @@
 package nc.ccas.gasel.sql;
 
-import static com.asystan.common.cayenne.QueryFactory.createEquals;
+import static com.asystan.common.cayenne_new.QueryFactory.createEquals;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +10,7 @@ import nc.ccas.gasel.SqlParams;
 
 import org.apache.cayenne.exp.Expression;
 
-import com.asystan.common.cayenne.QueryFactory;
+import com.asystan.common.cayenne_new.QueryFactory;
 
 public class QuickAnd {
 

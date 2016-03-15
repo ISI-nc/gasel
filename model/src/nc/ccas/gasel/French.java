@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import com.asystan.common.cache.CacheMap;
+import com.asystan.common.cache_new.CacheMap;
 
 public class French {
 
