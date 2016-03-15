@@ -5,7 +5,7 @@
   <groupId>gasel</groupId>
   <artifactId>gasel</artifactId>
   <packaging>pom</packaging>
-  <version>3.1.10</version>
+  <version>3.1.11-SNAPSHOT</version>
 
   <name>Gestion des Aide Sociales Et du Logement</name>
 
