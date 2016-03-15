@@ -4,7 +4,6 @@ cache:
         - .git
 build:
     image: maven:3
-    pull: true
     environment:
         - JAVA_TOOL_OPTIONS=-Dfile.encoding=UTF8
     commands:

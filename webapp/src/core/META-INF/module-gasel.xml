@@ -23,6 +23,12 @@
 					Permet de créer ou modifier les groupes.
 				</point-entree>
 			</partie-module>
+			
+			<partie-module dossier="stats" titre="Statistiques">
+				<point-entree titre="Actualité" page="Actualite">
+					Statistiques brutes sur une période donnée.
+				</point-entree>
+			</partie-module>
 		</module>
 	</contribution>
 

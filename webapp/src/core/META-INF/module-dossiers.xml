@@ -19,16 +19,6 @@
 					supprimés et donne la possibilité de les supprimer.
 				</point-entree>
 			</partie-module>
-			<!-- 
-			<partie-module dossier="stats" titre="Statistiques">
-				<point-entree titre="Personnes suivies" page="PersonnesSuivies">
-					Dossiers suivis.
-				</point-entree>
-				<point-entree titre="PAIO" page="PersonnesPaio">
-					Statistiques sur les personnes reçues en PAIO.
-				</point-entree>
-			</partie-module>
-			 -->
 		</module>
 	</contribution>
 
