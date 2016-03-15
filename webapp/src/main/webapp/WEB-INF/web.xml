@@ -17,7 +17,6 @@
 
 	<!-- Servlets -->
 	<servlet>
-		<icon></icon>
 		<servlet-name>web</servlet-name>
 		<servlet-class>org.apache.tapestry.ApplicationServlet</servlet-class>
 		<init-param>
@@ -27,12 +26,22 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>reports/actualite</servlet-name>
+		<servlet-class>nc.ccas.gasel.ws.ActualiteReportServlet</servlet-class>
+	</servlet>
+	
 	<!-- Listener -->
 	<listener>
 		<listener-class>nc.ccas.gasel.AppContext</listener-class>
 	</listener>
 
 	<!-- Mappings -->
+	<servlet-mapping>
+		<servlet-name>reports/actualite</servlet-name>
+		<url-pattern>/reports/actualite</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>web</servlet-name>
 		<url-pattern>/app</url-pattern>

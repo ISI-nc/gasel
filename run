@@ -1,7 +1,7 @@
 #! /bin/sh
 set -ex
-mvn validate
-mvn -DskipTests package
+
+drone exec
 (cd webapp && ./build_docker)
 
 set +e
